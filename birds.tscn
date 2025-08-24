@@ -1,0 +1,352 @@
+[gd_scene load_steps=39 format=3 uid="uid://cdrka8tjwqtpy"]
+
+[ext_resource type="Script" uid="uid://2hr1bo5hgepm" path="res://birds.gd" id="1_0ntoc"]
+[ext_resource type="Texture2D" uid="uid://b0v3wm3p0s43" path="res://img/buy/birds_background.png" id="1_1461h"]
+[ext_resource type="Texture2D" uid="uid://dtpqu4kfadqd2" path="res://img/buy/birds_buy.png" id="2_b8yjg"]
+[ext_resource type="Texture2D" uid="uid://dlrwmb50wwksv" path="res://img/buy/birds_buy_active.png" id="3_fgfbm"]
+[ext_resource type="Texture2D" uid="uid://dt6yodk74pxtl" path="res://img/buy/chicken_icon.png" id="4_eturq"]
+[ext_resource type="Texture2D" uid="uid://2qliut5bebo2" path="res://img/buy/chicken_text.png" id="5_vby6f"]
+[ext_resource type="Texture2D" uid="uid://dyk2r6u5rpqqq" path="res://img/buy/duck_icon.png" id="6_c4m3l"]
+[ext_resource type="Texture2D" uid="uid://boqdu1uofurxq" path="res://img/buy/duck_text.png" id="7_v2d20"]
+[ext_resource type="Texture2D" uid="uid://b4lida1q2c8sf" path="res://img/buy/Cassowaries_icon.png" id="8_yirju"]
+[ext_resource type="Texture2D" uid="uid://clfxnd74frdi7" path="res://img/buy/Cassowaries_text.png" id="9_77fj2"]
+[ext_resource type="Texture2D" uid="uid://pcf45k8igyn5" path="res://img/buy/flamingo_icon.png" id="10_wi0lp"]
+[ext_resource type="Texture2D" uid="uid://dv0l28iefvd8l" path="res://img/buy/flamingo_text.png" id="11_2732t"]
+[ext_resource type="Texture2D" uid="uid://bujxv7fq653w1" path="res://img/buy/kiwi_icon.png" id="12_ynwwr"]
+[ext_resource type="Texture2D" uid="uid://daylavae4gh8j" path="res://img/buy/kiwi_text.png" id="13_sf03u"]
+[ext_resource type="Texture2D" uid="uid://btyy1fnys32sr" path="res://img/buy/ostriches_icon.png" id="14_6xrga"]
+[ext_resource type="Texture2D" uid="uid://b2aervjp0w24h" path="res://img/buy/ostriches_text.png" id="15_v1k3j"]
+[ext_resource type="Texture2D" uid="uid://cw0n8cdhdb0q1" path="res://img/buy/peafowl_icon.png" id="16_tjxk5"]
+[ext_resource type="Texture2D" uid="uid://dfxgchi43n50h" path="res://img/buy/peafowl_text.png" id="17_h8chh"]
+[ext_resource type="Texture2D" uid="uid://dw4v3bwc30usp" path="res://img/buy/pigeon_icon.png" id="18_vba1e"]
+[ext_resource type="Texture2D" uid="uid://bggygjw2en17g" path="res://img/buy/pigeons_text.png" id="19_r8hnd"]
+[ext_resource type="Texture2D" uid="uid://cwmv1nfblm33k" path="res://img/buy/pinguins_icon.png" id="20_2ogi2"]
+[ext_resource type="Texture2D" uid="uid://6pbl3m6acle1" path="res://img/buy/pinguins_text.png" id="21_hc6wk"]
+[ext_resource type="Texture2D" uid="uid://cqp6xijgnbjqr" path="res://img/buy/turkey_icon.png" id="22_4lj68"]
+[ext_resource type="Texture2D" uid="uid://wmtp4jj0tc1v" path="res://img/buy/turkey_text.png" id="23_l8107"]
+[ext_resource type="Texture2D" uid="uid://dk4cgvxg2vps3" path="res://img/buy/birds_buy_space.png" id="24_hsobx"]
+[ext_resource type="Texture2D" uid="uid://bj8inxpsinvvw" path="res://img/buy/birds_buy_plus.png" id="25_o3xiy"]
+[ext_resource type="Texture2D" uid="uid://c6pi8i2uatfj" path="res://img/buy/birds_buy_minus.png" id="26_g01fd"]
+[ext_resource type="Texture2D" uid="uid://c7bv60dg2es1m" path="res://img/buy/bird_price_10.png" id="27_dtve2"]
+[ext_resource type="Texture2D" uid="uid://b13tlnboibgbl" path="res://img/buy/bird_price_50.png" id="28_u8ye4"]
+[ext_resource type="Texture2D" uid="uid://brsgyo1e7308b" path="res://img/buy/bird_price_75.png" id="29_qwrc5"]
+[ext_resource type="Texture2D" uid="uid://n44ael43v4s7" path="res://img/buy/bird_price_350.png" id="30_oml21"]
+[ext_resource type="Texture2D" uid="uid://cqpiymnndmo1o" path="res://img/buy/bird_price_1000.png" id="31_i6ah2"]
+[ext_resource type="Texture2D" uid="uid://cqathe5uvfd3x" path="res://img/buy/bird_price_1500.png" id="32_a5clp"]
+[ext_resource type="Texture2D" uid="uid://dpupfmt7fultp" path="res://img/buy/bird_price_3500.png" id="33_nv873"]
+[ext_resource type="Texture2D" uid="uid://dwq7xiubjoeoc" path="res://img/buy/bird_price_7500.png" id="34_egi48"]
+[ext_resource type="Texture2D" uid="uid://bx3qxoscpqyf5" path="res://img/buy/bird_price_8000.png" id="35_dfixy"]
+[ext_resource type="Texture2D" uid="uid://dx7nmukv5t8tc" path="res://img/buy/bird_price_9500.png" id="36_b4brk"]
+[ext_resource type="Script" uid="uid://4luf68i5o8cu" path="res://bird_controls.gd" id="38_brkxa"]
+
+[node name="Birds" type="Node2D"]
+script = ExtResource("1_0ntoc")
+
+[node name="BirdsBackground" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+texture = ExtResource("1_1461h")
+
+[node name="Chickens" type="HBoxContainer" parent="."]
+offset_left = 299.0
+offset_top = 60.0
+offset_right = 394.0
+offset_bottom = 100.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+script = ExtResource("38_brkxa")
+
+[node name="PlusButton" type="TextureButton" parent="Chickens"]
+layout_mode = 2
+texture_normal = ExtResource("25_o3xiy")
+stretch_mode = 3
+
+[node name="Amount" type="TextureButton" parent="Chickens"]
+layout_mode = 2
+texture_normal = ExtResource("24_hsobx")
+stretch_mode = 3
+
+[node name="AmountLabel" type="RichTextLabel" parent="Chickens/Amount"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MinusButton" type="TextureButton" parent="Chickens"]
+layout_mode = 2
+texture_normal = ExtResource("26_g01fd")
+stretch_mode = 3
+
+[node name="Ducks" type="HBoxContainer" parent="."]
+offset_left = 311.0
+offset_top = 162.0
+offset_right = 406.0
+offset_bottom = 202.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+script = ExtResource("38_brkxa")
+bird = 1
+
+[node name="PlusButton" type="TextureButton" parent="Ducks"]
+layout_mode = 2
+texture_normal = ExtResource("25_o3xiy")
+stretch_mode = 3
+
+[node name="Amount" type="TextureButton" parent="Ducks"]
+layout_mode = 2
+texture_normal = ExtResource("24_hsobx")
+stretch_mode = 3
+
+[node name="AmountLabel" type="RichTextLabel" parent="Ducks/Amount"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MinusButton" type="TextureButton" parent="Ducks"]
+layout_mode = 2
+texture_normal = ExtResource("26_g01fd")
+stretch_mode = 3
+
+[node name="BuyButton" type="TextureButton" parent="."]
+offset_left = 967.0
+offset_top = 541.0
+offset_right = 1092.0
+offset_bottom = 609.0
+texture_normal = ExtResource("2_b8yjg")
+texture_pressed = ExtResource("3_fgfbm")
+
+[node name="ChickenIcon" type="Sprite2D" parent="."]
+position = Vector2(156, 62)
+texture = ExtResource("4_eturq")
+
+[node name="ChickenText" type="Sprite2D" parent="."]
+position = Vector2(346, 51)
+texture = ExtResource("5_vby6f")
+
+[node name="DuckIcon" type="Sprite2D" parent="."]
+position = Vector2(148, 182)
+texture = ExtResource("6_c4m3l")
+
+[node name="DuckText" type="Sprite2D" parent="."]
+position = Vector2(360, 154)
+texture = ExtResource("7_v2d20")
+
+[node name="CassowariesIcon" type="Sprite2D" parent="."]
+position = Vector2(657, 531)
+texture = ExtResource("8_yirju")
+
+[node name="CassowariesText" type="Sprite2D" parent="."]
+position = Vector2(857, 498)
+texture = ExtResource("9_77fj2")
+
+[node name="FlamingoIcon" type="Sprite2D" parent="."]
+position = Vector2(646, 408)
+texture = ExtResource("10_wi0lp")
+
+[node name="FlamingoText" type="Sprite2D" parent="."]
+position = Vector2(860, 384)
+texture = ExtResource("11_2732t")
+
+[node name="KiwiIcon" type="Sprite2D" parent="."]
+position = Vector2(632, 217)
+texture = ExtResource("12_ynwwr")
+
+[node name="KiwiText" type="Sprite2D" parent="."]
+position = Vector2(833, 180)
+texture = ExtResource("13_sf03u")
+
+[node name="OstrichesIcon" type="Sprite2D" parent="."]
+position = Vector2(618, 104)
+texture = ExtResource("14_6xrga")
+
+[node name="OstrichesText" type="Sprite2D" parent="."]
+position = Vector2(794, 46)
+texture = ExtResource("15_v1k3j")
+
+[node name="PeafowlIcon" type="Sprite2D" parent="."]
+position = Vector2(640, 297)
+texture = ExtResource("16_tjxk5")
+
+[node name="PeafowlText" type="Sprite2D" parent="."]
+position = Vector2(854, 274)
+texture = ExtResource("17_h8chh")
+
+[node name="PigeonIcon" type="Sprite2D" parent="."]
+position = Vector2(155, 285)
+texture = ExtResource("18_vba1e")
+
+[node name="PigeonsText" type="Sprite2D" parent="."]
+position = Vector2(375, 274)
+texture = ExtResource("19_r8hnd")
+
+[node name="PinguinsIcon" type="Sprite2D" parent="."]
+position = Vector2(142, 425)
+texture = ExtResource("20_2ogi2")
+
+[node name="PinguinsText" type="Sprite2D" parent="."]
+position = Vector2(366, 398)
+texture = ExtResource("21_hc6wk")
+
+[node name="TurkeyIcon" type="Sprite2D" parent="."]
+position = Vector2(186, 553)
+texture = ExtResource("22_4lj68")
+
+[node name="TurkeyText" type="Sprite2D" parent="."]
+position = Vector2(400, 534)
+texture = ExtResource("23_l8107")
+
+[node name="BirdsBuySpace3" type="Sprite2D" parent="."]
+position = Vector2(374, 301)
+texture = ExtResource("24_hsobx")
+
+[node name="BirdsBuySpace4" type="Sprite2D" parent="."]
+position = Vector2(367, 423)
+texture = ExtResource("24_hsobx")
+
+[node name="BirdsBuySpace5" type="Sprite2D" parent="."]
+position = Vector2(398, 558)
+texture = ExtResource("24_hsobx")
+
+[node name="BirdsBuySpace6" type="Sprite2D" parent="."]
+position = Vector2(792, 71)
+texture = ExtResource("24_hsobx")
+
+[node name="BirdsBuySpace7" type="Sprite2D" parent="."]
+position = Vector2(837, 205)
+texture = ExtResource("24_hsobx")
+
+[node name="BirdsBuySpace8" type="Sprite2D" parent="."]
+position = Vector2(852, 300)
+texture = ExtResource("24_hsobx")
+
+[node name="BirdsBuySpace9" type="Sprite2D" parent="."]
+position = Vector2(860, 409)
+texture = ExtResource("24_hsobx")
+
+[node name="BirdsBuySpace10" type="Sprite2D" parent="."]
+position = Vector2(860, 523)
+texture = ExtResource("24_hsobx")
+
+[node name="BirdsBuyPlus3" type="Sprite2D" parent="."]
+position = Vector2(328, 301)
+texture = ExtResource("25_o3xiy")
+
+[node name="BirdsBuyMinus3" type="Sprite2D" parent="."]
+position = Vector2(416, 302)
+texture = ExtResource("26_g01fd")
+
+[node name="BirdsBuyPlus4" type="Sprite2D" parent="."]
+position = Vector2(323, 424)
+texture = ExtResource("25_o3xiy")
+
+[node name="BirdsBuyMinus4" type="Sprite2D" parent="."]
+position = Vector2(410, 424)
+texture = ExtResource("26_g01fd")
+
+[node name="BirdsBuyPlus5" type="Sprite2D" parent="."]
+position = Vector2(748, 71)
+texture = ExtResource("25_o3xiy")
+
+[node name="BirdsBuyMinus5" type="Sprite2D" parent="."]
+position = Vector2(835, 70)
+texture = ExtResource("26_g01fd")
+
+[node name="BirdsBuyPlus6" type="Sprite2D" parent="."]
+position = Vector2(794, 205)
+texture = ExtResource("25_o3xiy")
+
+[node name="BirdsBuyMinus6" type="Sprite2D" parent="."]
+position = Vector2(881, 205)
+texture = ExtResource("26_g01fd")
+
+[node name="BirdsBuyPlus7" type="Sprite2D" parent="."]
+position = Vector2(809, 301)
+texture = ExtResource("25_o3xiy")
+
+[node name="BirdsBuyMinus7" type="Sprite2D" parent="."]
+position = Vector2(894, 300)
+texture = ExtResource("26_g01fd")
+
+[node name="BirdsBuyPlus8" type="Sprite2D" parent="."]
+position = Vector2(816, 410)
+texture = ExtResource("25_o3xiy")
+
+[node name="BirdsBuyMinus8" type="Sprite2D" parent="."]
+position = Vector2(903, 409)
+texture = ExtResource("26_g01fd")
+
+[node name="BirdsBuyPlus9" type="Sprite2D" parent="."]
+position = Vector2(817, 523)
+texture = ExtResource("25_o3xiy")
+
+[node name="BirdsBuyMinus9" type="Sprite2D" parent="."]
+position = Vector2(904, 523)
+texture = ExtResource("26_g01fd")
+
+[node name="BirdsBuyPlus10" type="Sprite2D" parent="."]
+position = Vector2(355, 556)
+texture = ExtResource("25_o3xiy")
+
+[node name="BirdsBuyMinus10" type="Sprite2D" parent="."]
+position = Vector2(441, 558)
+texture = ExtResource("26_g01fd")
+
+[node name="BirdPrice10" type="Sprite2D" parent="."]
+position = Vector2(433, 98)
+texture = ExtResource("27_dtve2")
+
+[node name="BirdPrice50" type="Sprite2D" parent="."]
+position = Vector2(444, 156)
+texture = ExtResource("28_u8ye4")
+
+[node name="BirdPrice75" type="Sprite2D" parent="."]
+position = Vector2(348, 252)
+texture = ExtResource("29_qwrc5")
+
+[node name="BirdPrice350" type="Sprite2D" parent="."]
+position = Vector2(463, 409)
+texture = ExtResource("30_oml21")
+
+[node name="BirdPrice1000" type="Sprite2D" parent="."]
+position = Vector2(455, 512)
+texture = ExtResource("31_i6ah2")
+
+[node name="BirdPrice1500" type="Sprite2D" parent="."]
+position = Vector2(889, 29)
+texture = ExtResource("32_a5clp")
+
+[node name="BirdPrice3500" type="Sprite2D" parent="."]
+position = Vector2(915, 181)
+texture = ExtResource("33_nv873")
+
+[node name="BirdPrice7500" type="Sprite2D" parent="."]
+position = Vector2(937, 257)
+texture = ExtResource("34_egi48")
+
+[node name="BirdPrice8000" type="Sprite2D" parent="."]
+position = Vector2(964, 385)
+texture = ExtResource("35_dfixy")
+
+[node name="BirdPrice9500" type="Sprite2D" parent="."]
+position = Vector2(972, 501)
+texture = ExtResource("36_b4brk")
+
+[connection signal="pressed" from="Chickens/PlusButton" to="Chickens" method="_on_plus_pressed"]
+[connection signal="pressed" from="Chickens/MinusButton" to="Chickens" method="_on_minus_pressed"]
+[connection signal="pressed" from="Ducks/PlusButton" to="Ducks" method="_on_plus_pressed"]
+[connection signal="pressed" from="Ducks/MinusButton" to="Ducks" method="_on_minus_pressed"]
+[connection signal="pressed" from="BuyButton" to="." method="_on_buy_pressed"]

@@ -1,0 +1,204 @@
+[gd_scene load_steps=17 format=3 uid="uid://bf5xmnfh7eydk"]
+
+[ext_resource type="Texture2D" uid="uid://cet1n87q7jjfd" path="res://img/science/science_background.png" id="1_30x72"]
+[ext_resource type="Texture2D" uid="uid://bq0j3jj3gvkqa" path="res://img/science/Bill_Aye_icon.png" id="2_ifux6"]
+[ext_resource type="Texture2D" uid="uid://dl7e6gvafqqcy" path="res://img/dinos/Diplodocus_egg.png" id="4_ardc2"]
+[ext_resource type="Texture2D" uid="uid://b65jmpysknf0j" path="res://img/science/equal.png" id="5_ynxx1"]
+[ext_resource type="Texture2D" uid="uid://bof80ab7jh7my" path="res://img/science/Science_chickens.png" id="6_fsfo8"]
+[ext_resource type="Texture2D" uid="uid://2b4045jupkke" path="res://img/science/1x_green.png" id="7_221oj"]
+[ext_resource type="Texture2D" uid="uid://bq8s537tayqq" path="res://img/science/1x_red.png" id="8_vrt65"]
+[ext_resource type="Texture2D" uid="uid://dpmb4cmhhclx4" path="res://img/science/science_create_yes.png" id="9_q2ujr"]
+[ext_resource type="Texture2D" uid="uid://efrr5xwclu3a" path="res://img/science/science_create_no.png" id="10_ear38"]
+[ext_resource type="Texture2D" uid="uid://beib256n8gqid" path="res://img/buy/groceries_salt.png" id="11_1rfrf"]
+[ext_resource type="Texture2D" uid="uid://dedouwa28j12p" path="res://img/dinos/Styracosaurus_egg.png" id="11_ohs3e"]
+[ext_resource type="Texture2D" uid="uid://btf23sqjtgmam" path="res://img/science/science_ducks.png" id="12_6x3vt"]
+[ext_resource type="Texture2D" uid="uid://chnflhp4jscgb" path="res://img/science/Bill_Aye_text.png" id="13_avpce"]
+[ext_resource type="Texture2D" uid="uid://cng5fub4hcxf" path="res://img/science/food_carnivore.png" id="13_v1d3m"]
+[ext_resource type="Texture2D" uid="uid://xug4uvrurhjc" path="res://img/science/food_herbivore.png" id="15_5u0sx"]
+[ext_resource type="Texture2D" uid="uid://dt76w6gmxtiyw" path="res://img/buy/groceries_pepper.png" id="16_rkd8g"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ScienceBackground" type="Sprite2D" parent="."]
+position = Vector2(577, 340)
+texture = ExtResource("1_30x72")
+
+[node name="BillAyeIcon" type="Sprite2D" parent="."]
+position = Vector2(217, 204)
+texture = ExtResource("2_ifux6")
+
+[node name="BillAyeText" type="Sprite2D" parent="."]
+position = Vector2(949, 90)
+texture = ExtResource("13_avpce")
+
+[node name="DiplodocusEgg" type="Sprite2D" parent="."]
+position = Vector2(406, 200)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_ardc2")
+
+[node name="Equal" type="Sprite2D" parent="."]
+position = Vector2(456, 206)
+texture = ExtResource("5_ynxx1")
+
+[node name="Equal2" type="Sprite2D" parent="."]
+position = Vector2(459, 287)
+texture = ExtResource("5_ynxx1")
+
+[node name="ScienceChickens" type="Sprite2D" parent="."]
+position = Vector2(609, 192)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("6_fsfo8")
+
+[node name="1x" type="TextureButton" parent="."]
+offset_left = 511.0
+offset_top = 192.0
+offset_right = 542.0
+offset_bottom = 209.0
+disabled = true
+texture_normal = ExtResource("7_221oj")
+texture_disabled = ExtResource("8_vrt65")
+
+[node name="1x2" type="TextureButton" parent="."]
+offset_left = 514.0
+offset_top = 273.0
+offset_right = 545.0
+offset_bottom = 290.0
+disabled = true
+texture_normal = ExtResource("7_221oj")
+texture_disabled = ExtResource("8_vrt65")
+
+[node name="ScienceCreate" type="TextureButton" parent="."]
+offset_left = 675.0
+offset_top = 183.0
+offset_right = 796.0
+offset_bottom = 208.0
+disabled = true
+texture_normal = ExtResource("9_q2ujr")
+texture_disabled = ExtResource("10_ear38")
+
+[node name="ScienceCreate2" type="TextureButton" parent="."]
+offset_left = 675.0
+offset_top = 264.0
+offset_right = 796.0
+offset_bottom = 289.0
+disabled = true
+texture_normal = ExtResource("9_q2ujr")
+texture_disabled = ExtResource("10_ear38")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = 371.0
+offset_top = 395.0
+offset_right = 945.0
+offset_bottom = 435.0
+theme_override_constants/separation = 120
+
+[node name="1x3" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+disabled = true
+texture_normal = ExtResource("7_221oj")
+texture_disabled = ExtResource("8_vrt65")
+
+[node name="1x5" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+disabled = true
+texture_normal = ExtResource("7_221oj")
+texture_disabled = ExtResource("8_vrt65")
+
+[node name="1x7" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+disabled = true
+texture_normal = ExtResource("7_221oj")
+texture_disabled = ExtResource("8_vrt65")
+
+[node name="ScienceCreate3" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+disabled = true
+texture_normal = ExtResource("9_q2ujr")
+texture_disabled = ExtResource("10_ear38")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+offset_left = 371.0
+offset_top = 513.0
+offset_right = 945.0
+offset_bottom = 553.0
+theme_override_constants/separation = 120
+
+[node name="1x3" type="TextureButton" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 4
+disabled = true
+texture_normal = ExtResource("7_221oj")
+texture_disabled = ExtResource("8_vrt65")
+
+[node name="1x5" type="TextureButton" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 4
+disabled = true
+texture_normal = ExtResource("7_221oj")
+texture_disabled = ExtResource("8_vrt65")
+
+[node name="1x7" type="TextureButton" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 4
+disabled = true
+texture_normal = ExtResource("7_221oj")
+texture_disabled = ExtResource("8_vrt65")
+
+[node name="ScienceCreate3" type="TextureButton" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 4
+disabled = true
+texture_normal = ExtResource("9_q2ujr")
+texture_disabled = ExtResource("10_ear38")
+
+[node name="GroceriesSalt" type="Sprite2D" parent="."]
+position = Vector2(608, 531)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("11_1rfrf")
+
+[node name="GroceriesSalt2" type="Sprite2D" parent="."]
+position = Vector2(608, 413)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("11_1rfrf")
+
+[node name="StyracosaurusEgg" type="Sprite2D" parent="."]
+position = Vector2(406, 279)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("11_ohs3e")
+
+[node name="ScienceDucks" type="Sprite2D" parent="."]
+position = Vector2(605, 273)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("12_6x3vt")
+
+[node name="FoodCarnivore" type="Sprite2D" parent="."]
+position = Vector2(240, 419)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("13_v1d3m")
+
+[node name="FoodHerbivore" type="Sprite2D" parent="."]
+position = Vector2(240, 542)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("15_5u0sx")
+
+[node name="Equal3" type="Sprite2D" parent="."]
+position = Vector2(332, 419)
+texture = ExtResource("5_ynxx1")
+
+[node name="Equal4" type="Sprite2D" parent="."]
+position = Vector2(338, 540)
+texture = ExtResource("5_ynxx1")
+
+[node name="GroceriesPepper" type="Sprite2D" parent="."]
+position = Vector2(460, 414)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("16_rkd8g")
+
+[node name="GroceriesPepper2" type="Sprite2D" parent="."]
+position = Vector2(460, 532)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("16_rkd8g")

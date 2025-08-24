@@ -1,0 +1,82 @@
+[gd_scene load_steps=14 format=3 uid="uid://cs1ockto2d0o8"]
+
+[ext_resource type="Texture2D" uid="uid://b3kwmxjbx1tgh" path="res://img/buy/background_resumes.png" id="1_53088"]
+[ext_resource type="Texture2D" uid="uid://6blyqi3jo5fr" path="res://img/buy/button_resumes_caregivers_active.png" id="2_xpies"]
+[ext_resource type="Texture2D" uid="uid://7qmbddatqaku" path="res://img/buy/button_resumes_scientists.png" id="3_mhnjb"]
+[ext_resource type="Texture2D" uid="uid://dulacu0ne7d56" path="res://img/buy/background_resumes_paper.png" id="4_td4p5"]
+[ext_resource type="Script" uid="uid://b5kc0phkrx6bv" path="res://resumes_tab.gd" id="4_udg45"]
+[ext_resource type="Texture2D" uid="uid://ccn7ai58lbvk4" path="res://img/employees/Chris_green_icon.png" id="5_rd71i"]
+[ext_resource type="Texture2D" uid="uid://bwhlfq2h4fxhb" path="res://img/employees/Victoria_Rivers_icon.png" id="6_6rgg2"]
+[ext_resource type="Texture2D" uid="uid://dr3smsjjnnedo" path="res://img/science/price_bill.png" id="7_8cj3k"]
+[ext_resource type="Texture2D" uid="uid://xvd24jphxp3g" path="res://img/buy/price_chris.png" id="10_lpl28"]
+[ext_resource type="Texture2D" uid="uid://dluxpfadpjqlk" path="res://img/buy/name_caregiver_chris.png" id="11_ij1vj"]
+[ext_resource type="Texture2D" uid="uid://oss5gxnm5q6v" path="res://img/buy/name_caregiver_victoria.png" id="12_jbfgt"]
+[ext_resource type="Texture2D" uid="uid://danm6y360fnsg" path="res://img/buy/hire.png" id="13_hyhr5"]
+[ext_resource type="Texture2D" uid="uid://08snadb2d1fu" path="res://img/buy/hire_active.png" id="14_o4lah"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="BackgroundResumes" type="Sprite2D" parent="."]
+position = Vector2(578, 323)
+texture = ExtResource("1_53088")
+
+[node name="ButtonResumesCaregiversActive" type="Sprite2D" parent="."]
+position = Vector2(900, 35)
+texture = ExtResource("2_xpies")
+
+[node name="ButtonResumesScientists" type="TextureButton" parent="."]
+offset_left = 607.0
+offset_top = 4.0
+offset_right = 804.0
+offset_bottom = 66.0
+texture_normal = ExtResource("3_mhnjb")
+script = ExtResource("4_udg45")
+scene_path = "res://resumes_scientists.tscn"
+
+[node name="BackgroundResumesPaper" type="Sprite2D" parent="."]
+position = Vector2(620, 336)
+texture = ExtResource("4_td4p5")
+
+[node name="ChrisGreenIcon" type="Sprite2D" parent="."]
+position = Vector2(690, 184)
+texture = ExtResource("5_rd71i")
+
+[node name="VictoriaRiversIcon" type="Sprite2D" parent="."]
+position = Vector2(221, 205)
+texture = ExtResource("6_6rgg2")
+
+[node name="PriceBill" type="Sprite2D" parent="."]
+position = Vector2(426, 173)
+texture = ExtResource("7_8cj3k")
+
+[node name="Hire" type="Sprite2D" parent="."]
+position = Vector2(425, 220)
+texture = ExtResource("13_hyhr5")
+
+[node name="HireActive" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(425, 220)
+texture = ExtResource("14_o4lah")
+
+[node name="Hire2" type="Sprite2D" parent="."]
+position = Vector2(920, 200)
+texture = ExtResource("13_hyhr5")
+
+[node name="HireActive2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(920, 200)
+texture = ExtResource("14_o4lah")
+
+[node name="PriceChris" type="Sprite2D" parent="."]
+position = Vector2(920, 158)
+texture = ExtResource("10_lpl28")
+
+[node name="NameCaregiverChris" type="Sprite2D" parent="."]
+position = Vector2(913, 123)
+texture = ExtResource("11_ij1vj")
+
+[node name="NameCaregiverVictoria" type="Sprite2D" parent="."]
+position = Vector2(426, 142)
+texture = ExtResource("12_jbfgt")
+
+[connection signal="pressed" from="ButtonResumesScientists" to="ButtonResumesScientists" method="_on_pressed"]

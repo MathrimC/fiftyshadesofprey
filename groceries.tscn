@@ -1,0 +1,135 @@
+[gd_scene load_steps=17 format=3 uid="uid://dofc82sqlajer"]
+
+[ext_resource type="Texture2D" uid="uid://dijmrq5ftnvrq" path="res://img/buy/groceries_background.png" id="1_1sbne"]
+[ext_resource type="Texture2D" uid="uid://rd7vucmgk5ug" path="res://img/buy/groceries_text.png" id="2_e3322"]
+[ext_resource type="Texture2D" uid="uid://svlix4k317nf" path="res://img/buy/groceries_buy_green_slime.png" id="3_scaii"]
+[ext_resource type="Texture2D" uid="uid://dukvu8xguh3rd" path="res://img/buy/groceries_red_slime.png" id="4_hfbtj"]
+[ext_resource type="Texture2D" uid="uid://dt76w6gmxtiyw" path="res://img/buy/groceries_pepper.png" id="5_iftrm"]
+[ext_resource type="Texture2D" uid="uid://beib256n8gqid" path="res://img/buy/groceries_salt.png" id="6_f1ud1"]
+[ext_resource type="Texture2D" uid="uid://ccv7x42l0bwru" path="res://img/buy/groceries_salt_text.png" id="7_qqg0m"]
+[ext_resource type="Texture2D" uid="uid://dftiix6tk3116" path="res://img/buy/groceries_pepper_text.png" id="8_7qcis"]
+[ext_resource type="Texture2D" uid="uid://yyufpk3b6psc" path="res://img/buy/groceries_buy_green_slime_text.png" id="9_8s7n0"]
+[ext_resource type="Texture2D" uid="uid://cj0i3mqaw1sx7" path="res://img/buy/groceries_red_slime_text.png" id="10_sjxas"]
+[ext_resource type="Texture2D" uid="uid://vw8prpeh8itv" path="res://img/buy/groceries_plus.png" id="11_kosd8"]
+[ext_resource type="Texture2D" uid="uid://byj7pm12fhrml" path="res://img/buy/groceries_amount.png" id="12_m41a8"]
+[ext_resource type="Texture2D" uid="uid://bu4menw78qkyd" path="res://img/buy/groceries_minus.png" id="13_8qa5g"]
+[ext_resource type="Texture2D" uid="uid://b40ajblrfx8w8" path="res://img/buy/groceries_button_buy.png" id="14_50bwa"]
+[ext_resource type="Texture2D" uid="uid://ho3d6aqex3ey" path="res://img/buy/groceries_button_buy_active.png" id="15_xyxm6"]
+[ext_resource type="Texture2D" uid="uid://cxy1igitwc7vy" path="res://img/buy/groceries_price.png" id="16_8kurl"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="GroceriesBackground" type="Sprite2D" parent="."]
+position = Vector2(576, 325)
+texture = ExtResource("1_1sbne")
+
+[node name="GroceriesText" type="Sprite2D" parent="."]
+position = Vector2(623, 134)
+texture = ExtResource("2_e3322")
+
+[node name="GroceriesBuyGreenSlime" type="Sprite2D" parent="."]
+position = Vector2(309, 294)
+texture = ExtResource("3_scaii")
+
+[node name="GroceriesRedSlime" type="Sprite2D" parent="."]
+position = Vector2(301, 491)
+texture = ExtResource("4_hfbtj")
+
+[node name="GroceriesPepper" type="Sprite2D" parent="."]
+position = Vector2(695, 317)
+texture = ExtResource("5_iftrm")
+
+[node name="GroceriesSalt" type="Sprite2D" parent="."]
+position = Vector2(700, 491)
+texture = ExtResource("6_f1ud1")
+
+[node name="GroceriesSaltText" type="Sprite2D" parent="."]
+position = Vector2(790, 450)
+texture = ExtResource("7_qqg0m")
+
+[node name="GroceriesPepperText" type="Sprite2D" parent="."]
+position = Vector2(779, 271)
+texture = ExtResource("8_7qcis")
+
+[node name="GroceriesBuyGreenSlimeText" type="Sprite2D" parent="."]
+position = Vector2(468, 258)
+texture = ExtResource("9_8s7n0")
+
+[node name="GroceriesRedSlimeText" type="Sprite2D" parent="."]
+position = Vector2(439, 461)
+texture = ExtResource("10_sjxas")
+
+[node name="GroceriesPlus" type="Sprite2D" parent="."]
+position = Vector2(422, 307)
+texture = ExtResource("11_kosd8")
+
+[node name="GroceriesPlus2" type="Sprite2D" parent="."]
+position = Vector2(417, 509)
+texture = ExtResource("11_kosd8")
+
+[node name="GroceriesAmount" type="Sprite2D" parent="."]
+position = Vector2(498, 305)
+texture = ExtResource("12_m41a8")
+
+[node name="GroceriesAmount2" type="Sprite2D" parent="."]
+position = Vector2(495, 509)
+texture = ExtResource("12_m41a8")
+
+[node name="GroceriesAmount3" type="Sprite2D" parent="."]
+position = Vector2(838, 310)
+texture = ExtResource("12_m41a8")
+
+[node name="GroceriesAmount4" type="Sprite2D" parent="."]
+position = Vector2(865, 509)
+texture = ExtResource("12_m41a8")
+
+[node name="GroceriesPlus3" type="Sprite2D" parent="."]
+position = Vector2(766, 307)
+texture = ExtResource("11_kosd8")
+
+[node name="GroceriesPlus4" type="Sprite2D" parent="."]
+position = Vector2(795, 509)
+texture = ExtResource("11_kosd8")
+
+[node name="GroceriesMinus" type="Sprite2D" parent="."]
+position = Vector2(569, 305)
+texture = ExtResource("13_8qa5g")
+
+[node name="GroceriesMinus2" type="Sprite2D" parent="."]
+position = Vector2(571, 509)
+texture = ExtResource("13_8qa5g")
+
+[node name="GroceriesMinus3" type="Sprite2D" parent="."]
+position = Vector2(914, 307)
+texture = ExtResource("13_8qa5g")
+
+[node name="GroceriesMinus4" type="Sprite2D" parent="."]
+position = Vector2(936, 507)
+texture = ExtResource("13_8qa5g")
+
+[node name="GroceriesButtonBuy" type="Sprite2D" parent="."]
+position = Vector2(950, 590)
+texture = ExtResource("14_50bwa")
+
+[node name="GroceriesButtonBuyActive" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(950, 590)
+texture = ExtResource("15_xyxm6")
+
+[node name="GroceriesPrice" type="Sprite2D" parent="."]
+position = Vector2(222, 264)
+texture = ExtResource("16_8kurl")
+
+[node name="GroceriesPrice2" type="Sprite2D" parent="."]
+position = Vector2(233, 440)
+rotation = 0.566382
+texture = ExtResource("16_8kurl")
+
+[node name="GroceriesPrice3" type="Sprite2D" parent="."]
+position = Vector2(653, 432)
+texture = ExtResource("16_8kurl")
+
+[node name="GroceriesPrice4" type="Sprite2D" parent="."]
+position = Vector2(649, 258)
+rotation = -0.335595
+texture = ExtResource("16_8kurl")

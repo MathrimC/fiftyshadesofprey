@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dk27nrr884qc1"]
+
+[ext_resource type="PackedScene" uid="uid://y7veoc7xd54f" path="res://resumes_scientists.tscn" id="1_kaih6"]
+
+[node name="Staff" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Scientists" parent="." instance=ExtResource("1_kaih6")]
+layout_mode = 1

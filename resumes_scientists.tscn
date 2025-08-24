@@ -1,0 +1,275 @@
+[gd_scene load_steps=36 format=3 uid="uid://y7veoc7xd54f"]
+
+[ext_resource type="Texture2D" uid="uid://b3kwmxjbx1tgh" path="res://img/buy/background_resumes.png" id="1_fv8cl"]
+[ext_resource type="Texture2D" uid="uid://2msdokrgfvr3" path="res://img/buy/button_resumes_scientists_active.png" id="2_pldvu"]
+[ext_resource type="Texture2D" uid="uid://bq1sc22qknyml" path="res://img/buy/button_resumes_caregivers.png" id="3_swncj"]
+[ext_resource type="Script" uid="uid://b5kc0phkrx6bv" path="res://resumes_tab.gd" id="4_6fxwb"]
+[ext_resource type="Texture2D" uid="uid://dulacu0ne7d56" path="res://img/buy/background_resumes_paper.png" id="4_w4dkj"]
+[ext_resource type="Texture2D" uid="uid://bq0j3jj3gvkqa" path="res://img/science/Bill_Aye_icon.png" id="5_2kwfq"]
+[ext_resource type="Texture2D" uid="uid://chnflhp4jscgb" path="res://img/science/Bill_Aye_text.png" id="6_jpvav"]
+[ext_resource type="Script" uid="uid://d18rr3a1w4wj3" path="res://scientist.gd" id="6_kkl7m"]
+[ext_resource type="Texture2D" uid="uid://81p674lqrlcy" path="res://img/science/Dave_Aborrow_icon_unavailable.png" id="7_3e2o5"]
+[ext_resource type="Texture2D" uid="uid://cwyrac8ooixpu" path="res://img/science/Sir_Casi_ Neutron_icon_unavailabe.png" id="8_c2s7t"]
+[ext_resource type="Texture2D" uid="uid://c3yexfq7djqfe" path="res://img/science/M4R13_CR13_icon_unavailable.png" id="9_cnfrt"]
+[ext_resource type="Texture2D" uid="uid://b27y3kf1ctq6r" path="res://img/science/AiBert_1Stone_icon_unavailable.png" id="10_s775n"]
+[ext_resource type="Texture2D" uid="uid://d0vhiwvcbwq5d" path="res://img/science/Line_DG_Tyrone_icon_unavailable.png" id="11_7efyd"]
+[ext_resource type="Texture2D" uid="uid://bd7i7nbi23wxy" path="res://img/buy/unavailable.png" id="12_oh82p"]
+[ext_resource type="Texture2D" uid="uid://danm6y360fnsg" path="res://img/buy/hire.png" id="13_3d63i"]
+[ext_resource type="Texture2D" uid="uid://08snadb2d1fu" path="res://img/buy/hire_active.png" id="14_t31h0"]
+[ext_resource type="Texture2D" uid="uid://pgm3j0gllpnc" path="res://img/science/AiBert_1Stone_text.png" id="15_4v1g8"]
+[ext_resource type="Texture2D" uid="uid://bqiv8n710hdv" path="res://img/science/Dave_Aborrow_text.png" id="16_3ja3g"]
+[ext_resource type="Script" uid="uid://vhtsv60aja6b" path="res://hire.gd" id="16_6fxwb"]
+[ext_resource type="Texture2D" uid="uid://dirvf6lt058iq" path="res://img/science/Line_DG_Tyrone_text.png" id="17_p1gqq"]
+[ext_resource type="Texture2D" uid="uid://crr1ugde0oe5b" path="res://img/science/M4R13_CR13_text.png" id="18_ptrs4"]
+[ext_resource type="Texture2D" uid="uid://da62pmn8mykm5" path="res://img/science/Sir_Casi_ Neutron_text.png" id="19_xsh7g"]
+[ext_resource type="Texture2D" uid="uid://cgq2e0khl28x3" path="res://img/buy/egg_bill_diplodocus.png" id="20_a58wf"]
+[ext_resource type="Texture2D" uid="uid://cp61aa5t6u8fj" path="res://img/buy/egg_bill_styracosaurus.png" id="21_co2mv"]
+[ext_resource type="Texture2D" uid="uid://b2nfh6ovqlasm" path="res://img/buy/egg_dave_ankylosaurus.png" id="22_80akm"]
+[ext_resource type="Texture2D" uid="uid://br6psfn5edio6" path="res://img/buy/egg_dave_pteranodon.png" id="23_47ulf"]
+[ext_resource type="Texture2D" uid="uid://bkxb36r5xp2ga" path="res://img/buy/egg_dave_spinosaurus.png" id="24_ai4wy"]
+[ext_resource type="Texture2D" uid="uid://c4i1cskx00sxk" path="res://img/buy/1_time_dinofood.png" id="25_aq1eu"]
+[ext_resource type="Texture2D" uid="uid://bmu1vc6vqfxps" path="res://img/science/Dave_Aborrow_icon.png" id="26_wardg"]
+[ext_resource type="Texture2D" uid="uid://byxn70mqxtj73" path="res://img/science/Line_DG_Tyrone_icon.png" id="27_tn4g0"]
+[ext_resource type="Texture2D" uid="uid://by3sdpep63nk0" path="res://img/science/AiBert_1Stone_icon.png" id="28_xkdu6"]
+[ext_resource type="Texture2D" uid="uid://b4so24jkh26jc" path="res://img/science/M4R13_CR13_icon.png" id="29_4mavx"]
+[ext_resource type="Texture2D" uid="uid://dba0h7i0imax1" path="res://img/science/Sir_Casi_ Neutron_icon.png" id="30_iyjm4"]
+[ext_resource type="Texture2D" uid="uid://dr3smsjjnnedo" path="res://img/science/price_bill.png" id="31_cw0p1"]
+[ext_resource type="Texture2D" uid="uid://bdqq61nedb7k8" path="res://img/science/price_dave.png" id="32_m4at6"]
+
+[node name="ResumeScientists" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackgroundResumes" type="Sprite2D" parent="."]
+position = Vector2(578, 323)
+texture = ExtResource("1_fv8cl")
+
+[node name="ButtonResumesScientistsActive" type="Sprite2D" parent="."]
+position = Vector2(690, 40)
+texture = ExtResource("2_pldvu")
+
+[node name="ButtonResumesCaregivers" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 779.0
+offset_top = 9.0
+offset_right = 981.0
+offset_bottom = 67.0
+texture_normal = ExtResource("3_swncj")
+script = ExtResource("4_6fxwb")
+scene_path = "res://resumes_caregivers.tscn"
+
+[node name="BackgroundResumesPaper" type="Sprite2D" parent="."]
+position = Vector2(620, 336)
+texture = ExtResource("4_w4dkj")
+
+[node name="Scientist" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("6_kkl7m")
+
+[node name="Icon" type="Sprite2D" parent="Scientist"]
+position = Vector2(214, 197)
+texture = ExtResource("5_2kwfq")
+
+[node name="Name" type="Sprite2D" parent="Scientist"]
+position = Vector2(420, 146)
+texture = ExtResource("6_jpvav")
+
+[node name="Hire" type="TextureButton" parent="Scientist"]
+layout_mode = 0
+offset_left = 370.0
+offset_top = 244.0
+offset_right = 463.0
+offset_bottom = 282.0
+texture_normal = ExtResource("13_3d63i")
+texture_pressed = ExtResource("14_t31h0")
+script = ExtResource("16_6fxwb")
+scientist = null
+
+[node name="EggBillDiplodocus" type="Sprite2D" parent="Scientist"]
+position = Vector2(355, 185)
+texture = ExtResource("20_a58wf")
+
+[node name="EggBillStyracosaurus" type="Sprite2D" parent="Scientist"]
+position = Vector2(379, 185)
+texture = ExtResource("21_co2mv")
+
+[node name="1TimeDinofood" type="Sprite2D" parent="Scientist"]
+position = Vector2(447, 185)
+texture = ExtResource("25_aq1eu")
+
+[node name="PriceBill" type="Sprite2D" parent="Scientist"]
+position = Vector2(421, 215)
+texture = ExtResource("31_cw0p1")
+
+[node name="DaveAborrowIconUnavailable" type="Sprite2D" parent="."]
+position = Vector2(215, 380)
+texture = ExtResource("7_3e2o5")
+
+[node name="SirCasiNeutronIconUnavailabe" type="Sprite2D" parent="."]
+position = Vector2(675, 555)
+texture = ExtResource("8_c2s7t")
+
+[node name="M4r13Cr13IconUnavailable" type="Sprite2D" parent="."]
+position = Vector2(685, 365)
+texture = ExtResource("9_cnfrt")
+
+[node name="AiBert1StoneIconUnavailable" type="Sprite2D" parent="."]
+position = Vector2(685, 175)
+texture = ExtResource("10_s775n")
+
+[node name="LineDgTyroneIconUnavailable" type="Sprite2D" parent="."]
+position = Vector2(215, 555)
+texture = ExtResource("11_7efyd")
+
+[node name="Unavailable" type="Sprite2D" parent="."]
+position = Vector2(413, 368)
+texture = ExtResource("12_oh82p")
+
+[node name="Unavailable2" type="Sprite2D" parent="."]
+position = Vector2(413, 551)
+texture = ExtResource("12_oh82p")
+
+[node name="Unavailable3" type="Sprite2D" parent="."]
+position = Vector2(905, 164)
+texture = ExtResource("12_oh82p")
+
+[node name="Unavailable4" type="Sprite2D" parent="."]
+position = Vector2(914, 352)
+texture = ExtResource("12_oh82p")
+
+[node name="Unavailable5" type="Sprite2D" parent="."]
+position = Vector2(949, 548)
+texture = ExtResource("12_oh82p")
+
+[node name="Hire2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(420, 425)
+texture = ExtResource("13_3d63i")
+
+[node name="HireActive2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(420, 425)
+texture = ExtResource("14_t31h0")
+
+[node name="Hire3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(420, 600)
+texture = ExtResource("13_3d63i")
+
+[node name="HireActive3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(420, 600)
+texture = ExtResource("14_t31h0")
+
+[node name="Hire4" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(900, 225)
+texture = ExtResource("13_3d63i")
+
+[node name="HireActive4" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(900, 225)
+texture = ExtResource("14_t31h0")
+
+[node name="Hire5" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(915, 400)
+texture = ExtResource("13_3d63i")
+
+[node name="HireActive5" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(915, 400)
+texture = ExtResource("14_t31h0")
+
+[node name="Hire6" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(915, 600)
+texture = ExtResource("13_3d63i")
+
+[node name="HireActive6" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(915, 600)
+texture = ExtResource("14_t31h0")
+
+[node name="AiBert1StoneText" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(915, 108)
+scale = Vector2(0.880645, 0.982759)
+texture = ExtResource("15_4v1g8")
+
+[node name="DaveAborrowText" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(424, 328)
+scale = Vector2(0.603448, 0.603448)
+texture = ExtResource("16_3ja3g")
+
+[node name="LineDgTyroneText" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(416, 488)
+scale = Vector2(0.706897, 0.706897)
+texture = ExtResource("17_p1gqq")
+
+[node name="M4r13Cr13Text" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(919, 291)
+texture = ExtResource("18_ptrs4")
+
+[node name="SirCasiNeutronText" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(927, 480)
+scale = Vector2(0.810345, 0.810345)
+texture = ExtResource("19_xsh7g")
+
+[node name="EggDaveAnkylosaurus" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(359, 410)
+texture = ExtResource("22_80akm")
+
+[node name="EggDavePteranodon" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(385, 410)
+texture = ExtResource("23_47ulf")
+
+[node name="EggDaveSpinosaurus" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(411, 410)
+texture = ExtResource("24_ai4wy")
+
+[node name="DaveAborrowIcon" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(215, 380)
+texture = ExtResource("26_wardg")
+
+[node name="LineDgTyroneIcon" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(215, 555)
+texture = ExtResource("27_tn4g0")
+
+[node name="AiBert1StoneIcon" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(685, 175)
+texture = ExtResource("28_xkdu6")
+
+[node name="M4r13Cr13Icon" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(685, 365)
+texture = ExtResource("29_4mavx")
+
+[node name="SirCasiNeutronIcon" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(675, 555)
+texture = ExtResource("30_iyjm4")
+
+[node name="PriceDave" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(402, 383)
+texture = ExtResource("32_m4at6")
+
+[connection signal="pressed" from="ButtonResumesCaregivers" to="ButtonResumesCaregivers" method="_on_pressed"]
+[connection signal="pressed" from="Scientist/Hire" to="Scientist/Hire" method="_on_pressed"]

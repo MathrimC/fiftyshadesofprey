@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=3 uid="uid://dxewbwhv2an5a"]
+
+[ext_resource type="Texture2D" uid="uid://cet1n87q7jjfd" path="res://img/science/science_background.png" id="1_wxol6"]
+[ext_resource type="Script" uid="uid://bft82v0pktcbl" path="res://science_grid.gd" id="2_b0ijt"]
+[ext_resource type="Texture2D" uid="uid://by3sdpep63nk0" path="res://img/science/AiBert_1Stone_icon.png" id="2_g055c"]
+[ext_resource type="Texture2D" uid="uid://bq0j3jj3gvkqa" path="res://img/science/Bill_Aye_icon.png" id="3_mrdto"]
+[ext_resource type="Texture2D" uid="uid://bmu1vc6vqfxps" path="res://img/science/Dave_Aborrow_icon.png" id="4_enjo6"]
+[ext_resource type="Texture2D" uid="uid://byxn70mqxtj73" path="res://img/science/Line_DG_Tyrone_icon.png" id="5_psku4"]
+[ext_resource type="Texture2D" uid="uid://b4so24jkh26jc" path="res://img/science/M4R13_CR13_icon.png" id="6_g5xen"]
+[ext_resource type="Texture2D" uid="uid://dba0h7i0imax1" path="res://img/science/Sir_Casi_ Neutron_icon.png" id="7_wcs6s"]
+
+[node name="Science" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScienceBackground" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_wxol6")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+custom_minimum_size = Vector2(800, 450)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+script = ExtResource("2_b0ijt")
+
+[node name="AiBert1StoneIcon" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(283, 461)
+texture = ExtResource("2_g055c")
+
+[node name="BillAyeIcon" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(274, 207)
+texture = ExtResource("3_mrdto")
+
+[node name="DaveAborrowIcon" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(585, 181)
+texture = ExtResource("4_enjo6")
+
+[node name="LineDgTyroneIcon" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(874, 158)
+texture = ExtResource("5_psku4")
+
+[node name="M4r13Cr13Icon" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(604, 441)
+texture = ExtResource("6_g5xen")
+
+[node name="SirCasiNeutronIcon" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(913, 411)
+texture = ExtResource("7_wcs6s")

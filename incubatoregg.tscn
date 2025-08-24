@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://cb7gordnmt6wg"]
+
+[ext_resource type="Texture2D" uid="uid://dl7e6gvafqqcy" path="res://img/dinos/Diplodocus_egg.png" id="1_3gjxi"]
+[ext_resource type="Texture2D" uid="uid://chlngbe3yliv5" path="res://img/dinos/Diplodocus_text.png" id="2_iy80q"]
+[ext_resource type="Texture2D" uid="uid://xug4uvrurhjc" path="res://img/science/food_herbivore.png" id="3_jybhu"]
+[ext_resource type="Texture2D" uid="uid://c3g14i8d138i8" path="res://img/buy/forest_logo.png" id="4_xa6t4"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="DiplodocusEgg" type="Sprite2D" parent="."]
+position = Vector2(215, 230)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_3gjxi")
+
+[node name="DiplodocusText" type="Sprite2D" parent="."]
+position = Vector2(276, 339)
+texture = ExtResource("2_iy80q")
+
+[node name="FoodHerbivore" type="Sprite2D" parent="."]
+position = Vector2(333, 278)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("3_jybhu")
+
+[node name="ForestLogo" type="Sprite2D" parent="."]
+position = Vector2(336, 201)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_xa6t4")
