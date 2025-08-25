@@ -1,20 +1,13 @@
 class_name Resources
 extends Node
 
-# const game_scene_path = "res://game.tscn"
-# const dinopark_scene_path = "res://dinopark.tscn"
-# const buy_scene_path = "res://buy.tscn"
-# const dinos_scene_path = "res://dinos.tscn"
-# const staff_scene_path = "res://staff.tscn"
-# const science_scene_path = "res://science.tscn"
-# const map_scene_path = "res://map.tscn"
-# const menu_scene_path = "res://menu.tscn"
-# const main_menu_scene_path = "res://main_menu.tscn"
-
-enum Scene {MAIN_MENU, GAME, DINOPARK, BUY, DINOS, STAFF, SCIENCE, MAP, MENU, RESUMES_SCIENTISTS, RESUMES_CAREGIVERS, BIRDS, GROCERIES, BILL_AYE}
+enum Scene {MAIN_MENU, GAME, DINOPARK, BUY, DINOS, STAFF, SCIENCE, MAP, MENU, RESUMES_SCIENTISTS, RESUMES_CAREGIVERS, BIRDS, GROCERIES, SCIENTIST_ACTIONS, INCUBATOR, DINOSAUR_CREATION_LINE, FOOD_CREATION_LINE, INGREDIENT, INCUBATOREGG}
 enum Scientist { BILL_AYE, DAVE_ABORROW, LINE_GD_TYRONE, CASI_NEUTRON, AIBERT_1STONE, M4R13_CR13 }
-enum Dinosaur { DIPLODOCUS, STYRACOSAURUS}
+enum Dinosaur { DIPLODOCUS, STYRACOSAURUS, ANKYLOSAURUS, PTERANODON, SPINOSAURUS }
 enum Bird { CHICKEN, DUCK, PIGEON, PINGUIN, TURKEY, OSTRICH, KIWI, PEAFOWL, FLAMINGO, CASSOWARIE }
+enum Food { CARNIVORE, HERBIVORE }
+enum Groceries { SALT, PEPPER, RED_SLIME, GREEN_SLIME }
+enum Biome { FOREST, DESERT, SWAMP }
 
 const scenes: Dictionary = {
 	Scene.MAIN_MENU: "res://main_menu.tscn",
@@ -30,8 +23,35 @@ const scenes: Dictionary = {
 	Scene.RESUMES_CAREGIVERS: "res://resumes_caregivers.tscn",
 	Scene.BIRDS: "res://birds.tscn",
 	Scene.GROCERIES: "res://groceries.tscn",
-	Scene.BILL_AYE: "res://bill_aye.tscn"
+	Scene.SCIENTIST_ACTIONS: "res://scientist_actions.tscn",
+	Scene.INCUBATOR: "res://incubator.tscn",
+	Scene.DINOSAUR_CREATION_LINE: "res://dinosaur_creation_line.tscn",
+	Scene.FOOD_CREATION_LINE: "res://food_creation_line.tscn",
+	Scene.INGREDIENT: "res://ingredient.tscn",
+	Scene.INCUBATOREGG: "res://incubatoregg.tscn"
 }
+
+const food_textures_dir := "res://img/science"
+const food_textures: Dictionary = {
+	Food.CARNIVORE: "food_carnivore.png",
+	Food.HERBIVORE: "food_herbivore.png",
+}
+
+const biome_textures_dir := "res://img/buy"
+const biome_textures: Dictionary = {
+	Biome.FOREST: "forest_logo.png",
+	Biome.DESERT: "desert_logo.png",
+	Biome.SWAMP: "swamp_logo.png",
+}
+
+const ingredient_textures_dir := "res://img/buy"
+const ingredient_textures: Dictionary = {
+	Groceries.SALT: "groceries_salt.png",
+	Groceries.PEPPER: "groceries_pepper.png",
+	Groceries.RED_SLIME: "groceries_red_slime.png",
+	Groceries.GREEN_SLIME: "groceries_buy_green_slime.png",
+}
+
 
 const scientist_textures_dir := "res://img/science"
 const scientist_textures: Dictionary = {
@@ -71,4 +91,47 @@ const scientist_textures: Dictionary = {
 		"price": "price_casi.png"
 	}
 }
+const dinosaur_textures_dir := "res://img/dinos"
+const dinosaur_textures: Dictionary = {
+	Dinosaur.DIPLODOCUS: {
+		"egg": "Diplodocus_egg.png",
+		"dino": "Diplodocus.png",
+		"name": "Diplodocus_text.png"
+	},
+	Dinosaur.STYRACOSAURUS: {
+		"egg": "Styracosaurus_egg.png",
+		"dino": "Styracosaurus.png",
+		"name": "Styracosaurus_text.png"
+	},
+	Dinosaur.ANKYLOSAURUS: {
+		"egg": "Ankylosaurus_egg.png",
+		"dino": "Ankylosaurus.png",
+		"name": "Ankylosaurus_text.png"
+	},
+	Dinosaur.PTERANODON: {
+		"egg": "Pteranodon_egg.png",
+		"dino": "Pteranodon.png",
+		"name": "Pteranodon_text.png"
+	},
+	Dinosaur.SPINOSAURUS: {
+		"egg": "Spinosaurus_egg.png",
+		"dino": "Spinosaurus.png",
+		"name": "Spinosaurus_text.png"
+	},
+}
+
+const bird_textures_dir := "res://img/birds"
+const bird_textures: Dictionary = {
+	Bird.CHICKEN: {
+		"icon": "Science_chickens.png",
+		"icon_low": "chicken_icon.png",
+		"name": "chicken_text.png",
+	},
+	Bird.DUCK: {
+		"icon": "science_ducks.png",
+		"icon_low": "duck_icon.png",
+		"name": "duck_text.png",
+	}
+}
+
 

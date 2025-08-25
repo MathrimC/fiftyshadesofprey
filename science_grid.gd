@@ -8,5 +8,5 @@ func _ready() -> void:
 		texture_button.pressed.connect(on_pressed)
 	
 func on_pressed() -> void:
-	get_node("/root/Game").add_child(load(Resources.scenes[Resources.Scene.BILL_AYE]).instantiate())
+	get_node("/root/Game").add_child(load(Resources.scenes[Resources.Scene.SCIENTIST_ACTIONS]).instantiate())
 	get_owner().queue_free()

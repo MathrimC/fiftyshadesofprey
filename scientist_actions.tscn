@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=3 uid="uid://bf5xmnfh7eydk"]
+
+[ext_resource type="Script" uid="uid://dh8lquc5ud4ko" path="res://scientist_actions.gd" id="1_vofvv"]
+[ext_resource type="Texture2D" uid="uid://cet1n87q7jjfd" path="res://img/science/science_background.png" id="2_olx1s"]
+[ext_resource type="Texture2D" uid="uid://bq0j3jj3gvkqa" path="res://img/science/Bill_Aye_icon.png" id="3_qx0ux"]
+[ext_resource type="Texture2D" uid="uid://chnflhp4jscgb" path="res://img/science/Bill_Aye_text.png" id="4_i6ode"]
+
+[node name="ScientistActions" type="Control" node_paths=PackedStringArray("scientist_icon", "scientist_name", "dinosaurs_container", "food_container")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vofvv")
+scientist_icon = NodePath("ScientistIcon")
+scientist_name = NodePath("ScientistName")
+dinosaurs_container = NodePath("Dinosaurs")
+food_container = NodePath("Food")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_olx1s")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ScienceBackground" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(577, 340)
+texture = ExtResource("2_olx1s")
+
+[node name="ScientistIcon" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(150, 170)
+layout_mode = 0
+offset_left = 144.0
+offset_top = 117.0
+offset_right = 294.0
+offset_bottom = 287.0
+texture = ExtResource("3_qx0ux")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ScientistName" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(260, 30)
+layout_mode = 0
+offset_left = 803.0
+offset_top = 81.0
+offset_right = 1063.0
+offset_bottom = 111.0
+texture = ExtResource("4_i6ode")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Dinosaurs" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 382.0
+offset_top = 149.0
+offset_right = 790.0
+offset_bottom = 283.0
+
+[node name="Food" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 269.0
+offset_top = 345.0
+offset_right = 985.0
+offset_bottom = 435.0

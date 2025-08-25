@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cdrka8tjwqtpy"]
+[gd_scene load_steps=40 format=3 uid="uid://cdrka8tjwqtpy"]
 
 [ext_resource type="Script" uid="uid://2hr1bo5hgepm" path="res://birds.gd" id="1_0ntoc"]
 [ext_resource type="Texture2D" uid="uid://b0v3wm3p0s43" path="res://img/buy/birds_background.png" id="1_1461h"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dlrwmb50wwksv" path="res://img/buy/birds_buy_active.png" id="3_fgfbm"]
 [ext_resource type="Texture2D" uid="uid://dt6yodk74pxtl" path="res://img/buy/chicken_icon.png" id="4_eturq"]
 [ext_resource type="Texture2D" uid="uid://2qliut5bebo2" path="res://img/buy/chicken_text.png" id="5_vby6f"]
+[ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://BD_Cartoon_Shout.ttf" id="6_brkxa"]
 [ext_resource type="Texture2D" uid="uid://dyk2r6u5rpqqq" path="res://img/buy/duck_icon.png" id="6_c4m3l"]
 [ext_resource type="Texture2D" uid="uid://boqdu1uofurxq" path="res://img/buy/duck_text.png" id="7_v2d20"]
 [ext_resource type="Texture2D" uid="uid://b4lida1q2c8sf" path="res://img/buy/Cassowaries_icon.png" id="8_yirju"]
@@ -74,6 +75,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("6_brkxa")
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -112,6 +114,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("6_brkxa")
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1

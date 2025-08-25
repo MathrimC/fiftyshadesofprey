@@ -1,12 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://dn2qskwce072c"]
+[gd_scene load_steps=5 format=3 uid="uid://dn2qskwce072c"]
 
 [ext_resource type="Texture2D" uid="uid://d2ceqoanmq073" path="res://img/dinos/incubator_background.png" id="1_52obv"]
+[ext_resource type="Script" uid="uid://dqnjbtmohu4" path="res://incubator.gd" id="1_u1mqc"]
 [ext_resource type="Texture2D" uid="uid://cbvvhohh1mpf6" path="res://img/dinos/dinosaur_text.png" id="2_wkwvt"]
 [ext_resource type="Texture2D" uid="uid://bbi0p2vu4j7eu" path="res://img/dinos/incubator text.png" id="3_scwkn"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Incubator" type="Control" node_paths=PackedStringArray("container")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u1mqc")
+container = NodePath("GridContainer")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 texture = ExtResource("1_52obv")
@@ -18,3 +28,21 @@ texture = ExtResource("2_wkwvt")
 [node name="IncubatorText" type="Sprite2D" parent="."]
 position = Vector2(961, 50)
 texture = ExtResource("3_scwkn")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+custom_minimum_size = Vector2(800, 460)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -399.0
+offset_top = -214.0
+offset_right = 401.0
+offset_bottom = 246.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 40
+theme_override_constants/v_separation = 35
+columns = 3

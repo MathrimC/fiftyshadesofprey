@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://bjbsob3f56pqu"]
+
+[ext_resource type="Script" uid="uid://b5usjkdctjxo6" path="res://dinosaur_creation_line.gd" id="1_wqnfq"]
+[ext_resource type="Texture2D" uid="uid://dl7e6gvafqqcy" path="res://img/dinos/Diplodocus_egg.png" id="2_xs80n"]
+[ext_resource type="Texture2D" uid="uid://b65jmpysknf0j" path="res://img/science/equal.png" id="3_speqs"]
+[ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://BD_Cartoon_Shout.ttf" id="4_7kw3u"]
+[ext_resource type="Texture2D" uid="uid://dt6yodk74pxtl" path="res://img/buy/chicken_icon.png" id="5_gh73y"]
+[ext_resource type="Texture2D" uid="uid://dpmb4cmhhclx4" path="res://img/science/science_create_yes.png" id="6_7eqe1"]
+[ext_resource type="Texture2D" uid="uid://efrr5xwclu3a" path="res://img/science/science_create_no.png" id="7_uurtm"]
+
+[node name="DinosaurCreationLine" type="HBoxContainer" node_paths=PackedStringArray("egg", "bird_amount", "bird", "button")]
+custom_minimum_size = Vector2(400, 80)
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+script = ExtResource("1_wqnfq")
+egg = NodePath("Egg")
+bird_amount = NodePath("AnimalAmount/Amount")
+bird = NodePath("AnimalAmount/Animal")
+button = NodePath("TextureButton")
+
+[node name="Egg" type="TextureRect" parent="."]
+texture_filter = 2
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+texture = ExtResource("2_xs80n")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Equals" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("3_speqs")
+stretch_mode = 4
+
+[node name="AnimalAmount" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Amount" type="RichTextLabel" parent="AnimalAmount"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("4_7kw3u")
+text = "1 x"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Animal" type="TextureRect" parent="AnimalAmount"]
+custom_minimum_size = Vector2(90, 70)
+layout_mode = 2
+texture = ExtResource("5_gh73y")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 2
+size_flags_horizontal = 10
+texture_normal = ExtResource("6_7eqe1")
+texture_disabled = ExtResource("7_uurtm")
+stretch_mode = 3
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_create_pressed"]

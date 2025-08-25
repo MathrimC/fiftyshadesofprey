@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://i2t67ucwb43u"]
+
+[ext_resource type="Script" uid="uid://q15waxvosygk" path="res://food_creation_line.gd" id="1_ij077"]
+[ext_resource type="Texture2D" uid="uid://cng5fub4hcxf" path="res://img/science/food_carnivore.png" id="2_fson3"]
+[ext_resource type="Texture2D" uid="uid://b65jmpysknf0j" path="res://img/science/equal.png" id="3_lykbf"]
+[ext_resource type="Texture2D" uid="uid://dpmb4cmhhclx4" path="res://img/science/science_create_yes.png" id="7_l56ia"]
+[ext_resource type="Texture2D" uid="uid://efrr5xwclu3a" path="res://img/science/science_create_no.png" id="8_f0aix"]
+
+[node name="FoodCreationLine" type="HBoxContainer" node_paths=PackedStringArray("food_icon", "ingredients_container", "button")]
+custom_minimum_size = Vector2(0, 90)
+theme_override_constants/separation = 25
+script = ExtResource("1_ij077")
+food_icon = NodePath("FoodIcon")
+ingredients_container = NodePath("Ingredients")
+button = NodePath("Button")
+
+[node name="FoodIcon" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+texture = ExtResource("2_fson3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Equals" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+texture = ExtResource("3_lykbf")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Ingredients" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Button" type="TextureButton" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+disabled = true
+texture_normal = ExtResource("7_l56ia")
+texture_disabled = ExtResource("8_f0aix")
