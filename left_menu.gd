@@ -3,6 +3,8 @@ extends VBoxContainer
 @export var scene_button_group: ButtonGroup
 var active_scene: Node
 
+var inventory: Inventory
+
 func _ready():
 	scene_button_group.pressed.connect(on_pressed)
 	game_manager.scene_switched.connect(on_scene_switched)
@@ -16,3 +18,10 @@ func on_scene_switched(scene_type: Resources.Scene, node: Node):
 
 func on_pressed(button: SceneButton):
 	game_manager.switch_scene(button.scene)
+
+func on_inventory_pressed() -> void:
+	if inventory == null:
+		inventory = preload(Resources.scenes[Resources.Scene.INVENTORY]).instantiate()
+		owner.add_child(inventory)
+	else:
+		inventory.queue_free()

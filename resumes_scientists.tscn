@@ -60,7 +60,7 @@ offset_right = 981.0
 offset_bottom = 67.0
 texture_normal = ExtResource("3_swncj")
 script = ExtResource("4_6fxwb")
-scene_path = "res://resumes_caregivers.tscn"
+scene = 10
 
 [node name="BackgroundResumesPaper" type="Sprite2D" parent="."]
 position = Vector2(620, 336)

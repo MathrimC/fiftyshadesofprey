@@ -15,3 +15,7 @@ func _on_plus_pressed() -> void:
 func _on_minus_pressed() -> void:
 	amount = max(0, amount - 1)
 	amount_label.text = "%s" % amount
+
+func clear():
+	amount = 0
+	amount_label.text = "0"

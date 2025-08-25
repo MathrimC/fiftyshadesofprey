@@ -26,3 +26,4 @@ func _timer() -> void:
 		timer.text = "%02d:%02d" % [minutes, seconds]
 		await get_tree().create_timer(1).timeout
 		seconds = egg_info["timer"].time_left
+	timer.text = "Egg hatched!"

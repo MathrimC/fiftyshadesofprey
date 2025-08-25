@@ -14,5 +14,4 @@ func on_mouse_exited() -> void:
 
 func on_input_event(_viewport: Node, _event: InputEvent, _shape_idx: int) -> void:
 	if _event is InputEventMouseButton && _event.button_index == MouseButton.MOUSE_BUTTON_LEFT && !_event.pressed:
-		get_node("/root/Game").add_child(load(Resources.scenes[scene]).instantiate())
-		get_owner().queue_free()
+		game_manager.switch_scene(scene)

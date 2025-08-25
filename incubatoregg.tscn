@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cb7gordnmt6wg"]
+[gd_scene load_steps=8 format=3 uid="uid://cb7gordnmt6wg"]
 
 [ext_resource type="Texture2D" uid="uid://dl7e6gvafqqcy" path="res://img/dinos/Diplodocus_egg.png" id="1_3gjxi"]
 [ext_resource type="Script" uid="uid://bnl2y4rxbshpp" path="res://incubatoregg.gd" id="1_icux0"]
 [ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://BD_Cartoon_Shout.ttf" id="2_4khee"]
+[ext_resource type="Texture2D" uid="uid://c0g0rn1epir8m" path="res://img/science/clock.png" id="2_ft0rg"]
 [ext_resource type="Texture2D" uid="uid://chlngbe3yliv5" path="res://img/dinos/Diplodocus_text.png" id="2_iy80q"]
 [ext_resource type="Texture2D" uid="uid://xug4uvrurhjc" path="res://img/science/food_herbivore.png" id="3_jybhu"]
 [ext_resource type="Texture2D" uid="uid://c3g14i8d138i8" path="res://img/buy/forest_logo.png" id="4_xa6t4"]
@@ -22,7 +23,7 @@ egg = NodePath("VBoxContainer/HBoxContainer/Egg")
 biome = NodePath("VBoxContainer/HBoxContainer/VBoxContainer/Biome")
 food = NodePath("VBoxContainer/HBoxContainer/VBoxContainer/Food")
 dino_name = NodePath("VBoxContainer/name")
-timer = NodePath("VBoxContainer/Timer")
+timer = NodePath("VBoxContainer/HBoxContainer2/Timer")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -33,14 +34,28 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 
-[node name="Timer" type="RichTextLabel" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 30)
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("2_ft0rg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Timer" type="RichTextLabel" parent="VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("2_4khee")
-theme_override_font_sizes/normal_font_size = 25
+theme_override_font_sizes/normal_font_size = 26
 text = "0:00"
+fit_content = true
 scroll_active = false
+autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 

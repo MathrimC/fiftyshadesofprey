@@ -1,7 +1,7 @@
 class_name Resources
 extends Node
 
-enum Scene {MAIN_MENU, GAME, DINOPARK, BUY, DINOS, STAFF, SCIENCE, MAP, MENU, RESUMES_SCIENTISTS, RESUMES_CAREGIVERS, BIRDS, GROCERIES, SCIENTIST_ACTIONS, INCUBATOR, DINOSAUR_CREATION_LINE, FOOD_CREATION_LINE, INGREDIENT, INCUBATOREGG}
+enum Scene {MAIN_MENU, GAME, DINOPARK, BUY, DINOS, STAFF, SCIENCE, MAP, MENU, RESUMES_SCIENTISTS, RESUMES_CAREGIVERS, BIRDS, GROCERIES, SCIENTIST_ACTIONS, INCUBATOR, DINOSAUR_CREATION_LINE, FOOD_CREATION_LINE, INGREDIENT, INCUBATOREGG, INVENTORY, INVENTORY_ITEM}
 enum Scientist { BILL_AYE, DAVE_ABORROW, LINE_GD_TYRONE, CASI_NEUTRON, AIBERT_1STONE, M4R13_CR13 }
 enum Dinosaur { DIPLODOCUS, STYRACOSAURUS, ANKYLOSAURUS, PTERANODON, SPINOSAURUS }
 enum Bird { CHICKEN, DUCK, PIGEON, PINGUIN, TURKEY, OSTRICH, KIWI, PEAFOWL, FLAMINGO, CASSOWARIE }
@@ -14,7 +14,7 @@ const scenes: Dictionary = {
 	Scene.GAME: "res://game.tscn",
 	Scene.DINOPARK: "res://dinopark.tscn",
 	Scene.BUY: "res://buy.tscn",
-	Scene.DINOS: "res://dinos.tscn",
+	Scene.DINOS: "res://dinosaurs.tscn",
 	Scene.STAFF: "res://staff.tscn",
 	Scene.SCIENCE: "res://science.tscn",
 	Scene.MAP: "res://map.tscn",
@@ -28,7 +28,9 @@ const scenes: Dictionary = {
 	Scene.DINOSAUR_CREATION_LINE: "res://dinosaur_creation_line.tscn",
 	Scene.FOOD_CREATION_LINE: "res://food_creation_line.tscn",
 	Scene.INGREDIENT: "res://ingredient.tscn",
-	Scene.INCUBATOREGG: "res://incubatoregg.tscn"
+	Scene.INCUBATOREGG: "res://incubatoregg.tscn",
+	Scene.INVENTORY: "res://inventory.tscn",
+	Scene.INVENTORY_ITEM: "res://inventory_item.tscn",
 }
 
 const food_textures_dir := "res://img/science"

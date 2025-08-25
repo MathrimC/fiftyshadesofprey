@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bjbsob3f56pqu"]
+[gd_scene load_steps=9 format=3 uid="uid://bjbsob3f56pqu"]
 
 [ext_resource type="Script" uid="uid://b5usjkdctjxo6" path="res://dinosaur_creation_line.gd" id="1_wqnfq"]
 [ext_resource type="Texture2D" uid="uid://dl7e6gvafqqcy" path="res://img/dinos/Diplodocus_egg.png" id="2_xs80n"]
@@ -7,9 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://dt6yodk74pxtl" path="res://img/buy/chicken_icon.png" id="5_gh73y"]
 [ext_resource type="Texture2D" uid="uid://dpmb4cmhhclx4" path="res://img/science/science_create_yes.png" id="6_7eqe1"]
 [ext_resource type="Texture2D" uid="uid://efrr5xwclu3a" path="res://img/science/science_create_no.png" id="7_uurtm"]
+[ext_resource type="Texture2D" uid="uid://c0g0rn1epir8m" path="res://img/science/clock.png" id="8_xs80n"]
 
-[node name="DinosaurCreationLine" type="HBoxContainer" node_paths=PackedStringArray("egg", "bird_amount", "bird", "button")]
-custom_minimum_size = Vector2(400, 80)
+[node name="DinosaurCreationLine" type="HBoxContainer" node_paths=PackedStringArray("egg", "bird_amount", "bird", "button", "timer")]
+custom_minimum_size = Vector2(450, 80)
 size_flags_horizontal = 3
 theme_override_constants/separation = 10
 script = ExtResource("1_wqnfq")
@@ -17,6 +18,7 @@ egg = NodePath("Egg")
 bird_amount = NodePath("AnimalAmount/Amount")
 bird = NodePath("AnimalAmount/Animal")
 button = NodePath("TextureButton")
+timer = NodePath("Timer")
 
 [node name="Egg" type="TextureRect" parent="."]
 texture_filter = 2
@@ -58,5 +60,23 @@ size_flags_horizontal = 10
 texture_normal = ExtResource("6_7eqe1")
 texture_disabled = ExtResource("7_uurtm")
 stretch_mode = 3
+
+[node name="TimerIcon" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+texture = ExtResource("8_xs80n")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Timer" type="RichTextLabel" parent="."]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("4_7kw3u")
+text = "5:00"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="TextureButton" to="." method="_on_create_pressed"]

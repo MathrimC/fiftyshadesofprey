@@ -16,18 +16,15 @@ script = ExtResource("1_u1mqc")
 container = NodePath("GridContainer")
 
 [node name="Background" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_52obv")
-
-[node name="DinosaurText" type="Sprite2D" parent="."]
-position = Vector2(192, 41)
-texture = ExtResource("2_wkwvt")
-
-[node name="IncubatorText" type="Sprite2D" parent="."]
-position = Vector2(961, 50)
-texture = ExtResource("3_scwkn")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="GridContainer" type="GridContainer" parent="."]
 custom_minimum_size = Vector2(800, 460)
@@ -46,3 +43,25 @@ grow_vertical = 2
 theme_override_constants/h_separation = 40
 theme_override_constants/v_separation = 35
 columns = 3
+
+[node name="DinosaurButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 94.0
+offset_top = 41.0
+offset_right = 293.0
+offset_bottom = 67.0
+texture_normal = ExtResource("2_wkwvt")
+
+[node name="IncubatorButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -285.0
+offset_top = 41.0
+offset_right = -96.0
+offset_bottom = 82.0
+grow_horizontal = 0
+texture_normal = ExtResource("3_scwkn")
+
+[connection signal="pressed" from="DinosaurButton" to="." method="_dinosaur_button_pressed"]

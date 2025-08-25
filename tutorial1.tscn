@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1i8kkm1g3kmi"]
+
+[ext_resource type="Texture2D" uid="uid://bv3b0qn2wf5y4" path="res://img/tutorial/slide1.png" id="1_jfaq2"]
+[ext_resource type="Texture2D" uid="uid://bsffw1bcd48co" path="res://img/tutorial/slide1_arrow.png" id="2_rrqsy"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Slide1" type="Sprite2D" parent="."]
+position = Vector2(675, 328)
+texture = ExtResource("1_jfaq2")
+
+[node name="Slide1Arrow" type="Sprite2D" parent="."]
+position = Vector2(246, 174)
+texture = ExtResource("2_rrqsy")

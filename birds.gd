@@ -5,4 +5,5 @@ func _on_buy_pressed() -> void:
 	for child in self.get_children():
 		if child is BirdControls:
 			bird_amounts[child.bird] = child.amount
+			child.clear()
 	game_manager.buy_birds(bird_amounts)
