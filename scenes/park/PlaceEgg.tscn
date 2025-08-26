@@ -1,156 +1,156 @@
 [gd_scene load_steps=8 format=3 uid="uid://b14vk3hwppp8q"]
 
-[ext_resource type="Texture2D" uid="uid://dbosrisu3j05" path="res://img/map/backgroundmap.png" id="1_q856e"]
-[ext_resource type="Texture2D" uid="uid://c8osf216v5gnq" path="res://img/map/map_wall.png" id="2_2ndnh"]
-[ext_resource type="Texture2D" uid="uid://dxblnfbodl0tx" path="res://img/map/map_entrance.png" id="3_vimyv"]
-[ext_resource type="Texture2D" uid="uid://bswpkopyylvr" path="res://img/map/map_empty_business.png" id="4_vopbw"]
-[ext_resource type="Texture2D" uid="uid://c02d4q3yfsnx6" path="res://img/map/map_empty_lot.png" id="5_n6q77"]
-[ext_resource type="Texture2D" uid="uid://c1n3leb6mnq81" path="res://img/map/map_used_business.png" id="6_80axk"]
-[ext_resource type="Texture2D" uid="uid://dkcsebvs245xc" path="res://img/dinos/available_plot_price.png" id="7_flasf"]
+[ext_resource type="Texture2D" uid="uid://dbosrisu3j05" path="res://img/map/backgroundmap.png" id="1_ma2n4"]
+[ext_resource type="Texture2D" uid="uid://c8osf216v5gnq" path="res://img/map/map_wall.png" id="2_eh0sr"]
+[ext_resource type="Texture2D" uid="uid://dxblnfbodl0tx" path="res://img/map/map_entrance.png" id="3_g7ood"]
+[ext_resource type="Texture2D" uid="uid://bswpkopyylvr" path="res://img/map/map_empty_business.png" id="4_mehsd"]
+[ext_resource type="Texture2D" uid="uid://c02d4q3yfsnx6" path="res://img/map/map_empty_lot.png" id="5_b1e11"]
+[ext_resource type="Texture2D" uid="uid://c1n3leb6mnq81" path="res://img/map/map_used_business.png" id="6_85ci0"]
+[ext_resource type="Texture2D" uid="uid://dkcsebvs245xc" path="res://img/dinos/available_plot_price.png" id="7_7rphu"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Backgroundmap" type="Sprite2D" parent="."]
 position = Vector2(576, 325)
-texture = ExtResource("1_q856e")
+texture = ExtResource("1_ma2n4")
 
 [node name="MapWall" type="Sprite2D" parent="."]
 position = Vector2(578, 561)
-texture = ExtResource("2_2ndnh")
+texture = ExtResource("2_eh0sr")
 
 [node name="MapEntrance" type="Sprite2D" parent="."]
 position = Vector2(797, 595)
-texture = ExtResource("3_vimyv")
+texture = ExtResource("3_g7ood")
 
 [node name="MapEmptyBusiness" type="Sprite2D" parent="."]
 position = Vector2(1090, 400)
-texture = ExtResource("4_vopbw")
+texture = ExtResource("4_mehsd")
 
 [node name="MapEmptyBusiness2" type="Sprite2D" parent="."]
 position = Vector2(1083, 235)
-texture = ExtResource("4_vopbw")
+texture = ExtResource("4_mehsd")
 
 [node name="MapEmptyBusiness3" type="Sprite2D" parent="."]
 position = Vector2(992, 353)
-texture = ExtResource("4_vopbw")
+texture = ExtResource("4_mehsd")
 
 [node name="MapEmptyBusiness4" type="Sprite2D" parent="."]
 position = Vector2(990, 271)
-texture = ExtResource("4_vopbw")
+texture = ExtResource("4_mehsd")
 
 [node name="MapEmptyBusiness5" type="Sprite2D" parent="."]
 position = Vector2(990, 184)
-texture = ExtResource("4_vopbw")
+texture = ExtResource("4_mehsd")
 
 [node name="MapEmptyBusiness6" type="Sprite2D" parent="."]
 position = Vector2(993, 445)
-texture = ExtResource("4_vopbw")
+texture = ExtResource("4_mehsd")
 
 [node name="MapEmptyBusiness7" type="Sprite2D" parent="."]
 position = Vector2(866, 404)
-texture = ExtResource("4_vopbw")
+texture = ExtResource("4_mehsd")
 
 [node name="MapEmptyLot" type="Sprite2D" parent="."]
 position = Vector2(700, 501)
-texture = ExtResource("5_n6q77")
+texture = ExtResource("5_b1e11")
 
 [node name="MapEmptyLot2" type="Sprite2D" parent="."]
 position = Vector2(700, 413)
-texture = ExtResource("5_n6q77")
+texture = ExtResource("5_b1e11")
 
 [node name="MapEmptyLot3" type="Sprite2D" parent="."]
 position = Vector2(701, 321)
-texture = ExtResource("5_n6q77")
+texture = ExtResource("5_b1e11")
 
 [node name="MapEmptyLot4" type="Sprite2D" parent="."]
 position = Vector2(701, 233)
-texture = ExtResource("5_n6q77")
+texture = ExtResource("5_b1e11")
 
 [node name="MapEmptyLot5" type="Sprite2D" parent="."]
 position = Vector2(699, 138)
-texture = ExtResource("5_n6q77")
+texture = ExtResource("5_b1e11")
 
 [node name="MapEmptyLot6" type="Sprite2D" parent="."]
 position = Vector2(698, 52)
-texture = ExtResource("5_n6q77")
+texture = ExtResource("5_b1e11")
 
 [node name="MapEmptyLot7" type="Sprite2D" parent="."]
 position = Vector2(534, 501)
-texture = ExtResource("5_n6q77")
+texture = ExtResource("5_b1e11")
 
 [node name="MapEmptyLot8" type="Sprite2D" parent="."]
 position = Vector2(535, 413)
-texture = ExtResource("5_n6q77")
+texture = ExtResource("5_b1e11")
 
 [node name="MapEmptyLot9" type="Sprite2D" parent="."]
 position = Vector2(536, 49)
-texture = ExtResource("5_n6q77")
+texture = ExtResource("5_b1e11")
 
 [node name="MapEmptyLot10" type="Sprite2D" parent="."]
 position = Vector2(536, 135)
-texture = ExtResource("5_n6q77")
+texture = ExtResource("5_b1e11")
 
 [node name="MapEmptyLot11" type="Sprite2D" parent="."]
 position = Vector2(376, 414)
-texture = ExtResource("5_n6q77")
+texture = ExtResource("5_b1e11")
 
 [node name="MapEmptyLot12" type="Sprite2D" parent="."]
 position = Vector2(376, 502)
-texture = ExtResource("5_n6q77")
+texture = ExtResource("5_b1e11")
 
 [node name="MapEmptyLot13" type="Sprite2D" parent="."]
 position = Vector2(377, 330)
-texture = ExtResource("5_n6q77")
+texture = ExtResource("5_b1e11")
 
 [node name="MapEmptyLot14" type="Sprite2D" parent="."]
 position = Vector2(378, 243)
-texture = ExtResource("5_n6q77")
+texture = ExtResource("5_b1e11")
 
 [node name="MapEmptyLot15" type="Sprite2D" parent="."]
 position = Vector2(380, 134)
-texture = ExtResource("5_n6q77")
+texture = ExtResource("5_b1e11")
 
 [node name="MapEmptyLot16" type="Sprite2D" parent="."]
 position = Vector2(380, 49)
-texture = ExtResource("5_n6q77")
+texture = ExtResource("5_b1e11")
 
 [node name="MapEmptyLot18" type="Sprite2D" parent="."]
 position = Vector2(217, 341)
-texture = ExtResource("5_n6q77")
+texture = ExtResource("5_b1e11")
 
 [node name="MapEmptyLot19" type="Sprite2D" parent="."]
 position = Vector2(220, 246)
-texture = ExtResource("5_n6q77")
+texture = ExtResource("5_b1e11")
 
 [node name="MapEmptyLot21" type="Sprite2D" parent="."]
 position = Vector2(863, 275)
-texture = ExtResource("5_n6q77")
+texture = ExtResource("5_b1e11")
 
 [node name="MapEmptyLot22" type="Sprite2D" parent="."]
 position = Vector2(860, 180)
-texture = ExtResource("5_n6q77")
+texture = ExtResource("5_b1e11")
 
 [node name="MapEmptyLot23" type="Sprite2D" parent="."]
 position = Vector2(855, 88)
-texture = ExtResource("5_n6q77")
+texture = ExtResource("5_b1e11")
 
 [node name="MapEmptyBusiness8" type="Sprite2D" parent="."]
 position = Vector2(218, 459)
-texture = ExtResource("4_vopbw")
+texture = ExtResource("4_mehsd")
 
 [node name="MapEmptyBusiness9" type="Sprite2D" parent="."]
 position = Vector2(214, 128)
-texture = ExtResource("4_vopbw")
+texture = ExtResource("4_mehsd")
 
 [node name="MapEmptyBusiness10" type="Sprite2D" parent="."]
 position = Vector2(540, 277)
-texture = ExtResource("4_vopbw")
+texture = ExtResource("4_mehsd")
 
 [node name="MapUsedBusiness" type="Sprite2D" parent="."]
 position = Vector2(1090, 400)
-texture = ExtResource("6_80axk")
+texture = ExtResource("6_85ci0")
 
 [node name="AvailablePlotPrice" type="Sprite2D" parent="."]
 position = Vector2(376.35, 48.6132)
 scale = Vector2(0.673627, 0.673627)
-texture = ExtResource("7_flasf")
+texture = ExtResource("7_7rphu")

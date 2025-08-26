@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bk02suntlq1ux"]
 
 [ext_resource type="Texture2D" uid="uid://g503whq3wpqb" path="res://img/general/inventory_window.png" id="1_psafj"]
-[ext_resource type="Script" uid="uid://knbo84ou3r85" path="res://inventory.gd" id="2_5tt2m"]
+[ext_resource type="Script" uid="uid://knbo84ou3r85" path="res://scenes/inventory/inventory.gd" id="2_5tt2m"]
 
 [node name="Inventory" type="TextureRect" node_paths=PackedStringArray("grid")]
 anchors_preset = 8

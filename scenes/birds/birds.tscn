@@ -1,12 +1,12 @@
 [gd_scene load_steps=40 format=3 uid="uid://cdrka8tjwqtpy"]
 
-[ext_resource type="Script" uid="uid://2hr1bo5hgepm" path="res://birds.gd" id="1_0ntoc"]
+[ext_resource type="Script" uid="uid://2hr1bo5hgepm" path="res://scenes/birds/birds.gd" id="1_0ntoc"]
 [ext_resource type="Texture2D" uid="uid://b0v3wm3p0s43" path="res://img/buy/birds_background.png" id="1_1461h"]
 [ext_resource type="Texture2D" uid="uid://dtpqu4kfadqd2" path="res://img/buy/birds_buy.png" id="2_b8yjg"]
 [ext_resource type="Texture2D" uid="uid://dlrwmb50wwksv" path="res://img/buy/birds_buy_active.png" id="3_fgfbm"]
 [ext_resource type="Texture2D" uid="uid://dt6yodk74pxtl" path="res://img/buy/chicken_icon.png" id="4_eturq"]
 [ext_resource type="Texture2D" uid="uid://2qliut5bebo2" path="res://img/buy/chicken_text.png" id="5_vby6f"]
-[ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://BD_Cartoon_Shout.ttf" id="6_brkxa"]
+[ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://fonts/BD_Cartoon_Shout.ttf" id="6_brkxa"]
 [ext_resource type="Texture2D" uid="uid://dyk2r6u5rpqqq" path="res://img/buy/duck_icon.png" id="6_c4m3l"]
 [ext_resource type="Texture2D" uid="uid://boqdu1uofurxq" path="res://img/buy/duck_text.png" id="7_v2d20"]
 [ext_resource type="Texture2D" uid="uid://b4lida1q2c8sf" path="res://img/buy/Cassowaries_icon.png" id="8_yirju"]
@@ -38,7 +38,7 @@
 [ext_resource type="Texture2D" uid="uid://dwq7xiubjoeoc" path="res://img/buy/bird_price_7500.png" id="34_egi48"]
 [ext_resource type="Texture2D" uid="uid://bx3qxoscpqyf5" path="res://img/buy/bird_price_8000.png" id="35_dfixy"]
 [ext_resource type="Texture2D" uid="uid://dx7nmukv5t8tc" path="res://img/buy/bird_price_9500.png" id="36_b4brk"]
-[ext_resource type="Script" uid="uid://4luf68i5o8cu" path="res://bird_controls.gd" id="38_brkxa"]
+[ext_resource type="Script" uid="uid://4luf68i5o8cu" path="res://scenes/birds/bird_controls.gd" id="38_brkxa"]
 
 [node name="Birds" type="Node2D"]
 script = ExtResource("1_0ntoc")

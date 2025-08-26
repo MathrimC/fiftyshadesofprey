@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://6blyqi3jo5fr" path="res://img/buy/button_resumes_caregivers_active.png" id="2_xpies"]
 [ext_resource type="Texture2D" uid="uid://7qmbddatqaku" path="res://img/buy/button_resumes_scientists.png" id="3_mhnjb"]
 [ext_resource type="Texture2D" uid="uid://dulacu0ne7d56" path="res://img/buy/background_resumes_paper.png" id="4_td4p5"]
-[ext_resource type="Script" uid="uid://b5kc0phkrx6bv" path="res://resumes_tab.gd" id="4_udg45"]
+[ext_resource type="Script" uid="uid://b5kc0phkrx6bv" path="res://scenes/resumes/resumes_tab.gd" id="4_udg45"]
 [ext_resource type="Texture2D" uid="uid://ccn7ai58lbvk4" path="res://img/employees/Chris_green_icon.png" id="5_rd71i"]
 [ext_resource type="Texture2D" uid="uid://bwhlfq2h4fxhb" path="res://img/employees/Victoria_Rivers_icon.png" id="6_6rgg2"]
 [ext_resource type="Texture2D" uid="uid://dr3smsjjnnedo" path="res://img/science/price_bill.png" id="7_8cj3k"]

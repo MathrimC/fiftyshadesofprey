@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dq5ukh0ybsqoh" path="res://img/buy/buy_menu_garden_center_active.png" id="8_6vogg"]
 [ext_resource type="Texture2D" uid="uid://d15xbxjwm5nv" path="res://img/buy/buy_menu_groceries.png" id="9_5vahe"]
 [ext_resource type="Texture2D" uid="uid://d0h82r6xmwpny" path="res://img/buy/buy_menu_groceries_active.png" id="10_ij1g2"]
-[ext_resource type="Script" uid="uid://b1cmnbb84wmnw" path="res://buy_button.gd" id="10_rg74d"]
+[ext_resource type="Script" uid="uid://b1cmnbb84wmnw" path="res://scenes/birds/buy_button.gd" id="10_rg74d"]
 [ext_resource type="Texture2D" uid="uid://63u7t2redjqj" path="res://img/buy/buy_menu_paper.png" id="11_tfy1a"]
 [ext_resource type="Texture2D" uid="uid://bj103qhqd5ujh" path="res://img/buy/buy_menu_pencil.png" id="12_fmag6"]
 [ext_resource type="Texture2D" uid="uid://dq1jvrl4d1jp8" path="res://img/buy/buy_menu_resumes.png" id="13_536of"]

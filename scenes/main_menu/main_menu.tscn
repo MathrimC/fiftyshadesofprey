@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cedqpvmc4d62g" path="res://img/general/menu back.png" id="1_jix8l"]
 [ext_resource type="Texture2D" uid="uid://jxbgsojo0k5l" path="res://img/general/button_start.png" id="2_glbon"]
-[ext_resource type="Script" uid="uid://tymevkfdp11n" path="res://start_button.gd" id="3_nlkkf"]
+[ext_resource type="Script" uid="uid://tymevkfdp11n" path="res://scenes/main_menu/start_button.gd" id="3_nlkkf"]
 [ext_resource type="Texture2D" uid="uid://oh16b02i34jd" path="res://img/general/button_exit.png" id="4_qe12f"]
 
 [node name="MainMenu" type="Control"]

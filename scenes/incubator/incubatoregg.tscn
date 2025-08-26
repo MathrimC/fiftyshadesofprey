@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://cb7gordnmt6wg"]
 
 [ext_resource type="Texture2D" uid="uid://dl7e6gvafqqcy" path="res://img/dinos/Diplodocus_egg.png" id="1_3gjxi"]
-[ext_resource type="Script" uid="uid://bnl2y4rxbshpp" path="res://incubatoregg.gd" id="1_icux0"]
-[ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://BD_Cartoon_Shout.ttf" id="2_4khee"]
+[ext_resource type="Script" uid="uid://bnl2y4rxbshpp" path="res://scenes/incubator/incubatoregg.gd" id="1_icux0"]
+[ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://fonts/BD_Cartoon_Shout.ttf" id="2_4khee"]
 [ext_resource type="Texture2D" uid="uid://c0g0rn1epir8m" path="res://img/science/clock.png" id="2_ft0rg"]
 [ext_resource type="Texture2D" uid="uid://chlngbe3yliv5" path="res://img/dinos/Diplodocus_text.png" id="2_iy80q"]
 [ext_resource type="Texture2D" uid="uid://xug4uvrurhjc" path="res://img/science/food_herbivore.png" id="3_jybhu"]

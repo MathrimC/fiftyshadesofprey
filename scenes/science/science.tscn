@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dxewbwhv2an5a"]
 
 [ext_resource type="Texture2D" uid="uid://cet1n87q7jjfd" path="res://img/science/science_background.png" id="1_wxol6"]
-[ext_resource type="Script" uid="uid://bft82v0pktcbl" path="res://science_grid.gd" id="2_b0ijt"]
+[ext_resource type="Script" uid="uid://bft82v0pktcbl" path="res://scenes/science/science_grid.gd" id="2_b0ijt"]
 
 [node name="Science" type="Control"]
 layout_mode = 3

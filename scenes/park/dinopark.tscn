@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cs73cnapgd4ca" path="res://img/park/parking_left.png" id="5_1rj1h"]
 [ext_resource type="Texture2D" uid="uid://be0rcrfydwa4v" path="res://img/park/park_empty_dinosaur_lot.png" id="6_w01aj"]
 [ext_resource type="Texture2D" uid="uid://cpn27sbbjnyyv" path="res://img/park/park empty business.png" id="7_wpmti"]
-[ext_resource type="Script" uid="uid://siovxfvtxmpd" path="res://park_camera.gd" id="8_fqr44"]
+[ext_resource type="Script" uid="uid://siovxfvtxmpd" path="res://scenes/park/park_camera.gd" id="8_fqr44"]
 
 [node name="Dinopark" type="Node"]
 

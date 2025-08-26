@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://vsi8lyvf8fc3"
-path="res://.godot/imported/BD_Cartoon_Shout.ttf-e79e0ddd092b09da0b5767271980e491.fontdata"
+path="res://.godot/imported/BD_Cartoon_Shout.ttf-d52933f3a4a9c113b314b185529b3567.fontdata"
 
 [deps]
 
-source_file="res://BD_Cartoon_Shout.ttf"
-dest_files=["res://.godot/imported/BD_Cartoon_Shout.ttf-e79e0ddd092b09da0b5767271980e491.fontdata"]
+source_file="res://fonts/BD_Cartoon_Shout.ttf"
+dest_files=["res://.godot/imported/BD_Cartoon_Shout.ttf-d52933f3a4a9c113b314b185529b3567.fontdata"]
 
 [params]
 

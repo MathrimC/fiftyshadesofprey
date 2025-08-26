@@ -3,11 +3,11 @@
 [ext_resource type="Texture2D" uid="uid://b3kwmxjbx1tgh" path="res://img/buy/background_resumes.png" id="1_fv8cl"]
 [ext_resource type="Texture2D" uid="uid://2msdokrgfvr3" path="res://img/buy/button_resumes_scientists_active.png" id="2_pldvu"]
 [ext_resource type="Texture2D" uid="uid://bq1sc22qknyml" path="res://img/buy/button_resumes_caregivers.png" id="3_swncj"]
-[ext_resource type="Script" uid="uid://b5kc0phkrx6bv" path="res://resumes_tab.gd" id="4_6fxwb"]
+[ext_resource type="Script" uid="uid://b5kc0phkrx6bv" path="res://scenes/resumes/resumes_tab.gd" id="4_6fxwb"]
 [ext_resource type="Texture2D" uid="uid://dulacu0ne7d56" path="res://img/buy/background_resumes_paper.png" id="4_w4dkj"]
 [ext_resource type="Texture2D" uid="uid://bq0j3jj3gvkqa" path="res://img/science/Bill_Aye_icon.png" id="5_2kwfq"]
 [ext_resource type="Texture2D" uid="uid://chnflhp4jscgb" path="res://img/science/Bill_Aye_text.png" id="6_jpvav"]
-[ext_resource type="Script" uid="uid://d18rr3a1w4wj3" path="res://scientist.gd" id="6_kkl7m"]
+[ext_resource type="Script" uid="uid://d18rr3a1w4wj3" path="res://scenes/science/scientist.gd" id="6_kkl7m"]
 [ext_resource type="Texture2D" uid="uid://81p674lqrlcy" path="res://img/science/Dave_Aborrow_icon_unavailable.png" id="7_3e2o5"]
 [ext_resource type="Texture2D" uid="uid://cwyrac8ooixpu" path="res://img/science/Sir_Casi_ Neutron_icon_unavailabe.png" id="8_c2s7t"]
 [ext_resource type="Texture2D" uid="uid://c3yexfq7djqfe" path="res://img/science/M4R13_CR13_icon_unavailable.png" id="9_cnfrt"]
@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://08snadb2d1fu" path="res://img/buy/hire_active.png" id="14_t31h0"]
 [ext_resource type="Texture2D" uid="uid://pgm3j0gllpnc" path="res://img/science/AiBert_1Stone_text.png" id="15_4v1g8"]
 [ext_resource type="Texture2D" uid="uid://bqiv8n710hdv" path="res://img/science/Dave_Aborrow_text.png" id="16_3ja3g"]
-[ext_resource type="Script" uid="uid://vhtsv60aja6b" path="res://hire.gd" id="16_6fxwb"]
+[ext_resource type="Script" uid="uid://vhtsv60aja6b" path="res://scenes/resumes/hire.gd" id="16_6fxwb"]
 [ext_resource type="Texture2D" uid="uid://dirvf6lt058iq" path="res://img/science/Line_DG_Tyrone_text.png" id="17_p1gqq"]
 [ext_resource type="Texture2D" uid="uid://crr1ugde0oe5b" path="res://img/science/M4R13_CR13_text.png" id="18_ptrs4"]
 [ext_resource type="Texture2D" uid="uid://da62pmn8mykm5" path="res://img/science/Sir_Casi_ Neutron_text.png" id="19_xsh7g"]
@@ -89,7 +89,6 @@ offset_bottom = 282.0
 texture_normal = ExtResource("13_3d63i")
 texture_pressed = ExtResource("14_t31h0")
 script = ExtResource("16_6fxwb")
-scientist = null
 
 [node name="EggBillDiplodocus" type="Sprite2D" parent="Scientist"]
 position = Vector2(355, 185)

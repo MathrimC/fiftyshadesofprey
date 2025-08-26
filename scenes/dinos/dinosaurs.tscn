@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b7sgfr466ert5"]
 
-[ext_resource type="Script" uid="uid://nvqlqkl76v1l" path="res://dinosaurs.gd" id="1_cd24t"]
+[ext_resource type="Script" uid="uid://nvqlqkl76v1l" path="res://scenes/dinos/dinosaurs.gd" id="1_cd24t"]
 [ext_resource type="Texture2D" uid="uid://cdshxi2360w7i" path="res://img/dinos/dinosaur_background.png" id="1_k2bxr"]
 [ext_resource type="Texture2D" uid="uid://cbvvhohh1mpf6" path="res://img/dinos/dinosaur_text.png" id="2_o0tka"]
 [ext_resource type="Texture2D" uid="uid://bbi0p2vu4j7eu" path="res://img/dinos/incubator text.png" id="3_0rw2x"]

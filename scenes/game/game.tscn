@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3n71v3sjph5m"]
+
+[ext_resource type="PackedScene" uid="uid://okba3tl3tq5q" path="res://scenes/interface/interface.tscn" id="1_sul5r"]
+
+[node name="Game" type="Node"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Interface" parent="CanvasLayer" instance=ExtResource("1_sul5r")]
+mouse_filter = 2
