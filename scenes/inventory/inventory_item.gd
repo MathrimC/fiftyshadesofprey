@@ -33,7 +33,7 @@ func update() -> void:
 		GameManager.InventoryType.GROCERIES:
 			var grocery: Resources.Groceries = item as Resources.Groceries
 			item_name.text = "%s" % Resources.Groceries.keys()[grocery].capitalize()
-			icon_path = "%s/%s" % [Resources.ingredient_textures_dir, Resources.ingredient_textures[grocery]]
+			icon_path = "%s/%s" % [Resources.grocery_textures_dir, Resources.grocery_textures[grocery]]
 			amount = game_manager.get_groceries_amount(grocery)
 	if amount == 0:
 		self.queue_free()

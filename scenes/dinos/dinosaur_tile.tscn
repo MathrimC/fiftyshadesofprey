@@ -1,0 +1,95 @@
+[gd_scene load_steps=7 format=3 uid="uid://7fnl5ost0hkm"]
+
+[ext_resource type="Script" uid="uid://dflamg03fau0c" path="res://scenes/dinos/dinosaur_tile.gd" id="1_8yl5n"]
+[ext_resource type="Texture2D" uid="uid://b86ombmpv7ses" path="res://img/dinos/Spinosaurus.png" id="1_wrmoo"]
+[ext_resource type="Texture2D" uid="uid://c3g14i8d138i8" path="res://img/buy/forest_logo.png" id="2_gvwpw"]
+[ext_resource type="Texture2D" uid="uid://xug4uvrurhjc" path="res://img/science/food_herbivore.png" id="3_8yl5n"]
+[ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://fonts/BD_Cartoon_Shout.ttf" id="3_tbcjo"]
+[ext_resource type="Texture2D" uid="uid://chlngbe3yliv5" path="res://img/dinos/Diplodocus_text.png" id="4_tbcjo"]
+
+[node name="DinosaurTile" type="Control" node_paths=PackedStringArray("icon", "feeling", "biome", "food", "dino_name")]
+custom_minimum_size = Vector2(240, 220)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_8yl5n")
+icon = NodePath("VBoxContainer/info/Dinosaur")
+feeling = NodePath("VBoxContainer/info/HBoxContainer/Feeling")
+biome = NodePath("VBoxContainer/info/HBoxContainer/Biome")
+food = NodePath("VBoxContainer/info/HBoxContainer/Food")
+dino_name = NodePath("VBoxContainer/name")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="info" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Dinosaur" type="TextureRect" parent="VBoxContainer/info"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+texture = ExtResource("1_wrmoo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/info"]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -55.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Feeling" type="RichTextLabel" parent="VBoxContainer/info/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_tbcjo")
+theme_override_font_sizes/normal_font_size = 9
+text = "Happy"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Biome" type="TextureRect" parent="VBoxContainer/info/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("2_gvwpw")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Food" type="TextureRect" parent="VBoxContainer/info/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("3_8yl5n")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="name" type="TextureRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+texture = ExtResource("4_tbcjo")
+expand_mode = 1
+stretch_mode = 5

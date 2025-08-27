@@ -3,6 +3,7 @@ extends Node
 
 enum ScientistAction { CREATE_EGG, CREATE_FOOD }
 enum InventoryType { DINOSAURS, EGGS, BIRDS, FOOD, GROCERIES }
+enum DinosaurFeeling { HAPPY, SAD, SICK, HUNGRY }
 
 const starting_money := 1000
 const starting_ticket_price := 1
@@ -16,7 +17,7 @@ const scientist_info := {
 	},
 	Resources.Scientist.DAVE_ABORROW: {
 		"name": "Dave Aborrow",
-		"wage": 500,
+		"wage": 1000,
 		"dinosaurs": [Resources.Dinosaur.ANKYLOSAURUS, Resources.Dinosaur.PTERANODON, Resources.Dinosaur.SPINOSAURUS],
 		"food": [],
 	},
@@ -45,16 +46,16 @@ const dinosaur_info := {
 		"popularity": 1,
 		"food": Resources.Food.HERBIVORE,
 		"biome": Resources.Biome.FOREST,
-		"creation_time": 300,
-		"incubation_time": 600,
+		"creation_time": 60,
+		"incubation_time": 60,
 		"birds": {Resources.Bird.CHICKEN: 1}
 	},
 	Resources.Dinosaur.STYRACOSAURUS: {
 		"popularity": 3,
 		"food": Resources.Food.CARNIVORE,
 		"biome": Resources.Biome.SWAMP,
-		"creation_time": 600,
-		"incubation_time": 1200,
+		"creation_time": 60,
+		"incubation_time": 120,
 		"birds": {Resources.Bird.DUCK: 1}
 	},
 }
@@ -107,6 +108,7 @@ signal money_changed(money: int)
 signal ticket_price_changed(price: int)
 signal scene_switched(scene: Resources.Scene, node: Node)
 signal incubation_started(egg_info: Dictionary)
+signal dinosaur_added(dinosaur_data: Dictionary)
 
 var hired_scientists: Array[Resources.Scientist]
 var bird_stock: Dictionary
@@ -203,10 +205,17 @@ func incubate(dinosaur: Resources.Dinosaur) -> void:
 	await egg_info["timer"].timeout
 	trigger_notification("Egg hatched!")
 	incubating_eggs.erase(egg_info)
+	var dinosaur_data := {"dinosaur": dinosaur, "feeling": DinosaurFeeling.HAPPY }
+	dinosaurs.append(dinosaur_data)
+	dinosaur_added.emit(dinosaur_data)
 
 ## The dictionary keys are "dinosaur" and "timer"
 func get_incubating_eggs() -> Array[Dictionary]:
 	return incubating_eggs
+
+## The dictionary keys are "dinosaur" and "feeling"
+func get_dinosaurs() -> Array[Dictionary]:
+	return dinosaurs
 
 func get_egg_amount(dinosaur: Resources.Dinosaur) -> int:
 	return inventory.get(InventoryType.EGGS).get(dinosaur, 0)

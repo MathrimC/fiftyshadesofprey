@@ -15,7 +15,7 @@ func _ready() -> void:
 	for ingredient in ingredients:
 		var ingredient_ui = preload(Resources.scenes[Resources.Scene.INGREDIENT]).instantiate()
 		ingredient_ui.amount.text = "%s x" % ingredients[ingredient]
-		ingredient_ui.ingredient.texture = load("%s/%s" % [Resources.ingredient_textures_dir, Resources.ingredient_textures[ingredient]])
+		ingredient_ui.ingredient.texture = load("%s/%s" % [Resources.grocery_textures_dir, Resources.grocery_textures[ingredient]])
 		ingredients_container.add_child(ingredient_ui)
 		if game_manager.get_groceries_amount(ingredient) < ingredients[ingredient]:
 			button.disabled = true

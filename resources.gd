@@ -1,7 +1,7 @@
 class_name Resources
 extends Node
 
-enum Scene {MAIN_MENU, GAME, DINOPARK, BUY, DINOS, STAFF, SCIENCE, MAP, MENU, RESUMES_SCIENTISTS, RESUMES_CAREGIVERS, BIRDS, GROCERIES, SCIENTIST_ACTIONS, INCUBATOR, DINOSAUR_CREATION_LINE, FOOD_CREATION_LINE, INGREDIENT, INCUBATOREGG, INVENTORY, INVENTORY_ITEM}
+enum Scene {MAIN_MENU, GAME, DINOPARK, BUY, DINOS, STAFF, SCIENCE, MAP, MENU, RESUMES_SCIENTISTS, RESUMES_CAREGIVERS, BIRDS, GROCERIES, SCIENTIST_ACTIONS, INCUBATOR, DINOSAUR_CREATION_LINE, FOOD_CREATION_LINE, INGREDIENT, INCUBATOREGG, INVENTORY, INVENTORY_ITEM, DINOSAUR_TILE, GROCERY_ITEM}
 enum Scientist { BILL_AYE, DAVE_ABORROW, LINE_GD_TYRONE, CASI_NEUTRON, AIBERT_1STONE, M4R13_CR13 }
 enum Dinosaur { DIPLODOCUS, STYRACOSAURUS, ANKYLOSAURUS, PTERANODON, SPINOSAURUS }
 enum Bird { CHICKEN, DUCK, PIGEON, PINGUIN, TURKEY, OSTRICH, KIWI, PEAFOWL, FLAMINGO, CASSOWARIE }
@@ -31,6 +31,8 @@ const scenes: Dictionary = {
 	Scene.INCUBATOREGG: "res://scenes/incubator/incubatoregg.tscn",
 	Scene.INVENTORY: "res://scenes/inventory/inventory.tscn",
 	Scene.INVENTORY_ITEM: "res://scenes/inventory/inventory_item.tscn",
+	Scene.DINOSAUR_TILE: "res://scenes/dinos/dinosaur_tile.tscn",
+	Scene.GROCERY_ITEM: "res://scenes/groceries/grocery_item.tscn"
 }
 
 const food_textures_dir := "res://img/science"
@@ -46,8 +48,8 @@ const biome_textures: Dictionary = {
 	Biome.SWAMP: "swamp_logo.png",
 }
 
-const ingredient_textures_dir := "res://img/buy"
-const ingredient_textures: Dictionary = {
+const grocery_textures_dir := "res://img/buy"
+const grocery_textures: Dictionary = {
 	Groceries.SALT: "groceries_salt.png",
 	Groceries.PEPPER: "groceries_pepper.png",
 	Groceries.RED_SLIME: "groceries_red_slime.png",

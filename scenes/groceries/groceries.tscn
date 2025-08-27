@@ -1,7 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://dofc82sqlajer"]
+[gd_scene load_steps=18 format=3 uid="uid://dofc82sqlajer"]
 
 [ext_resource type="Texture2D" uid="uid://dijmrq5ftnvrq" path="res://img/buy/groceries_background.png" id="1_1sbne"]
-[ext_resource type="Texture2D" uid="uid://rd7vucmgk5ug" path="res://img/buy/groceries_text.png" id="2_e3322"]
+[ext_resource type="Script" uid="uid://cpjynp6cwrhox" path="res://scenes/groceries/groceries.gd" id="1_26vin"]
 [ext_resource type="Texture2D" uid="uid://svlix4k317nf" path="res://img/buy/groceries_buy_green_slime.png" id="3_scaii"]
 [ext_resource type="Texture2D" uid="uid://dukvu8xguh3rd" path="res://img/buy/groceries_red_slime.png" id="4_hfbtj"]
 [ext_resource type="Texture2D" uid="uid://dt76w6gmxtiyw" path="res://img/buy/groceries_pepper.png" id="5_iftrm"]
@@ -16,120 +16,197 @@
 [ext_resource type="Texture2D" uid="uid://b40ajblrfx8w8" path="res://img/buy/groceries_button_buy.png" id="14_50bwa"]
 [ext_resource type="Texture2D" uid="uid://ho3d6aqex3ey" path="res://img/buy/groceries_button_buy_active.png" id="15_xyxm6"]
 [ext_resource type="Texture2D" uid="uid://cxy1igitwc7vy" path="res://img/buy/groceries_price.png" id="16_8kurl"]
+[ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://fonts/BD_Cartoon_Shout.ttf" id="18_hwkap"]
 
-[node name="Node2D" type="Node2D"]
-
-[node name="GroceriesBackground" type="Sprite2D" parent="."]
-position = Vector2(576, 325)
-texture = ExtResource("1_1sbne")
-
-[node name="GroceriesText" type="Sprite2D" parent="."]
-position = Vector2(623, 134)
-texture = ExtResource("2_e3322")
+[node name="Groceries" type="Control" node_paths=PackedStringArray("grid")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_26vin")
+grid = NodePath("MarginContainer/GridContainer")
 
 [node name="GroceriesBuyGreenSlime" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(309, 294)
 texture = ExtResource("3_scaii")
 
 [node name="GroceriesRedSlime" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(301, 491)
 texture = ExtResource("4_hfbtj")
 
 [node name="GroceriesPepper" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(695, 317)
 texture = ExtResource("5_iftrm")
 
 [node name="GroceriesSalt" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(700, 491)
 texture = ExtResource("6_f1ud1")
 
 [node name="GroceriesSaltText" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(790, 450)
 texture = ExtResource("7_qqg0m")
 
 [node name="GroceriesPepperText" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(779, 271)
 texture = ExtResource("8_7qcis")
 
 [node name="GroceriesBuyGreenSlimeText" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(468, 258)
 texture = ExtResource("9_8s7n0")
 
 [node name="GroceriesRedSlimeText" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(439, 461)
 texture = ExtResource("10_sjxas")
 
 [node name="GroceriesPlus" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(422, 307)
 texture = ExtResource("11_kosd8")
 
 [node name="GroceriesPlus2" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(417, 509)
 texture = ExtResource("11_kosd8")
 
 [node name="GroceriesAmount" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(498, 305)
 texture = ExtResource("12_m41a8")
 
 [node name="GroceriesAmount2" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(495, 509)
 texture = ExtResource("12_m41a8")
 
 [node name="GroceriesAmount3" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(838, 310)
 texture = ExtResource("12_m41a8")
 
 [node name="GroceriesAmount4" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(865, 509)
 texture = ExtResource("12_m41a8")
 
 [node name="GroceriesPlus3" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(766, 307)
 texture = ExtResource("11_kosd8")
 
 [node name="GroceriesPlus4" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(795, 509)
 texture = ExtResource("11_kosd8")
 
 [node name="GroceriesMinus" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(569, 305)
 texture = ExtResource("13_8qa5g")
 
 [node name="GroceriesMinus2" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(571, 509)
 texture = ExtResource("13_8qa5g")
 
 [node name="GroceriesMinus3" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(914, 307)
 texture = ExtResource("13_8qa5g")
 
 [node name="GroceriesMinus4" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(936, 507)
 texture = ExtResource("13_8qa5g")
 
 [node name="GroceriesButtonBuy" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(950, 590)
 texture = ExtResource("14_50bwa")
+
+[node name="GroceriesPrice" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(222, 264)
+texture = ExtResource("16_8kurl")
+
+[node name="GroceriesPrice2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(233, 440)
+rotation = 0.566382
+texture = ExtResource("16_8kurl")
+
+[node name="GroceriesPrice3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(653, 432)
+texture = ExtResource("16_8kurl")
+
+[node name="GroceriesPrice4" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(649, 258)
+rotation = -0.335595
+texture = ExtResource("16_8kurl")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_1sbne")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="GroceriesButtonBuyActive" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(950, 590)
 texture = ExtResource("15_xyxm6")
 
-[node name="GroceriesPrice" type="Sprite2D" parent="."]
-position = Vector2(222, 264)
-texture = ExtResource("16_8kurl")
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 120
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 25
 
-[node name="GroceriesPrice2" type="Sprite2D" parent="."]
-position = Vector2(233, 440)
-rotation = 0.566382
-texture = ExtResource("16_8kurl")
+[node name="Title" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("18_hwkap")
+theme_override_font_sizes/font_size = 70
+text = "Groceries"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="GroceriesPrice3" type="Sprite2D" parent="."]
-position = Vector2(653, 432)
-texture = ExtResource("16_8kurl")
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 100
+theme_override_constants/v_separation = 100
+columns = 2
 
-[node name="GroceriesPrice4" type="Sprite2D" parent="."]
-position = Vector2(649, 258)
-rotation = -0.335595
-texture = ExtResource("16_8kurl")
+[node name="BuyButton" type="TextureButton" parent="MarginContainer"]
+custom_minimum_size = Vector2(200, 70)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture_normal = ExtResource("14_50bwa")
+texture_pressed = ExtResource("15_xyxm6")
+ignore_texture_size = true
+stretch_mode = 5

@@ -1,0 +1,84 @@
+[gd_scene load_steps=8 format=3 uid="uid://bah33kr558v88"]
+
+[ext_resource type="Script" uid="uid://dkongttm52fae" path="res://scenes/groceries/grocery_item.gd" id="1_31jdg"]
+[ext_resource type="Texture2D" uid="uid://svlix4k317nf" path="res://img/buy/groceries_buy_green_slime.png" id="2_c4f08"]
+[ext_resource type="Texture2D" uid="uid://cxy1igitwc7vy" path="res://img/buy/groceries_price.png" id="3_bjyoy"]
+[ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://fonts/BD_Cartoon_Shout.ttf" id="4_i5dv7"]
+[ext_resource type="Texture2D" uid="uid://vw8prpeh8itv" path="res://img/buy/groceries_plus.png" id="5_4r0rr"]
+[ext_resource type="Texture2D" uid="uid://byj7pm12fhrml" path="res://img/buy/groceries_amount.png" id="6_g0hav"]
+[ext_resource type="Texture2D" uid="uid://bu4menw78qkyd" path="res://img/buy/groceries_minus.png" id="7_rv0gx"]
+
+[node name="GroceryItem" type="HBoxContainer" node_paths=PackedStringArray("price", "icon", "item_name", "amount_label")]
+theme_override_constants/separation = 15
+script = ExtResource("1_31jdg")
+price = NodePath("Icon/Price")
+icon = NodePath("Icon")
+item_name = NodePath("VBoxContainer/Name")
+amount_label = NodePath("VBoxContainer/HBoxContainer/AmountField/AmountLabel")
+
+[node name="Icon" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+texture = ExtResource("2_c4f08")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Price" type="TextureRect" parent="Icon"]
+layout_mode = 1
+offset_left = -20.0
+offset_top = -13.0
+offset_right = 30.0
+offset_bottom = 37.0
+texture = ExtResource("3_bjyoy")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="Name" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("4_i5dv7")
+theme_override_font_sizes/normal_font_size = 20
+text = "Green Slime"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="PlusButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_4r0rr")
+
+[node name="AmountField" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("6_g0hav")
+
+[node name="AmountLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/AmountField"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("4_i5dv7")
+theme_override_font_sizes/normal_font_size = 20
+text = "12"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MinusButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("7_rv0gx")
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/PlusButton" to="." method="_on_plus_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/MinusButton" to="." method="_on_minus_pressed"]
