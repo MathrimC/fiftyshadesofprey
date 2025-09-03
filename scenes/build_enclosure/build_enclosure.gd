@@ -33,3 +33,4 @@ func on_biome_selected(biome: Enclosure.Biome) -> void:
 func on_enclosure_selected(fence: Enclosure.Fence) -> void:
 	game_manager.create_enclosure(selected_lot, selected_biome, fence)
 	fence_selection.hide()
+	map.refresh()

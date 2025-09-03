@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cb7gordnmt6wg"]
+[gd_scene load_steps=8 format=3 uid="uid://cb7gordnmt6wg"]
 
 [ext_resource type="Texture2D" uid="uid://dl7e6gvafqqcy" path="res://img/dinos/Diplodocus_egg.png" id="1_3gjxi"]
 [ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://cartoon_theme.tres" id="1_ah5ok"]
 [ext_resource type="Script" uid="uid://bnl2y4rxbshpp" path="res://scenes/incubator/incubatoregg.gd" id="1_icux0"]
 [ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://fonts/BD_Cartoon_Shout.ttf" id="2_4khee"]
 [ext_resource type="Texture2D" uid="uid://c0g0rn1epir8m" path="res://img/science/clock.png" id="2_ft0rg"]
-[ext_resource type="Texture2D" uid="uid://chlngbe3yliv5" path="res://img/dinos/Diplodocus_text.png" id="2_iy80q"]
 [ext_resource type="Texture2D" uid="uid://xug4uvrurhjc" path="res://img/science/food_herbivore.png" id="3_jybhu"]
 [ext_resource type="Texture2D" uid="uid://c3g14i8d138i8" path="res://img/buy/forest_logo.png" id="4_xa6t4"]
 
@@ -24,7 +23,7 @@ script = ExtResource("1_icux0")
 egg = NodePath("VBoxContainer/HBoxContainer/Egg")
 biome = NodePath("VBoxContainer/HBoxContainer/VBoxContainer/Biome")
 food = NodePath("VBoxContainer/HBoxContainer/VBoxContainer/Food")
-dino_name = NodePath("VBoxContainer/name")
+dino_name = NodePath("VBoxContainer/Name")
 timer = NodePath("VBoxContainer/HBoxContainer2/Timer")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -90,12 +89,14 @@ texture = ExtResource("3_jybhu")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="name" type="TextureRect" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 30)
+[node name="Name" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-texture = ExtResource("2_iy80q")
-expand_mode = 1
-stretch_mode = 5
+theme = ExtResource("1_ah5ok")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "Diplodocus"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Buttons" type="HBoxContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
@@ -112,3 +113,5 @@ text = "Place"
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 text = "Sell"
+
+[connection signal="pressed" from="VBoxContainer/Buttons/PlaceButton" to="." method="on_place_clicked"]

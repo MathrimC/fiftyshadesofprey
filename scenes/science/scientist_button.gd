@@ -4,7 +4,7 @@ extends TextureButton
 var scientist: Scientist.Type
 
 func _ready() -> void:
-	self.texture_normal = load(Resources.scientist_textures_dir + "/" + Resources.scientist_textures[scientist]["icon"])
+	self.texture_normal = game_manager.game_resources.get_scientist(scientist).texture
 
 func on_pressed() -> void:
 	var actions: ScientistActions = load(Resources.scenes[Resources.Scene.SCIENTIST_ACTIONS]).instantiate()

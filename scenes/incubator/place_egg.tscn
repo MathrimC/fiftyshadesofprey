@@ -3,7 +3,8 @@
 [ext_resource type="Script" uid="uid://y0k0ymgatko3" path="res://scenes/incubator/place_egg.gd" id="1_w8xib"]
 [ext_resource type="PackedScene" uid="uid://dyj6peppi2grb" path="res://scenes/map/map.tscn" id="2_t74ks"]
 
-[node name="PlaceEgg" type="Node"]
+[node name="PlaceEgg" type="Node" node_paths=PackedStringArray("map")]
 script = ExtResource("1_w8xib")
+map = NodePath("Map")
 
 [node name="Map" parent="." instance=ExtResource("2_t74ks")]

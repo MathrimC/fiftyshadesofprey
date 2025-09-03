@@ -17,8 +17,8 @@ signal notification(notification: String)
 signal money_changed(money: int)
 signal ticket_price_changed(price: int)
 signal scene_switched(scene: Resources.Scene, node: Node)
-signal incubation_started(egg_info: Dictionary)
-signal dinosaur_added(dinosaur_data: Dictionary)
+signal egg_created(dinosaur: DinosaurInstance)
+signal egg_hatched(dinosaur: DinosaurInstance)
 
 # const game_resources: GameData = preload("res://resources/game_resources.tres")
 
@@ -114,6 +114,7 @@ func _await_egg(type: Dinosaur.Type, timer: SceneTreeTimer, scientist: Scientist
 	dino.stage = DinosaurInstance.Stage.EGG
 	dino.genetics = DinosaurInstance.Genetics.GMO
 	game_data.incubator.append(dino)
+	egg_created.emit(dino)
 	
 	# var eggs_stock: Dictionary = inventory.get(InventoryType.EGGS, {})
 	# eggs_stock[type] = eggs_stock.get(dinosaur, 0) + 1
@@ -152,13 +153,14 @@ func incubate(dinosaur: Dinosaur.Type) -> void:
 	# dinosaurs.append(dinosaur_data)
 	# dinosaur_added.emit(dinosaur_data)
 
-func place_egg(egg_info: Dictionary, lot_number: int) -> void:
+func place_dinosaur(dinosaur: DinosaurInstance, lot_number: int) -> bool:
 	var enclosure: Enclosure = park_content.get(lot_number, null)
-	if enclosure == null:
-		printerr("Trying to place egg on lot without enclosure")
-		return
+	if enclosure != null && enclosure.add_dinosaur(dinosaur):
+		game_data.incubator.erase(dinosaur)
+		egg_hatched.emit(dinosaur)
+		return true
 	else:
-		enclosure.add_dinosaur(egg_info.dinosaur)
+		return false
 
 func get_incubating_eggs() -> Array[DinosaurInstance]:
 	return game_data.incubator

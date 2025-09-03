@@ -8,12 +8,12 @@ func _ready() -> void:
 		var incubatoregg: Incubatoregg = load(Resources.scenes[Resources.Scene.INCUBATOREGG]).instantiate()
 		incubatoregg.dinosaur = dinosaur
 		container.add_child(incubatoregg)
-	game_manager.incubation_started.connect(on_incubation_started)
+	game_manager.egg_created.connect(on_egg_created)
 
 func _dinosaur_button_pressed() -> void:
 	game_manager.switch_scene(Resources.Scene.DINOS)
 
-func on_incubation_started(egg_info: Dictionary) -> void:
+func on_egg_created(dinosaur: DinosaurInstance) -> void:
 	var incubatoregg: Incubatoregg = load(Resources.scenes[Resources.Scene.INCUBATOREGG]).instantiate()
-	incubatoregg.egg_info = egg_info
+	incubatoregg.dinosaur = dinosaur
 	container.add_child(incubatoregg)

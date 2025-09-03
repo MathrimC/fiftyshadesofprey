@@ -7,11 +7,11 @@ func _ready() -> void:
 		var dinosaur_tile: DinosaurTile = load(Resources.scenes[Resources.Scene.DINOSAUR_TILE]).instantiate()
 		dinosaur_tile.dinosaur = dinosaur
 		container.add_child(dinosaur_tile)
-	game_manager.dinosaur_added.connect(on_dinosaur_added)
+	game_manager.egg_hatched.connect(on_egg_hatched)
 
-func on_dinosaur_added(dinosaur_data: Dictionary) -> void:
+func on_egg_hatched(dinosaur: DinosaurInstance) -> void: 
 	var dinosaur_tile: DinosaurTile = load(Resources.scenes[Resources.Scene.DINOSAUR_TILE]).instantiate()
-	dinosaur_tile.dinosaur_data = dinosaur_data
+	dinosaur_tile.dinosaur = dinosaur
 	container.add_child(dinosaur_tile)
 
 func _incubator_button_pressed() -> void:

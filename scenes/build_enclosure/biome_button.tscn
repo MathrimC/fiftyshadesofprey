@@ -5,4 +5,5 @@
 
 [node name="BiomeButton" type="TextureButton"]
 texture_normal = ExtResource("1_lqs4u")
+stretch_mode = 5
 script = ExtResource("2_yt473")

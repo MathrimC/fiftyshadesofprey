@@ -4,7 +4,7 @@ extends Control
 @export var egg: TextureRect
 @export var biome: TextureRect
 @export var food: TextureRect
-@export var dino_name: TextureRect
+@export var dino_name: Label
 @export var timer: RichTextLabel
 
 var dinosaur: DinosaurInstance
@@ -21,7 +21,7 @@ func _ready() -> void:
 	# food.texture = load("%s/%s" % [Resources.food_textures_dir, Resources.food_textures[dinosaur_info["food"]]])
 	biome.texture = load("%s/%s" % [Resources.biome_textures_dir, Resources.biome_textures[dinosaur_info.biome]])
 	# TODO: replace with name label
-	dino_name.texture = load("%s/%s" % [Resources.dinosaur_textures_dir, Resources.dinosaur_textures[dinosaur.type]["name"]])
+	dino_name.text = dinosaur_info.name
 	_timer()
 
 func _timer() -> void:
@@ -36,4 +36,9 @@ func _timer() -> void:
 
 func on_place_clicked() -> void:
 	#open map
-	pass
+	# if _event is InputEventMouseButton && _event.button_index == MouseButton.MOUSE_BUTTON_LEFT && !_event.pressed:
+	# game_manager.switch_scene(scene)
+	var place_egg: PlaceEgg = load(Resources.scenes[Resources.Scene.PLACE_EGG]).instantiate()
+	place_egg.dinosaur = dinosaur
+	get_tree().root.add_child(place_egg)
+	game_manager.register_scene_switch(Resources.Scene.PLACE_EGG, place_egg)

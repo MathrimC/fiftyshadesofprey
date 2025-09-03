@@ -10,8 +10,8 @@ var dinosaur: Dinosaur.Type
 var scientist: Scientist.Type
 
 func _ready() -> void:
-	egg.texture = load("%s/%s" % [Resources.dinosaur_textures_dir, Resources.dinosaur_textures[dinosaur]["egg"]])
 	var dinosaur_data := game_manager.game_resources.get_dinosaur(dinosaur)
+	egg.texture = dinosaur_data.egg_texture
 	var bird: Bird = game_manager.game_resources.get_bird(dinosaur_data.creation_bird)
 	bird_amount.text = "1 x"
 	bird_texture.texture = bird.texture

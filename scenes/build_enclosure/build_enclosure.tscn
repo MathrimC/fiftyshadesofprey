@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://cx7o6aml26ibb"]
+[gd_scene load_steps=10 format=3 uid="uid://cx7o6aml26ibb"]
 
 [ext_resource type="Script" uid="uid://b1v7ctbi02wlr" path="res://scenes/build_enclosure/build_enclosure.gd" id="1_shnu1"]
 [ext_resource type="PackedScene" uid="uid://dyj6peppi2grb" path="res://scenes/map/map.tscn" id="2_4e05c"]
 [ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://cartoon_theme.tres" id="3_4e05c"]
+[ext_resource type="Texture2D" uid="uid://bk672lw8jge5n" path="res://img/buy/wood_logo.png" id="4_m08lm"]
+[ext_resource type="Texture2D" uid="uid://b85qsbxm143nj" path="res://img/buy/wood_logo_active.png" id="5_py161"]
+[ext_resource type="Texture2D" uid="uid://disve7xkgktpy" path="res://img/buy/glass_logo.png" id="6_4nbvu"]
+[ext_resource type="Texture2D" uid="uid://4d42owoxvyjs" path="res://img/buy/glass_logo_active.png" id="7_w7jq1"]
+[ext_resource type="Texture2D" uid="uid://ba2rf5vve4gpy" path="res://img/buy/steel_logo.png" id="8_m5kd4"]
+[ext_resource type="Texture2D" uid="uid://cvkj6qouvicoa" path="res://img/buy/steel_logo_active.png" id="9_oxy2j"]
 
 [node name="BuildEnclosure" type="Node" node_paths=PackedStringArray("map", "biome_selection", "fence_selection", "biome_button_container")]
 script = ExtResource("1_shnu1")
@@ -99,24 +105,30 @@ layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="ButtonWood" type="Button" parent="FenceSelection/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="ButtonWodd" type="TextureButton" parent="FenceSelection/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(164, 164)
 layout_mode = 2
-theme = ExtResource("3_4e05c")
-text = "Wood
-100"
+texture_normal = ExtResource("4_m08lm")
+texture_pressed = ExtResource("5_py161")
+ignore_texture_size = true
+stretch_mode = 5
 
-[node name="ButtonGlass" type="Button" parent="FenceSelection/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="ButtonGlass" type="TextureButton" parent="FenceSelection/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(164, 164)
 layout_mode = 2
-theme = ExtResource("3_4e05c")
-text = "Glass
-3000"
+texture_normal = ExtResource("6_4nbvu")
+texture_pressed = ExtResource("7_w7jq1")
+ignore_texture_size = true
+stretch_mode = 5
 
-[node name="ButtonSteel" type="Button" parent="FenceSelection/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="ButtonSteel" type="TextureButton" parent="FenceSelection/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(164, 164)
 layout_mode = 2
-theme = ExtResource("3_4e05c")
-text = "Steel
-5000"
+texture_normal = ExtResource("8_m5kd4")
+texture_pressed = ExtResource("9_oxy2j")
+ignore_texture_size = true
+stretch_mode = 5
 
-[connection signal="pressed" from="FenceSelection/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ButtonWood" to="." method="on_enclosure_selected" binds= [0]]
+[connection signal="pressed" from="FenceSelection/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ButtonWodd" to="." method="on_enclosure_selected" binds= [0]]
 [connection signal="pressed" from="FenceSelection/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ButtonGlass" to="." method="on_enclosure_selected" binds= [1]]
 [connection signal="pressed" from="FenceSelection/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ButtonSteel" to="." method="on_enclosure_selected" binds= [2]]

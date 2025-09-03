@@ -52,7 +52,7 @@ func refresh() -> void:
 		unavailable.hide()
 		available.show()
 	else:
-		icon.texture = load("%s/%s" % [Resources.scientist_textures_dir, Resources.scientist_textures[scientist]["unavailable"]])
+		icon.texture = scientist_data.unavailable_texture
 		unlock_condition.text = "%s dinosaurs needed to unlock" % scientist_data.dinos_to_unlock
 		available.hide()
 		unavailable.show()
