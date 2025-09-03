@@ -1,152 +1,614 @@
-[gd_scene load_steps=7 format=3 uid="uid://dyj6peppi2grb"]
+[gd_scene load_steps=15 format=3 uid="uid://dyj6peppi2grb"]
 
 [ext_resource type="Texture2D" uid="uid://dbosrisu3j05" path="res://img/map/backgroundmap.png" id="1_los0q"]
+[ext_resource type="Script" uid="uid://bckkdrlctj2bu" path="res://scenes/map/map.gd" id="1_mgs8m"]
 [ext_resource type="Texture2D" uid="uid://c8osf216v5gnq" path="res://img/map/map_wall.png" id="2_enpy6"]
 [ext_resource type="Texture2D" uid="uid://dxblnfbodl0tx" path="res://img/map/map_entrance.png" id="3_jim6s"]
 [ext_resource type="Texture2D" uid="uid://c02d4q3yfsnx6" path="res://img/map/map_empty_lot.png" id="3_u3g4l"]
+[ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://fonts/BD_Cartoon_Shout.ttf" id="4_b56te"]
 [ext_resource type="Texture2D" uid="uid://bswpkopyylvr" path="res://img/map/map_empty_business.png" id="4_mnuex"]
+[ext_resource type="Texture2D" uid="uid://jrp6v2cxrnad" path="res://img/map/map_used_lot.png" id="5_cumk7"]
+[ext_resource type="Texture2D" uid="uid://c3g14i8d138i8" path="res://img/buy/forest_logo.png" id="5_x2kg6"]
+[ext_resource type="Texture2D" uid="uid://g3rqyurhu2bs" path="res://img/buy/forest_logo_active.png" id="6_cumk7"]
 [ext_resource type="Texture2D" uid="uid://c1n3leb6mnq81" path="res://img/map/map_used_business.png" id="6_hamb8"]
+[ext_resource type="Texture2D" uid="uid://djbbmbfvdkkj1" path="res://img/buy/swamp_logo.png" id="7_mgs8m"]
+[ext_resource type="Script" uid="uid://cy1fvlh07cems" path="res://scenes/map/map_lot.gd" id="7_mrjnl"]
+[ext_resource type="Texture2D" uid="uid://dbe07goc6dwl0" path="res://img/buy/desert_logo.png" id="8_mrjnl"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Map" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mgs8m")
 
-[node name="Backgroundmap" type="Sprite2D" parent="."]
-position = Vector2(576, 325)
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_los0q")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 150
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 25
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="EmptyBusiness1" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 146)
+layout_mode = 2
+texture_normal = ExtResource("4_mnuex")
+texture_disabled = ExtResource("6_hamb8")
+stretch_mode = 3
+
+[node name="MapLot1" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(142, 73)
+layout_mode = 2
+texture_normal = ExtResource("3_u3g4l")
+texture_disabled = ExtResource("5_cumk7")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("7_mrjnl")
+lot_number = 1
+metadata/_custom_type_script = "uid://cy1fvlh07cems"
+
+[node name="MapLot2" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(142, 73)
+layout_mode = 2
+texture_normal = ExtResource("3_u3g4l")
+texture_disabled = ExtResource("5_cumk7")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("7_mrjnl")
+lot_number = 2
+metadata/_custom_type_script = "uid://cy1fvlh07cems"
+
+[node name="EmptyBusiness2" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 146)
+layout_mode = 2
+texture_normal = ExtResource("4_mnuex")
+stretch_mode = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="MapLot3" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(142, 73)
+layout_mode = 2
+texture_normal = ExtResource("3_u3g4l")
+texture_disabled = ExtResource("5_cumk7")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("7_mrjnl")
+lot_number = 3
+metadata/_custom_type_script = "uid://cy1fvlh07cems"
+
+[node name="MapLot4" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(142, 73)
+layout_mode = 2
+texture_normal = ExtResource("3_u3g4l")
+texture_disabled = ExtResource("5_cumk7")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("7_mrjnl")
+lot_number = 4
+metadata/_custom_type_script = "uid://cy1fvlh07cems"
+
+[node name="MapLot5" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(142, 73)
+layout_mode = 2
+texture_normal = ExtResource("3_u3g4l")
+texture_disabled = ExtResource("5_cumk7")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("7_mrjnl")
+lot_number = 5
+metadata/_custom_type_script = "uid://cy1fvlh07cems"
+
+[node name="MapLot6" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(142, 73)
+layout_mode = 2
+texture_normal = ExtResource("3_u3g4l")
+texture_disabled = ExtResource("5_cumk7")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("7_mrjnl")
+lot_number = 6
+metadata/_custom_type_script = "uid://cy1fvlh07cems"
+
+[node name="MapLot7" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(142, 73)
+layout_mode = 2
+texture_normal = ExtResource("3_u3g4l")
+texture_disabled = ExtResource("5_cumk7")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("7_mrjnl")
+lot_number = 7
+metadata/_custom_type_script = "uid://cy1fvlh07cems"
+
+[node name="MapLot8" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(142, 73)
+layout_mode = 2
+texture_normal = ExtResource("3_u3g4l")
+texture_disabled = ExtResource("5_cumk7")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("7_mrjnl")
+lot_number = 8
+metadata/_custom_type_script = "uid://cy1fvlh07cems"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="MapLot9" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(142, 73)
+layout_mode = 2
+texture_normal = ExtResource("3_u3g4l")
+texture_disabled = ExtResource("5_cumk7")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("7_mrjnl")
+lot_number = 9
+metadata/_custom_type_script = "uid://cy1fvlh07cems"
+
+[node name="MapLot10" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(142, 73)
+layout_mode = 2
+texture_normal = ExtResource("3_u3g4l")
+texture_disabled = ExtResource("5_cumk7")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("7_mrjnl")
+lot_number = 10
+metadata/_custom_type_script = "uid://cy1fvlh07cems"
+
+[node name="EmptyBusiness1" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(0, 162)
+layout_mode = 2
+texture_normal = ExtResource("4_mnuex")
+stretch_mode = 3
+
+[node name="MapLot11" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(142, 73)
+layout_mode = 2
+texture_normal = ExtResource("3_u3g4l")
+texture_disabled = ExtResource("5_cumk7")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("7_mrjnl")
+lot_number = 11
+metadata/_custom_type_script = "uid://cy1fvlh07cems"
+
+[node name="MapLot12" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(142, 73)
+layout_mode = 2
+texture_normal = ExtResource("3_u3g4l")
+texture_disabled = ExtResource("5_cumk7")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("7_mrjnl")
+lot_number = 12
+metadata/_custom_type_script = "uid://cy1fvlh07cems"
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="MapLot13" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer4"]
+custom_minimum_size = Vector2(142, 73)
+layout_mode = 2
+texture_normal = ExtResource("3_u3g4l")
+texture_disabled = ExtResource("5_cumk7")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("7_mrjnl")
+lot_number = 13
+metadata/_custom_type_script = "uid://cy1fvlh07cems"
+
+[node name="MapLot14" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer4"]
+custom_minimum_size = Vector2(142, 73)
+layout_mode = 2
+texture_normal = ExtResource("3_u3g4l")
+texture_disabled = ExtResource("5_cumk7")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("7_mrjnl")
+lot_number = 14
+metadata/_custom_type_script = "uid://cy1fvlh07cems"
+
+[node name="MapLot15" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer4"]
+custom_minimum_size = Vector2(142, 73)
+layout_mode = 2
+texture_normal = ExtResource("3_u3g4l")
+texture_disabled = ExtResource("5_cumk7")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("7_mrjnl")
+lot_number = 15
+metadata/_custom_type_script = "uid://cy1fvlh07cems"
+
+[node name="MapLot16" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer4"]
+custom_minimum_size = Vector2(142, 73)
+layout_mode = 2
+texture_normal = ExtResource("3_u3g4l")
+texture_disabled = ExtResource("5_cumk7")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("7_mrjnl")
+lot_number = 16
+metadata/_custom_type_script = "uid://cy1fvlh07cems"
+
+[node name="MapLot17" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer4"]
+custom_minimum_size = Vector2(142, 73)
+layout_mode = 2
+texture_normal = ExtResource("3_u3g4l")
+texture_disabled = ExtResource("5_cumk7")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("7_mrjnl")
+lot_number = 17
+metadata/_custom_type_script = "uid://cy1fvlh07cems"
+
+[node name="MapLot18" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer4"]
+custom_minimum_size = Vector2(142, 73)
+layout_mode = 2
+texture_normal = ExtResource("3_u3g4l")
+texture_disabled = ExtResource("5_cumk7")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("7_mrjnl")
+lot_number = 18
+metadata/_custom_type_script = "uid://cy1fvlh07cems"
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="MapLot19" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer5"]
+custom_minimum_size = Vector2(142, 73)
+layout_mode = 2
+texture_normal = ExtResource("3_u3g4l")
+texture_disabled = ExtResource("5_cumk7")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("7_mrjnl")
+lot_number = 19
+metadata/_custom_type_script = "uid://cy1fvlh07cems"
+
+[node name="MapLot20" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer5"]
+custom_minimum_size = Vector2(142, 73)
+layout_mode = 2
+texture_normal = ExtResource("3_u3g4l")
+texture_disabled = ExtResource("5_cumk7")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("7_mrjnl")
+lot_number = 20
+metadata/_custom_type_script = "uid://cy1fvlh07cems"
+
+[node name="MapLot21" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer5"]
+custom_minimum_size = Vector2(142, 73)
+layout_mode = 2
+texture_normal = ExtResource("3_u3g4l")
+texture_disabled = ExtResource("5_cumk7")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("7_mrjnl")
+lot_number = 21
+metadata/_custom_type_script = "uid://cy1fvlh07cems"
+
+[node name="EmptyBusiness1" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer5"]
+custom_minimum_size = Vector2(0, 162)
+layout_mode = 2
+texture_normal = ExtResource("4_mnuex")
+stretch_mode = 3
+
+[node name="VBoxContainer6" type="VBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="EmptyBusiness1" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer6"]
+layout_mode = 2
+texture_normal = ExtResource("4_mnuex")
+stretch_mode = 3
+
+[node name="EmptyBusiness2" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer6"]
+layout_mode = 2
+texture_normal = ExtResource("4_mnuex")
+stretch_mode = 3
+
+[node name="EmptyBusiness3" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer6"]
+layout_mode = 2
+texture_normal = ExtResource("4_mnuex")
+stretch_mode = 3
+
+[node name="EmptyBusiness4" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer6"]
+layout_mode = 2
+texture_normal = ExtResource("4_mnuex")
+stretch_mode = 3
+
+[node name="VBoxContainer7" type="VBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="EmptyBusiness1" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer7"]
+custom_minimum_size = Vector2(0, 146)
+layout_mode = 2
+texture_normal = ExtResource("4_mnuex")
+stretch_mode = 3
+
+[node name="EmptyBusiness2" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer7"]
+custom_minimum_size = Vector2(0, 146)
+layout_mode = 2
+texture_normal = ExtResource("4_mnuex")
+stretch_mode = 3
+
+[node name="Wall" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_enpy6")
+
+[node name="Entrance" type="TextureRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(80, 40)
+layout_mode = 2
+texture = ExtResource("3_jim6s")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="EnclosureLabel" type="RichTextLabel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -414.0
+offset_top = -80.0
+offset_right = 64.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/normal_font = ExtResource("4_b56te")
+text = "Choose a plot for building a new enclosure"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EnclosureMenu" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -113.0
+offset_top = 44.0
+offset_right = -33.0
+offset_bottom = 292.0
+grow_horizontal = 0
+
+[node name="TextureButton" type="TextureButton" parent="EnclosureMenu"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture_normal = ExtResource("5_x2kg6")
+texture_pressed = ExtResource("6_cumk7")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton2" type="TextureButton" parent="EnclosureMenu"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture_normal = ExtResource("7_mgs8m")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TextureButton3" type="TextureButton" parent="EnclosureMenu"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture_normal = ExtResource("8_mrjnl")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="MapWall" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(578, 561)
 texture = ExtResource("2_enpy6")
 
 [node name="MapEntrance" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(797, 595)
 texture = ExtResource("3_jim6s")
 
 [node name="MapEmptyBusiness" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(1090, 400)
 texture = ExtResource("4_mnuex")
 
 [node name="MapEmptyBusiness2" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(1083, 235)
 texture = ExtResource("4_mnuex")
 
 [node name="MapEmptyBusiness3" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(992, 353)
 texture = ExtResource("4_mnuex")
 
 [node name="MapEmptyBusiness4" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(990, 271)
 texture = ExtResource("4_mnuex")
 
 [node name="MapEmptyBusiness5" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(990, 184)
 texture = ExtResource("4_mnuex")
 
 [node name="MapEmptyBusiness6" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(993, 445)
 texture = ExtResource("4_mnuex")
 
 [node name="MapEmptyBusiness7" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(866, 404)
 texture = ExtResource("4_mnuex")
 
 [node name="MapEmptyLot" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(700, 501)
 texture = ExtResource("3_u3g4l")
 
 [node name="MapEmptyLot2" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(700, 413)
 texture = ExtResource("3_u3g4l")
 
 [node name="MapEmptyLot3" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(701, 321)
 texture = ExtResource("3_u3g4l")
 
 [node name="MapEmptyLot4" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(701, 233)
 texture = ExtResource("3_u3g4l")
 
 [node name="MapEmptyLot5" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(699, 138)
 texture = ExtResource("3_u3g4l")
 
 [node name="MapEmptyLot6" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(698, 52)
 texture = ExtResource("3_u3g4l")
 
 [node name="MapEmptyLot7" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(534, 501)
 texture = ExtResource("3_u3g4l")
 
 [node name="MapEmptyLot8" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(535, 413)
 texture = ExtResource("3_u3g4l")
 
 [node name="MapEmptyLot9" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(536, 49)
 texture = ExtResource("3_u3g4l")
 
 [node name="MapEmptyLot10" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(536, 135)
 texture = ExtResource("3_u3g4l")
 
 [node name="MapEmptyLot11" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(376, 414)
 texture = ExtResource("3_u3g4l")
 
 [node name="MapEmptyLot12" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(376, 502)
 texture = ExtResource("3_u3g4l")
 
 [node name="MapEmptyLot13" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(377, 330)
 texture = ExtResource("3_u3g4l")
 
 [node name="MapEmptyLot14" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(378, 243)
 texture = ExtResource("3_u3g4l")
 
 [node name="MapEmptyLot15" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(380, 134)
 texture = ExtResource("3_u3g4l")
 
 [node name="MapEmptyLot16" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(380, 49)
 texture = ExtResource("3_u3g4l")
 
 [node name="MapEmptyLot18" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(217, 341)
 texture = ExtResource("3_u3g4l")
 
 [node name="MapEmptyLot19" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(220, 246)
 texture = ExtResource("3_u3g4l")
 
 [node name="MapEmptyLot21" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(863, 275)
 texture = ExtResource("3_u3g4l")
 
 [node name="MapEmptyLot22" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(860, 180)
 texture = ExtResource("3_u3g4l")
 
 [node name="MapEmptyLot23" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(855, 88)
 texture = ExtResource("3_u3g4l")
 
 [node name="MapEmptyBusiness8" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(218, 459)
 texture = ExtResource("4_mnuex")
 
 [node name="MapEmptyBusiness9" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(214, 128)
 texture = ExtResource("4_mnuex")
 
 [node name="MapEmptyBusiness10" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(540, 277)
 texture = ExtResource("4_mnuex")
 
 [node name="MapUsedBusiness" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(1090, 400)
 texture = ExtResource("6_hamb8")
-
-[node name="Node" type="Node" parent="."]

@@ -52,9 +52,10 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="PlusButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+[node name="MinusButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("5_4r0rr")
+size_flags_vertical = 4
+texture_normal = ExtResource("7_rv0gx")
 
 [node name="AmountField" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -75,10 +76,9 @@ text = "12"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MinusButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+[node name="PlusButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 4
-texture_normal = ExtResource("7_rv0gx")
+texture_normal = ExtResource("5_4r0rr")
 
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/PlusButton" to="." method="_on_plus_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/MinusButton" to="." method="_on_minus_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/PlusButton" to="." method="_on_plus_pressed"]

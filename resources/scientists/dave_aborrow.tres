@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="Scientist" load_steps=7 format=3 uid="uid://cgu2egmsmkh6m"]
+
+[ext_resource type="Script" uid="uid://bi3lyrufugnud" path="res://food_recipe.gd" id="4_fw8op"]
+[ext_resource type="Script" uid="uid://b4gdg6dt13kvl" path="res://resources/scientists/scientist.gd" id="6_fw8op"]
+[ext_resource type="Texture2D" uid="uid://bmu1vc6vqfxps" path="res://img/science/Dave_Aborrow_icon.png" id="7_n0odn"]
+[ext_resource type="Texture2D" uid="uid://81p674lqrlcy" path="res://img/science/Dave_Aborrow_icon_unavailable.png" id="8_0coru"]
+
+[sub_resource type="Resource" id="Resource_ejk71"]
+script = ExtResource("4_fw8op")
+ingredients = Dictionary[int, int]({
+0: 3,
+1: 3,
+2: 3
+})
+outputs = Dictionary[int, int]({
+0: 3
+})
+time = 60
+metadata/_custom_type_script = "uid://bi3lyrufugnud"
+
+[sub_resource type="Resource" id="Resource_n0odn"]
+script = ExtResource("4_fw8op")
+ingredients = Dictionary[int, int]({
+0: 3,
+1: 3,
+3: 3
+})
+outputs = Dictionary[int, int]({
+1: 3
+})
+time = 60
+metadata/_custom_type_script = "uid://bi3lyrufugnud"
+
+[resource]
+script = ExtResource("6_fw8op")
+type = 1
+name = "Dave Aborrow"
+dinos_to_unlock = 3
+wage = 1000
+price = 0
+dinosaurs = Array[int]([4, 2, 3])
+recipes = Array[ExtResource("4_fw8op")]([SubResource("Resource_ejk71"), SubResource("Resource_n0odn")])
+can_multitask = false
+texture = ExtResource("7_n0odn")
+unavailable_texture = ExtResource("8_0coru")

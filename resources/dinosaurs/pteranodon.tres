@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Dinosaur" load_steps=4 format=3 uid="uid://cbuxo01n7565t"]
+
+[ext_resource type="Texture2D" uid="uid://b27a7uhcjo0sv" path="res://img/dinos/Pteranodon_egg.png" id="2_moksf"]
+[ext_resource type="Script" uid="uid://cfei13n14h6s1" path="res://resources/dinosaurs/dinosaur.gd" id="3_ii3tl"]
+[ext_resource type="Texture2D" uid="uid://c51veer5nsq6" path="res://img/dinos/Pteranodon.png" id="4_ii3tl"]
+
+[resource]
+script = ExtResource("3_ii3tl")
+type = 4
+name = "Pteranodon"
+diet = 1
+biome = 1
+value = 200
+visitors = 70
+creation_bird = 4
+creation_chance = 0.9
+creation_time = 120
+eggs_to_unlock = Dictionary[int, int]({
+3: 1
+})
+texture = ExtResource("4_ii3tl")
+egg_texture = ExtResource("2_moksf")

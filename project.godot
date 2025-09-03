@@ -21,4 +21,5 @@ game_manager="*res://game_manager.gd"
 
 [display]
 
+window/stretch/mode="viewport"
 mouse_cursor/custom_image="uid://xpvibnqldq5x"

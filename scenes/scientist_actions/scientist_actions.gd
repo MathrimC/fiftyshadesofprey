@@ -1,29 +1,34 @@
+class_name ScientistActions
 extends Control
 
 @export var scientist_icon: TextureRect
-@export var scientist_name: TextureRect
+@export var scientist_name: Label
 @export var dinosaurs_container: VBoxContainer
 @export var food_container: VBoxContainer
 
-var scientist: Resources.Scientist
+var scientist: Scientist.Type
 var dinosaur_lines: Array[DinosaurCreationLine]
 var food_lines: Array[FoodCreationLine]
 
 func _ready():
 	game_manager.scientist_action_started.connect(on_action_started)
 	game_manager.scientist_action_ended.connect(on_action_ended)
-	scientist_icon.texture = load("%s/%s" % [Resources.scientist_textures_dir, Resources.scientist_textures[scientist]["icon"]])
-	scientist_name.texture = load("%s/%s" % [Resources.scientist_textures_dir, Resources.scientist_textures[scientist]["name"]])
-	var scientist_info: Dictionary = game_manager.scientist_info.get(scientist, {})
-	for dinosaur in scientist_info.get("dinosaurs", []):
-		var line: DinosaurCreationLine = load(Resources.scenes[Resources.Scene.DINOSAUR_CREATION_LINE]).instantiate()
-		line.dinosaur = dinosaur
-		line.scientist = scientist
-		dinosaurs_container.add_child(line)
-		dinosaur_lines.append(line)
-	for food in scientist_info.get("food", []):
+	var scientist_data: Scientist = game_manager.game_resources.get_scientist(scientist)
+	scientist_icon.texture = scientist_data.texture
+	scientist_name.text = "\"%s\"" % scientist_data.name
+	# scientist_icon.texture = load("%s/%s" % [Resources.scientist_textures_dir, Resources.scientist_textures[scientist]["icon"]])
+	# scientist_name.texture = load("%s/%s" % [Resources.scientist_textures_dir, Resources.scientist_textures[scientist]["name"]])
+	# var scientist_info: Dictionary = game_manager.scientist_info.get(scientist, {})
+	for dinosaur in scientist_data.dinosaurs:
+		if game_manager.is_unlocked(dinosaur):
+			var line: DinosaurCreationLine = load(Resources.scenes[Resources.Scene.DINOSAUR_CREATION_LINE]).instantiate()
+			line.dinosaur = dinosaur
+			line.scientist = scientist
+			dinosaurs_container.add_child(line)
+			dinosaur_lines.append(line)
+	for recipe in scientist_data.recipes:
 		var line: FoodCreationLine = load(Resources.scenes[Resources.Scene.FOOD_CREATION_LINE]).instantiate()
-		line.food = food
+		line.recipe = recipe
 		line.scientist = scientist
 		food_container.add_child(line)
 		food_lines.append(line)

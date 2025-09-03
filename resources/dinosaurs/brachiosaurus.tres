@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Dinosaur" load_steps=4 format=3 uid="uid://dq2a4u7ksx1cu"]
+
+[ext_resource type="Texture2D" uid="uid://bllb3wi1pkngy" path="res://img/dinos/Brachiosaurus_egg.png" id="2_pwsfg"]
+[ext_resource type="Script" uid="uid://cfei13n14h6s1" path="res://resources/dinosaurs/dinosaur.gd" id="3_l73jh"]
+[ext_resource type="Texture2D" uid="uid://bk2lhheqdwiyd" path="res://img/dinos/Brachiosaurus.png" id="5_dov6k"]
+
+[resource]
+script = ExtResource("3_l73jh")
+type = 10
+name = "Brachiosaurus"
+diet = 0
+biome = 0
+value = 350
+visitors = 130
+creation_bird = 5
+creation_chance = 0.7
+creation_time = 180
+eggs_to_unlock = Dictionary[int, int]({
+9: 2
+})
+texture = ExtResource("5_dov6k")
+egg_texture = ExtResource("2_pwsfg")
+metadata/_custom_type_script = "uid://cfei13n14h6s1"

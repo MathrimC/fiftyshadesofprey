@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpqo0jl4dj3cm"]
+
+[ext_resource type="Script" uid="uid://y0k0ymgatko3" path="res://scenes/incubator/place_egg.gd" id="1_w8xib"]
+[ext_resource type="PackedScene" uid="uid://dyj6peppi2grb" path="res://scenes/map/map.tscn" id="2_t74ks"]
+
+[node name="PlaceEgg" type="Node"]
+script = ExtResource("1_w8xib")
+
+[node name="Map" parent="." instance=ExtResource("2_t74ks")]

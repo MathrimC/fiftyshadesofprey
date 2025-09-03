@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Dinosaur" load_steps=4 format=3 uid="uid://lbdguqoxk8d5"]
+
+[ext_resource type="Texture2D" uid="uid://b1b1a5hpvfiqu" path="res://img/dinos/Velociraptor_egg.png" id="2_wsuok"]
+[ext_resource type="Script" uid="uid://cfei13n14h6s1" path="res://resources/dinosaurs/dinosaur.gd" id="3_5j0c8"]
+[ext_resource type="Texture2D" uid="uid://3pw1ilpuyv0o" path="res://img/dinos/Velociraptor.png" id="4_4evqf"]
+
+[resource]
+script = ExtResource("3_5j0c8")
+type = 5
+name = "Velociraptor"
+diet = 1
+biome = 2
+value = 125
+visitors = 80
+creation_bird = 0
+creation_chance = 0.75
+creation_time = 120
+eggs_to_unlock = Dictionary[int, int]({})
+texture = ExtResource("4_4evqf")
+egg_texture = ExtResource("2_wsuok")

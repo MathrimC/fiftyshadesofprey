@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Food" load_steps=3 format=3 uid="uid://m8uxgqqmo25n"]
+
+[ext_resource type="Script" uid="uid://b58847peox3ie" path="res://resources/food/food.gd" id="1_qdx5o"]
+[ext_resource type="Texture2D" uid="uid://cng5fub4hcxf" path="res://img/science/food_carnivore.png" id="2_2y8dg"]
+
+[resource]
+script = ExtResource("1_qdx5o")
+type = 2
+name = "Megamix"
+diet = Array[int]([0, 1, 2])
+texture = ExtResource("2_2y8dg")

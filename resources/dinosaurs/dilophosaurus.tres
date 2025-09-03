@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Dinosaur" load_steps=4 format=3 uid="uid://d3xf7nmrit18u"]
+
+[ext_resource type="Texture2D" uid="uid://677scd7ewhud" path="res://img/dinos/Dilophosaurus_egg.png" id="2_o48um"]
+[ext_resource type="Script" uid="uid://cfei13n14h6s1" path="res://resources/dinosaurs/dinosaur.gd" id="3_o48um"]
+[ext_resource type="Texture2D" uid="uid://b2sel50xlentq" path="res://img/dinos/Dilophosaurus.png" id="5_ush3a"]
+
+[resource]
+script = ExtResource("3_o48um")
+type = 17
+name = "Dilophosaurus"
+diet = 1
+biome = 2
+value = 1600
+visitors = 200
+creation_bird = 7
+creation_chance = 0.5
+creation_time = 300
+eggs_to_unlock = Dictionary[int, int]({
+16: 2
+})
+texture = ExtResource("5_ush3a")
+egg_texture = ExtResource("2_o48um")
+metadata/_custom_type_script = "uid://cfei13n14h6s1"

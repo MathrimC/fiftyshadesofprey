@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Dinosaur" load_steps=4 format=3 uid="uid://da14fond2xeej"]
+
+[ext_resource type="Texture2D" uid="uid://b1vqxqmj631hd" path="res://img/dinos/Protoceratops_egg.png" id="1_nw8oq"]
+[ext_resource type="Script" uid="uid://cfei13n14h6s1" path="res://resources/dinosaurs/dinosaur.gd" id="3_y3cpp"]
+[ext_resource type="Texture2D" uid="uid://1kptyygorpp5" path="res://img/dinos/Protoceratops.png" id="4_iojdp"]
+
+[resource]
+script = ExtResource("3_y3cpp")
+type = 19
+name = "Protoceratops"
+diet = 0
+biome = 2
+value = 1600
+visitors = 220
+creation_bird = 3
+creation_chance = 0.1
+creation_time = 60
+eggs_to_unlock = Dictionary[int, int]({
+18: 1
+})
+texture = ExtResource("4_iojdp")
+egg_texture = ExtResource("1_nw8oq")
+metadata/_custom_type_script = "uid://cfei13n14h6s1"

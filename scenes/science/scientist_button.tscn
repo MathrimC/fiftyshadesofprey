@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8nio6mg6w57n"]
+
+[ext_resource type="Texture2D" uid="uid://bq0j3jj3gvkqa" path="res://img/science/Bill_Aye_icon.png" id="1_5weui"]
+[ext_resource type="Script" uid="uid://dbaeu0s1k4j5d" path="res://scenes/science/scientist_button.gd" id="2_4hpra"]
+
+[node name="ScientistButton" type="TextureButton"]
+custom_minimum_size = Vector2(150, 180)
+offset_right = 150.0
+offset_bottom = 180.0
+texture_normal = ExtResource("1_5weui")
+ignore_texture_size = true
+stretch_mode = 4
+script = ExtResource("2_4hpra")
+
+[connection signal="pressed" from="." to="." method="on_pressed"]

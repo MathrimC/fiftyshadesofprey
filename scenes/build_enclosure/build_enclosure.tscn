@@ -1,0 +1,122 @@
+[gd_scene load_steps=4 format=3 uid="uid://cx7o6aml26ibb"]
+
+[ext_resource type="Script" uid="uid://b1v7ctbi02wlr" path="res://scenes/build_enclosure/build_enclosure.gd" id="1_shnu1"]
+[ext_resource type="PackedScene" uid="uid://dyj6peppi2grb" path="res://scenes/map/map.tscn" id="2_4e05c"]
+[ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://cartoon_theme.tres" id="3_4e05c"]
+
+[node name="BuildEnclosure" type="Node" node_paths=PackedStringArray("map", "biome_selection", "fence_selection", "biome_button_container")]
+script = ExtResource("1_shnu1")
+map = NodePath("Map")
+biome_selection = NodePath("BiomeSelection")
+fence_selection = NodePath("FenceSelection")
+biome_button_container = NodePath("BiomeSelection/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer")
+
+[node name="Map" parent="." instance=ExtResource("2_4e05c")]
+
+[node name="BiomeSelection" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="BiomeSelection"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -254.0
+offset_top = -98.5
+offset_right = 254.0
+offset_bottom = 98.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="BiomeSelection/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BiomeSelection/PanelContainer/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="BiomeSelection/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_4e05c")
+text = "Choose biome"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BiomeSelection/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="FenceSelection" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="FenceSelection"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -254.0
+offset_top = -98.5
+offset_right = 254.0
+offset_bottom = 98.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="FenceSelection/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FenceSelection/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Label" type="Label" parent="FenceSelection/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_4e05c")
+text = "Choose enclosure"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="FenceSelection/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="ButtonWood" type="Button" parent="FenceSelection/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_4e05c")
+text = "Wood
+100"
+
+[node name="ButtonGlass" type="Button" parent="FenceSelection/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_4e05c")
+text = "Glass
+3000"
+
+[node name="ButtonSteel" type="Button" parent="FenceSelection/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_4e05c")
+text = "Steel
+5000"
+
+[connection signal="pressed" from="FenceSelection/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ButtonWood" to="." method="on_enclosure_selected" binds= [0]]
+[connection signal="pressed" from="FenceSelection/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ButtonGlass" to="." method="on_enclosure_selected" binds= [1]]
+[connection signal="pressed" from="FenceSelection/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ButtonSteel" to="." method="on_enclosure_selected" binds= [2]]

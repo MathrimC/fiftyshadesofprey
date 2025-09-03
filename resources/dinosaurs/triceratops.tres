@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Dinosaur" load_steps=4 format=3 uid="uid://chh8ns7r8lqg8"]
+
+[ext_resource type="Script" uid="uid://cfei13n14h6s1" path="res://resources/dinosaurs/dinosaur.gd" id="1_jbgwq"]
+[ext_resource type="Texture2D" uid="uid://b3rjpbck70urx" path="res://img/dinos/Triceratops_egg.png" id="2_5b4a1"]
+[ext_resource type="Texture2D" uid="uid://w230ssfj58r2" path="res://img/dinos/Triceratops.png" id="4_gfna4"]
+
+[resource]
+script = ExtResource("1_jbgwq")
+type = 8
+name = "Triceratops"
+diet = 0
+biome = 0
+value = 575
+visitors = 110
+creation_bird = 6
+creation_chance = 0.75
+creation_time = 180
+eggs_to_unlock = Dictionary[int, int]({})
+texture = ExtResource("4_gfna4")
+egg_texture = ExtResource("2_5b4a1")
+metadata/_custom_type_script = "uid://cfei13n14h6s1"

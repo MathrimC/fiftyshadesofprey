@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Grocery" load_steps=3 format=3 uid="uid://fo544box4e4x"]
+
+[ext_resource type="Script" uid="uid://d1pgb42ge7odf" path="res://resources/groceries/grocery.gd" id="1_a0n55"]
+[ext_resource type="Texture2D" uid="uid://dt76w6gmxtiyw" path="res://img/buy/groceries_pepper.png" id="2_a0n55"]
+
+[resource]
+script = ExtResource("1_a0n55")
+type = 1
+name = "Pepper"
+price = 1
+texture = ExtResource("2_a0n55")

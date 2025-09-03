@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Dinosaur" load_steps=4 format=3 uid="uid://cre4mgf0q8aa1"]
+
+[ext_resource type="Texture2D" uid="uid://ciywts57ugo3x" path="res://img/dinos/Iguanodon_egg.png" id="2_qpm34"]
+[ext_resource type="Script" uid="uid://cfei13n14h6s1" path="res://resources/dinosaurs/dinosaur.gd" id="3_107wm"]
+[ext_resource type="Texture2D" uid="uid://dbc18djng2g75" path="res://img/dinos/Iguanodon.png" id="4_107wm"]
+
+[resource]
+script = ExtResource("3_107wm")
+type = 9
+name = "Iguanodon"
+diet = 0
+biome = 0
+value = 175
+visitors = 120
+creation_bird = 1
+creation_chance = 0.7
+creation_time = 180
+eggs_to_unlock = Dictionary[int, int]({
+8: 2
+})
+texture = ExtResource("4_107wm")
+egg_texture = ExtResource("2_qpm34")
+metadata/_custom_type_script = "uid://cfei13n14h6s1"

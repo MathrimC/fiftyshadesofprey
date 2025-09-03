@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="Scientist" load_steps=7 format=3 uid="uid://xqm4x8ejc523"]
+
+[ext_resource type="Script" uid="uid://bi3lyrufugnud" path="res://food_recipe.gd" id="5_ulvlf"]
+[ext_resource type="Script" uid="uid://b4gdg6dt13kvl" path="res://resources/scientists/scientist.gd" id="6_jshsx"]
+[ext_resource type="Texture2D" uid="uid://byxn70mqxtj73" path="res://img/science/Line_DG_Tyrone_icon.png" id="7_gb13e"]
+[ext_resource type="Texture2D" uid="uid://d0vhiwvcbwq5d" path="res://img/science/Line_DG_Tyrone_icon_unavailable.png" id="8_8ic4t"]
+
+[sub_resource type="Resource" id="Resource_rlxxg"]
+script = ExtResource("5_ulvlf")
+ingredients = Dictionary[int, int]({
+0: 5,
+1: 5,
+2: 5
+})
+outputs = Dictionary[int, int]({
+0: 10
+})
+time = 300
+metadata/_custom_type_script = "uid://bi3lyrufugnud"
+
+[sub_resource type="Resource" id="Resource_ulvlf"]
+script = ExtResource("5_ulvlf")
+ingredients = Dictionary[int, int]({
+0: 5,
+1: 5,
+3: 5
+})
+outputs = Dictionary[int, int]({
+1: 10
+})
+time = 300
+metadata/_custom_type_script = "uid://bi3lyrufugnud"
+
+[resource]
+script = ExtResource("6_jshsx")
+type = 2
+name = "Line DG Tyrone"
+dinos_to_unlock = 5
+wage = 1500
+price = 0
+dinosaurs = Array[int]([5, 6, 7])
+recipes = Array[ExtResource("5_ulvlf")]([SubResource("Resource_rlxxg"), SubResource("Resource_ulvlf")])
+can_multitask = false
+texture = ExtResource("7_gb13e")
+unavailable_texture = ExtResource("8_8ic4t")

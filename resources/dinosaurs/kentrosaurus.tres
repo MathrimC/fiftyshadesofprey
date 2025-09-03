@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Dinosaur" load_steps=4 format=3 uid="uid://btlrixvm7v6k5"]
+
+[ext_resource type="Texture2D" uid="uid://dulnvjxtqh7ip" path="res://img/dinos/Kentrosaurus_egg.png" id="2_wv1ji"]
+[ext_resource type="Script" uid="uid://cfei13n14h6s1" path="res://resources/dinosaurs/dinosaur.gd" id="3_che0d"]
+[ext_resource type="Texture2D" uid="uid://hl81nfa7uqbc" path="res://img/dinos/Kentrosaurus.png" id="4_yfjfd"]
+
+[resource]
+script = ExtResource("3_che0d")
+type = 15
+name = "Kentrosaurus"
+diet = 0
+biome = 0
+value = 800
+visitors = 180
+creation_bird = 6
+creation_chance = 0.5
+creation_time = 300
+eggs_to_unlock = Dictionary[int, int]({})
+texture = ExtResource("4_yfjfd")
+egg_texture = ExtResource("2_wv1ji")
+metadata/_custom_type_script = "uid://cfei13n14h6s1"

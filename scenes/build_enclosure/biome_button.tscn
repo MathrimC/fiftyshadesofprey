@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://y73q8fjiqvdh"]
+
+[ext_resource type="Texture2D" uid="uid://c3g14i8d138i8" path="res://img/buy/forest_logo.png" id="1_lqs4u"]
+[ext_resource type="Script" uid="uid://dcxbgv8il7rp2" path="res://scenes/build_enclosure/biome_button.gd" id="2_yt473"]
+
+[node name="BiomeButton" type="TextureButton"]
+texture_normal = ExtResource("1_lqs4u")
+script = ExtResource("2_yt473")

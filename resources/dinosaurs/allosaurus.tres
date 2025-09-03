@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Dinosaur" load_steps=4 format=3 uid="uid://brn7knyedhatq"]
+
+[ext_resource type="Texture2D" uid="uid://rwdtnqj4t6ha" path="res://img/dinos/Allosaurus_egg.png" id="2_0oojb"]
+[ext_resource type="Script" uid="uid://cfei13n14h6s1" path="res://resources/dinosaurs/dinosaur.gd" id="3_v70sf"]
+[ext_resource type="Texture2D" uid="uid://c6ci06pg4wsmn" path="res://img/dinos/Allosaurus.png" id="4_lkoak"]
+
+[resource]
+script = ExtResource("3_v70sf")
+type = 7
+name = "Allosaurus"
+diet = 1
+biome = 0
+value = 1175
+visitors = 100
+creation_bird = 8
+creation_chance = 0.75
+creation_time = 180
+eggs_to_unlock = Dictionary[int, int]({
+6: 2
+})
+texture = ExtResource("4_lkoak")
+egg_texture = ExtResource("2_0oojb")

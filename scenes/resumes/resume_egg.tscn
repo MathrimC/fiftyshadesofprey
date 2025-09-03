@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3ka1h4iaho06"]
+
+[ext_resource type="Texture2D" uid="uid://dl7e6gvafqqcy" path="res://img/dinos/Diplodocus_egg.png" id="1_483m1"]
+
+[node name="ResumeEgg" type="TextureRect"]
+custom_minimum_size = Vector2(25, 0)
+size_flags_horizontal = 4
+texture = ExtResource("1_483m1")
+expand_mode = 1
+stretch_mode = 5

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Dinosaur" load_steps=4 format=3 uid="uid://xb7ibqs86ywn"]
+
+[ext_resource type="Texture2D" uid="uid://duy2w8efj1qxv" path="res://img/dinos/Styracosaurus.png" id="1_0ldxv"]
+[ext_resource type="Texture2D" uid="uid://dedouwa28j12p" path="res://img/dinos/Styracosaurus_egg.png" id="2_4f4eq"]
+[ext_resource type="Script" uid="uid://cfei13n14h6s1" path="res://resources/dinosaurs/dinosaur.gd" id="3_cd5h3"]
+
+[resource]
+script = ExtResource("3_cd5h3")
+type = 1
+name = "Styracosaurus"
+diet = 0
+biome = 0
+value = 150
+visitors = 30
+creation_bird = 1
+creation_chance = 1.0
+creation_time = 60
+eggs_to_unlock = Dictionary[int, int]({})
+texture = ExtResource("1_0ldxv")
+egg_texture = ExtResource("2_4f4eq")
+metadata/_custom_type_script = "uid://cfei13n14h6s1"

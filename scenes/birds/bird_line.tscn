@@ -1,0 +1,108 @@
+[gd_scene load_steps=8 format=3 uid="uid://cx6mg8rybiib0"]
+
+[ext_resource type="Script" uid="uid://ktxil7s64enl" path="res://scenes/birds/bird_line.gd" id="1_mibq5"]
+[ext_resource type="Texture2D" uid="uid://ci22753ktr44h" path="res://img/birds/chicken.png" id="2_5xyyv"]
+[ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://fonts/BD_Cartoon_Shout.ttf" id="3_wlp27"]
+[ext_resource type="Texture2D" uid="uid://c6pi8i2uatfj" path="res://img/buy/birds_buy_minus.png" id="5_lyvqh"]
+[ext_resource type="Texture2D" uid="uid://dk4cgvxg2vps3" path="res://img/buy/birds_buy_space.png" id="6_v5tok"]
+[ext_resource type="Texture2D" uid="uid://bj8inxpsinvvw" path="res://img/buy/birds_buy_plus.png" id="7_uf6ld"]
+[ext_resource type="Texture2D" uid="uid://c7bv60dg2es1m" path="res://img/buy/bird_price_10.png" id="8_3vlwu"]
+
+[node name="BirdLine" type="Control" node_paths=PackedStringArray("image", "name_label", "amount_label", "pricetag")]
+custom_minimum_size = Vector2(380, 80)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 108.0
+offset_top = 49.0
+offset_right = 488.0
+offset_bottom = 129.0
+script = ExtResource("1_mibq5")
+image = NodePath("HBoxContainer/Image")
+name_label = NodePath("HBoxContainer/VBoxContainer/Name")
+amount_label = NodePath("HBoxContainer/VBoxContainer/HBoxContainer/Amount/AmountLabel")
+pricetag = NodePath("Price")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+
+[node name="Image" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+texture = ExtResource("2_5xyyv")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+alignment = 1
+
+[node name="Name" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_wlp27")
+text = "Chickens"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="MinusButton" type="TextureButton" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_lyvqh")
+stretch_mode = 3
+
+[node name="Amount" type="TextureButton" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("6_v5tok")
+stretch_mode = 3
+
+[node name="AmountLabel" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/HBoxContainer/Amount"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_wlp27")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlusButton" type="TextureButton" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("7_uf6ld")
+stretch_mode = 3
+
+[node name="Price" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(80, 40)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -89.0
+offset_top = -18.0
+offset_right = -9.0
+offset_bottom = 22.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("8_3vlwu")
+expand_mode = 1
+stretch_mode = 5
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/HBoxContainer/MinusButton" to="." method="_on_minus_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/HBoxContainer/PlusButton" to="." method="_on_plus_pressed"]

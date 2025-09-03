@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://cdrka8tjwqtpy"]
+[gd_scene load_steps=38 format=3 uid="uid://cdrka8tjwqtpy"]
 
 [ext_resource type="Script" uid="uid://2hr1bo5hgepm" path="res://scenes/birds/birds.gd" id="1_0ntoc"]
 [ext_resource type="Texture2D" uid="uid://b0v3wm3p0s43" path="res://img/buy/birds_background.png" id="1_1461h"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://dlrwmb50wwksv" path="res://img/buy/birds_buy_active.png" id="3_fgfbm"]
 [ext_resource type="Texture2D" uid="uid://dt6yodk74pxtl" path="res://img/buy/chicken_icon.png" id="4_eturq"]
 [ext_resource type="Texture2D" uid="uid://2qliut5bebo2" path="res://img/buy/chicken_text.png" id="5_vby6f"]
-[ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://fonts/BD_Cartoon_Shout.ttf" id="6_brkxa"]
 [ext_resource type="Texture2D" uid="uid://dyk2r6u5rpqqq" path="res://img/buy/duck_icon.png" id="6_c4m3l"]
 [ext_resource type="Texture2D" uid="uid://boqdu1uofurxq" path="res://img/buy/duck_text.png" id="7_v2d20"]
 [ext_resource type="Texture2D" uid="uid://b4lida1q2c8sf" path="res://img/buy/Cassowaries_icon.png" id="8_yirju"]
@@ -38,93 +37,60 @@
 [ext_resource type="Texture2D" uid="uid://dwq7xiubjoeoc" path="res://img/buy/bird_price_7500.png" id="34_egi48"]
 [ext_resource type="Texture2D" uid="uid://bx3qxoscpqyf5" path="res://img/buy/bird_price_8000.png" id="35_dfixy"]
 [ext_resource type="Texture2D" uid="uid://dx7nmukv5t8tc" path="res://img/buy/bird_price_9500.png" id="36_b4brk"]
-[ext_resource type="Script" uid="uid://4luf68i5o8cu" path="res://scenes/birds/bird_controls.gd" id="38_brkxa"]
 
-[node name="Birds" type="Node2D"]
+[node name="Birds" type="Control" node_paths=PackedStringArray("container")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_0ntoc")
+container = NodePath("MarginContainer/GridContainer")
+pricetags = Dictionary[int, Texture]({
+10: ExtResource("27_dtve2"),
+50: ExtResource("28_u8ye4"),
+75: ExtResource("29_qwrc5"),
+350: ExtResource("30_oml21"),
+1000: ExtResource("31_i6ah2"),
+1500: ExtResource("32_a5clp"),
+3500: ExtResource("33_nv873"),
+7500: ExtResource("34_egi48"),
+8000: ExtResource("35_dfixy"),
+9500: ExtResource("36_b4brk")
+})
 
-[node name="BirdsBackground" type="Sprite2D" parent="."]
-position = Vector2(576, 324)
+[node name="BirdsBackground" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_1461h")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="Chickens" type="HBoxContainer" parent="."]
-offset_left = 299.0
-offset_top = 60.0
-offset_right = 394.0
-offset_bottom = 100.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-alignment = 1
-script = ExtResource("38_brkxa")
-
-[node name="PlusButton" type="TextureButton" parent="Chickens"]
-layout_mode = 2
-texture_normal = ExtResource("25_o3xiy")
-stretch_mode = 3
-
-[node name="Amount" type="TextureButton" parent="Chickens"]
-layout_mode = 2
-texture_normal = ExtResource("24_hsobx")
-stretch_mode = 3
-
-[node name="AmountLabel" type="RichTextLabel" parent="Chickens/Amount"]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("6_brkxa")
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 110
+theme_override_constants/margin_bottom = 100
 
-[node name="MinusButton" type="TextureButton" parent="Chickens"]
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
 layout_mode = 2
-texture_normal = ExtResource("26_g01fd")
-stretch_mode = 3
-
-[node name="Ducks" type="HBoxContainer" parent="."]
-offset_left = 311.0
-offset_top = 162.0
-offset_right = 406.0
-offset_bottom = 202.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-alignment = 1
-script = ExtResource("38_brkxa")
-bird = 1
-
-[node name="PlusButton" type="TextureButton" parent="Ducks"]
-layout_mode = 2
-texture_normal = ExtResource("25_o3xiy")
-stretch_mode = 3
-
-[node name="Amount" type="TextureButton" parent="Ducks"]
-layout_mode = 2
-texture_normal = ExtResource("24_hsobx")
-stretch_mode = 3
-
-[node name="AmountLabel" type="RichTextLabel" parent="Ducks/Amount"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("6_brkxa")
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="MinusButton" type="TextureButton" parent="Ducks"]
-layout_mode = 2
-texture_normal = ExtResource("26_g01fd")
-stretch_mode = 3
+theme_override_constants/h_separation = 115
+theme_override_constants/v_separation = 20
+columns = 2
 
 [node name="BuyButton" type="TextureButton" parent="."]
+layout_mode = 0
 offset_left = 967.0
 offset_top = 541.0
 offset_right = 1092.0
@@ -133,223 +99,273 @@ texture_normal = ExtResource("2_b8yjg")
 texture_pressed = ExtResource("3_fgfbm")
 
 [node name="ChickenIcon" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(156, 62)
 texture = ExtResource("4_eturq")
 
 [node name="ChickenText" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(346, 51)
 texture = ExtResource("5_vby6f")
 
 [node name="DuckIcon" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(148, 182)
 texture = ExtResource("6_c4m3l")
 
 [node name="DuckText" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(360, 154)
 texture = ExtResource("7_v2d20")
 
 [node name="CassowariesIcon" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(657, 531)
 texture = ExtResource("8_yirju")
 
 [node name="CassowariesText" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(857, 498)
 texture = ExtResource("9_77fj2")
 
 [node name="FlamingoIcon" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(646, 408)
 texture = ExtResource("10_wi0lp")
 
 [node name="FlamingoText" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(860, 384)
 texture = ExtResource("11_2732t")
 
 [node name="KiwiIcon" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(632, 217)
 texture = ExtResource("12_ynwwr")
 
 [node name="KiwiText" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(833, 180)
 texture = ExtResource("13_sf03u")
 
 [node name="OstrichesIcon" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(618, 104)
 texture = ExtResource("14_6xrga")
 
 [node name="OstrichesText" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(794, 46)
 texture = ExtResource("15_v1k3j")
 
 [node name="PeafowlIcon" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(640, 297)
 texture = ExtResource("16_tjxk5")
 
 [node name="PeafowlText" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(854, 274)
 texture = ExtResource("17_h8chh")
 
 [node name="PigeonIcon" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(155, 285)
 texture = ExtResource("18_vba1e")
 
 [node name="PigeonsText" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(375, 274)
 texture = ExtResource("19_r8hnd")
 
 [node name="PinguinsIcon" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(142, 425)
 texture = ExtResource("20_2ogi2")
 
 [node name="PinguinsText" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(366, 398)
 texture = ExtResource("21_hc6wk")
 
 [node name="TurkeyIcon" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(186, 553)
 texture = ExtResource("22_4lj68")
 
 [node name="TurkeyText" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(400, 534)
 texture = ExtResource("23_l8107")
 
 [node name="BirdsBuySpace3" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(374, 301)
 texture = ExtResource("24_hsobx")
 
 [node name="BirdsBuySpace4" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(367, 423)
 texture = ExtResource("24_hsobx")
 
 [node name="BirdsBuySpace5" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(398, 558)
 texture = ExtResource("24_hsobx")
 
 [node name="BirdsBuySpace6" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(792, 71)
 texture = ExtResource("24_hsobx")
 
 [node name="BirdsBuySpace7" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(837, 205)
 texture = ExtResource("24_hsobx")
 
 [node name="BirdsBuySpace8" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(852, 300)
 texture = ExtResource("24_hsobx")
 
 [node name="BirdsBuySpace9" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(860, 409)
 texture = ExtResource("24_hsobx")
 
 [node name="BirdsBuySpace10" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(860, 523)
 texture = ExtResource("24_hsobx")
 
 [node name="BirdsBuyPlus3" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(328, 301)
 texture = ExtResource("25_o3xiy")
 
 [node name="BirdsBuyMinus3" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(416, 302)
 texture = ExtResource("26_g01fd")
 
 [node name="BirdsBuyPlus4" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(323, 424)
 texture = ExtResource("25_o3xiy")
 
 [node name="BirdsBuyMinus4" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(410, 424)
 texture = ExtResource("26_g01fd")
 
 [node name="BirdsBuyPlus5" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(748, 71)
 texture = ExtResource("25_o3xiy")
 
 [node name="BirdsBuyMinus5" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(835, 70)
 texture = ExtResource("26_g01fd")
 
 [node name="BirdsBuyPlus6" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(794, 205)
 texture = ExtResource("25_o3xiy")
 
 [node name="BirdsBuyMinus6" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(881, 205)
 texture = ExtResource("26_g01fd")
 
 [node name="BirdsBuyPlus7" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(809, 301)
 texture = ExtResource("25_o3xiy")
 
 [node name="BirdsBuyMinus7" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(894, 300)
 texture = ExtResource("26_g01fd")
 
 [node name="BirdsBuyPlus8" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(816, 410)
 texture = ExtResource("25_o3xiy")
 
 [node name="BirdsBuyMinus8" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(903, 409)
 texture = ExtResource("26_g01fd")
 
 [node name="BirdsBuyPlus9" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(817, 523)
 texture = ExtResource("25_o3xiy")
 
 [node name="BirdsBuyMinus9" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(904, 523)
 texture = ExtResource("26_g01fd")
 
 [node name="BirdsBuyPlus10" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(355, 556)
 texture = ExtResource("25_o3xiy")
 
 [node name="BirdsBuyMinus10" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(441, 558)
 texture = ExtResource("26_g01fd")
 
 [node name="BirdPrice10" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(433, 98)
 texture = ExtResource("27_dtve2")
 
 [node name="BirdPrice50" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(444, 156)
 texture = ExtResource("28_u8ye4")
 
 [node name="BirdPrice75" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(348, 252)
 texture = ExtResource("29_qwrc5")
 
 [node name="BirdPrice350" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(463, 409)
 texture = ExtResource("30_oml21")
 
 [node name="BirdPrice1000" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(455, 512)
 texture = ExtResource("31_i6ah2")
 
 [node name="BirdPrice1500" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(889, 29)
 texture = ExtResource("32_a5clp")
 
 [node name="BirdPrice3500" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(915, 181)
 texture = ExtResource("33_nv873")
 
 [node name="BirdPrice7500" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(937, 257)
 texture = ExtResource("34_egi48")
 
 [node name="BirdPrice8000" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(964, 385)
 texture = ExtResource("35_dfixy")
 
 [node name="BirdPrice9500" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(972, 501)
 texture = ExtResource("36_b4brk")
 
-[connection signal="pressed" from="Chickens/PlusButton" to="Chickens" method="_on_plus_pressed"]
-[connection signal="pressed" from="Chickens/MinusButton" to="Chickens" method="_on_minus_pressed"]
-[connection signal="pressed" from="Ducks/PlusButton" to="Ducks" method="_on_plus_pressed"]
-[connection signal="pressed" from="Ducks/MinusButton" to="Ducks" method="_on_minus_pressed"]
 [connection signal="pressed" from="BuyButton" to="." method="_on_buy_pressed"]

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Dinosaur" load_steps=4 format=3 uid="uid://d3jkjofin5fru"]
+
+[ext_resource type="Texture2D" uid="uid://tntfk2lssr8e" path="res://img/dinos/Spinosaurus_egg.png" id="2_qibgj"]
+[ext_resource type="Script" uid="uid://cfei13n14h6s1" path="res://resources/dinosaurs/dinosaur.gd" id="3_rnbkj"]
+[ext_resource type="Texture2D" uid="uid://b86ombmpv7ses" path="res://img/dinos/Spinosaurus.png" id="4_rnbkj"]
+
+[resource]
+script = ExtResource("3_rnbkj")
+type = 2
+name = "Spinosaurus"
+diet = 1
+biome = 1
+value = 175
+visitors = 50
+creation_bird = 2
+creation_chance = 0.9
+creation_time = 60
+eggs_to_unlock = Dictionary[int, int]({})
+texture = ExtResource("4_rnbkj")
+egg_texture = ExtResource("2_qibgj")
+metadata/_custom_type_script = "uid://cfei13n14h6s1"

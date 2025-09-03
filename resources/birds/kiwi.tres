@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Bird" load_steps=3 format=3 uid="uid://c3a3dhhb8y5r3"]
+
+[ext_resource type="Script" uid="uid://dvvyap5uyp6cp" path="res://resources/birds/bird.gd" id="2_4m7p8"]
+[ext_resource type="Texture2D" uid="uid://cfyo1kpc6wgq8" path="res://img/birds/kiwi.png" id="2_l2iar"]
+
+[resource]
+script = ExtResource("2_4m7p8")
+type = 6
+name = "Kiwi"
+price = 350
+texture = ExtResource("2_l2iar")

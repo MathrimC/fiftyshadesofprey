@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Food" load_steps=3 format=3 uid="uid://dt1nt1ajpigcx"]
+
+[ext_resource type="Script" uid="uid://b58847peox3ie" path="res://resources/food/food.gd" id="1_jwo75"]
+[ext_resource type="Texture2D" uid="uid://xug4uvrurhjc" path="res://img/science/food_herbivore.png" id="2_23p08"]
+
+[resource]
+script = ExtResource("1_jwo75")
+type = 0
+name = "Herbivore food"
+diet = Array[int]([0, 2])
+texture = ExtResource("2_23p08")

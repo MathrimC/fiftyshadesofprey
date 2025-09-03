@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Bird" load_steps=3 format=3 uid="uid://ixrl2rlo3u7d"]
+
+[ext_resource type="Texture2D" uid="uid://du8dmo1osnglw" path="res://img/birds/ostrich.png" id="2_kb6hy"]
+[ext_resource type="Script" uid="uid://dvvyap5uyp6cp" path="res://resources/birds/bird.gd" id="2_ksnc7"]
+
+[resource]
+script = ExtResource("2_ksnc7")
+type = 5
+name = "Ostrich"
+price = 175
+texture = ExtResource("2_kb6hy")

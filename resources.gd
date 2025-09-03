@@ -1,13 +1,15 @@
 class_name Resources
 extends Node
 
-enum Scene {MAIN_MENU, GAME, DINOPARK, BUY, DINOS, STAFF, SCIENCE, MAP, MENU, RESUMES_SCIENTISTS, RESUMES_CAREGIVERS, BIRDS, GROCERIES, SCIENTIST_ACTIONS, INCUBATOR, DINOSAUR_CREATION_LINE, FOOD_CREATION_LINE, INGREDIENT, INCUBATOREGG, INVENTORY, INVENTORY_ITEM, DINOSAUR_TILE, GROCERY_ITEM}
+enum Scene {MAIN_MENU, GAME, DINOPARK, BUY, DINOS, STAFF, SCIENCE, MAP, MENU, RESUMES_SCIENTISTS, RESUMES_CAREGIVERS, BIRDS, GROCERIES, BUILD_ENCLOSURE, GARDEN_CENTER, SCIENTIST_ACTIONS, INCUBATOR, DINOSAUR_CREATION_LINE, FOOD_CREATION_LINE, INGREDIENT, INCUBATOREGG, INVENTORY, INVENTORY_ITEM, DINOSAUR_TILE, GROCERY_ITEM, SCIENTIST_RESUME, RESUME_EGG, RESUME_FOOD, SCIENTIST_BUTTON, BIRD_LINE, BIOME_BUTTON}
 enum Scientist { BILL_AYE, DAVE_ABORROW, LINE_GD_TYRONE, CASI_NEUTRON, AIBERT_1STONE, M4R13_CR13 }
-enum Dinosaur { DIPLODOCUS, STYRACOSAURUS, ANKYLOSAURUS, PTERANODON, SPINOSAURUS }
-enum Bird { CHICKEN, DUCK, PIGEON, PINGUIN, TURKEY, OSTRICH, KIWI, PEAFOWL, FLAMINGO, CASSOWARIE }
-enum Food { CARNIVORE, HERBIVORE }
-enum Groceries { SALT, PEPPER, RED_SLIME, GREEN_SLIME }
-enum Biome { FOREST, DESERT, SWAMP }
+enum Dinosaur { DIPLODOCUS, STYRACOSAURUS, ANKYLOSAURUS, PTERANODON, SPINOSAURUS, VELOCIRAPTOR, PARASAUROLOPHUS, ALLOSAURUS, TRICERATOPS, IGUANADON, BRACHIOSAURUS, STEGOSAURUS, TYRANNOSAURUS_REX, HERRERASAURUS, CARNOTAURUS, KENTROSAURUS, PACHYCEPHALOSAURUS, DILOPHOSAURUS, OVIRAPTOR, PROTOCERATOPS }
+# enum Bird { CHICKEN, DUCK, PIGEON, PINGUIN, TURKEY, OSTRICH, KIWI, PEAFOWL, FLAMINGO, CASSOWARIE }
+# enum Food { CARNIVORE, HERBIVORE }
+# enum Diet { CARNIVORE, HERBIVORE }
+# enum Groceries { SALT, PEPPER, RED_SLIME, GREEN_SLIME }
+enum Biome { FOREST, SWAMP, DESERT }
+enum TextureType {IMAGE, EGG, NAME}
 
 const scenes: Dictionary = {
 	Scene.MAIN_MENU: "res://scenes/main_menu/main_menu.tscn",
@@ -23,6 +25,7 @@ const scenes: Dictionary = {
 	Scene.RESUMES_CAREGIVERS: "res://scenes/resumes/resumes_caregivers.tscn",
 	Scene.BIRDS: "res://scenes/birds/birds.tscn",
 	Scene.GROCERIES: "res://scenes/groceries/groceries.tscn",
+	Scene.BUILD_ENCLOSURE: "res://scenes/build_enclosure/build_enclosure.tscn",
 	Scene.SCIENTIST_ACTIONS: "res://scenes/scientist_actions/scientist_actions.tscn",
 	Scene.INCUBATOR: "res://scenes/incubator/incubator.tscn",
 	Scene.DINOSAUR_CREATION_LINE: "res://scenes/scientist_actions/dinosaur_creation_line.tscn",
@@ -32,29 +35,42 @@ const scenes: Dictionary = {
 	Scene.INVENTORY: "res://scenes/inventory/inventory.tscn",
 	Scene.INVENTORY_ITEM: "res://scenes/inventory/inventory_item.tscn",
 	Scene.DINOSAUR_TILE: "res://scenes/dinos/dinosaur_tile.tscn",
-	Scene.GROCERY_ITEM: "res://scenes/groceries/grocery_item.tscn"
+	Scene.GROCERY_ITEM: "res://scenes/groceries/grocery_item.tscn",
+	Scene.SCIENTIST_RESUME: "res://scenes/resumes/scientist_resume.tscn",
+	Scene.RESUME_EGG: "res://scenes/resumes/resume_egg.tscn",
+	Scene.RESUME_FOOD: "res://scenes/resumes/resume_egg.tscn",
+	Scene.SCIENTIST_BUTTON: "res://scenes/science/scientist_button.tscn",
+	Scene.BIRD_LINE: "res://scenes/birds/bird_line.tscn",
+	Scene.BIOME_BUTTON: "res://scenes/build_enclosure/biome_button.tscn",
 }
 
-const food_textures_dir := "res://img/science"
-const food_textures: Dictionary = {
-	Food.CARNIVORE: "food_carnivore.png",
-	Food.HERBIVORE: "food_herbivore.png",
-}
+# const food_textures_dir := "res://img/science"
+# const food_textures: Dictionary = {
+# 	Food.CARNIVORE: "food_carnivore.png",
+# 	Food.HERBIVORE: "food_herbivore.png",
+# }
 
 const biome_textures_dir := "res://img/buy"
 const biome_textures: Dictionary = {
 	Biome.FOREST: "forest_logo.png",
-	Biome.DESERT: "desert_logo.png",
 	Biome.SWAMP: "swamp_logo.png",
+	Biome.DESERT: "desert_logo.png",
 }
 
-const grocery_textures_dir := "res://img/buy"
-const grocery_textures: Dictionary = {
-	Groceries.SALT: "groceries_salt.png",
-	Groceries.PEPPER: "groceries_pepper.png",
-	Groceries.RED_SLIME: "groceries_red_slime.png",
-	Groceries.GREEN_SLIME: "groceries_buy_green_slime.png",
+const enclosure_textures_dir := "res://img/park"
+const enclosure_textures: Dictionary = {
+	Biome.FOREST: "park_dinosaur_forest.png",
+	Biome.SWAMP: "park_dinosaur_swamp.png",
+	Biome.DESERT: "park_dinosaur_desert.png",
 }
+
+# const grocery_textures_dir := "res://img/buy"
+# const grocery_textures: Dictionary = {
+# 	Groceries.SALT: "groceries_salt.png",
+# 	Groceries.PEPPER: "groceries_pepper.png",
+# 	Groceries.RED_SLIME: "groceries_red_slime.png",
+# 	Groceries.GREEN_SLIME: "groceries_buy_green_slime.png",
+# }
 
 
 const scientist_textures_dir := "res://img/science"
@@ -84,7 +100,7 @@ const scientist_textures: Dictionary = {
 	},
 	Scientist.M4R13_CR13: {
 		"icon": "M4R13_CR13_icon.png",
-		"unavailable": "M4R13_CR13_unavailable.png",
+		"unavailable": "M4R13_CR13_icon_unavailable.png",
 		"name": "M4R13_CR13_text.png",
 		"price": "price_m4r13.png"
 	},
@@ -122,20 +138,60 @@ const dinosaur_textures: Dictionary = {
 		"dino": "Spinosaurus.png",
 		"name": "Spinosaurus_text.png"
 	},
-}
-
-const bird_textures_dir := "res://img/birds"
-const bird_textures: Dictionary = {
-	Bird.CHICKEN: {
-		"icon": "Science_chickens.png",
-		"icon_low": "chicken_icon.png",
-		"name": "chicken_text.png",
+	Dinosaur.VELOCIRAPTOR: {
+		"egg": "Velociraptor_egg.png",
+		"dino": "Velociraptor.png",
+		"name": "Velociraptor_text.png"
 	},
-	Bird.DUCK: {
-		"icon": "science_ducks.png",
-		"icon_low": "duck_icon.png",
-		"name": "duck_text.png",
-	}
+	Dinosaur.PARASAUROLOPHUS: {
+		"egg": "Parasaurolophus_egg.png",
+		"dino": "Parasaurolophus.png",
+		"name": "Parasaurolophus_text.png"
+	},
+	Dinosaur.ALLOSAURUS: {
+		"egg": "Allosaurus_egg.png",
+		"dino": "Allosaurus.png",
+		"name": "Allosaurus_text.png"
+	},
 }
 
+static func get_dinosaur_texture_path(dinosaur: Dinosaur, type: TextureType) -> String:
+	var path := "%s/%s" % [dinosaur_textures_dir, Dinosaur.keys()[dinosaur].capitalize()]
+	match type:
+		TextureType.IMAGE:
+			pass
+		TextureType.EGG:
+			path += "_egg"
+		TextureType.NAME:
+			path += "_text"
+	path += ".png"
+	return path
 
+# const bird_textures_dir := "res://img/birds"
+# const bird_textures: Dictionary = {
+# 	Bird.CHICKEN: {
+# 		"icon": "Science_chickens.png",
+# 		"icon_low": "chicken_icon.png",
+# 		"name": "chicken_text.png",
+# 	},
+# 	Bird.DUCK: {
+# 		"icon": "science_ducks.png",
+# 		"icon_low": "duck_icon.png",
+# 		"name": "duck_text.png",
+# 	},
+# 	Bird.PIGEON: {
+# 		"icon": "science_pigeon.png",
+# 		"icon_low": "pigeon_icon.png",
+# 		"name": "pigeon_text.png",
+# 	},
+# 	Bird.FLAMINGO: {
+# 		"icon": "science_flamingo.png",
+# 		"icon_low": "flamingo_icon.png",
+# 		"name": "flamingo_text.png",
+# 	},
+# 	Bird.TURKEY: {
+# 		"icon": "science_turkey.png",
+# 		"icon_low": "turkey_icon.png",
+# 		"name": "turkey_text.png",
+# 	},
+# }

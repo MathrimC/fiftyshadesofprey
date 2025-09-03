@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="Scientist" load_steps=6 format=3 uid="uid://ba3wkj673bwc6"]
+
+[ext_resource type="Script" uid="uid://bi3lyrufugnud" path="res://food_recipe.gd" id="2_wvnhb"]
+[ext_resource type="Script" uid="uid://b4gdg6dt13kvl" path="res://resources/scientists/scientist.gd" id="3_dvckk"]
+[ext_resource type="Texture2D" uid="uid://dba0h7i0imax1" path="res://img/science/Sir_Casi_Neutron_icon.png" id="9_j0hg8"]
+[ext_resource type="Texture2D" uid="uid://cwyrac8ooixpu" path="res://img/science/Sir_Casi_Neutron_icon_unavailable.png" id="10_u62h0"]
+
+[sub_resource type="Resource" id="Resource_dswry"]
+script = ExtResource("2_wvnhb")
+ingredients = Dictionary[int, int]({
+0: 5,
+1: 5,
+4: 5
+})
+outputs = Dictionary[int, int]({
+2: 5
+})
+time = 0
+metadata/_custom_type_script = "uid://bi3lyrufugnud"
+
+[resource]
+script = ExtResource("3_dvckk")
+type = 5
+name = "Sir Casi Neutron"
+dinos_to_unlock = 20
+wage = 0
+price = 50000
+dinosaurs = Array[int]([15, 16, 17, 18, 19])
+recipes = Array[ExtResource("2_wvnhb")]([SubResource("Resource_dswry")])
+can_multitask = true
+texture = ExtResource("9_j0hg8")
+unavailable_texture = ExtResource("10_u62h0")
+metadata/_custom_type_script = "uid://b4gdg6dt13kvl"

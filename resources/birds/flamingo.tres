@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Bird" load_steps=3 format=3 uid="uid://iibdmx30ut3c"]
+
+[ext_resource type="Texture2D" uid="uid://drr5210s0t2d8" path="res://img/birds/flamingo.png" id="2_p5f5f"]
+[ext_resource type="Script" uid="uid://dvvyap5uyp6cp" path="res://resources/birds/bird.gd" id="2_uga53"]
+
+[resource]
+script = ExtResource("2_uga53")
+type = 8
+name = "Flamingo"
+price = 800
+texture = ExtResource("2_p5f5f")

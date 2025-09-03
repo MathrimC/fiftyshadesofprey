@@ -1,6 +1,6 @@
 extends TextureButton
 
-@export var scientist: Resources.Scientist
+@export var scientist: Scientist.Type
 
 func _ready() -> void:
 	if game_manager.is_hired(scientist):

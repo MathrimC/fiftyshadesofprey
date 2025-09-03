@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Bird" load_steps=3 format=3 uid="uid://058w5vyou6u5"]
+
+[ext_resource type="Texture2D" uid="uid://8y0fpyo3x1cm" path="res://img/birds/turkey.png" id="2_8dlft"]
+[ext_resource type="Script" uid="uid://dvvyap5uyp6cp" path="res://resources/birds/bird.gd" id="2_4846e"]
+
+[resource]
+script = ExtResource("2_4846e")
+type = 4
+name = "Turkey"
+price = 100
+texture = ExtResource("2_8dlft")

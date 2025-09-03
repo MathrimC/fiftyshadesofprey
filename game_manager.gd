@@ -5,101 +5,11 @@ enum ScientistAction { CREATE_EGG, CREATE_FOOD }
 enum InventoryType { DINOSAURS, EGGS, BIRDS, FOOD, GROCERIES }
 enum DinosaurFeeling { HAPPY, SAD, SICK, HUNGRY }
 
+const game_resources: GameResources = preload("res://resources/game_resources.tres")
 const starting_money := 1000
 const starting_ticket_price := 1
 const month_time_in_sec := 1200
-const scientist_info := {
-	Resources.Scientist.BILL_AYE: {
-		"name": "Bill Aye",
-		"wage": 500,
-		"dinosaurs": [Resources.Dinosaur.DIPLODOCUS, Resources.Dinosaur.STYRACOSAURUS],
-		"food": [Resources.Food.CARNIVORE, Resources.Food.HERBIVORE],
-	},
-	Resources.Scientist.DAVE_ABORROW: {
-		"name": "Dave Aborrow",
-		"wage": 1000,
-		"dinosaurs": [Resources.Dinosaur.ANKYLOSAURUS, Resources.Dinosaur.PTERANODON, Resources.Dinosaur.SPINOSAURUS],
-		"food": [],
-	},
-	Resources.Scientist.LINE_GD_TYRONE: {
-		"name": "Line D.G. Tyrone",
-		"wage": 500,
-		"dinosaurs": [],
-		"food": [],
-	},
-	Resources.Scientist.AIBERT_1STONE: {
-		"name": "AiBert 1stone",
-		"wage": 500,
-		"dinosaurs": [],
-		"food": [],
-	},
-	Resources.Scientist.M4R13_CR13: {
-		"name": "M4R13 CR13",
-		"wage": 500,
-		"dinosaurs": [],
-		"food": [],
-	}
-}
-
-const dinosaur_info := {
-	Resources.Dinosaur.DIPLODOCUS: {
-		"popularity": 1,
-		"food": Resources.Food.HERBIVORE,
-		"biome": Resources.Biome.FOREST,
-		"creation_time": 60,
-		"incubation_time": 60,
-		"birds": {Resources.Bird.CHICKEN: 1}
-	},
-	Resources.Dinosaur.STYRACOSAURUS: {
-		"popularity": 3,
-		"food": Resources.Food.CARNIVORE,
-		"biome": Resources.Biome.SWAMP,
-		"creation_time": 60,
-		"incubation_time": 120,
-		"birds": {Resources.Bird.DUCK: 1}
-	},
-}
-
-const bird_info := {
-	Resources.Bird.CHICKEN: {
-		"price": 10,
-	},
-	Resources.Bird.DUCK: {
-		"price": 50,
-	}
-}
-
-const food_info := {
-	Resources.Food.CARNIVORE: {
-		"ingredients": {
-			Resources.Groceries.SALT: 1,
-			Resources.Groceries.PEPPER: 1,
-		},
-		"creation_time" : 300
-	},
-	Resources.Food.HERBIVORE: {
-		"ingredients": {
-			Resources.Groceries.SALT: 1,
-			Resources.Groceries.PEPPER: 1,
-		},
-		"creation_time" : 300
-	}
-}
-
-const groceries_info := {
-	Resources.Groceries.SALT: {
-		"price": 1,
-	},
-	Resources.Groceries.PEPPER: {
-		"price": 1,
-	},
-	Resources.Groceries.RED_SLIME: {
-		"price": 1,
-	},
-	Resources.Groceries.GREEN_SLIME: {
-		"price": 1,
-	},
-}
+const egg_expiration_time := 15 * 60
 
 signal scientist_action_started(scientist: Resources.Scientist)
 signal scientist_action_ended(scientist: Resources.Scientist)
@@ -110,25 +20,37 @@ signal scene_switched(scene: Resources.Scene, node: Node)
 signal incubation_started(egg_info: Dictionary)
 signal dinosaur_added(dinosaur_data: Dictionary)
 
-var hired_scientists: Array[Resources.Scientist]
-var bird_stock: Dictionary
-var groceries: Dictionary
+# const game_resources: GameData = preload("res://resources/game_resources.tres")
+
+var hired_scientists: Array[Scientist.Type]
+# var bird_stock: Dictionary
+# var groceries: Dictionary
 var money: int
 var ticket_price: int
 ## Key: scientist, value: dictionary with keys "action, "dinosaur"/"food" depending on action and "timer"
 var scientist_actions: Dictionary
 ## Array with dicitonaries with key "dinosaur" and value "timer"
-var incubating_eggs: Array[Dictionary]
-var dinosaurs: Array[Dictionary]
-var inventory: Dictionary
+var incubating_eggs: Array[DinosaurInstance]
+var dinosaurs: Array[DinosaurInstance]
+var inventory: Dictionary[InventoryType, Dictionary]
+var egg_creation_counters: Dictionary
+var park_content: Dictionary[int, Enclosure]
+var game_data: GameData
 
 var active_scene: Node
 
 func start_game() -> void:
 	hired_scientists.clear()
-	bird_stock.clear()
+	# bird_stock.clear()
 	incubating_eggs.clear()
 	inventory.clear()
+	game_data = GameData.new()
+	var groceries: Dictionary[Grocery.Type, int]
+	inventory[InventoryType.GROCERIES] = groceries
+	var birds: Dictionary[Bird.Type, int]
+	inventory[InventoryType.BIRDS] = birds
+	var eggs: Dictionary[Dinosaur.Type, int]
+	inventory[InventoryType.EGGS] = eggs
 	money = starting_money
 	ticket_price = starting_ticket_price
 	get_tree().create_timer(month_time_in_sec).timeout.connect(on_month_passed)
@@ -139,110 +61,156 @@ func start_game() -> void:
 func get_inventory() -> Dictionary:
 	return inventory
 		
-func hire_scientist(scientist: Resources.Scientist) -> void:
+func hire_scientist(scientist: Scientist.Type) -> void:
 	hired_scientists.append(scientist)
 
-func fire_scientist(scientist: Resources.Scientist) -> void:
+func fire_scientist(scientist: Scientist.Type) -> void:
 	hired_scientists.erase(scientist)
 
-func is_hired(scientist: Resources.Scientist) -> bool:
+func is_hired(scientist: Scientist.Type) -> bool:
 	return hired_scientists.has(scientist)
 
-func get_hired_scientists() -> Array[Resources.Scientist]:
+func is_available(scientist: Scientist.Type) -> bool:
+	return dinosaurs.size() >= game_resources.get_scientist(scientist).dinos_to_unlock
+
+func get_hired_scientists() -> Array[Scientist.Type]:
 	return hired_scientists
 
-func get_scientist_action(scientist: Resources.Scientist) -> Dictionary:
+func get_scientist_action(scientist: Scientist.Type) -> Dictionary:
 	return scientist_actions.get(scientist, {})
 
-func create_egg(dinosaur: Resources.Dinosaur, scientist: Resources.Scientist) -> void:
-	var birds: Dictionary = dinosaur_info[dinosaur]["birds"]
-	for bird in birds:
-		bird_stock[bird] -= birds[bird]
-	var timer := get_tree().create_timer(dinosaur_info[dinosaur]["creation_time"])
+func is_unlocked(dinosaur: Dinosaur.Type) -> bool:
+	var eggs := game_resources.get_dinosaur(dinosaur).eggs_to_unlock
+	for dino in eggs:
+		if egg_creation_counters.get(dino,0) < eggs[dino]:
+			return false
+	return true
+
+func create_egg(dinosaur: Dinosaur.Type, scientist: Scientist.Type) -> void:
+	var dinosaur_data := game_resources.get_dinosaur(dinosaur)
+	var bird: Bird.Type = dinosaur_data.creation_bird
+	# bird_stock[bird] -= bird
+	inventory[InventoryType.BIRDS][bird] -= 1
+	var timer := get_tree().create_timer(dinosaur_data.creation_time)
 	scientist_actions[scientist] = { "action": ScientistAction.CREATE_EGG, "dinosaur": dinosaur, "timer": timer }
 	scientist_action_started.emit(scientist)
 	_await_egg(dinosaur, timer, scientist)
 
-func create_food(food: Resources.Food, scientist: Resources.Scientist) -> void:
-	var ingredients: Dictionary = food_info[food]["ingredients"]
-	for ingredient in ingredients:
-		groceries[ingredient] -= ingredients[ingredient]
-	var timer := get_tree().create_timer(food_info[food]["creation_time"])
-	scientist_actions[scientist] = { "action": ScientistAction.CREATE_FOOD, "food": food, "timer": timer }
+func create_food(recipe: FoodRecipe, scientist: Scientist.Type) -> void:
+	for ingredient in recipe.ingredients:
+		inventory[InventoryType.GROCERIES][ingredient] -= recipe.ingredients[ingredient]
+	var timer := get_tree().create_timer(recipe.time)
+	scientist_actions[scientist] = { "action": ScientistAction.CREATE_FOOD, "recipe": recipe, "timer": timer }
 	scientist_action_started.emit(scientist)
-	_await_food(food, timer, scientist)
+	_await_food(recipe, timer, scientist)
 
-func _await_egg(dinosaur: Resources.Dinosaur, timer: SceneTreeTimer, scientist: Resources.Scientist) -> void:
+func _await_egg(type: Dinosaur.Type, timer: SceneTreeTimer, scientist: Scientist.Type) -> void:
 	await timer.timeout
 	scientist_actions.erase(scientist)
 	scientist_action_ended.emit(scientist)
-	var eggs_stock: Dictionary = inventory.get(InventoryType.EGGS, {})
-	eggs_stock[dinosaur] = eggs_stock.get(dinosaur, 0) + 1
-	inventory[InventoryType.EGGS] = eggs_stock
-	trigger_notification("%s egg created!" % Resources.Dinosaur.keys()[dinosaur].capitalize())
+	var dino := DinosaurInstance.new()
+	dino.type = type
+	dino.egg_creation_time = Time.get_unix_time_from_system() as int
+	dino.stage = DinosaurInstance.Stage.EGG
+	dino.genetics = DinosaurInstance.Genetics.GMO
+	game_data.incubator.append(dino)
+	
+	# var eggs_stock: Dictionary = inventory.get(InventoryType.EGGS, {})
+	# eggs_stock[type] = eggs_stock.get(dinosaur, 0) + 1
+	# inventory[InventoryType.EGGS] = eggs_stock
+	trigger_notification("%s egg created!" % Dinosaur.Type.keys()[type].capitalize())
 
-func _await_food(food: Resources.Food, timer: SceneTreeTimer, scientist: Resources.Scientist) -> void:
+func _await_food(recipe: FoodRecipe, timer: SceneTreeTimer, scientist: Scientist.Type) -> void:
 	await timer.timeout
 	scientist_actions.erase(scientist)
 	scientist_action_ended.emit(scientist)
 	var food_stock: Dictionary = inventory.get(InventoryType.FOOD, {})
-	food_stock[food] = food_stock.get(food, 0) + 1
+	for food in recipe.outputs:
+		food_stock[food] = food_stock.get(food, 0) + recipe.outputs[food]
+		trigger_notification("%s food created!" % Food.Type.keys()[food].capitalize())
 	inventory[InventoryType.FOOD] = food_stock
-	trigger_notification("%s food created!" % Resources.Food.keys()[food].capitalize())
 
-func use_egg(dinosaur: Resources.Dinosaur) -> void:
-	if active_scene != null && active_scene is Incubator:
-		var amount = inventory.get(InventoryType.EGGS, {}).get(dinosaur, 0)
-		assert(amount > 0, "Error: trying to use an egg the player doesn't have")
-		amount -= 1
-		inventory[InventoryType.EGGS][dinosaur] = amount
-		incubate(dinosaur)
+func use_egg(dinosaur: Dinosaur.Type) -> void:
+	printerr("use_egg shouldn't be called anymore")
+	# if active_scene != null && active_scene is Incubator:
+	# 	var amount = inventory.get(InventoryType.EGGS, {}).get(dinosaur, 0)
+	# 	assert(amount > 0, "Error: trying to use an egg the player doesn't have")
+	# 	amount -= 1
+	# 	inventory[InventoryType.EGGS][dinosaur] = amount
+	# 	incubate(dinosaur)
+	
+func incubate(dinosaur: Dinosaur.Type) -> void:
+	printerr("incubate shouldn't be called anymore")
+	# var egg_info = {"dinosaur": dinosaur, "timer": get_tree().create_timer(egg_expiration_time)}
+	# game_data.incubator.append(
+	# incubating_eggs.append(egg_info)
+	# incubation_started.emit(egg_info)
+	# await egg_info["timer"].timeout
+	# trigger_notification("Egg expired!")
+	# incubating_eggs.erase(egg_info)
+	# var dinosaur_data := {"dinosaur": dinosaur, "feeling": DinosaurFeeling.HAPPY }
+	# dinosaurs.append(dinosaur_data)
+	# dinosaur_added.emit(dinosaur_data)
 
-func incubate(dinosaur: Resources.Dinosaur) -> void:
-	var egg_info = {"dinosaur": dinosaur, "timer": get_tree().create_timer(dinosaur_info[dinosaur]["incubation_time"])}
-	incubating_eggs.append(egg_info)
-	incubation_started.emit(egg_info)
-	await egg_info["timer"].timeout
-	trigger_notification("Egg hatched!")
-	incubating_eggs.erase(egg_info)
-	var dinosaur_data := {"dinosaur": dinosaur, "feeling": DinosaurFeeling.HAPPY }
-	dinosaurs.append(dinosaur_data)
-	dinosaur_added.emit(dinosaur_data)
+func place_egg(egg_info: Dictionary, lot_number: int) -> void:
+	var enclosure: Enclosure = park_content.get(lot_number, null)
+	if enclosure == null:
+		printerr("Trying to place egg on lot without enclosure")
+		return
+	else:
+		enclosure.add_dinosaur(egg_info.dinosaur)
 
-## The dictionary keys are "dinosaur" and "timer"
-func get_incubating_eggs() -> Array[Dictionary]:
-	return incubating_eggs
+func get_incubating_eggs() -> Array[DinosaurInstance]:
+	return game_data.incubator
 
-## The dictionary keys are "dinosaur" and "feeling"
-func get_dinosaurs() -> Array[Dictionary]:
-	return dinosaurs
+func get_dinosaurs() -> Array[DinosaurInstance]:
+	return game_data.dinosaurs
 
-func get_egg_amount(dinosaur: Resources.Dinosaur) -> int:
+func get_egg_amount(dinosaur: Dinosaur.Type) -> int:
 	return inventory.get(InventoryType.EGGS).get(dinosaur, 0)
 
-func buy_birds(bird_amounts: Dictionary) -> void:
+func buy_birds(bird_amounts: Dictionary[Bird.Type, int]) -> void:
+	var birds: Dictionary[Bird.Type, int] = inventory.get(InventoryType.BIRDS, {})
 	var price := 0
 	for bird in bird_amounts:
-		price += bird_info[bird]["price"] * bird_amounts[bird]
-		bird_stock[bird] = bird_stock.get(bird,0) + bird_amounts[bird]
-	inventory[InventoryType.BIRDS] = bird_stock
+		price += game_resources.get_bird(bird).price * bird_amounts[bird]
+		birds[bird] = birds.get(bird,0) + bird_amounts[bird]
+	inventory[InventoryType.BIRDS] = birds
 	money -= price
 	money_changed.emit(money)
 
-func get_bird_amount(bird: Resources.Bird) -> int:
+func get_bird_amount(bird: Bird.Type) -> int:
 	return inventory.get(InventoryType.BIRDS,{}).get(bird, 0)
 
-func buy_groceries(groceries_amounts: Dictionary) -> void:
+func get_available_groceries() -> Array[Grocery.Type]:
+	var available: Array[Grocery.Type]
+	available.assign(Grocery.Type.values())
+	if !hired_scientists.has(Scientist.Type.CASI_NEUTRON):
+		available.erase(Grocery.Type.BLUE_SLIME)
+	return available
+
+func buy_groceries(groceries_amounts: Dictionary[Grocery.Type, int]) -> void:
+	var groceries: Dictionary[Grocery.Type, int] = inventory.get(InventoryType.GROCERIES, {})
 	var price := 0
-	for product in groceries_amounts:
-		price += groceries_info[product]["price"] * groceries_amounts[product]
-		groceries[product] = groceries.get(product, 0) + groceries_amounts[product]
+	for grocery in groceries_amounts:
+		price += game_resources.get_grocery(grocery).price * groceries_amounts[grocery]
+		groceries[grocery] = groceries.get(grocery, 0) + groceries_amounts[grocery]
 	inventory[InventoryType.GROCERIES] = groceries
 	money -= price
 	money_changed.emit(money)
 
-func get_groceries_amount(product: Resources.Groceries) -> int:
-	return inventory.get(InventoryType.GROCERIES,{}).get(product,0)
+func get_groceries_amount(grocery: Grocery.Type) -> int:
+	return inventory.get(InventoryType.GROCERIES,{}).get(grocery,0)
+
+func is_lot_occupied(lot_number: int) -> bool:
+	return park_content.has(lot_number)
+
+func get_lot_content(lot_number: int) -> Enclosure:
+	return park_content.get(lot_number, null)
+
+func create_enclosure(lot_number: int, biome: Enclosure.Biome, fence: Enclosure.Fence) -> void:
+	assert(!park_content.has(lot_number), "Error: creating enclosure on occupied lot")
+	park_content[lot_number] = Enclosure.new(lot_number, biome, fence)
 
 func trigger_notification(_notification: String) -> void:
 	notification.emit(_notification)
@@ -253,13 +221,20 @@ func change_ticket_price(price: int) -> void:
 
 func on_month_passed() -> void:
 	for scientist in hired_scientists:
-		money -= scientist_info.get(scientist, {}).get("wage", 0)
+		money -= game_resources.get_scientist(scientist).wage
 	money_changed.emit(money)
 	get_tree().create_timer(month_time_in_sec).timeout.connect(on_month_passed)
 
-func switch_scene(scene: Resources.Scene) -> void:
+func switch_scene(scene: Resources.Scene) -> Node:
 	if active_scene != null:
 		active_scene.queue_free()
 	active_scene = load(Resources.scenes[scene]).instantiate()
 	get_tree().root.add_child(active_scene)
 	scene_switched.emit(scene, active_scene)
+	return active_scene
+
+func register_scene_switch(scene_type: Resources.Scene, scene_instance: Node) -> void:
+	if active_scene != null:
+		active_scene.queue_free()
+	active_scene = scene_instance
+	scene_switched.emit(scene_type, scene_instance)

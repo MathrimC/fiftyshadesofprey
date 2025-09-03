@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Dinosaur" load_steps=4 format=3 uid="uid://c34xqwx88jfj6"]
+
+[ext_resource type="Texture2D" uid="uid://d16dpsgoupd6m" path="res://img/dinos/Oviraptor_egg.png" id="2_5f3xw"]
+[ext_resource type="Script" uid="uid://cfei13n14h6s1" path="res://resources/dinosaurs/dinosaur.gd" id="3_quwc7"]
+[ext_resource type="Texture2D" uid="uid://dqss82t0dncrd" path="res://img/dinos/Oviraptor.png" id="5_dg7os"]
+
+[resource]
+script = ExtResource("3_quwc7")
+type = 18
+name = "Oviraptor"
+diet = 1
+biome = 2
+value = 2200
+visitors = 210
+creation_bird = 9
+creation_chance = 0.45
+creation_time = 600
+eggs_to_unlock = Dictionary[int, int]({
+17: 2
+})
+texture = ExtResource("5_dg7os")
+egg_texture = ExtResource("2_5f3xw")
+metadata/_custom_type_script = "uid://cfei13n14h6s1"

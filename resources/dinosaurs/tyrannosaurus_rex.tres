@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Dinosaur" load_steps=4 format=3 uid="uid://bwt46uorjv1f4"]
+
+[ext_resource type="Texture2D" uid="uid://c8q7m3p3031rh" path="res://img/dinos/Tyrannosaurus_rex_egg.png" id="2_dldwq"]
+[ext_resource type="Script" uid="uid://cfei13n14h6s1" path="res://resources/dinosaurs/dinosaur.gd" id="3_7u3p4"]
+[ext_resource type="Texture2D" uid="uid://cr4mhhb5ua8ff" path="res://img/dinos/Tyrannosaurus_rex.png" id="4_ihnen"]
+
+[resource]
+script = ExtResource("3_7u3p4")
+type = 12
+name = "Tyrannosaurus rex"
+diet = 1
+biome = 0
+value = 2000
+visitors = 150
+creation_bird = 9
+creation_chance = 0.5
+creation_time = 300
+eggs_to_unlock = Dictionary[int, int]({})
+texture = ExtResource("4_ihnen")
+egg_texture = ExtResource("2_dldwq")
+metadata/_custom_type_script = "uid://cfei13n14h6s1"

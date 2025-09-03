@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://lxe0sefc17dv"]
+[gd_scene load_steps=10 format=3 uid="uid://lxe0sefc17dv"]
 
 [ext_resource type="Texture2D" uid="uid://dnvxohaum6ekc" path="res://img/park/park_front.png" id="1_lh1td"]
 [ext_resource type="Texture2D" uid="uid://dc48c53ytls7" path="res://img/park/park_floor.png" id="2_2tqmq"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://be0rcrfydwa4v" path="res://img/park/park_empty_dinosaur_lot.png" id="6_w01aj"]
 [ext_resource type="Texture2D" uid="uid://cpn27sbbjnyyv" path="res://img/park/park empty business.png" id="7_wpmti"]
 [ext_resource type="Script" uid="uid://siovxfvtxmpd" path="res://scenes/park/park_camera.gd" id="8_fqr44"]
+[ext_resource type="Script" uid="uid://djxtoblmbwgou" path="res://scenes/park/park_lot.gd" id="8_n3lli"]
 
 [node name="Dinopark" type="Node"]
 
@@ -61,85 +62,145 @@ texture = ExtResource("7_wpmti")
 position = Vector2(3256, 715.5)
 texture = ExtResource("7_wpmti")
 
-[node name="ParkEmptyDinosaurLot2" type="Sprite2D" parent="Park"]
-position = Vector2(2247, 955.5)
-texture = ExtResource("6_w01aj")
-
-[node name="ParkEmptyDinosaurLot3" type="Sprite2D" parent="Park"]
-position = Vector2(2035, 754.5)
-texture = ExtResource("6_w01aj")
-
-[node name="ParkEmptyDinosaurLot4" type="Sprite2D" parent="Park"]
-position = Vector2(1811, 556.5)
-texture = ExtResource("6_w01aj")
-
-[node name="ParkEmptyDinosaurLot5" type="Sprite2D" parent="Park"]
-position = Vector2(1596, 358.5)
-texture = ExtResource("6_w01aj")
-
-[node name="ParkEmptyDinosaurLot6" type="Sprite2D" parent="Park"]
-position = Vector2(1365, 160.5)
-texture = ExtResource("6_w01aj")
-
-[node name="ParkEmptyDinosaurLot7" type="Sprite2D" parent="Park"]
-position = Vector2(1854.5, 1224)
-texture = ExtResource("6_w01aj")
-
-[node name="ParkEmptyDinosaurLot8" type="Sprite2D" parent="Park"]
-position = Vector2(1627, 1005.5)
-texture = ExtResource("6_w01aj")
-
-[node name="ParkEmptyDinosaurLot9" type="Sprite2D" parent="Park"]
-position = Vector2(947, 409.5)
-texture = ExtResource("6_w01aj")
-
-[node name="ParkEmptyDinosaurLot10" type="Sprite2D" parent="Park"]
-position = Vector2(716, 193.5)
-texture = ExtResource("6_w01aj")
-
-[node name="ParkEmptyDinosaurLot11" type="Sprite2D" parent="Park"]
-position = Vector2(1211, 1251.5)
-texture = ExtResource("6_w01aj")
-
-[node name="ParkEmptyDinosaurLot12" type="Sprite2D" parent="Park"]
-position = Vector2(971, 1047.5)
-texture = ExtResource("6_w01aj")
-
-[node name="ParkEmptyDinosaurLot13" type="Sprite2D" parent="Park"]
-position = Vector2(743, 841.5)
-texture = ExtResource("6_w01aj")
-
-[node name="ParkEmptyDinosaurLot14" type="Sprite2D" parent="Park"]
-position = Vector2(531, 640.5)
-texture = ExtResource("6_w01aj")
-
-[node name="ParkEmptyDinosaurLot15" type="Sprite2D" parent="Park"]
-position = Vector2(312, 433.5)
-texture = ExtResource("6_w01aj")
-
-[node name="ParkEmptyDinosaurLot16" type="Sprite2D" parent="Park"]
-position = Vector2(104.5, 224)
-texture = ExtResource("6_w01aj")
-
-[node name="ParkEmptyDinosaurLot17" type="Sprite2D" parent="Park"]
+[node name="DinosaurLot1" type="Sprite2D" parent="Park"]
 position = Vector2(89, 886.5)
 texture = ExtResource("6_w01aj")
+script = ExtResource("8_n3lli")
+lot_number = 1
+metadata/_custom_type_script = "uid://djxtoblmbwgou"
 
-[node name="ParkEmptyDinosaurLot18" type="Sprite2D" parent="Park"]
+[node name="DinosaurLot2" type="Sprite2D" parent="Park"]
 position = Vector2(317, 1092.5)
 texture = ExtResource("6_w01aj")
+script = ExtResource("8_n3lli")
+lot_number = 2
+metadata/_custom_type_script = "uid://djxtoblmbwgou"
 
-[node name="ParkEmptyDinosaurLot19" type="Sprite2D" parent="Park"]
-position = Vector2(2444, 492.5)
+[node name="DinosaurLot3" type="Sprite2D" parent="Park"]
+position = Vector2(104.5, 224)
 texture = ExtResource("6_w01aj")
+script = ExtResource("8_n3lli")
+lot_number = 3
+metadata/_custom_type_script = "uid://djxtoblmbwgou"
 
-[node name="ParkEmptyDinosaurLot20" type="Sprite2D" parent="Park"]
-position = Vector2(2234, 285.5)
+[node name="DinosaurLot4" type="Sprite2D" parent="Park"]
+position = Vector2(312, 433.5)
 texture = ExtResource("6_w01aj")
+script = ExtResource("8_n3lli")
+lot_number = 4
+metadata/_custom_type_script = "uid://djxtoblmbwgou"
 
-[node name="ParkEmptyDinosaurLot21" type="Sprite2D" parent="Park"]
+[node name="DinosaurLot5" type="Sprite2D" parent="Park"]
+position = Vector2(531, 640.5)
+texture = ExtResource("6_w01aj")
+script = ExtResource("8_n3lli")
+lot_number = 5
+metadata/_custom_type_script = "uid://djxtoblmbwgou"
+
+[node name="DinosaurLot6" type="Sprite2D" parent="Park"]
+position = Vector2(743, 841.5)
+texture = ExtResource("6_w01aj")
+script = ExtResource("8_n3lli")
+lot_number = 6
+metadata/_custom_type_script = "uid://djxtoblmbwgou"
+
+[node name="DinosaurLot7" type="Sprite2D" parent="Park"]
+position = Vector2(971, 1047.5)
+texture = ExtResource("6_w01aj")
+script = ExtResource("8_n3lli")
+lot_number = 7
+metadata/_custom_type_script = "uid://djxtoblmbwgou"
+
+[node name="DinosaurLot8" type="Sprite2D" parent="Park"]
+position = Vector2(1211, 1251.5)
+texture = ExtResource("6_w01aj")
+script = ExtResource("8_n3lli")
+lot_number = 8
+metadata/_custom_type_script = "uid://djxtoblmbwgou"
+
+[node name="DinosaurLot9" type="Sprite2D" parent="Park"]
+position = Vector2(716, 193.5)
+texture = ExtResource("6_w01aj")
+script = ExtResource("8_n3lli")
+lot_number = 9
+metadata/_custom_type_script = "uid://djxtoblmbwgou"
+
+[node name="DinosaurLot10" type="Sprite2D" parent="Park"]
+position = Vector2(947, 409.5)
+texture = ExtResource("6_w01aj")
+script = ExtResource("8_n3lli")
+lot_number = 10
+metadata/_custom_type_script = "uid://djxtoblmbwgou"
+
+[node name="DinosaurLot11" type="Sprite2D" parent="Park"]
+position = Vector2(1627, 1005.5)
+texture = ExtResource("6_w01aj")
+script = ExtResource("8_n3lli")
+lot_number = 11
+metadata/_custom_type_script = "uid://djxtoblmbwgou"
+
+[node name="DinosaurLot12" type="Sprite2D" parent="Park"]
+position = Vector2(1854.5, 1224)
+texture = ExtResource("6_w01aj")
+script = ExtResource("8_n3lli")
+lot_number = 12
+metadata/_custom_type_script = "uid://djxtoblmbwgou"
+
+[node name="DinosaurLot13" type="Sprite2D" parent="Park"]
+position = Vector2(1365, 160.5)
+texture = ExtResource("6_w01aj")
+script = ExtResource("8_n3lli")
+lot_number = 13
+metadata/_custom_type_script = "uid://djxtoblmbwgou"
+
+[node name="DinosaurLot14" type="Sprite2D" parent="Park"]
+position = Vector2(1596, 358.5)
+texture = ExtResource("6_w01aj")
+script = ExtResource("8_n3lli")
+lot_number = 14
+metadata/_custom_type_script = "uid://djxtoblmbwgou"
+
+[node name="DinosaurLot15" type="Sprite2D" parent="Park"]
+position = Vector2(1811, 556.5)
+texture = ExtResource("6_w01aj")
+script = ExtResource("8_n3lli")
+lot_number = 15
+metadata/_custom_type_script = "uid://djxtoblmbwgou"
+
+[node name="DinosaurLot16" type="Sprite2D" parent="Park"]
+position = Vector2(2035, 754.5)
+texture = ExtResource("6_w01aj")
+script = ExtResource("8_n3lli")
+lot_number = 16
+metadata/_custom_type_script = "uid://djxtoblmbwgou"
+
+[node name="DinosaurLot17" type="Sprite2D" parent="Park"]
+position = Vector2(2247, 955.5)
+texture = ExtResource("6_w01aj")
+script = ExtResource("8_n3lli")
+lot_number = 17
+metadata/_custom_type_script = "uid://djxtoblmbwgou"
+
+[node name="DinosaurLot18" type="Sprite2D" parent="Park"]
 position = Vector2(2022, 88.5)
 texture = ExtResource("6_w01aj")
+script = ExtResource("8_n3lli")
+lot_number = 18
+metadata/_custom_type_script = "uid://djxtoblmbwgou"
+
+[node name="DinosaurLot19" type="Sprite2D" parent="Park"]
+position = Vector2(2234, 285.5)
+texture = ExtResource("6_w01aj")
+script = ExtResource("8_n3lli")
+lot_number = 19
+metadata/_custom_type_script = "uid://djxtoblmbwgou"
+
+[node name="DinosaurLot20" type="Sprite2D" parent="Park"]
+position = Vector2(2444, 492.5)
+texture = ExtResource("6_w01aj")
+script = ExtResource("8_n3lli")
+lot_number = 20
+metadata/_custom_type_script = "uid://djxtoblmbwgou"
 
 [node name="ParkEmptyBusiness7" type="Sprite2D" parent="Park"]
 position = Vector2(1272.5, 694)

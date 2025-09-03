@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Dinosaur" load_steps=4 format=3 uid="uid://dhmg5fkraoq65"]
+
+[ext_resource type="Texture2D" uid="uid://c8jmbknbi3ilv" path="res://img/dinos/Pachycephalosaurus_egg.png" id="2_okmj5"]
+[ext_resource type="Script" uid="uid://cfei13n14h6s1" path="res://resources/dinosaurs/dinosaur.gd" id="3_5slx4"]
+[ext_resource type="Texture2D" uid="uid://bxdn4x45t5mdj" path="res://img/dinos/Pachycephalosaurus.png" id="4_ihnu6"]
+
+[resource]
+script = ExtResource("3_5slx4")
+type = 16
+name = "Pachycephalosaurus"
+diet = 0
+biome = 0
+value = 250
+visitors = 190
+creation_bird = 2
+creation_chance = 0.5
+creation_time = 300
+eggs_to_unlock = Dictionary[int, int]({
+15: 2
+})
+texture = ExtResource("4_ihnu6")
+egg_texture = ExtResource("2_okmj5")
+metadata/_custom_type_script = "uid://cfei13n14h6s1"

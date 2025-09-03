@@ -6,14 +6,16 @@ extends HBoxContainer
 @export var item_name: RichTextLabel
 @export var amount_label: RichTextLabel
 
-var grocery: Resources.Groceries
+var grocery: Grocery
 var amount: int
 
 func _ready() -> void:
 	amount = 0
 	price.rotation_degrees = randf_range(-35, 35)
-	icon.texture = load("%s/%s" % [Resources.grocery_textures_dir, Resources.grocery_textures[grocery]])
-	item_name.text = Resources.Groceries.keys()[grocery].capitalize()
+	icon.texture = grocery.texture
+	# load("%s/%s" % [Resources.grocery_textures_dir, Resources.grocery_textures[grocery]])
+	item_name.text = grocery.name
+	# Resources.Groceries.keys()[grocery].capitalize()
 	amount_label.text = "%s" % 0
 
 func _on_plus_pressed() -> void:

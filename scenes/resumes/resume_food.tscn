@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddciyek2xknri"]
+
+[ext_resource type="Texture2D" uid="uid://cng5fub4hcxf" path="res://img/science/food_carnivore.png" id="1_ycjah"]
+
+[node name="ResumeFood" type="TextureRect"]
+size_flags_horizontal = 3
+texture = ExtResource("1_ycjah")
+expand_mode = 1
+stretch_mode = 5

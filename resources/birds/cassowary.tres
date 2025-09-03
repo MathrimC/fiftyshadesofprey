@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Bird" load_steps=3 format=3 uid="uid://dgfwudsk141sf"]
+
+[ext_resource type="Texture2D" uid="uid://byeq8s1b1don3" path="res://img/birds/cassowary.png" id="2_nscta"]
+[ext_resource type="Script" uid="uid://dvvyap5uyp6cp" path="res://resources/birds/bird.gd" id="2_vlsaw"]
+
+[resource]
+script = ExtResource("2_vlsaw")
+type = 9
+name = "Cassowary"
+price = 950
+texture = ExtResource("2_nscta")

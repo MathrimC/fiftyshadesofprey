@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Grocery" load_steps=3 format=3 uid="uid://xi7cadp35psg"]
+
+[ext_resource type="Script" uid="uid://d1pgb42ge7odf" path="res://resources/groceries/grocery.gd" id="1_pri65"]
+[ext_resource type="Texture2D" uid="uid://svlix4k317nf" path="res://img/buy/groceries_buy_green_slime.png" id="2_pmvcu"]
+
+[resource]
+script = ExtResource("1_pri65")
+type = 2
+name = "Green slime"
+price = 1
+texture = ExtResource("2_pmvcu")

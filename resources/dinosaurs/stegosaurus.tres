@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Dinosaur" load_steps=4 format=3 uid="uid://bj6coj2uaxkia"]
+
+[ext_resource type="Texture2D" uid="uid://bk6c23ytd7mk8" path="res://img/dinos/Stegosaurus_egg.png" id="2_pgc0i"]
+[ext_resource type="Script" uid="uid://cfei13n14h6s1" path="res://resources/dinosaurs/dinosaur.gd" id="3_vmncv"]
+[ext_resource type="Texture2D" uid="uid://ber6rp3iecdhi" path="res://img/dinos/Stegosaurus.png" id="5_flo4g"]
+
+[resource]
+script = ExtResource("3_vmncv")
+type = 11
+name = "Stegosaurus"
+diet = 0
+biome = 0
+value = 275
+visitors = 140
+creation_bird = 4
+creation_chance = 0.6
+creation_time = 300
+eggs_to_unlock = Dictionary[int, int]({
+10: 2
+})
+texture = ExtResource("5_flo4g")
+egg_texture = ExtResource("2_pgc0i")
+metadata/_custom_type_script = "uid://cfei13n14h6s1"

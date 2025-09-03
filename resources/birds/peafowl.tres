@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Bird" load_steps=3 format=3 uid="uid://kpkfah35vydc"]
+
+[ext_resource type="Texture2D" uid="uid://biu3kv5ppu2in" path="res://img/birds/peafowl.png" id="2_4no65"]
+[ext_resource type="Script" uid="uid://dvvyap5uyp6cp" path="res://resources/birds/bird.gd" id="2_e2wrj"]
+
+[resource]
+script = ExtResource("2_e2wrj")
+type = 7
+name = "Peafowl"
+price = 750
+texture = ExtResource("2_4no65")

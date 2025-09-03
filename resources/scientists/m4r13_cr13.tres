@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Scientist" load_steps=6 format=3 uid="uid://cuucy4ao550e3"]
+
+[ext_resource type="Script" uid="uid://bi3lyrufugnud" path="res://food_recipe.gd" id="2_nx0v7"]
+[ext_resource type="Script" uid="uid://b4gdg6dt13kvl" path="res://resources/scientists/scientist.gd" id="3_quto1"]
+[ext_resource type="Texture2D" uid="uid://b4so24jkh26jc" path="res://img/science/M4R13_CR13_icon.png" id="7_vgdv1"]
+[ext_resource type="Texture2D" uid="uid://c3yexfq7djqfe" path="res://img/science/M4R13_CR13_icon_unavailable.png" id="8_sia7t"]
+
+[sub_resource type="Resource" id="Resource_sia7t"]
+script = ExtResource("2_nx0v7")
+ingredients = Dictionary[int, int]({
+0: 10,
+1: 10,
+2: 5,
+3: 5
+})
+outputs = Dictionary[int, int]({
+0: 5,
+1: 5
+})
+time = 300
+metadata/_custom_type_script = "uid://bi3lyrufugnud"
+
+[resource]
+script = ExtResource("3_quto1")
+type = 4
+name = "M4R13 CR13"
+dinos_to_unlock = 15
+wage = 0
+price = 15000
+dinosaurs = Array[int]([12, 13, 14])
+recipes = Array[ExtResource("2_nx0v7")]([SubResource("Resource_sia7t")])
+can_multitask = true
+texture = ExtResource("7_vgdv1")
+unavailable_texture = ExtResource("8_sia7t")
+metadata/_custom_type_script = "uid://b4gdg6dt13kvl"

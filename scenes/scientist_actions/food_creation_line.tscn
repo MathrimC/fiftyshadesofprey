@@ -52,12 +52,15 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="Timer" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
+size_flags_horizontal = 0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("5_lajsa")
 text = "5:00"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
-horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_create_pressed"]

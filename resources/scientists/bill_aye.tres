@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="Scientist" load_steps=6 format=3 uid="uid://mtrghbghb2n0"]
+
+[ext_resource type="Script" uid="uid://bi3lyrufugnud" path="res://food_recipe.gd" id="1_bv0um"]
+[ext_resource type="Script" uid="uid://b4gdg6dt13kvl" path="res://resources/scientists/scientist.gd" id="5_is7x5"]
+[ext_resource type="Texture2D" uid="uid://bq0j3jj3gvkqa" path="res://img/science/Bill_Aye_icon.png" id="6_t60s3"]
+
+[sub_resource type="Resource" id="Resource_r6fva"]
+script = ExtResource("1_bv0um")
+ingredients = Dictionary[int, int]({
+0: 1,
+1: 1,
+2: 1
+})
+outputs = Dictionary[int, int]({
+0: 1
+})
+time = 60
+metadata/_custom_type_script = "uid://bi3lyrufugnud"
+
+[sub_resource type="Resource" id="Resource_5l3xe"]
+script = ExtResource("1_bv0um")
+ingredients = Dictionary[int, int]({
+0: 1,
+1: 1,
+3: 1
+})
+outputs = Dictionary[int, int]({
+1: 1
+})
+time = 60
+metadata/_custom_type_script = "uid://bi3lyrufugnud"
+
+[resource]
+script = ExtResource("5_is7x5")
+type = 0
+name = "Bill Aye"
+dinos_to_unlock = 0
+wage = 500
+price = 0
+dinosaurs = Array[int]([0, 1])
+recipes = Array[ExtResource("1_bv0um")]([SubResource("Resource_r6fva"), SubResource("Resource_5l3xe")])
+can_multitask = false
+texture = ExtResource("6_t60s3")

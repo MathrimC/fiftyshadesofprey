@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Bird" load_steps=3 format=3 uid="uid://drjkm2fcbyk2g"]
+
+[ext_resource type="Script" uid="uid://dvvyap5uyp6cp" path="res://resources/birds/bird.gd" id="2_h0cuq"]
+[ext_resource type="Texture2D" uid="uid://bqwgquj7kiqp" path="res://img/birds/pigeon.png" id="2_raork"]
+
+[resource]
+script = ExtResource("2_h0cuq")
+type = 2
+name = "Pigeon"
+price = 75
+texture = ExtResource("2_raork")

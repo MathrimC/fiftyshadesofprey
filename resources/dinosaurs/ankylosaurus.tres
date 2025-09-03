@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Dinosaur" load_steps=4 format=3 uid="uid://d3g4gdkuc6qfx"]
+
+[ext_resource type="Script" uid="uid://cfei13n14h6s1" path="res://resources/dinosaurs/dinosaur.gd" id="1_5ejyg"]
+[ext_resource type="Texture2D" uid="uid://calad5nfxvvyc" path="res://img/dinos/Ankylosaurus.png" id="1_7uben"]
+[ext_resource type="Texture2D" uid="uid://ywd86hwx1pm5" path="res://img/dinos/Ankylosaurus_egg.png" id="2_r7jtl"]
+
+[resource]
+script = ExtResource("1_5ejyg")
+type = 3
+name = "Ankylosaurus"
+diet = 0
+biome = 0
+value = 1000
+visitors = 60
+creation_bird = 8
+creation_chance = 0.9
+creation_time = 60
+eggs_to_unlock = Dictionary[int, int]({
+2: 1
+})
+texture = ExtResource("1_7uben")
+egg_texture = ExtResource("2_r7jtl")

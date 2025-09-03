@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Dinosaur" load_steps=4 format=3 uid="uid://bomh1qwjconqp"]
+
+[ext_resource type="Texture2D" uid="uid://bgxnalfo000ro" path="res://img/dinos/Carnotaurus_egg.png" id="2_2jcd8"]
+[ext_resource type="Script" uid="uid://cfei13n14h6s1" path="res://resources/dinosaurs/dinosaur.gd" id="3_hcrjy"]
+[ext_resource type="Texture2D" uid="uid://jou08kwlmyqp" path="res://img/dinos/Carnotaurus.png" id="5_tv2rc"]
+
+[resource]
+script = ExtResource("3_hcrjy")
+type = 14
+name = "Carnotaurus"
+diet = 1
+biome = 2
+value = 325
+visitors = 170
+creation_bird = 4
+creation_chance = 0.45
+creation_time = 300
+eggs_to_unlock = Dictionary[int, int]({
+13: 1
+})
+texture = ExtResource("5_tv2rc")
+egg_texture = ExtResource("2_2jcd8")
+metadata/_custom_type_script = "uid://cfei13n14h6s1"
