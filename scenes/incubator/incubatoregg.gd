@@ -18,9 +18,7 @@ func _ready() -> void:
 			food.texture = game_manager.game_resources.get_food(Food.Type.HERBIVORE).texture
 		Dinosaur.Diet.CARNIVORE:
 			food.texture = game_manager.game_resources.get_food(Food.Type.CARNIVORE).texture
-	# food.texture = load("%s/%s" % [Resources.food_textures_dir, Resources.food_textures[dinosaur_info["food"]]])
-	biome.texture = load("%s/%s" % [Resources.biome_textures_dir, Resources.biome_textures[dinosaur_info.biome]])
-	# TODO: replace with name label
+	biome.texture = game_manager.game_resources.get_biome(dinosaur_info.biome).icon
 	dino_name.text = dinosaur_info.name
 	_timer()
 

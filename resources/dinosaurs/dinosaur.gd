@@ -3,12 +3,11 @@ extends Resource
 
 enum Type { DIPLODOCUS, STYRACOSAURUS, SPINOSAURUS, ANKYLOSAURUS, PTERANODON, VELOCIRAPTOR, PARASAUROLOPHUS, ALLOSAURUS, TRICERATOPS, IGUANADON, BRACHIOSAURUS, STEGOSAURUS, TYRANNOSAURUS_REX, HERRERASAURUS, CARNOTAURUS, KENTROSAURUS, PACHYCEPHALOSAURUS, DILOPHOSAURUS, OVIRAPTOR, PROTOCERATOPS }
 enum Diet { HERBIVORE, CARNIVORE, OMNIVORE }
-enum Biome { FOREST, SWAMP, DESERT }
 
 @export var type: Type
 @export var name: String
 @export var diet: Diet
-@export var biome: Biome
+@export var biome: Biome.Type
 @export var value: int
 @export var visitors: int
 @export var creation_bird: Bird.Type

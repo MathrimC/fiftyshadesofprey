@@ -1,15 +1,12 @@
 class_name Enclosure
 extends Resource
 
-enum Fence { WOOD, GLASS, STEEL }
-enum Biome { FOREST, SWAMP, DESERT }
-
 @export var lot_number: int
-@export var biome: Biome
-@export var fence: Fence
+@export var biome: Biome.Type
+@export var fence: Fence.Type
 @export var dinosaurs: Array[DinosaurInstance]
 
-func _init(_lot_number: int, _biome: Biome, _fence: Fence) -> void:
+func _init(_lot_number: int, _biome: Biome.Type, _fence: Fence.Type) -> void:
 	lot_number = _lot_number
 	biome = _biome
 	fence = _fence

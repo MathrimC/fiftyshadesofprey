@@ -16,7 +16,11 @@ func _ready() -> void:
 	icon.texture = dinosaur.texture
 	feeling.text = GameManager.DinosaurFeeling.keys()[dinosaur_info.mood].capitalize()
 	# TODO: set food texture
-	# food.texture = load("%s/%s" % [Resources.food_textures_dir, Resources.food_textures[dinosaur_info["food"]]])
-	biome.texture = load("%s/%s" % [Resources.biome_textures_dir, Resources.biome_textures[dinosaur.biome]])
+	match dinosaur_info.diet:
+		Dinosaur.Diet.HERBIVORE:
+			food.texture = game_manager.game_resources.get_food(Food.Type.HERBIVORE).texture
+		Dinosaur.Diet.CARNIVORE:
+			food.texture = game_manager.game_resources.get_food(Food.Type.CARNIVORE).texture
+	biome.texture = game_manager.game_resources.get_biome(dinosaur.biome).texture
 	# dino_name.texture = load("%s/%s" % [Resources.dinosaur_textures_dir, Resources.dinosaur_textures[dinosaur]["name"]])
 	dino_name.text = dinosaur_info.name

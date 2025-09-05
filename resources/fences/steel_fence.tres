@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Fence" load_steps=5 format=3 uid="uid://b6l0cvduyfrou"]
+
+[ext_resource type="Texture2D" uid="uid://mniiu74m07b7" path="res://img/park/fence_steel_back.png" id="1_d1tj5"]
+[ext_resource type="Script" uid="uid://bbujon6qlevs7" path="res://resources/fences/fence.gd" id="1_s7o6x"]
+[ext_resource type="Texture2D" uid="uid://c75tomsp1mx6p" path="res://img/park/fence_steel_front.png" id="2_ggudm"]
+[ext_resource type="Texture2D" uid="uid://6ovq4uf6e70r" path="res://img/park/fence_steel_top.png" id="4_25t20"]
+
+[resource]
+script = ExtResource("1_s7o6x")
+type = 2
+price = 5000
+durability = 1.0
+front_texture = ExtResource("2_ggudm")
+back_texture = ExtResource("1_d1tj5")
+top_texture = ExtResource("4_25t20")
+metadata/_custom_type_script = "uid://bbujon6qlevs7"

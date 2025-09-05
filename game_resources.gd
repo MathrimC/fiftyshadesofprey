@@ -7,12 +7,16 @@ extends Resource
 @export var birds: Array[Bird]
 @export var dinosaurs: Array[Dinosaur]
 @export var foods: Array[Food]
+@export var biomes: Array[Biome]
+@export var fences: Array[Fence]
 
 var grocery_dict: Dictionary[Grocery.Type, Grocery]
 var scientist_dict: Dictionary[Scientist.Type, Scientist]
 var bird_dict: Dictionary[Bird.Type, Bird]
 var dinosaur_dict: Dictionary[Dinosaur.Type, Dinosaur]
 var food_dict: Dictionary[Food.Type, Food]
+var biome_dict: Dictionary[Biome.Type, Biome]
+var fence_dict: Dictionary[Fence.Type, Fence]
 
 func _init() -> void:
 	_init_dicts.call_deferred()
@@ -28,6 +32,10 @@ func _init_dicts() -> void:
 		dinosaur_dict[dinosaur.type] = dinosaur
 	for food in foods:
 		food_dict[food.type] = food
+	for biome in biomes:
+		biome_dict[biome.type] = biome
+	for fence in fences:
+		fence_dict[fence.type] = fence
 
 func get_grocery(type: Grocery.Type) -> Grocery:
 	return grocery_dict.get(type, null)
@@ -43,3 +51,9 @@ func get_dinosaur(type: Dinosaur.Type) -> Dinosaur:
 
 func get_food(type: Food.Type) -> Food:
 	return food_dict.get(type, null)
+
+func get_biome(type: Biome.Type) -> Biome:
+	return biome_dict.get(type, null)
+
+func get_fence(type: Fence.Type) -> Fence:
+	return fence_dict.get(type, null)

@@ -33,10 +33,15 @@ func update() -> void:
 			amount = game_manager.get_bird_amount(item as Bird.Type)
 		GameManager.InventoryType.GROCERIES:
 			var grocery_data: Grocery = game_manager.game_resources.get_grocery(item as Grocery.Type)
-			item_name.text = "%s" % grocery_data.name
+			item_name.text = grocery_data.name
 			icon.texture = grocery_data.texture
 			# icon_path = "%s/%s" % [Resources.grocery_textures_dir, Resources.grocery_textures[grocery]]
 			amount = game_manager.get_groceries_amount(item as Grocery.Type)
+		GameManager.InventoryType.FOOD:
+			var food_data: Food = game_manager.game_resources.get_food(item as Food.Type)
+			item_name.text = food_data.name
+			icon.texture = food_data.texture
+			amount = game_manager.get_food_amount(item as Food.Type)
 	if amount == 0:
 		self.queue_free()
 	else:

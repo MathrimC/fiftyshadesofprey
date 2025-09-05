@@ -8,9 +8,9 @@ enum Dinosaur { DIPLODOCUS, STYRACOSAURUS, ANKYLOSAURUS, PTERANODON, SPINOSAURUS
 # enum Food { CARNIVORE, HERBIVORE }
 # enum Diet { CARNIVORE, HERBIVORE }
 # enum Groceries { SALT, PEPPER, RED_SLIME, GREEN_SLIME }
-enum Biome { FOREST, SWAMP, DESERT }
-enum Fence { WOOD, GLASS, STEEL }
-enum TextureType {IMAGE, EGG, NAME}
+# enum Biome { FOREST, SWAMP, DESERT }
+# enum Fence { WOOD, GLASS, STEEL }
+# enum TextureType {IMAGE, EGG, NAME}
 
 const scenes: Dictionary = {
 	Scene.MAIN_MENU: "res://scenes/main_menu/main_menu.tscn",
@@ -52,26 +52,26 @@ const scenes: Dictionary = {
 # 	Food.HERBIVORE: "food_herbivore.png",
 # }
 
-const biome_textures_dir := "res://img/buy"
-const biome_textures: Dictionary = {
-	Biome.FOREST: "forest_logo.png",
-	Biome.SWAMP: "swamp_logo.png",
-	Biome.DESERT: "desert_logo.png",
-}
-
-const enclosure_textures_dir := "res://img/park"
-const enclosure_textures: Dictionary = {
-	Biome.FOREST: "park_dinosaur_forest.png",
-	Biome.SWAMP: "park_dinosaur_swamp.png",
-	Biome.DESERT: "park_dinosaur_desert.png",
-}
-
-const fence_textures_dir := "res://img/park"
-const fence_textures: Dictionary = {
-	Fence.WOOD: {"front": "fence_wood_front.png", "back": "fence_wood_back.png"},
-	Fence.GLASS: {"front": "fence_glass_front.png", "back": "fence_glass_back.png"},
-	Fence.STEEL: {"front": "fence_steel_front.png", "back": "fence_steel_back.png", "top": "fence_steel_top.png"},
-}
+# const biome_textures_dir := "res://img/buy"
+# const biome_textures: Dictionary = {
+# 	Biome.FOREST: "forest_logo.png",
+# 	Biome.SWAMP: "swamp_logo.png",
+# 	Biome.DESERT: "desert_logo.png",
+# }
+#
+# const enclosure_textures_dir := "res://img/park"
+# const enclosure_textures: Dictionary = {
+# 	Biome.FOREST: "park_dinosaur_forest.png",
+# 	Biome.SWAMP: "park_dinosaur_swamp.png",
+# 	Biome.DESERT: "park_dinosaur_desert.png",
+# }
+#
+# const fence_textures_dir := "res://img/park"
+# const fence_textures: Dictionary = {
+# 	Fence.WOOD: {"front": "fence_wood_front.png", "back": "fence_wood_back.png"},
+# 	Fence.GLASS: {"front": "fence_glass_front.png", "back": "fence_glass_back.png"},
+# 	Fence.STEEL: {"front": "fence_steel_front.png", "back": "fence_steel_back.png", "top": "fence_steel_top.png"},
+# }
 
 # const grocery_textures_dir := "res://img/buy"
 # const grocery_textures: Dictionary = {

@@ -7,13 +7,13 @@ extends Node
 @export var biome_button_container: Container
 
 var selected_lot: int
-var selected_biome: Enclosure.Biome
+var selected_biome: Biome.Type
 
 func _ready() -> void:
 	biome_selection.hide()
 	fence_selection.hide()
 	map.lot_selected.connect(on_lot_selected)
-	for biome in Dinosaur.Biome.values():
+	for biome in Biome.Type.values():
 		var biome_button: BiomeButton = preload(Resources.scenes[Resources.Scene.BIOME_BUTTON]).instantiate()
 		biome_button.biome = biome
 		biome_button.biome_selected.connect(on_biome_selected)
@@ -25,12 +25,12 @@ func on_lot_selected(lot_number: int) -> void:
 	selected_lot = lot_number
 	biome_selection.show()
 
-func on_biome_selected(biome: Enclosure.Biome) -> void:
+func on_biome_selected(biome: Biome.Type) -> void:
 	selected_biome = biome
 	biome_selection.hide()
 	fence_selection.show()
 
-func on_enclosure_selected(fence: Enclosure.Fence) -> void:
+func on_enclosure_selected(fence: Fence.Type) -> void:
 	game_manager.create_enclosure(selected_lot, selected_biome, fence)
 	fence_selection.hide()
 	map.refresh()

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Biome" load_steps=4 format=3 uid="uid://b6xxitulvgnuo"]
+
+[ext_resource type="Script" uid="uid://mi3bpxpynbsm" path="res://resources/biomes/biome.gd" id="1_dy30b"]
+[ext_resource type="Texture2D" uid="uid://djbbmbfvdkkj1" path="res://img/buy/swamp_logo.png" id="1_rn6bm"]
+[ext_resource type="Texture2D" uid="uid://c6ngk2anhg7t8" path="res://img/park/park_dinosaur_swamp.png" id="3_s1opi"]
+
+[resource]
+script = ExtResource("1_dy30b")
+type = 1
+price = 1500
+icon = ExtResource("1_rn6bm")
+texture = ExtResource("3_s1opi")
+metadata/_custom_type_script = "uid://mi3bpxpynbsm"

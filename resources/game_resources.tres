@@ -1,9 +1,13 @@
-[gd_resource type="Resource" script_class="GameResources" load_steps=51 format=3 uid="uid://bxn0x3445ocgx"]
+[gd_resource type="Resource" script_class="GameResources" load_steps=59 format=3 uid="uid://bxn0x3445ocgx"]
 
 [ext_resource type="Script" uid="uid://dvvyap5uyp6cp" path="res://resources/birds/bird.gd" id="1_au0j2"]
+[ext_resource type="Script" uid="uid://mi3bpxpynbsm" path="res://resources/biomes/biome.gd" id="1_if10h"]
+[ext_resource type="Resource" uid="uid://bcr1km5yekvnp" path="res://resources/biomes/forest.tres" id="2_0ky7i"]
 [ext_resource type="Resource" uid="uid://b35g4xmak3ayx" path="res://resources/birds/chicken.tres" id="2_0mi4h"]
 [ext_resource type="Resource" uid="uid://chd0wrel1b77d" path="res://resources/birds/duck.tres" id="3_ik2tt"]
+[ext_resource type="Resource" uid="uid://b6xxitulvgnuo" path="res://resources/biomes/swamp.tres" id="3_mvbch"]
 [ext_resource type="Resource" uid="uid://drjkm2fcbyk2g" path="res://resources/birds/pigeon.tres" id="4_oc54q"]
+[ext_resource type="Resource" uid="uid://y0787twq7804" path="res://resources/biomes/desert.tres" id="4_tukvs"]
 [ext_resource type="Resource" uid="uid://cwsykwrf6m2m1" path="res://resources/birds/penguin.tres" id="5_862m5"]
 [ext_resource type="Resource" uid="uid://058w5vyou6u5" path="res://resources/birds/turkey.tres" id="6_if10h"]
 [ext_resource type="Resource" uid="uid://ixrl2rlo3u7d" path="res://resources/birds/ostrich.tres" id="7_4rymd"]
@@ -34,9 +38,13 @@
 [ext_resource type="Resource" uid="uid://lbdguqoxk8d5" path="res://resources/dinosaurs/velociraptor.tres" id="32_gi6fa"]
 [ext_resource type="Script" uid="uid://b58847peox3ie" path="res://resources/food/food.gd" id="33_t0vog"]
 [ext_resource type="Resource" uid="uid://dt1nt1ajpigcx" path="res://resources/food/herbivore_food.tres" id="34_1uia0"]
+[ext_resource type="Script" uid="uid://bbujon6qlevs7" path="res://resources/fences/fence.gd" id="34_4rymd"]
+[ext_resource type="Resource" uid="uid://ub61stbp034v" path="res://resources/fences/wooden_fence.tres" id="35_1tumx"]
 [ext_resource type="Resource" uid="uid://bhg2i8nhw2ajv" path="res://resources/food/carnivore_food.tres" id="35_xfbk2"]
+[ext_resource type="Resource" uid="uid://d02x25juq7tnc" path="res://resources/fences/glass_fence.tres" id="36_0ky7i"]
 [ext_resource type="Resource" uid="uid://m8uxgqqmo25n" path="res://resources/food/megamix.tres" id="36_oqw3n"]
 [ext_resource type="Script" uid="uid://d1pgb42ge7odf" path="res://resources/groceries/grocery.gd" id="37_56hb4"]
+[ext_resource type="Resource" uid="uid://b6l0cvduyfrou" path="res://resources/fences/steel_fence.tres" id="37_mvbch"]
 [ext_resource type="Resource" uid="uid://c14et5q7kyqpg" path="res://resources/groceries/salt.tres" id="38_ha2m7"]
 [ext_resource type="Resource" uid="uid://fo544box4e4x" path="res://resources/groceries/pepper.tres" id="39_5ddic"]
 [ext_resource type="Resource" uid="uid://xi7cadp35psg" path="res://resources/groceries/green_slime.tres" id="40_ic833"]
@@ -58,3 +66,5 @@ groceries = Array[ExtResource("37_56hb4")]([ExtResource("38_ha2m7"), ExtResource
 birds = Array[ExtResource("1_au0j2")]([ExtResource("2_0mi4h"), ExtResource("3_ik2tt"), ExtResource("4_oc54q"), ExtResource("5_862m5"), ExtResource("6_if10h"), ExtResource("7_4rymd"), ExtResource("8_1tumx"), ExtResource("9_0ky7i"), ExtResource("10_mvbch"), ExtResource("11_tukvs")])
 dinosaurs = Array[ExtResource("12_07g1a")]([ExtResource("13_lq2et"), ExtResource("14_16782"), ExtResource("15_q857d"), ExtResource("16_ewf1f"), ExtResource("17_bfa04"), ExtResource("18_aioy2"), ExtResource("19_yjhmy"), ExtResource("20_dvi0j"), ExtResource("21_348om"), ExtResource("22_6uoug"), ExtResource("23_yyhe4"), ExtResource("24_nx7ns"), ExtResource("25_ntebr"), ExtResource("26_gpp2o"), ExtResource("27_tpg1d"), ExtResource("28_khepx"), ExtResource("29_ak16t"), ExtResource("30_xmgj7"), ExtResource("31_77gef"), ExtResource("32_gi6fa")])
 foods = Array[ExtResource("33_t0vog")]([ExtResource("34_1uia0"), ExtResource("35_xfbk2"), ExtResource("36_oqw3n")])
+biomes = Array[ExtResource("1_if10h")]([ExtResource("2_0ky7i"), ExtResource("3_mvbch"), ExtResource("4_tukvs")])
+fences = Array[ExtResource("34_4rymd")]([ExtResource("35_1tumx"), ExtResource("36_0ky7i"), ExtResource("37_mvbch")])

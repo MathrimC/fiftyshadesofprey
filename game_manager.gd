@@ -204,13 +204,16 @@ func buy_groceries(groceries_amounts: Dictionary[Grocery.Type, int]) -> void:
 func get_groceries_amount(grocery: Grocery.Type) -> int:
 	return inventory.get(InventoryType.GROCERIES,{}).get(grocery,0)
 
+func get_food_amount(food: Food.Type) -> int:
+	return inventory.get(InventoryType.FOOD,{}).get(food,0)
+
 func is_lot_occupied(lot_number: int) -> bool:
 	return park_content.has(lot_number)
 
 func get_lot_content(lot_number: int) -> Enclosure:
 	return park_content.get(lot_number, null)
 
-func create_enclosure(lot_number: int, biome: Enclosure.Biome, fence: Enclosure.Fence) -> void:
+func create_enclosure(lot_number: int, biome: Biome.Type, fence: Fence.Type) -> void:
 	assert(!park_content.has(lot_number), "Error: creating enclosure on occupied lot")
 	park_content[lot_number] = Enclosure.new(lot_number, biome, fence)
 

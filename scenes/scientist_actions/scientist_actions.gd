@@ -65,6 +65,6 @@ func refresh_action() -> void:
 						return
 			GameManager.ScientistAction.CREATE_FOOD:
 				for line in food_lines:
-					if line.food == action_info["food"]:
+					if line.recipe == action_info["recipe"]:
 						line.track_action_time(action_info)
 						return
