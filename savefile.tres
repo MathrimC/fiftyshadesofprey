@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="GameData" load_steps=4 format=3]
+[gd_resource type="Resource" script_class="GameData" load_steps=4 format=3 uid="uid://c3m1vilnn077x"]
 
-[ext_resource type="Script" path="res://dinosaur_instance.gd" id="1_ynw4n"]
-[ext_resource type="Script" path="res://enclosure.gd" id="2_51527"]
-[ext_resource type="Script" path="res://game_data.gd" id="3_usedm"]
+[ext_resource type="Script" uid="uid://ld6j1dfe0k5t" path="res://dinosaur_instance.gd" id="1_ynw4n"]
+[ext_resource type="Script" uid="uid://esy1gug703k4" path="res://enclosure.gd" id="2_51527"]
+[ext_resource type="Script" uid="uid://dlae8w5iknar8" path="res://game_data.gd" id="3_usedm"]
 
 [resource]
 script = ExtResource("3_usedm")

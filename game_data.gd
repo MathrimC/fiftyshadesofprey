@@ -3,7 +3,7 @@ extends Resource
 
 const starting_money := 5000
 const starting_ticket_price := 1
-const save_path = "savefile.tres"
+const save_path = "user://savefile.tres"
 
 @export var money: int
 @export var ticket_price: int
