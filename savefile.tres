@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="GameData" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://dinosaur_instance.gd" id="1_ynw4n"]
+[ext_resource type="Script" path="res://enclosure.gd" id="2_51527"]
+[ext_resource type="Script" path="res://game_data.gd" id="3_usedm"]
+
+[resource]
+script = ExtResource("3_usedm")
+money = 5000
+ticket_price = 1
+eggs = Array[ExtResource("1_ynw4n")]([])
+enclosures = Dictionary[int, ExtResource("2_51527")]({})
+groceries = Dictionary[int, int]({})
+birds = Dictionary[int, int]({})
+food = Dictionary[int, int]({})
+hired_scientists = Array[int]([0])
+scientist_actions = Dictionary[int, Dictionary]({})

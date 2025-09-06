@@ -9,6 +9,8 @@ func _ready():
 	game_manager.notification.connect(on_notification)
 	game_manager.money_changed.connect(on_money_changed)
 	game_manager.ticket_price_changed.connect(on_ticket_price_changed)
+	ticket_label.text = "%s" % game_manager.game_data.ticket_price
+	money_label.text = "%s" % game_manager.game_data.money
 
 func on_notification(_notification: String) -> void:
 	notification_label.text = _notification

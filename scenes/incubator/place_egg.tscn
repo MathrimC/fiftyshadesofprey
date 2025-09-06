@@ -8,3 +8,4 @@ script = ExtResource("1_w8xib")
 map = NodePath("Map")
 
 [node name="Map" parent="." instance=ExtResource("2_t74ks")]
+mode = 2

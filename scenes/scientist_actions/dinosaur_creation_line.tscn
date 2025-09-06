@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://bjbsob3f56pqu"]
+[gd_scene load_steps=10 format=3 uid="uid://bjbsob3f56pqu"]
 
 [ext_resource type="Script" uid="uid://b5usjkdctjxo6" path="res://scenes/scientist_actions/dinosaur_creation_line.gd" id="1_wqnfq"]
+[ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://cartoon_theme.tres" id="2_acscv"]
 [ext_resource type="Texture2D" uid="uid://dl7e6gvafqqcy" path="res://img/dinos/Diplodocus_egg.png" id="2_xs80n"]
 [ext_resource type="Texture2D" uid="uid://b65jmpysknf0j" path="res://img/science/equal.png" id="3_speqs"]
 [ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://fonts/BD_Cartoon_Shout.ttf" id="4_7kw3u"]
@@ -24,6 +25,7 @@ timer = NodePath("Timer")
 texture_filter = 2
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
+theme = ExtResource("2_acscv")
 texture = ExtResource("2_xs80n")
 expand_mode = 1
 stretch_mode = 4
@@ -50,6 +52,7 @@ vertical_alignment = 1
 [node name="Animal" type="TextureRect" parent="AnimalAmount"]
 custom_minimum_size = Vector2(90, 70)
 layout_mode = 2
+theme = ExtResource("2_acscv")
 texture = ExtResource("5_gh73y")
 expand_mode = 1
 stretch_mode = 5

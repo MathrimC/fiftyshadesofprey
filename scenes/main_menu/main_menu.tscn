@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bffn6n6gayotv"]
+[gd_scene load_steps=7 format=3 uid="uid://bffn6n6gayotv"]
 
 [ext_resource type="Texture2D" uid="uid://cedqpvmc4d62g" path="res://img/general/menu back.png" id="1_jix8l"]
 [ext_resource type="Texture2D" uid="uid://jxbgsojo0k5l" path="res://img/general/button_start.png" id="2_glbon"]
+[ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://cartoon_theme.tres" id="2_wem23"]
+[ext_resource type="Script" uid="uid://cg1ri4kaoa3v2" path="res://scenes/main_menu/continue_button.gd" id="3_3ovsr"]
 [ext_resource type="Script" uid="uid://tymevkfdp11n" path="res://scenes/main_menu/start_button.gd" id="3_nlkkf"]
 [ext_resource type="Texture2D" uid="uid://oh16b02i34jd" path="res://img/general/button_exit.png" id="4_qe12f"]
 
@@ -35,15 +37,23 @@ offset_right = -221.0
 offset_bottom = -57.0
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_constants/separation = 30
+theme_override_constants/separation = 10
+
+[node name="ContinueButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_wem23")
+theme_override_font_sizes/font_size = 18
+text = "Continue"
+script = ExtResource("3_3ovsr")
 
 [node name="StartButton" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("2_glbon")
 script = ExtResource("3_nlkkf")
 
-[node name="ExitButton" type="TextureButton" parent="VBoxContainer"]
+[node name="ExitButton2" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("4_qe12f")
 
+[connection signal="pressed" from="VBoxContainer/ContinueButton" to="VBoxContainer/ContinueButton" method="_on_pressed"]
 [connection signal="pressed" from="VBoxContainer/StartButton" to="VBoxContainer/StartButton" method="_on_pressed"]

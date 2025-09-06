@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://daqutudsxhesn"]
+
+[ext_resource type="Script" uid="uid://djxtoblmbwgou" path="res://scenes/park/park_lot.gd" id="1_r6wxn"]
+[ext_resource type="Texture2D" uid="uid://be0rcrfydwa4v" path="res://img/park/park_empty_dinosaur_lot.png" id="2_kqnqq"]
+[ext_resource type="Texture2D" uid="uid://mniiu74m07b7" path="res://img/park/fence_steel_back.png" id="3_muwaj"]
+[ext_resource type="Texture2D" uid="uid://c75tomsp1mx6p" path="res://img/park/fence_steel_front.png" id="4_tluyu"]
+[ext_resource type="Texture2D" uid="uid://6ovq4uf6e70r" path="res://img/park/fence_steel_top.png" id="5_sc20y"]
+[ext_resource type="Texture2D" uid="uid://dwgyotwbeial6" path="res://img/park/park_dinosaur_forest.png" id="6_sih1o"]
+[ext_resource type="Texture2D" uid="uid://bygqqq1joogiw" path="res://img/dinos/Diplodocus.png" id="7_ingbp"]
+
+[node name="ParkLot" type="Node2D"]
+script = ExtResource("1_r6wxn")
+lot_number = 1
+metadata/_custom_type_script = "uid://djxtoblmbwgou"
+
+[node name="Empty" type="Sprite2D" parent="."]
+texture = ExtResource("2_kqnqq")
+
+[node name="Enclosure" type="Node2D" parent="."]
+visible = false
+position = Vector2(0, 1)
+scale = Vector2(0.596, 0.596)
+
+[node name="BackFence" type="Sprite2D" parent="Enclosure"]
+z_index = 1
+y_sort_enabled = true
+texture = ExtResource("3_muwaj")
+
+[node name="FrontFence" type="Sprite2D" parent="Enclosure"]
+z_index = 1
+y_sort_enabled = true
+texture = ExtResource("4_tluyu")
+
+[node name="TopFence" type="Sprite2D" parent="Enclosure"]
+z_index = 2
+y_sort_enabled = true
+texture = ExtResource("5_sc20y")
+
+[node name="Biome" type="Sprite2D" parent="Enclosure"]
+texture = ExtResource("6_sih1o")
+
+[node name="Dinosaur1" type="Sprite2D" parent="Enclosure"]
+position = Vector2(-78.8591, 30.2013)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("7_ingbp")
+
+[node name="Dinosaur2" type="Sprite2D" parent="Enclosure"]
+position = Vector2(174.497, -110.738)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("7_ingbp")

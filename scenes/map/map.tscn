@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dyj6peppi2grb"]
+[gd_scene load_steps=14 format=3 uid="uid://dyj6peppi2grb"]
 
 [ext_resource type="Texture2D" uid="uid://dbosrisu3j05" path="res://img/map/backgroundmap.png" id="1_los0q"]
 [ext_resource type="Script" uid="uid://bckkdrlctj2bu" path="res://scenes/map/map.gd" id="1_mgs8m"]
@@ -7,12 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://c02d4q3yfsnx6" path="res://img/map/map_empty_lot.png" id="3_u3g4l"]
 [ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://fonts/BD_Cartoon_Shout.ttf" id="4_b56te"]
 [ext_resource type="Texture2D" uid="uid://bswpkopyylvr" path="res://img/map/map_empty_business.png" id="4_mnuex"]
-[ext_resource type="Texture2D" uid="uid://jrp6v2cxrnad" path="res://img/map/map_used_lot.png" id="5_cumk7"]
+[ext_resource type="PackedScene" uid="uid://dr1wdjjci81xd" path="res://scenes/map/map_lot.tscn" id="5_mrjnl"]
 [ext_resource type="Texture2D" uid="uid://c3g14i8d138i8" path="res://img/buy/forest_logo.png" id="5_x2kg6"]
 [ext_resource type="Texture2D" uid="uid://g3rqyurhu2bs" path="res://img/buy/forest_logo_active.png" id="6_cumk7"]
 [ext_resource type="Texture2D" uid="uid://c1n3leb6mnq81" path="res://img/map/map_used_business.png" id="6_hamb8"]
 [ext_resource type="Texture2D" uid="uid://djbbmbfvdkkj1" path="res://img/buy/swamp_logo.png" id="7_mgs8m"]
-[ext_resource type="Script" uid="uid://cy1fvlh07cems" path="res://scenes/map/map_lot.gd" id="7_mrjnl"]
 [ext_resource type="Texture2D" uid="uid://dbe07goc6dwl0" path="res://img/buy/desert_logo.png" id="8_mrjnl"]
 
 [node name="Map" type="Control"]
@@ -66,27 +65,12 @@ texture_normal = ExtResource("4_mnuex")
 texture_disabled = ExtResource("6_hamb8")
 stretch_mode = 3
 
-[node name="MapLot1" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(142, 73)
+[node name="MapLot1" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("5_mrjnl")]
 layout_mode = 2
-texture_normal = ExtResource("3_u3g4l")
-texture_disabled = ExtResource("5_cumk7")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("7_mrjnl")
-lot_number = 1
-metadata/_custom_type_script = "uid://cy1fvlh07cems"
 
-[node name="MapLot2" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(142, 73)
+[node name="MapLot2" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("5_mrjnl")]
 layout_mode = 2
-texture_normal = ExtResource("3_u3g4l")
-texture_disabled = ExtResource("5_cumk7")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("7_mrjnl")
 lot_number = 2
-metadata/_custom_type_script = "uid://cy1fvlh07cems"
 
 [node name="EmptyBusiness2" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 146)
@@ -99,98 +83,42 @@ layout_mode = 2
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="MapLot3" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
-custom_minimum_size = Vector2(142, 73)
+[node name="MapLot3" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("5_mrjnl")]
 layout_mode = 2
-texture_normal = ExtResource("3_u3g4l")
-texture_disabled = ExtResource("5_cumk7")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("7_mrjnl")
 lot_number = 3
-metadata/_custom_type_script = "uid://cy1fvlh07cems"
 
-[node name="MapLot4" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
-custom_minimum_size = Vector2(142, 73)
+[node name="MapLot4" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("5_mrjnl")]
 layout_mode = 2
-texture_normal = ExtResource("3_u3g4l")
-texture_disabled = ExtResource("5_cumk7")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("7_mrjnl")
 lot_number = 4
-metadata/_custom_type_script = "uid://cy1fvlh07cems"
 
-[node name="MapLot5" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
-custom_minimum_size = Vector2(142, 73)
+[node name="MapLot5" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("5_mrjnl")]
 layout_mode = 2
-texture_normal = ExtResource("3_u3g4l")
-texture_disabled = ExtResource("5_cumk7")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("7_mrjnl")
 lot_number = 5
-metadata/_custom_type_script = "uid://cy1fvlh07cems"
 
-[node name="MapLot6" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
-custom_minimum_size = Vector2(142, 73)
+[node name="MapLot6" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("5_mrjnl")]
 layout_mode = 2
-texture_normal = ExtResource("3_u3g4l")
-texture_disabled = ExtResource("5_cumk7")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("7_mrjnl")
 lot_number = 6
-metadata/_custom_type_script = "uid://cy1fvlh07cems"
 
-[node name="MapLot7" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
-custom_minimum_size = Vector2(142, 73)
+[node name="MapLot7" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("5_mrjnl")]
 layout_mode = 2
-texture_normal = ExtResource("3_u3g4l")
-texture_disabled = ExtResource("5_cumk7")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("7_mrjnl")
 lot_number = 7
-metadata/_custom_type_script = "uid://cy1fvlh07cems"
 
-[node name="MapLot8" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
-custom_minimum_size = Vector2(142, 73)
+[node name="MapLot8" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("5_mrjnl")]
 layout_mode = 2
-texture_normal = ExtResource("3_u3g4l")
-texture_disabled = ExtResource("5_cumk7")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("7_mrjnl")
 lot_number = 8
-metadata/_custom_type_script = "uid://cy1fvlh07cems"
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="MapLot9" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer3"]
-custom_minimum_size = Vector2(142, 73)
+[node name="MapLot9" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer3" instance=ExtResource("5_mrjnl")]
 layout_mode = 2
-texture_normal = ExtResource("3_u3g4l")
-texture_disabled = ExtResource("5_cumk7")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("7_mrjnl")
 lot_number = 9
-metadata/_custom_type_script = "uid://cy1fvlh07cems"
 
-[node name="MapLot10" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer3"]
-custom_minimum_size = Vector2(142, 73)
+[node name="MapLot10" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer3" instance=ExtResource("5_mrjnl")]
 layout_mode = 2
-texture_normal = ExtResource("3_u3g4l")
-texture_disabled = ExtResource("5_cumk7")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("7_mrjnl")
 lot_number = 10
-metadata/_custom_type_script = "uid://cy1fvlh07cems"
 
 [node name="EmptyBusiness1" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer3"]
 custom_minimum_size = Vector2(0, 162)
@@ -198,136 +126,59 @@ layout_mode = 2
 texture_normal = ExtResource("4_mnuex")
 stretch_mode = 3
 
-[node name="MapLot11" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer3"]
-custom_minimum_size = Vector2(142, 73)
+[node name="MapLot11" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer3" instance=ExtResource("5_mrjnl")]
 layout_mode = 2
-texture_normal = ExtResource("3_u3g4l")
-texture_disabled = ExtResource("5_cumk7")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("7_mrjnl")
 lot_number = 11
-metadata/_custom_type_script = "uid://cy1fvlh07cems"
 
-[node name="MapLot12" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer3"]
-custom_minimum_size = Vector2(142, 73)
+[node name="MapLot12" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer3" instance=ExtResource("5_mrjnl")]
 layout_mode = 2
-texture_normal = ExtResource("3_u3g4l")
-texture_disabled = ExtResource("5_cumk7")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("7_mrjnl")
 lot_number = 12
-metadata/_custom_type_script = "uid://cy1fvlh07cems"
 
 [node name="VBoxContainer4" type="VBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="MapLot13" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer4"]
-custom_minimum_size = Vector2(142, 73)
+[node name="MapLot13" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer4" instance=ExtResource("5_mrjnl")]
 layout_mode = 2
-texture_normal = ExtResource("3_u3g4l")
-texture_disabled = ExtResource("5_cumk7")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("7_mrjnl")
 lot_number = 13
-metadata/_custom_type_script = "uid://cy1fvlh07cems"
 
-[node name="MapLot14" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer4"]
-custom_minimum_size = Vector2(142, 73)
+[node name="MapLot14" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer4" instance=ExtResource("5_mrjnl")]
 layout_mode = 2
-texture_normal = ExtResource("3_u3g4l")
-texture_disabled = ExtResource("5_cumk7")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("7_mrjnl")
 lot_number = 14
-metadata/_custom_type_script = "uid://cy1fvlh07cems"
 
-[node name="MapLot15" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer4"]
-custom_minimum_size = Vector2(142, 73)
+[node name="MapLot15" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer4" instance=ExtResource("5_mrjnl")]
 layout_mode = 2
-texture_normal = ExtResource("3_u3g4l")
-texture_disabled = ExtResource("5_cumk7")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("7_mrjnl")
 lot_number = 15
-metadata/_custom_type_script = "uid://cy1fvlh07cems"
 
-[node name="MapLot16" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer4"]
-custom_minimum_size = Vector2(142, 73)
+[node name="MapLot16" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer4" instance=ExtResource("5_mrjnl")]
 layout_mode = 2
-texture_normal = ExtResource("3_u3g4l")
-texture_disabled = ExtResource("5_cumk7")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("7_mrjnl")
 lot_number = 16
-metadata/_custom_type_script = "uid://cy1fvlh07cems"
 
-[node name="MapLot17" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer4"]
-custom_minimum_size = Vector2(142, 73)
+[node name="MapLot17" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer4" instance=ExtResource("5_mrjnl")]
 layout_mode = 2
-texture_normal = ExtResource("3_u3g4l")
-texture_disabled = ExtResource("5_cumk7")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("7_mrjnl")
 lot_number = 17
-metadata/_custom_type_script = "uid://cy1fvlh07cems"
 
-[node name="MapLot18" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer4"]
-custom_minimum_size = Vector2(142, 73)
+[node name="MapLot18" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer4" instance=ExtResource("5_mrjnl")]
 layout_mode = 2
-texture_normal = ExtResource("3_u3g4l")
-texture_disabled = ExtResource("5_cumk7")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("7_mrjnl")
 lot_number = 18
-metadata/_custom_type_script = "uid://cy1fvlh07cems"
 
 [node name="VBoxContainer5" type="VBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="MapLot19" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer5"]
-custom_minimum_size = Vector2(142, 73)
+[node name="MapLot19" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer5" instance=ExtResource("5_mrjnl")]
 layout_mode = 2
-texture_normal = ExtResource("3_u3g4l")
-texture_disabled = ExtResource("5_cumk7")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("7_mrjnl")
 lot_number = 19
-metadata/_custom_type_script = "uid://cy1fvlh07cems"
 
-[node name="MapLot20" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer5"]
-custom_minimum_size = Vector2(142, 73)
+[node name="MapLot20" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer5" instance=ExtResource("5_mrjnl")]
 layout_mode = 2
-texture_normal = ExtResource("3_u3g4l")
-texture_disabled = ExtResource("5_cumk7")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("7_mrjnl")
 lot_number = 20
-metadata/_custom_type_script = "uid://cy1fvlh07cems"
 
-[node name="MapLot21" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer5"]
-custom_minimum_size = Vector2(142, 73)
+[node name="MapLot21" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer5" instance=ExtResource("5_mrjnl")]
 layout_mode = 2
-texture_normal = ExtResource("3_u3g4l")
-texture_disabled = ExtResource("5_cumk7")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("7_mrjnl")
 lot_number = 21
-metadata/_custom_type_script = "uid://cy1fvlh07cems"
 
 [node name="EmptyBusiness1" type="TextureButton" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer5"]
 custom_minimum_size = Vector2(0, 162)
@@ -381,9 +232,14 @@ stretch_mode = 3
 layout_mode = 2
 texture = ExtResource("2_enpy6")
 
-[node name="Entrance" type="TextureRect" parent="VBoxContainer"]
-custom_minimum_size = Vector2(80, 40)
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_constants/margin_right = 210
+
+[node name="Entrance" type="TextureRect" parent="VBoxContainer/MarginContainer2"]
+custom_minimum_size = Vector2(140, 50)
+layout_mode = 2
+size_flags_horizontal = 8
 texture = ExtResource("3_jim6s")
 expand_mode = 1
 stretch_mode = 5

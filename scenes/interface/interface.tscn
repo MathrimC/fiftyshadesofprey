@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://okba3tl3tq5q"]
+[gd_scene load_steps=34 format=3 uid="uid://okba3tl3tq5q"]
 
 [ext_resource type="Texture2D" uid="uid://d27ddxiy7es7s" path="res://img/general/button_park.png" id="1_5qo85"]
 [ext_resource type="Script" uid="uid://co888xlnm8n37" path="res://scenes/interface/left_menu.gd" id="1_6b6dw"]
@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://dcqd14ec0hqy" path="res://img/general/button_yay.png" id="23_l715o"]
 [ext_resource type="Texture2D" uid="uid://b2oj0iuhxdvya" path="res://img/general/button_yay_active.png" id="24_rub5w"]
 [ext_resource type="Texture2D" uid="uid://53oxgklwl0hn" path="res://img/general/button_nay.png" id="25_u8chh"]
+[ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://cartoon_theme.tres" id="26_iy6lx"]
 [ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://fonts/BD_Cartoon_Shout.ttf" id="26_ov4b6"]
 [ext_resource type="Texture2D" uid="uid://bj5v06ipo3ouq" path="res://img/general/button_nay_active.png" id="26_u5mno"]
 [ext_resource type="Texture2D" uid="uid://c4psyvvgbyoak" path="res://img/general/inventory_icon.png" id="28_ccu2c"]
@@ -205,6 +206,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("26_iy6lx")
+theme_override_font_sizes/normal_font_size = 12
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MoneyIcon" type="TextureRect" parent="LowerBar/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(25, 0)
@@ -226,6 +231,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("26_iy6lx")
 theme_override_font_sizes/normal_font_size = 12
 text = "1000"
 scroll_active = false

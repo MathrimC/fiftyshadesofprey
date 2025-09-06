@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://dr1wdjjci81xd"]
+
+[ext_resource type="Texture2D" uid="uid://c02d4q3yfsnx6" path="res://img/map/map_empty_lot.png" id="1_4ko8j"]
+[ext_resource type="Texture2D" uid="uid://jrp6v2cxrnad" path="res://img/map/map_used_lot.png" id="2_85xi0"]
+[ext_resource type="Script" uid="uid://cy1fvlh07cems" path="res://scenes/map/map_lot.gd" id="3_734xf"]
+[ext_resource type="Texture2D" uid="uid://c3g14i8d138i8" path="res://img/buy/forest_logo.png" id="4_qt1v4"]
+[ext_resource type="Texture2D" uid="uid://3pw1ilpuyv0o" path="res://img/dinos/Velociraptor.png" id="5_fp2qi"]
+[ext_resource type="Texture2D" uid="uid://ber6rp3iecdhi" path="res://img/dinos/Stegosaurus.png" id="6_d6crx"]
+
+[node name="MapLot1" type="TextureButton" node_paths=PackedStringArray("enclosure_info", "biome", "dinosaur_1", "dinosaur_2")]
+custom_minimum_size = Vector2(142, 73)
+texture_normal = ExtResource("1_4ko8j")
+texture_disabled = ExtResource("2_85xi0")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("3_734xf")
+lot_number = 1
+enclosure_info = NodePath("EnclosureInfo")
+biome = NodePath("EnclosureInfo/HBoxContainer/Biome")
+dinosaur_1 = NodePath("EnclosureInfo/HBoxContainer/VBoxContainer/Dinosaur1")
+dinosaur_2 = NodePath("EnclosureInfo/HBoxContainer/VBoxContainer/Dinosaur2")
+metadata/_custom_type_script = "uid://cy1fvlh07cems"
+
+[node name="EnclosureInfo" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="EnclosureInfo"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Biome" type="TextureRect" parent="EnclosureInfo/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("4_qt1v4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EnclosureInfo/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Dinosaur1" type="TextureRect" parent="EnclosureInfo/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("5_fp2qi")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Dinosaur2" type="TextureRect" parent="EnclosureInfo/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("6_d6crx")
+expand_mode = 1
+stretch_mode = 5

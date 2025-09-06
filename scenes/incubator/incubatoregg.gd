@@ -11,7 +11,6 @@ var dinosaur: DinosaurInstance
 
 func _ready() -> void:
 	var dinosaur_info: Dinosaur = game_manager.game_resources.get_dinosaur(dinosaur.type)
-	# egg.texture = load("%s/%s" % [Resources.dinosaur_textures_dir, Resources.dinosaur_textures[dinosaur]["egg"]])
 	egg.texture = dinosaur_info.egg_texture
 	match dinosaur_info.diet:
 		Dinosaur.Diet.HERBIVORE:
@@ -33,9 +32,6 @@ func _timer() -> void:
 	timer.text = "Egg hatched!"
 
 func on_place_clicked() -> void:
-	#open map
-	# if _event is InputEventMouseButton && _event.button_index == MouseButton.MOUSE_BUTTON_LEFT && !_event.pressed:
-	# game_manager.switch_scene(scene)
 	var place_egg: PlaceEgg = load(Resources.scenes[Resources.Scene.PLACE_EGG]).instantiate()
 	place_egg.dinosaur = dinosaur
 	get_tree().root.add_child(place_egg)

@@ -23,24 +23,21 @@ func _on_hire_pressed() -> void:
 
 func refresh() -> void:
 	var scientist_data: Scientist = game_manager.game_resources.get_scientist(scientist)
-	if true || game_manager.is_available(scientist):
+	if game_manager.is_available(scientist):
 		icon.texture = scientist_data.texture
-		# icon.texture = load("%s/%s" % [Resources.scientist_textures_dir, Resources.scientist_textures[scientist]["icon"]])
-		# if scientist == Resources.Scientist.M4R13_CR13:
-		# 	scientist_name.text = "\"M4R13 CR13\""
-		# else:
 		scientist_name.text = "\"%s\"" % scientist_data.name
 		for dinosaur: Dinosaur.Type in scientist_data.dinosaurs:
 			var dinosaur_data = game_manager.game_resources.get_dinosaur(dinosaur)
 			var egg: TextureRect = load(Resources.scenes[Resources.Scene.RESUME_EGG]).instantiate()
 			egg.texture = dinosaur_data.egg_texture
+			egg.tooltip_text = dinosaur_data.name
 			eggs_container.add_child(egg)
-		# food_amount.text = "%sx" % scientist_info["food_amount"]
 		for recipe: FoodRecipe in scientist_data.recipes:
 			for food in recipe.outputs:
+				var food_info := game_manager.game_resources.get_food(food)
 				var food_icon: TextureRect = load(Resources.scenes[Resources.Scene.RESUME_FOOD]).instantiate()
-				food_icon.texture = game_manager.game_resources.get_food(food).texture
-				# food_icon.texture = load("%s/%s" % [Resources.food_textures_dir, Resources.food_textures[food]])
+				food_icon.texture = food_info.texture
+				food_icon.tooltip_text = food_info.name
 				food_container.add_child(food_icon)
 				food_amount.text = "%sx" % recipe.outputs[food]
 		if scientist_data.wage > 0:

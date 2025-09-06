@@ -3,24 +3,27 @@
 [ext_resource type="Script" uid="uid://b1v7ctbi02wlr" path="res://scenes/build_enclosure/build_enclosure.gd" id="1_shnu1"]
 [ext_resource type="PackedScene" uid="uid://dyj6peppi2grb" path="res://scenes/map/map.tscn" id="2_4e05c"]
 [ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://cartoon_theme.tres" id="3_4e05c"]
-[ext_resource type="Texture2D" uid="uid://bk672lw8jge5n" path="res://img/buy/wood_logo.png" id="4_m08lm"]
-[ext_resource type="Texture2D" uid="uid://b85qsbxm143nj" path="res://img/buy/wood_logo_active.png" id="5_py161"]
-[ext_resource type="Texture2D" uid="uid://disve7xkgktpy" path="res://img/buy/glass_logo.png" id="6_4nbvu"]
-[ext_resource type="Texture2D" uid="uid://4d42owoxvyjs" path="res://img/buy/glass_logo_active.png" id="7_w7jq1"]
-[ext_resource type="Texture2D" uid="uid://ba2rf5vve4gpy" path="res://img/buy/steel_logo.png" id="8_m5kd4"]
-[ext_resource type="Texture2D" uid="uid://cvkj6qouvicoa" path="res://img/buy/steel_logo_active.png" id="9_oxy2j"]
+[ext_resource type="Texture2D" uid="uid://c8osf216v5gnq" path="res://img/map/map_wall.png" id="11_y7f4r"]
+[ext_resource type="Texture2D" uid="uid://b0dfdhu4adrh" path="res://img/buy/money.png" id="12_cdqj6"]
+[ext_resource type="Texture2D" uid="uid://dcqd14ec0hqy" path="res://img/general/button_yay.png" id="13_sgcpo"]
+[ext_resource type="Texture2D" uid="uid://b2oj0iuhxdvya" path="res://img/general/button_yay_active.png" id="14_xe3ps"]
+[ext_resource type="Texture2D" uid="uid://53oxgklwl0hn" path="res://img/general/button_nay.png" id="15_cdqj6"]
+[ext_resource type="Texture2D" uid="uid://bj5v06ipo3ouq" path="res://img/general/button_nay_active.png" id="16_sgcpo"]
 
-[node name="BuildEnclosure" type="Node" node_paths=PackedStringArray("map", "biome_selection", "fence_selection", "biome_button_container")]
+[node name="BuildEnclosure" type="Node" node_paths=PackedStringArray("map", "enclosure_selection", "cost_label", "yay_button", "biome_button_container", "fence_button_container")]
 script = ExtResource("1_shnu1")
 map = NodePath("Map")
-biome_selection = NodePath("BiomeSelection")
-fence_selection = NodePath("FenceSelection")
-biome_button_container = NodePath("BiomeSelection/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer")
+enclosure_selection = NodePath("EnclosureSelection")
+cost_label = NodePath("EnclosureSelection/PanelContainer/MarginContainer/VBoxContainer/Cost/CostLabel")
+yay_button = NodePath("EnclosureSelection/PanelContainer/MarginContainer/VBoxContainer/Cost/Buttons/YayButton")
+disabled_color = Color(0.305882, 0.313726, 0.368627, 1)
+biome_button_container = NodePath("EnclosureSelection/PanelContainer/MarginContainer/VBoxContainer/BiomeSelection/HBoxContainer")
+fence_button_container = NodePath("EnclosureSelection/PanelContainer/MarginContainer/VBoxContainer/FenceSelection/HBoxContainer")
 
 [node name="Map" parent="." instance=ExtResource("2_4e05c")]
+mode = 1
 
-[node name="BiomeSelection" type="Control" parent="."]
-visible = false
+[node name="EnclosureSelection" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,7 +31,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="BiomeSelection"]
+[node name="PanelContainer" type="PanelContainer" parent="EnclosureSelection"]
+modulate = Color(0.945098, 1, 1, 1)
+self_modulate = Color(1, 0.984314, 1, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -42,26 +47,96 @@ offset_bottom = 98.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="BiomeSelection/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="EnclosureSelection/PanelContainer"]
 layout_mode = 2
+theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="BiomeSelection/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="EnclosureSelection/PanelContainer/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 15
 alignment = 1
 
-[node name="Label" type="Label" parent="BiomeSelection/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="BiomeSelection" type="HBoxContainer" parent="EnclosureSelection/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+
+[node name="Label" type="Label" parent="EnclosureSelection/PanelContainer/MarginContainer/VBoxContainer/BiomeSelection"]
+layout_mode = 2
+size_flags_horizontal = 3
 theme = ExtResource("3_4e05c")
-text = "Choose biome"
-horizontal_alignment = 1
+text = "Select biome"
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="BiomeSelection/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="EnclosureSelection/PanelContainer/MarginContainer/VBoxContainer/BiomeSelection"]
 layout_mode = 2
 
+[node name="FenceSelection" type="HBoxContainer" parent="EnclosureSelection/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="EnclosureSelection/PanelContainer/MarginContainer/VBoxContainer/FenceSelection"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_4e05c")
+text = "Select fence"
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="EnclosureSelection/PanelContainer/MarginContainer/VBoxContainer/FenceSelection"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="EnclosureSelection/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+texture = ExtResource("11_y7f4r")
+expand_mode = 1
+
+[node name="Cost" type="HBoxContainer" parent="EnclosureSelection/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="EnclosureSelection/PanelContainer/MarginContainer/VBoxContainer/Cost"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("3_4e05c")
+text = "Total cost: "
+
+[node name="CostLabel" type="Label" parent="EnclosureSelection/PanelContainer/MarginContainer/VBoxContainer/Cost"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("3_4e05c")
+text = "2000"
+
+[node name="TextureRect" type="TextureRect" parent="EnclosureSelection/PanelContainer/MarginContainer/VBoxContainer/Cost"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("12_cdqj6")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Buttons" type="HBoxContainer" parent="EnclosureSelection/PanelContainer/MarginContainer/VBoxContainer/Cost"]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="NayButton" type="TextureButton" parent="EnclosureSelection/PanelContainer/MarginContainer/VBoxContainer/Cost/Buttons"]
+custom_minimum_size = Vector2(120, 70)
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("15_cdqj6")
+texture_pressed = ExtResource("16_sgcpo")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="YayButton" type="TextureButton" parent="EnclosureSelection/PanelContainer/MarginContainer/VBoxContainer/Cost/Buttons"]
+custom_minimum_size = Vector2(120, 70)
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("13_sgcpo")
+texture_pressed = ExtResource("14_xe3ps")
+ignore_texture_size = true
+stretch_mode = 5
+
 [node name="FenceSelection" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -93,42 +168,10 @@ layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Label" type="Label" parent="FenceSelection/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("3_4e05c")
-text = "Choose enclosure"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="HBoxContainer" type="HBoxContainer" parent="FenceSelection/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="ButtonWodd" type="TextureButton" parent="FenceSelection/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(164, 164)
-layout_mode = 2
-texture_normal = ExtResource("4_m08lm")
-texture_pressed = ExtResource("5_py161")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="ButtonGlass" type="TextureButton" parent="FenceSelection/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(164, 164)
-layout_mode = 2
-texture_normal = ExtResource("6_4nbvu")
-texture_pressed = ExtResource("7_w7jq1")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="ButtonSteel" type="TextureButton" parent="FenceSelection/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(164, 164)
-layout_mode = 2
-texture_normal = ExtResource("8_m5kd4")
-texture_pressed = ExtResource("9_oxy2j")
-ignore_texture_size = true
-stretch_mode = 5
-
-[connection signal="pressed" from="FenceSelection/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ButtonWodd" to="." method="on_enclosure_selected" binds= [0]]
-[connection signal="pressed" from="FenceSelection/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ButtonGlass" to="." method="on_enclosure_selected" binds= [1]]
-[connection signal="pressed" from="FenceSelection/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ButtonSteel" to="." method="on_enclosure_selected" binds= [2]]
+[connection signal="pressed" from="EnclosureSelection/PanelContainer/MarginContainer/VBoxContainer/Cost/Buttons/NayButton" to="." method="on_nay_pressed"]
+[connection signal="pressed" from="EnclosureSelection/PanelContainer/MarginContainer/VBoxContainer/Cost/Buttons/YayButton" to="." method="on_yay_pressed"]

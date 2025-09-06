@@ -4,6 +4,12 @@
 [ext_resource type="Script" uid="uid://dcxbgv8il7rp2" path="res://scenes/build_enclosure/biome_button.gd" id="2_yt473"]
 
 [node name="BiomeButton" type="TextureButton"]
+custom_minimum_size = Vector2(120, 120)
+offset_right = 120.0
+offset_bottom = 120.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture_normal = ExtResource("1_lqs4u")
+ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("2_yt473")

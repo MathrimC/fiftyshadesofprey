@@ -1,15 +1,17 @@
-[gd_resource type="Resource" script_class="Fence" load_steps=5 format=3 uid="uid://ub61stbp034v"]
+[gd_resource type="Resource" script_class="Fence" load_steps=6 format=3 uid="uid://ub61stbp034v"]
 
 [ext_resource type="Script" uid="uid://bbujon6qlevs7" path="res://resources/fences/fence.gd" id="1_0hhdc"]
 [ext_resource type="Texture2D" uid="uid://bld0ky2fkf14t" path="res://img/park/fence_wood_back.png" id="1_f5u2f"]
 [ext_resource type="Texture2D" uid="uid://beqqynkg4n6m0" path="res://img/park/fence_wood_broken.png" id="2_uoxyk"]
 [ext_resource type="Texture2D" uid="uid://xoox5f1513kq" path="res://img/park/fence_wood_front.png" id="3_nw6eu"]
+[ext_resource type="Texture2D" uid="uid://bk672lw8jge5n" path="res://img/buy/wood_logo.png" id="4_uoxyk"]
 
 [resource]
 script = ExtResource("1_0hhdc")
 type = 0
-price = 100
+cost = 100
 durability = 0.5
+icon = ExtResource("4_uoxyk")
 front_texture = ExtResource("3_nw6eu")
 back_texture = ExtResource("1_f5u2f")
 front_broken_texture = ExtResource("2_uoxyk")

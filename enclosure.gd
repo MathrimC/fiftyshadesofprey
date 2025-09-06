@@ -6,7 +6,7 @@ extends Resource
 @export var fence: Fence.Type
 @export var dinosaurs: Array[DinosaurInstance]
 
-func _init(_lot_number: int, _biome: Biome.Type, _fence: Fence.Type) -> void:
+func _init(_lot_number: int = 0, _biome: Biome.Type = Biome.Type.FOREST, _fence: Fence.Type = Fence.Type.WOOD) -> void:
 	lot_number = _lot_number
 	biome = _biome
 	fence = _fence
@@ -20,4 +20,3 @@ func add_dinosaur(dinosaur: DinosaurInstance) -> bool:
 
 func is_full() -> bool:
 	return dinosaurs.size() >= 2
-

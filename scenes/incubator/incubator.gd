@@ -4,7 +4,7 @@ extends Control
 @export var container: GridContainer
 
 func _ready() -> void:
-	for dinosaur in game_manager.get_incubating_eggs():
+	for dinosaur in game_manager.game_data.eggs:
 		var incubatoregg: Incubatoregg = load(Resources.scenes[Resources.Scene.INCUBATOREGG]).instantiate()
 		incubatoregg.dinosaur = dinosaur
 		container.add_child(incubatoregg)

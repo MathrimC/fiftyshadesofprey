@@ -10,13 +10,15 @@ var recipe: FoodRecipe
 var scientist: Scientist.Type
 
 func _ready() -> void:
-	# food_icon.texture = load("%s/%s" % [Resources.food_textures_dir, Resources.food_textures[food]])
-	food_icon.texture = game_manager.game_resources.get_food(recipe.outputs.keys()[0]).texture
+	var food := game_manager.game_resources.get_food(recipe.outputs.keys()[0])
+	food_icon.texture = food.texture
+	food_icon.tooltip_text = food.name
 	for ingredient in recipe.ingredients:
 		var ingredient_ui = preload(Resources.scenes[Resources.Scene.INGREDIENT]).instantiate()
 		ingredient_ui.amount.text = "%s x" % recipe.ingredients[ingredient]
-		# ingredient_ui.ingredient.texture = load("%s/%s" % [Resources.grocery_textures_dir, Resources.grocery_textures[ingredient]])
-		ingredient_ui.ingredient.texture = game_manager.game_resources.get_grocery(ingredient).texture
+		var grocery := game_manager.game_resources.get_grocery(ingredient)
+		ingredient_ui.ingredient.texture = grocery.texture
+		ingredient_ui.ingredient.tooltip_text = grocery.name
 		ingredients_container.add_child(ingredient_ui)
 		if game_manager.get_groceries_amount(ingredient) < recipe.ingredients[ingredient]:
 			button.disabled = true
@@ -33,12 +35,14 @@ func refresh_button() -> void:
 			button.disabled = true
 
 func track_action_time(action_info) -> void:
-	while action_info["timer"].time_left > 0:
-		var seconds: int = action_info["timer"].time_left
-		var minutes := floori(seconds / 60.)
-		seconds = seconds % 60
-		timer.text = "%02d:%02d" % [minutes, seconds]
-		await get_tree().create_timer(1).timeout
+	var end_time: int = action_info["end_time"]
+	var time_left := end_time - Time.get_unix_time_from_system() as int
+	while time_left > 0:
+		var minutes_left := floori(time_left / 60.)
+		var seconds_left := time_left % 60
+		timer.text = "%02d:%02d" % [minutes_left, seconds_left]
+		await get_tree().create_timer(0.1).timeout
+		time_left = end_time - Time.get_unix_time_from_system() as int
 	var seconds: int = recipe.time
 	var minutes := floori(seconds / 60.)
 	seconds = seconds % 60

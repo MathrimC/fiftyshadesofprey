@@ -1,8 +1,12 @@
 class_name Map
 extends Control
 
+enum Mode { VIEW, BUILD_ENCLOSURE, PLACE_EGG }
+
 signal lot_selected(lot_number: int)
 signal refresh_requested()
+
+@export var mode: Mode
 
 func _ready() -> void:
 	pass

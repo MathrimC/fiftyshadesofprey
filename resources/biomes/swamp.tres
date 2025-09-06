@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_dy30b")
 type = 1
-price = 1500
+cost = 1500
 icon = ExtResource("1_rn6bm")
 texture = ExtResource("3_s1opi")
 metadata/_custom_type_script = "uid://mi3bpxpynbsm"

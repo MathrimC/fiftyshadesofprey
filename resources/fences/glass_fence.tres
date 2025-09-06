@@ -1,15 +1,17 @@
-[gd_resource type="Resource" script_class="Fence" load_steps=5 format=3 uid="uid://d02x25juq7tnc"]
+[gd_resource type="Resource" script_class="Fence" load_steps=6 format=3 uid="uid://d02x25juq7tnc"]
 
 [ext_resource type="Script" uid="uid://bbujon6qlevs7" path="res://resources/fences/fence.gd" id="1_d5nob"]
 [ext_resource type="Texture2D" uid="uid://233dls73st32" path="res://img/park/fence_glass_back.png" id="1_dgoa4"]
 [ext_resource type="Texture2D" uid="uid://5oo4cwp6gq3j" path="res://img/park/fence_glass_broken.png" id="2_b5bjb"]
 [ext_resource type="Texture2D" uid="uid://bxofmssawj3us" path="res://img/park/fence_glass_front.png" id="3_m7rqj"]
+[ext_resource type="Texture2D" uid="uid://disve7xkgktpy" path="res://img/buy/glass_logo.png" id="4_b5bjb"]
 
 [resource]
 script = ExtResource("1_d5nob")
 type = 1
-price = 3000
+cost = 3000
 durability = 0.8
+icon = ExtResource("4_b5bjb")
 front_texture = ExtResource("3_m7rqj")
 back_texture = ExtResource("1_dgoa4")
 front_broken_texture = ExtResource("2_b5bjb")

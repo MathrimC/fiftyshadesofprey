@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfdql8rdrua2p"]
+[gd_scene load_steps=5 format=3 uid="uid://bfdql8rdrua2p"]
 
 [ext_resource type="Script" uid="uid://dw1stvy4f022m" path="res://scenes/scientist_actions/ingredient.gd" id="1_u8g6t"]
 [ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://fonts/BD_Cartoon_Shout.ttf" id="2_veaxr"]
+[ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://cartoon_theme.tres" id="3_hbdsr"]
 [ext_resource type="Texture2D" uid="uid://dt76w6gmxtiyw" path="res://img/buy/groceries_pepper.png" id="3_n8app"]
 
 [node name="Ingredient" type="HBoxContainer" node_paths=PackedStringArray("amount", "ingredient")]
@@ -26,6 +27,7 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(40, 60)
 layout_mode = 2
 size_flags_vertical = 4
+theme = ExtResource("3_hbdsr")
 texture = ExtResource("3_n8app")
 expand_mode = 1
 stretch_mode = 5

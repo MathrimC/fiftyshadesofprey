@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://i2t67ucwb43u"]
+[gd_scene load_steps=9 format=3 uid="uid://i2t67ucwb43u"]
 
 [ext_resource type="Script" uid="uid://q15waxvosygk" path="res://scenes/scientist_actions/food_creation_line.gd" id="1_ij077"]
 [ext_resource type="Texture2D" uid="uid://cng5fub4hcxf" path="res://img/science/food_carnivore.png" id="2_fson3"]
+[ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://cartoon_theme.tres" id="2_ry5np"]
 [ext_resource type="Texture2D" uid="uid://b65jmpysknf0j" path="res://img/science/equal.png" id="3_lykbf"]
 [ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://fonts/BD_Cartoon_Shout.ttf" id="5_lajsa"]
 [ext_resource type="Texture2D" uid="uid://c0g0rn1epir8m" path="res://img/science/clock.png" id="6_yen1l"]
@@ -20,6 +21,7 @@ timer = NodePath("Timer")
 [node name="FoodIcon" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
+theme = ExtResource("2_ry5np")
 texture = ExtResource("2_fson3")
 expand_mode = 1
 stretch_mode = 5

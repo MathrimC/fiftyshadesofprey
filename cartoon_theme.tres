@@ -5,3 +5,4 @@
 [resource]
 default_font = ExtResource("1_3b2x8")
 default_font_size = 25
+TooltipLabel/font_sizes/font_size = 14

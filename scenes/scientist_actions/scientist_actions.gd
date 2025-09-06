@@ -16,9 +16,6 @@ func _ready():
 	var scientist_data: Scientist = game_manager.game_resources.get_scientist(scientist)
 	scientist_icon.texture = scientist_data.texture
 	scientist_name.text = "\"%s\"" % scientist_data.name
-	# scientist_icon.texture = load("%s/%s" % [Resources.scientist_textures_dir, Resources.scientist_textures[scientist]["icon"]])
-	# scientist_name.texture = load("%s/%s" % [Resources.scientist_textures_dir, Resources.scientist_textures[scientist]["name"]])
-	# var scientist_info: Dictionary = game_manager.scientist_info.get(scientist, {})
 	for dinosaur in scientist_data.dinosaurs:
 		if game_manager.is_unlocked(dinosaur):
 			var line: DinosaurCreationLine = load(Resources.scenes[Resources.Scene.DINOSAUR_CREATION_LINE]).instantiate()
@@ -34,7 +31,7 @@ func _ready():
 		food_lines.append(line)
 	refresh_action()
 
-func on_action_started(_scientist: Resources.Scientist):
+func on_action_started(_scientist: Scientist.Type):
 	if _scientist == scientist:
 		for line in dinosaur_lines:
 			line.disable_action()
@@ -42,7 +39,7 @@ func on_action_started(_scientist: Resources.Scientist):
 			line.disable_action()
 	refresh_action()
 
-func on_action_ended(_scientist: Resources.Scientist):
+func on_action_ended(_scientist: Scientist.Type):
 	if _scientist == scientist:
 		for line in dinosaur_lines:
 			line.refresh_button()
