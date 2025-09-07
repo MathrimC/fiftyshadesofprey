@@ -10,7 +10,6 @@ const save_path = "user://savefile.tres"
 @export var money: int
 @export var ticket_price: int
 @export var eggs: Array[DinosaurInstance]
-# @export var dinosaurs: Array[DinosaurInstance]
 @export var enclosures: Dictionary[int, Enclosure]
 @export var groceries: Dictionary[Grocery.Type, int]
 @export var birds: Dictionary[Bird.Type, int]

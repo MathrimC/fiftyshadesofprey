@@ -1,6 +1,8 @@
 class_name DinosaurLine
 extends HBoxContainer
 
+signal sell_pressed(dinosaur_line: DinosaurLine)
+
 var dinosaur: DinosaurInstance
 
 @onready var image: TextureRect = get_node("Image")
@@ -17,3 +19,6 @@ func _refresh() -> void:
 	dino_name.text = dinosaur.name
 	type.text = dinosaur_data.name
 	mood.text = DinosaurInstance.Mood.keys()[dinosaur.mood].capitalize()
+
+func on_sell_pressed() -> void:
+	sell_pressed.emit(self)

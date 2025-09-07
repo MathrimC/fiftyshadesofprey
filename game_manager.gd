@@ -80,6 +80,9 @@ func create_egg(dinosaur: Dinosaur.Type, scientist: Scientist.Type) -> void:
 	game_data.save()
 	scientist_action_started.emit(scientist)
 
+func delete_egg(dinosaur: DinosaurInstance) -> void:
+	game_data.eggs.erase(dinosaur)
+
 func create_food(recipe: FoodRecipe, scientist: Scientist.Type) -> void:
 	for ingredient in recipe.ingredients:
 		game_data.groceries[ingredient] -= recipe.ingredients[ingredient]
@@ -96,6 +99,26 @@ func place_dinosaur(dinosaur: DinosaurInstance, lot_number: int) -> bool:
 		return true
 	else:
 		return false
+
+func sell_egg(dinosaur: DinosaurInstance) -> void:
+	delete_egg(dinosaur)
+	# TODO: add check if egg hasn't expired in the meantime
+	var value := game_resources.get_dinosaur(dinosaur.type).value
+	if dinosaur.genetics == DinosaurInstance.Genetics.NATURAL:
+		value *= 2
+	game_data.money += value
+	money_changed.emit(game_data.money)
+
+func sell_dinosaur(dinosaur: DinosaurInstance) -> void:
+	for enclosure in game_data.enclosures.values():
+		if enclosure.dinosaurs.has(dinosaur):
+			enclosure.dinosaurs.erase(dinosaur)
+			break
+	var value := game_resources.get_dinosaur(dinosaur.type).value
+	if dinosaur.genetics == DinosaurInstance.Genetics.NATURAL:
+		value *= 2
+	game_data.money += value
+	money_changed.emit(game_data.money)
 
 func buy_birds(bird_amounts: Dictionary[Bird.Type, int]) -> void:
 	var price := 0

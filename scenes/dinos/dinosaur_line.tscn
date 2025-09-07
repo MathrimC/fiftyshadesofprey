@@ -67,3 +67,5 @@ size_flags_vertical = 4
 theme = ExtResource("2_wf03y")
 theme_override_font_sizes/font_size = 21
 text = "Sell"
+
+[connection signal="pressed" from="SellButton" to="." method="on_sell_pressed"]
