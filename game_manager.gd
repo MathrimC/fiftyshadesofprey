@@ -19,7 +19,6 @@ signal scene_switched(scene: Resources.Scene, node: Node)
 signal egg_created(dinosaur: DinosaurInstance)
 signal egg_hatched(dinosaur: DinosaurInstance)
 
-var egg_creation_counters: Dictionary
 var game_data: GameData
 
 var game_running: bool
@@ -57,7 +56,7 @@ func is_hired(scientist: Scientist.Type) -> bool:
 func is_available(scientist: Scientist.Type) -> bool:
 	var dinosaur_count := 0
 	for enclosure in game_data.enclosures.values():
-		dinosaur_count = enclosure.dinosaurs.size()
+		dinosaur_count += enclosure.dinosaurs.size()
 	return dinosaur_count >= game_resources.get_scientist(scientist).dinos_to_unlock
 
 func get_hired_scientists() -> Array[Scientist.Type]:
@@ -69,7 +68,7 @@ func get_scientist_action(scientist: Scientist.Type) -> Dictionary:
 func is_unlocked(dinosaur: Dinosaur.Type) -> bool:
 	var eggs := game_resources.get_dinosaur(dinosaur).eggs_to_unlock
 	for dino in eggs:
-		if egg_creation_counters.get(dino,0) < eggs[dino]:
+		if game_data.egg_creation_counters.get(dino,0) < eggs[dino]:
 			return false
 	return true
 
@@ -78,7 +77,6 @@ func create_egg(dinosaur: Dinosaur.Type, scientist: Scientist.Type) -> void:
 	var bird: Bird.Type = dinosaur_data.creation_bird
 	game_data.birds[bird] -= 1
 	game_data.scientist_actions[scientist] = { "action": ScientistAction.CREATE_EGG, "dinosaur": dinosaur, "end_time": roundi(Time.get_unix_time_from_system()) + dinosaur_data.creation_time }
-	print("Scientist actions: %s" % game_data.scientist_actions)
 	game_data.save()
 	scientist_action_started.emit(scientist)
 
@@ -218,6 +216,7 @@ func _complete_scientist_action(scientist_action: Dictionary, scientist: Scienti
 			dino.egg_creation_time = Time.get_unix_time_from_system() as int
 			dino.stage = DinosaurInstance.Stage.EGG
 			dino.genetics = DinosaurInstance.Genetics.GMO
+			game_data.egg_creation_counters[dino.type] = game_data.egg_creation_counters.get(dino.type, 0) + 1
 			game_data.eggs.append(dino)
 			egg_created.emit(dino)
 			trigger_notification("%s egg created!" % game_resources.get_dinosaur(scientist_action["dinosaur"]).name)

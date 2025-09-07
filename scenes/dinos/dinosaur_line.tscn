@@ -1,0 +1,69 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqgbul77cvca7"]
+
+[ext_resource type="Texture2D" uid="uid://ber6rp3iecdhi" path="res://img/dinos/Stegosaurus.png" id="1_dbfrl"]
+[ext_resource type="Script" uid="uid://b8topi0x742ue" path="res://scenes/dinos/dinosaur_line.gd" id="1_wf03y"]
+[ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://cartoon_theme.tres" id="2_wf03y"]
+
+[node name="DinosaurLine" type="HBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+theme_override_constants/separation = 24
+script = ExtResource("1_wf03y")
+
+[node name="Image" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+texture = ExtResource("1_dbfrl")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="."]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+theme = ExtResource("2_wf03y")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 21
+text = "Jean Michel JAcques"
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+ellipsis_char = "."
+
+[node name="Type" type="Label" parent="."]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme = ExtResource("2_wf03y")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 21
+text = "Tyrannosaurus Rex"
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+ellipsis_char = "."
+
+[node name="Mood" type="Label" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme = ExtResource("2_wf03y")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 21
+text = "Happy"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MoveButton" type="Button" parent="."]
+custom_minimum_size = Vector2(90, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_wf03y")
+theme_override_font_sizes/font_size = 21
+text = "Move"
+
+[node name="SellButton" type="Button" parent="."]
+custom_minimum_size = Vector2(90, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_wf03y")
+theme_override_font_sizes/font_size = 21
+text = "Sell"

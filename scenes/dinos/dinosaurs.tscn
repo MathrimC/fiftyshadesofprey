@@ -1,11 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7sgfr466ert5"]
+[gd_scene load_steps=6 format=3 uid="uid://b7sgfr466ert5"]
 
 [ext_resource type="Script" uid="uid://nvqlqkl76v1l" path="res://scenes/dinos/dinosaurs.gd" id="1_cd24t"]
 [ext_resource type="Texture2D" uid="uid://cdshxi2360w7i" path="res://img/dinos/dinosaur_background.png" id="1_k2bxr"]
 [ext_resource type="Texture2D" uid="uid://cbvvhohh1mpf6" path="res://img/dinos/dinosaur_text.png" id="2_o0tka"]
 [ext_resource type="Texture2D" uid="uid://bbi0p2vu4j7eu" path="res://img/dinos/incubator text.png" id="3_0rw2x"]
+[ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://cartoon_theme.tres" id="5_ekqhh"]
 
-[node name="Dinosaurs" type="Control" node_paths=PackedStringArray("container")]
+[node name="Dinosaurs" type="Control" node_paths=PackedStringArray("list_container", "lines_container", "empty_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,7 +14,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cd24t")
-container = NodePath("GridContainer")
+list_container = NodePath("MarginContainer/ListContainer")
+lines_container = NodePath("MarginContainer/ListContainer/ScrollContainer/LinesContainer")
+empty_label = NodePath("MarginContainer/EmptyLabel")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -25,24 +28,6 @@ grow_vertical = 2
 texture = ExtResource("1_k2bxr")
 expand_mode = 1
 stretch_mode = 4
-
-[node name="GridContainer" type="GridContainer" parent="."]
-custom_minimum_size = Vector2(800, 460)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -399.0
-offset_top = -195.0
-offset_right = 401.0
-offset_bottom = 265.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/h_separation = 40
-theme_override_constants/v_separation = 35
-columns = 3
 
 [node name="DinosaurButton" type="TextureButton" parent="."]
 layout_mode = 0
@@ -63,5 +48,85 @@ offset_right = -96.0
 offset_bottom = 82.0
 grow_horizontal = 0
 texture_normal = ExtResource("3_0rw2x")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 120
+theme_override_constants/margin_right = 55
+theme_override_constants/margin_bottom = 70
+
+[node name="ListContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HeaderLine" type="HBoxContainer" parent="MarginContainer/ListContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Texture" type="TextureRect" parent="MarginContainer/ListContainer/HeaderLine"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="MarginContainer/ListContainer/HeaderLine"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+theme = ExtResource("5_ekqhh")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Name"
+
+[node name="Type" type="Label" parent="MarginContainer/ListContainer/HeaderLine"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme = ExtResource("5_ekqhh")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Type"
+
+[node name="Mood" type="Label" parent="MarginContainer/ListContainer/HeaderLine"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme = ExtResource("5_ekqhh")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Mood"
+horizontal_alignment = 1
+
+[node name="MoveButton" type="Button" parent="MarginContainer/ListContainer/HeaderLine"]
+visible = false
+layout_mode = 2
+theme = ExtResource("5_ekqhh")
+text = "Move"
+
+[node name="SellButton" type="Button" parent="MarginContainer/ListContainer/HeaderLine"]
+visible = false
+layout_mode = 2
+theme = ExtResource("5_ekqhh")
+text = "Sell"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/ListContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LinesContainer" type="VBoxContainer" parent="MarginContainer/ListContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="EmptyLabel" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("5_ekqhh")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 21
+text = "No dinosaurs to show"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="IncubatorButton" to="." method="_incubator_button_pressed"]
