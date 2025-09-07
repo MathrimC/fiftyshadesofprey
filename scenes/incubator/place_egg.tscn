@@ -1,11 +1,53 @@
-[gd_scene load_steps=3 format=3 uid="uid://cpqo0jl4dj3cm"]
+[gd_scene load_steps=4 format=3 uid="uid://cpqo0jl4dj3cm"]
 
 [ext_resource type="Script" uid="uid://y0k0ymgatko3" path="res://scenes/incubator/place_egg.gd" id="1_w8xib"]
 [ext_resource type="PackedScene" uid="uid://dyj6peppi2grb" path="res://scenes/map/map.tscn" id="2_t74ks"]
+[ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://cartoon_theme.tres" id="3_t74ks"]
 
-[node name="PlaceEgg" type="Node" node_paths=PackedStringArray("map")]
+[node name="PlaceEgg" type="Node" node_paths=PackedStringArray("map", "dinosaur_naming")]
 script = ExtResource("1_w8xib")
 map = NodePath("Map")
+dinosaur_naming = NodePath("DinosaurNaming")
 
 [node name="Map" parent="." instance=ExtResource("2_t74ks")]
 mode = 2
+
+[node name="DinosaurNaming" type="PanelContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -318.5
+offset_top = -60.5
+offset_right = 318.5
+offset_bottom = 60.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="DinosaurNaming"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DinosaurNaming/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="DinosaurNaming/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_t74ks")
+text = "Enter a name for the new dinosaur"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="DinosaurNaming/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme = ExtResource("3_t74ks")
+placeholder_text = "dinosaur name"
+alignment = 1
+
+[connection signal="text_submitted" from="DinosaurNaming/MarginContainer/VBoxContainer/LineEdit" to="." method="on_name_submitted"]
