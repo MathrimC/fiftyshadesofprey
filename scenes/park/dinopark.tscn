@@ -20,6 +20,7 @@ texture = ExtResource("1_lh1td")
 
 [node name="ParkFloor" type="Sprite2D" parent="Park"]
 position = Vector2(1727.5, 648)
+scale = Vector2(3, 3)
 texture = ExtResource("2_2tqmq")
 
 [node name="ParkingRight" type="Sprite2D" parent="Park"]
@@ -163,4 +164,8 @@ texture = ExtResource("7_wpmti")
 
 [node name="ParkCamera" type="Camera2D" parent="."]
 position = Vector2(2879, 969)
+limit_left = -1000
+limit_top = -500
+limit_right = 3450
+limit_bottom = 1500
 script = ExtResource("8_fqr44")

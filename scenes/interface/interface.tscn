@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://okba3tl3tq5q"]
+[gd_scene load_steps=36 format=3 uid="uid://okba3tl3tq5q"]
 
 [ext_resource type="Texture2D" uid="uid://d27ddxiy7es7s" path="res://img/general/button_park.png" id="1_5qo85"]
 [ext_resource type="Script" uid="uid://co888xlnm8n37" path="res://scenes/interface/left_menu.gd" id="1_6b6dw"]
@@ -33,6 +33,8 @@
 [ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://fonts/BD_Cartoon_Shout.ttf" id="26_ov4b6"]
 [ext_resource type="Texture2D" uid="uid://bj5v06ipo3ouq" path="res://img/general/button_nay_active.png" id="26_u5mno"]
 [ext_resource type="Texture2D" uid="uid://c4psyvvgbyoak" path="res://img/general/inventory_icon.png" id="28_ccu2c"]
+[ext_resource type="Script" uid="uid://bmbyb2kxhtk7q" path="res://scenes/interface/ticket_panel.gd" id="30_s18y0"]
+[ext_resource type="Texture2D" uid="uid://bfiblj11ewx8k" path="res://img/buy/currency_white.png" id="31_b4581"]
 
 [node name="Interface" type="Control"]
 layout_mode = 3
@@ -122,7 +124,7 @@ texture_pressed = ExtResource("14_o8cu6")
 script = ExtResource("4_yqnn6")
 metadata/_custom_type_script = "uid://c4o304e180bjd"
 
-[node name="LowerBar" type="TextureRect" parent="." node_paths=PackedStringArray("notification_label", "ticket_label", "money_label")]
+[node name="LowerBar" type="TextureRect" parent="." node_paths=PackedStringArray("notification_label", "ticket_label", "money_label", "ticket_panel")]
 custom_minimum_size = Vector2(700, 0)
 layout_mode = 1
 anchors_preset = 2
@@ -134,8 +136,9 @@ grow_vertical = 0
 texture = ExtResource("15_5bhwv")
 script = ExtResource("23_fl4i2")
 notification_label = NodePath("MarginContainer/HBoxContainer/NotificationBar/NotificationLabel")
-ticket_label = NodePath("MarginContainer/HBoxContainer/TicketBar/TicketLabel")
-money_label = NodePath("MarginContainer/HBoxContainer/MoneyBar/MoneyLabel")
+ticket_label = NodePath("MarginContainer/HBoxContainer/TicketBar/HBoxContainer/TicketLabel")
+money_label = NodePath("MarginContainer/HBoxContainer/MoneyBar/HBoxContainer/MoneyLabel")
+ticket_panel = NodePath("../TicketPanel")
 
 [node name="MarginContainer" type="MarginContainer" parent="LowerBar"]
 layout_mode = 1
@@ -185,31 +188,49 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TicketIcon" type="TextureRect" parent="LowerBar/MarginContainer/HBoxContainer"]
+[node name="TicketIcon" type="TextureButton" parent="LowerBar/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(35, 0)
 layout_mode = 2
-texture = ExtResource("18_8np48")
-expand_mode = 1
+texture_normal = ExtResource("18_8np48")
+ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TicketBar" type="TextureRect" parent="LowerBar/MarginContainer/HBoxContainer"]
+[node name="TicketBar" type="TextureButton" parent="LowerBar/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
-texture = ExtResource("19_k2s5s")
-expand_mode = 1
+texture_normal = ExtResource("19_k2s5s")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="TicketLabel" type="RichTextLabel" parent="LowerBar/MarginContainer/HBoxContainer/TicketBar"]
-clip_contents = false
+[node name="HBoxContainer" type="HBoxContainer" parent="LowerBar/MarginContainer/HBoxContainer/TicketBar"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
+
+[node name="TicketLabel" type="RichTextLabel" parent="LowerBar/MarginContainer/HBoxContainer/TicketBar/HBoxContainer"]
+texture_filter = 1
+clip_contents = false
+layout_mode = 2
+mouse_filter = 2
 theme = ExtResource("26_iy6lx")
 theme_override_font_sizes/normal_font_size = 12
+text = "222"
+fit_content = true
+autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="LowerBar/MarginContainer/HBoxContainer/TicketBar/HBoxContainer"]
+modulate = Color(0.942823, 0.942823, 0.942823, 1)
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 2
+texture = ExtResource("31_b4581")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="MoneyIcon" type="TextureRect" parent="LowerBar/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(25, 0)
@@ -224,58 +245,140 @@ layout_mode = 2
 texture = ExtResource("17_n7n6o")
 expand_mode = 1
 
-[node name="MoneyLabel" type="RichTextLabel" parent="LowerBar/MarginContainer/HBoxContainer/MoneyBar"]
+[node name="HBoxContainer" type="HBoxContainer" parent="LowerBar/MarginContainer/HBoxContainer/MoneyBar"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
+
+[node name="MoneyLabel" type="RichTextLabel" parent="LowerBar/MarginContainer/HBoxContainer/MoneyBar/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
 theme = ExtResource("26_iy6lx")
 theme_override_font_sizes/normal_font_size = 12
 text = "1000"
+fit_content = true
 scroll_active = false
+autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-custom_minimum_size = Vector2(50, 100)
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 14.0
-offset_top = -147.0
-offset_right = 84.0
-offset_bottom = -47.0
-grow_vertical = 0
-
-[node name="InventoryButton" type="TextureButton" parent="VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="LowerBar/MarginContainer/HBoxContainer/MoneyBar/HBoxContainer"]
+modulate = Color(0.942823, 0.942823, 0.942823, 1)
+custom_minimum_size = Vector2(18, 18)
 layout_mode = 2
+texture = ExtResource("31_b4581")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="InventoryButton" type="TextureButton" parent="."]
+layout_mode = 2
+offset_left = 14.0
+offset_top = 501.0
+offset_right = 84.0
+offset_bottom = 601.0
 size_flags_vertical = 3
 texture_normal = ExtResource("28_ccu2c")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Node2D" type="Node2D" parent="."]
-visible = false
+[node name="TicketPanel" type="PanelContainer" parent="." node_paths=PackedStringArray("ticket_slider", "ticket_input")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -185.0
+offset_top = -44.5
+offset_right = 185.0
+offset_bottom = 44.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("30_s18y0")
+ticket_slider = NodePath("MarginContainer/VBoxContainer/HBoxContainer/TicketSlider")
+ticket_input = NodePath("MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/TicketInput")
 
-[node name="ButtonYay" type="Sprite2D" parent="Node2D"]
-position = Vector2(500, 500)
-texture = ExtResource("23_l715o")
+[node name="MarginContainer" type="MarginContainer" parent="TicketPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
 
-[node name="ButtonYayActive" type="Sprite2D" parent="Node2D"]
-visible = false
-position = Vector2(500, 500)
-texture = ExtResource("24_rub5w")
+[node name="VBoxContainer" type="VBoxContainer" parent="TicketPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
 
-[node name="ButtonNay" type="Sprite2D" parent="Node2D"]
-position = Vector2(700, 500)
-texture = ExtResource("25_u8chh")
+[node name="Label" type="Label" parent="TicketPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("26_iy6lx")
+text = "Change ticket price"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="ButtonNayActive" type="Sprite2D" parent="Node2D"]
-visible = false
-position = Vector2(700, 500)
-texture = ExtResource("26_u5mno")
+[node name="HBoxContainer" type="HBoxContainer" parent="TicketPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
 
-[connection signal="pressed" from="VBoxContainer/InventoryButton" to="LeftMenu" method="on_inventory_pressed"]
+[node name="TicketSlider" type="HSlider" parent="TicketPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 1.0
+max_value = 200.0
+value = 1.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TicketPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="TicketInput" type="LineEdit" parent="TicketPanel/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("26_iy6lx")
+theme_override_constants/minimum_character_width = 2
+text = "20"
+alignment = 2
+max_length = 3
+
+[node name="TextureRect" type="TextureRect" parent="TicketPanel/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+modulate = Color(0.804743, 0.804743, 0.804743, 1)
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("31_b4581")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Buttons" type="HBoxContainer" parent="TicketPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="NayButton" type="TextureButton" parent="TicketPanel/MarginContainer/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+texture_normal = ExtResource("25_u8chh")
+texture_pressed = ExtResource("26_u5mno")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="YayButton" type="TextureButton" parent="TicketPanel/MarginContainer/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+texture_normal = ExtResource("23_l715o")
+texture_pressed = ExtResource("24_rub5w")
+ignore_texture_size = true
+stretch_mode = 5
+
+[connection signal="pressed" from="LowerBar/MarginContainer/HBoxContainer/TicketIcon" to="LowerBar" method="on_ticket_price_pressed"]
+[connection signal="pressed" from="LowerBar/MarginContainer/HBoxContainer/TicketBar" to="LowerBar" method="on_ticket_price_pressed"]
+[connection signal="pressed" from="InventoryButton" to="LeftMenu" method="on_inventory_pressed"]
+[connection signal="visibility_changed" from="TicketPanel" to="TicketPanel" method="on_visibility_changed"]
+[connection signal="value_changed" from="TicketPanel/MarginContainer/VBoxContainer/HBoxContainer/TicketSlider" to="TicketPanel" method="on_value_changed"]
+[connection signal="text_submitted" from="TicketPanel/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/TicketInput" to="TicketPanel" method="on_input_submitted"]
+[connection signal="pressed" from="TicketPanel/MarginContainer/VBoxContainer/Buttons/NayButton" to="TicketPanel" method="on_nay_pressed"]
+[connection signal="pressed" from="TicketPanel/MarginContainer/VBoxContainer/Buttons/YayButton" to="TicketPanel" method="on_yay_pressed"]

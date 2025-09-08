@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dcqd14ec0hqy" path="res://img/general/button_yay.png" id="8_k8lky"]
 [ext_resource type="Texture2D" uid="uid://b2oj0iuhxdvya" path="res://img/general/button_yay_active.png" id="9_uw182"]
 
-[node name="Dinosaurs" type="Control" node_paths=PackedStringArray("list_container", "lines_container", "empty_label", "sell_panel", "sell_label")]
+[node name="Dinosaurs" type="Control" node_paths=PackedStringArray("list_container", "lines_container", "empty_label", "name_panel", "name_input", "sell_panel", "sell_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,6 +21,8 @@ script = ExtResource("1_cd24t")
 list_container = NodePath("MarginContainer/ListContainer")
 lines_container = NodePath("MarginContainer/ListContainer/ScrollContainer/LinesContainer")
 empty_label = NodePath("MarginContainer/EmptyLabel")
+name_panel = NodePath("NamePanel")
+name_input = NodePath("NamePanel/MarginContainer/VBoxContainer/NameInput")
 sell_panel = NodePath("SellPanel")
 sell_label = NodePath("SellPanel/MarginContainer/VBoxContainer/Label")
 
@@ -135,7 +137,62 @@ text = "No dinosaurs to show"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="NamePanel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -318.5
+offset_top = -67.0
+offset_right = 318.5
+offset_bottom = 67.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="NamePanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NamePanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="NamePanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_ekqhh")
+text = "Change the dinosaur's name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NameInput" type="LineEdit" parent="NamePanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme = ExtResource("5_ekqhh")
+placeholder_text = "dinosaur name"
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NamePanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="NayButton" type="TextureButton" parent="NamePanel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("6_ro787")
+texture_pressed = ExtResource("7_xaknc")
+
+[node name="YayButton" type="TextureButton" parent="NamePanel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("8_k8lky")
+texture_pressed = ExtResource("9_uw182")
+
 [node name="SellPanel" type="PanelContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -183,5 +240,7 @@ texture_normal = ExtResource("8_k8lky")
 texture_pressed = ExtResource("9_uw182")
 
 [connection signal="pressed" from="IncubatorButton" to="." method="_incubator_button_pressed"]
+[connection signal="pressed" from="NamePanel/MarginContainer/VBoxContainer/HBoxContainer/NayButton" to="." method="on_rename_nay_pressed"]
+[connection signal="pressed" from="NamePanel/MarginContainer/VBoxContainer/HBoxContainer/YayButton" to="." method="on_rename_yay_pressed"]
 [connection signal="pressed" from="SellPanel/MarginContainer/VBoxContainer/HBoxContainer/NayButton" to="." method="on_sell_nay_pressed"]
 [connection signal="pressed" from="SellPanel/MarginContainer/VBoxContainer/HBoxContainer/YayButton" to="." method="on_sell_yay_pressed"]

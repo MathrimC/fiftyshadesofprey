@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dx34d7wut8k48"]
+
+[ext_resource type="Script" uid="uid://58axdku06qrc" path="res://scenes/dinos/move_dinosaur.gd" id="1_op2p3"]
+[ext_resource type="PackedScene" uid="uid://dyj6peppi2grb" path="res://scenes/map/map.tscn" id="2_wc188"]
+
+[node name="MoveDinosaur" type="Node" node_paths=PackedStringArray("map")]
+script = ExtResource("1_op2p3")
+map = NodePath("Map")
+
+[node name="Map" parent="." instance=ExtResource("2_wc188")]
+mode = 2

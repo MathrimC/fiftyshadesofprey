@@ -51,6 +51,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MoveButton" type="Button" parent="."]
+visible = false
 custom_minimum_size = Vector2(90, 40)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -60,6 +61,7 @@ theme_override_font_sizes/font_size = 21
 text = "Move"
 
 [node name="SellButton" type="Button" parent="."]
+visible = false
 custom_minimum_size = Vector2(90, 40)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -68,4 +70,31 @@ theme = ExtResource("2_wf03y")
 theme_override_font_sizes/font_size = 21
 text = "Sell"
 
+[node name="ActionsButton" type="Button" parent="."]
+custom_minimum_size = Vector2(90, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_wf03y")
+theme_override_font_sizes/font_size = 21
+text = "Actions"
+
+[node name="ActionsMenu" type="PopupMenu" parent="."]
+size = Vector2i(119, 101)
+visible = true
+theme = ExtResource("2_wf03y")
+theme_override_constants/v_separation = 10
+theme_override_constants/item_start_padding = 15
+theme_override_font_sizes/font_size = 18
+item_count = 3
+item_0/text = "Rename"
+item_0/id = 0
+item_1/text = "Move"
+item_1/id = 1
+item_2/text = "Sell"
+item_2/id = 2
+
+[connection signal="pressed" from="MoveButton" to="." method="on_move_pressed"]
 [connection signal="pressed" from="SellButton" to="." method="on_sell_pressed"]
+[connection signal="pressed" from="ActionsButton" to="." method="on_actions_pressed"]
+[connection signal="id_pressed" from="ActionsMenu" to="." method="on_action_id_pressed"]

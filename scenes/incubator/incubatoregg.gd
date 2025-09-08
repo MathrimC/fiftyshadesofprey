@@ -53,5 +53,5 @@ func on_sell_pressed() -> void:
 	sell_pressed.emit(self)
 
 func on_trash_pressed() -> void:
-	game_manager.delete_egg(dinosaur)
+	game_manager.remove_egg(dinosaur)
 	self.queue_free()

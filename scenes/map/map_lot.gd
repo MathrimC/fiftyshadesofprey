@@ -39,7 +39,7 @@ func refresh() -> void:
 			self.disabled = true
 		Map.Mode.BUILD_ENCLOSURE:
 			self.disabled = (enclosure != null)
-		Map.Mode.PLACE_EGG:
+		Map.Mode.PLACE_EGG, Map.Mode.MOVE_DINOSAUR:
 			self.disabled = (enclosure == null || enclosure.is_full())
 
 func _pressed() -> void:

@@ -5,7 +5,7 @@ enum Stage { EGG, ALIVE }
 enum Mood { HAPPY, SAD, ANGRY }
 enum Genetics { GMO, NATURAL }
 
-const egg_expiration_time := 15
+const egg_expiration_time := 15 * 60
 
 @export var name: String
 @export var type: Dinosaur.Type
