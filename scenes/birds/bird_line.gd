@@ -4,7 +4,8 @@ extends Control
 @export var image: TextureRect
 @export var name_label: Label
 @export var amount_label: RichTextLabel
-@export var pricetag: TextureRect
+# @export var pricetag: TextureRect
+@export var pricetags: Array[TextureRect]
 
 var bird: Bird.Type
 var birds: Birds
@@ -14,7 +15,9 @@ func _ready() -> void:
 	var bird_data := game_manager.game_resources.get_bird(bird)
 	image.texture = bird_data.texture
 	name_label.text = bird_data.name
-	pricetag.texture = birds.pricetags.get(bird_data.price, null)
+	var pricetag := pricetags[bird % pricetags.size()]
+	pricetag.show()
+	pricetag.find_child("Price").text = "%s" % bird_data.price
 
 func _on_plus_pressed() -> void:
 	amount += 1

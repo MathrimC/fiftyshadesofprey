@@ -81,12 +81,12 @@ grow_vertical = 2
 theme_override_constants/margin_left = 100
 theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 110
-theme_override_constants/margin_bottom = 100
+theme_override_constants/margin_bottom = 90
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_constants/h_separation = 115
-theme_override_constants/v_separation = 20
+theme_override_constants/h_separation = 113
+theme_override_constants/v_separation = 26
 columns = 2
 
 [node name="BuyButton" type="TextureButton" parent="."]

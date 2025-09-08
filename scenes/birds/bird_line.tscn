@@ -1,14 +1,25 @@
-[gd_scene load_steps=8 format=3 uid="uid://cx6mg8rybiib0"]
+[gd_scene load_steps=19 format=3 uid="uid://cx6mg8rybiib0"]
 
 [ext_resource type="Script" uid="uid://ktxil7s64enl" path="res://scenes/birds/bird_line.gd" id="1_mibq5"]
 [ext_resource type="Texture2D" uid="uid://ci22753ktr44h" path="res://img/birds/chicken.png" id="2_5xyyv"]
 [ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://fonts/BD_Cartoon_Shout.ttf" id="3_wlp27"]
+[ext_resource type="Texture2D" uid="uid://b8yu8cedflf2f" path="res://img/buy/pricetag1.png" id="4_436k3"]
+[ext_resource type="Texture2D" uid="uid://dvmbk2e7ifv68" path="res://img/buy/pricetag2.png" id="5_ion2h"]
 [ext_resource type="Texture2D" uid="uid://c6pi8i2uatfj" path="res://img/buy/birds_buy_minus.png" id="5_lyvqh"]
+[ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://cartoon_theme.tres" id="6_gpjs4"]
 [ext_resource type="Texture2D" uid="uid://dk4cgvxg2vps3" path="res://img/buy/birds_buy_space.png" id="6_v5tok"]
 [ext_resource type="Texture2D" uid="uid://bj8inxpsinvvw" path="res://img/buy/birds_buy_plus.png" id="7_uf6ld"]
-[ext_resource type="Texture2D" uid="uid://c7bv60dg2es1m" path="res://img/buy/bird_price_10.png" id="8_3vlwu"]
+[ext_resource type="Texture2D" uid="uid://b0dfdhu4adrh" path="res://img/buy/money.png" id="7_wca10"]
+[ext_resource type="Texture2D" uid="uid://q8by6xhi6y0d" path="res://img/buy/pricetag3.png" id="8_dvh1b"]
+[ext_resource type="Texture2D" uid="uid://bny5wx5a0h63" path="res://img/buy/pricetag4.png" id="9_f82qv"]
+[ext_resource type="Texture2D" uid="uid://ci0cd2k13jenv" path="res://img/buy/pricetag5.png" id="10_bmmj4"]
+[ext_resource type="Texture2D" uid="uid://cradgr70pvs8y" path="res://img/buy/pricetag6.png" id="11_m5dx2"]
+[ext_resource type="Texture2D" uid="uid://2b7wught1n4w" path="res://img/buy/pricetag7.png" id="12_wow47"]
+[ext_resource type="Texture2D" uid="uid://dr4q61w0sgoth" path="res://img/buy/pricetag8.png" id="13_10owi"]
+[ext_resource type="Texture2D" uid="uid://ffr6pxx3shq3" path="res://img/buy/pricetag9.png" id="14_nbfxm"]
+[ext_resource type="Texture2D" uid="uid://ckwy3yivc8gmw" path="res://img/buy/pricetag10.png" id="15_kundb"]
 
-[node name="BirdLine" type="Control" node_paths=PackedStringArray("image", "name_label", "amount_label", "pricetag")]
+[node name="BirdLine" type="Control" node_paths=PackedStringArray("image", "name_label", "amount_label", "pricetags")]
 custom_minimum_size = Vector2(380, 80)
 layout_mode = 3
 anchors_preset = 0
@@ -20,7 +31,7 @@ script = ExtResource("1_mibq5")
 image = NodePath("HBoxContainer/Image")
 name_label = NodePath("HBoxContainer/VBoxContainer/Name")
 amount_label = NodePath("HBoxContainer/VBoxContainer/HBoxContainer/Amount/AmountLabel")
-pricetag = NodePath("Price")
+pricetags = [NodePath("HBoxContainer/VBoxContainer/Name/PriceTag1"), NodePath("HBoxContainer/VBoxContainer/Name/PriceTag2"), NodePath("HBoxContainer/VBoxContainer/Name/PriceTag3"), NodePath("HBoxContainer/VBoxContainer/Name/PriceTag4"), NodePath("HBoxContainer/VBoxContainer/Name/PriceTag5"), NodePath("HBoxContainer/VBoxContainer/Name/PriceTag6"), NodePath("HBoxContainer/VBoxContainer/Name/PriceTag7"), NodePath("HBoxContainer/VBoxContainer/Name/PriceTag8"), NodePath("HBoxContainer/VBoxContainer/Name/PriceTag9"), NodePath("HBoxContainer/VBoxContainer/Name/PriceTag10")]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -49,6 +60,446 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_wlp27")
 text = "Chickens"
 horizontal_alignment = 1
+
+[node name="PriceTag1" type="TextureRect" parent="HBoxContainer/VBoxContainer/Name"]
+visible = false
+custom_minimum_size = Vector2(80, 40)
+layout_mode = 1
+offset_left = -20.0
+offset_top = -39.0
+offset_right = 60.0
+offset_bottom = 1.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("4_436k3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/Name/PriceTag1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 9
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/Name/PriceTag1/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 1
+alignment = 2
+
+[node name="Price" type="Label" parent="HBoxContainer/VBoxContainer/Name/PriceTag1/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_gpjs4")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Currency" type="TextureRect" parent="HBoxContainer/VBoxContainer/Name/PriceTag1/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+texture = ExtResource("7_wca10")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PriceTag2" type="TextureRect" parent="HBoxContainer/VBoxContainer/Name"]
+visible = false
+custom_minimum_size = Vector2(80, 40)
+layout_mode = 1
+offset_left = 97.0
+offset_right = 177.0
+offset_bottom = 40.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("5_ion2h")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/Name/PriceTag2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/Name/PriceTag2/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 1
+alignment = 2
+
+[node name="Price" type="Label" parent="HBoxContainer/VBoxContainer/Name/PriceTag2/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_gpjs4")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Currency" type="TextureRect" parent="HBoxContainer/VBoxContainer/Name/PriceTag2/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+texture = ExtResource("7_wca10")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PriceTag3" type="TextureRect" parent="HBoxContainer/VBoxContainer/Name"]
+visible = false
+custom_minimum_size = Vector2(80, 40)
+layout_mode = 1
+offset_left = 82.0
+offset_top = -34.0
+offset_right = 162.0
+offset_bottom = 6.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("8_dvh1b")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/Name/PriceTag3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/Name/PriceTag3/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 1
+alignment = 2
+
+[node name="Price" type="Label" parent="HBoxContainer/VBoxContainer/Name/PriceTag3/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_gpjs4")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Currency" type="TextureRect" parent="HBoxContainer/VBoxContainer/Name/PriceTag3/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+texture = ExtResource("7_wca10")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PriceTag4" type="TextureRect" parent="HBoxContainer/VBoxContainer/Name"]
+visible = false
+custom_minimum_size = Vector2(80, 40)
+layout_mode = 1
+offset_left = 98.0
+offset_top = 5.0
+offset_right = 178.0
+offset_bottom = 45.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("9_f82qv")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/Name/PriceTag4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/Name/PriceTag4/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 1
+alignment = 2
+
+[node name="Price" type="Label" parent="HBoxContainer/VBoxContainer/Name/PriceTag4/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_gpjs4")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Currency" type="TextureRect" parent="HBoxContainer/VBoxContainer/Name/PriceTag4/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+texture = ExtResource("7_wca10")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PriceTag5" type="TextureRect" parent="HBoxContainer/VBoxContainer/Name"]
+visible = false
+custom_minimum_size = Vector2(80, 40)
+layout_mode = 1
+offset_left = 67.0
+offset_top = -29.0
+offset_right = 147.0
+offset_bottom = 11.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("10_bmmj4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/Name/PriceTag5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/Name/PriceTag5/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 1
+alignment = 2
+
+[node name="Price" type="Label" parent="HBoxContainer/VBoxContainer/Name/PriceTag5/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_gpjs4")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Currency" type="TextureRect" parent="HBoxContainer/VBoxContainer/Name/PriceTag5/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+texture = ExtResource("7_wca10")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PriceTag6" type="TextureRect" parent="HBoxContainer/VBoxContainer/Name"]
+visible = false
+custom_minimum_size = Vector2(80, 40)
+layout_mode = 1
+offset_left = 79.0
+offset_top = -29.0
+offset_right = 159.0
+offset_bottom = 11.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("11_m5dx2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/Name/PriceTag6"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/Name/PriceTag6/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 1
+alignment = 2
+
+[node name="Price" type="Label" parent="HBoxContainer/VBoxContainer/Name/PriceTag6/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_gpjs4")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Currency" type="TextureRect" parent="HBoxContainer/VBoxContainer/Name/PriceTag6/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+texture = ExtResource("7_wca10")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PriceTag7" type="TextureRect" parent="HBoxContainer/VBoxContainer/Name"]
+visible = false
+custom_minimum_size = Vector2(80, 40)
+layout_mode = 1
+offset_left = 100.0
+offset_top = 9.0
+offset_right = 180.0
+offset_bottom = 49.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("12_wow47")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/Name/PriceTag7"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/Name/PriceTag7/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 1
+alignment = 2
+
+[node name="Price" type="Label" parent="HBoxContainer/VBoxContainer/Name/PriceTag7/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_gpjs4")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Currency" type="TextureRect" parent="HBoxContainer/VBoxContainer/Name/PriceTag7/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+texture = ExtResource("7_wca10")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PriceTag8" type="TextureRect" parent="HBoxContainer/VBoxContainer/Name"]
+visible = false
+custom_minimum_size = Vector2(80, 40)
+layout_mode = 1
+offset_left = 100.0
+offset_top = -10.0
+offset_right = 180.0
+offset_bottom = 30.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("13_10owi")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/Name/PriceTag8"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/Name/PriceTag8/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 1
+alignment = 2
+
+[node name="Price" type="Label" parent="HBoxContainer/VBoxContainer/Name/PriceTag8/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_gpjs4")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Currency" type="TextureRect" parent="HBoxContainer/VBoxContainer/Name/PriceTag8/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+texture = ExtResource("7_wca10")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PriceTag9" type="TextureRect" parent="HBoxContainer/VBoxContainer/Name"]
+visible = false
+custom_minimum_size = Vector2(80, 40)
+layout_mode = 1
+offset_left = 98.0
+offset_top = -24.0
+offset_right = 178.0
+offset_bottom = 16.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("14_nbfxm")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/Name/PriceTag9"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/Name/PriceTag9/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 1
+alignment = 2
+
+[node name="Price" type="Label" parent="HBoxContainer/VBoxContainer/Name/PriceTag9/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_gpjs4")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Currency" type="TextureRect" parent="HBoxContainer/VBoxContainer/Name/PriceTag9/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+texture = ExtResource("7_wca10")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PriceTag10" type="TextureRect" parent="HBoxContainer/VBoxContainer/Name"]
+visible = false
+custom_minimum_size = Vector2(80, 40)
+layout_mode = 1
+offset_left = 122.0
+offset_top = -11.0
+offset_right = 202.0
+offset_bottom = 29.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("15_kundb")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/Name/PriceTag10"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/Name/PriceTag10/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 1
+alignment = 2
+
+[node name="Price" type="Label" parent="HBoxContainer/VBoxContainer/Name/PriceTag10/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_gpjs4")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Currency" type="TextureRect" parent="HBoxContainer/VBoxContainer/Name/PriceTag10/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+texture = ExtResource("7_wca10")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -83,26 +534,6 @@ vertical_alignment = 1
 layout_mode = 2
 texture_normal = ExtResource("7_uf6ld")
 stretch_mode = 3
-
-[node name="Price" type="TextureRect" parent="."]
-custom_minimum_size = Vector2(80, 40)
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -89.0
-offset_top = -18.0
-offset_right = -9.0
-offset_bottom = 22.0
-grow_horizontal = 0
-grow_vertical = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture = ExtResource("8_3vlwu")
-expand_mode = 1
-stretch_mode = 5
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/HBoxContainer/MinusButton" to="." method="_on_minus_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/HBoxContainer/PlusButton" to="." method="_on_plus_pressed"]
