@@ -15,6 +15,7 @@ const save_path = "user://savefile.tres"
 @export var birds: Dictionary[Bird.Type, int]
 @export var food: Dictionary[Food.Type, int]
 @export var hired_scientists: Array[Scientist.Type]
+@export var hired_staff: Array[Staff]
 @export var scientist_actions: Dictionary[Scientist.Type, Dictionary]
 @export var egg_creation_counters: Dictionary
 

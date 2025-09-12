@@ -1,0 +1,133 @@
+[gd_scene load_steps=9 format=3 uid="uid://biokigs5ksths"]
+
+[ext_resource type="Script" uid="uid://df3rprns0olra" path="res://scenes/resumes/staff_resume.gd" id="1_715hf"]
+[ext_resource type="Texture2D" uid="uid://bwhlfq2h4fxhb" path="res://img/employees/Victoria_Rivers_icon.png" id="2_lpu7h"]
+[ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://fonts/BD_Cartoon_Shout.ttf" id="3_gqwls"]
+[ext_resource type="Texture2D" uid="uid://b0dfdhu4adrh" path="res://img/buy/money.png" id="4_kh36u"]
+[ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://cartoon_theme.tres" id="5_s8u4o"]
+[ext_resource type="Texture2D" uid="uid://danm6y360fnsg" path="res://img/buy/hire.png" id="6_bkxk3"]
+[ext_resource type="Texture2D" uid="uid://08snadb2d1fu" path="res://img/buy/hire_active.png" id="7_nkpcp"]
+[ext_resource type="Texture2D" uid="uid://bd7i7nbi23wxy" path="res://img/buy/unavailable.png" id="8_k7h05"]
+
+[node name="StaffResume" type="Control" node_paths=PackedStringArray("icon", "staff_name", "function", "wage", "available", "unavailable", "unlock_condition")]
+custom_minimum_size = Vector2(380, 150)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -772.0
+offset_bottom = -498.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+script = ExtResource("1_715hf")
+icon = NodePath("HBoxContainer/Icon")
+staff_name = NodePath("HBoxContainer/Available/Name")
+function = NodePath("HBoxContainer/Available/VBoxContainer/Function")
+wage = NodePath("HBoxContainer/Available/VBoxContainer/HBoxContainer/Wage")
+available = NodePath("HBoxContainer/Available")
+unavailable = NodePath("HBoxContainer/Unavailable")
+unlock_condition = NodePath("HBoxContainer/Unavailable/UnlockCondition")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_lpu7h")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Available" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+
+[node name="Name" type="Label" parent="HBoxContainer/Available"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_gqwls")
+theme_override_font_sizes/font_size = 20
+text = "Name"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Available"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Function" type="Label" parent="HBoxContainer/Available/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_s8u4o")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "Function"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Available/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Wage" type="Label" parent="HBoxContainer/Available/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_gqwls")
+theme_override_font_sizes/font_size = 16
+text = "wage"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MoneyIcon" type="TextureRect" parent="HBoxContainer/Available/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+texture = ExtResource("4_kh36u")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Costtype" type="Label" parent="HBoxContainer/Available/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_s8u4o")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "/month"
+
+[node name="Hire" type="TextureButton" parent="HBoxContainer/Available"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("6_bkxk3")
+texture_pressed = ExtResource("7_nkpcp")
+
+[node name="Unavailable" type="VBoxContainer" parent="HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Unavailable"]
+custom_minimum_size = Vector2(0, 47)
+layout_mode = 2
+texture = ExtResource("8_k7h05")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="UnlockCondition" type="Label" parent="HBoxContainer/Unavailable"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_gqwls")
+theme_override_font_sizes/font_size = 13
+text = "3 dinosaurs needed to unlock"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[connection signal="pressed" from="HBoxContainer/Available/Hire" to="." method="_on_hire_pressed"]

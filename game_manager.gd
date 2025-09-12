@@ -9,6 +9,7 @@ const game_resources: GameResources = preload("res://resources/game_resources.tr
 const month_time_in_sec := 1200
 const day_time_in_sec := 40
 const egg_expiration_time := 15 * 60
+const ticket_limits := [0, 10, 30, 50, 75, 80, 90, 100, 125, 140, 150]
 
 signal scientist_action_started(scientist: Scientist.Type)
 signal scientist_action_ended(scientist: Scientist.Type)
@@ -46,12 +47,23 @@ func hire_scientist(scientist: Scientist.Type) -> void:
 	game_data.hired_scientists.append(scientist)
 	game_data.save()
 
+func hire_staff(staff: Staff) -> void:
+	game_data.hired_staff.append(staff)
+	game_data.save()
+
 func fire_scientist(scientist: Scientist.Type) -> void:
 	game_data.hired_scientists.erase(scientist)
 	game_data.save()
 
-func is_hired(scientist: Scientist.Type) -> bool:
+func fire_staff(staff: Staff) -> void:
+	game_data.hired_staff.erase(staff)
+	game_data.save()
+
+func is_scientist_hired(scientist: Scientist.Type) -> bool:
 	return game_data.hired_scientists.has(scientist)
+
+func is_staff_hired(staff: Staff) -> bool:
+	return game_data.hired_staff.has(staff)
 
 func is_available(scientist: Scientist.Type) -> bool:
 	var dinosaur_count := 0
@@ -186,13 +198,16 @@ func change_ticket_price(price: int) -> void:
 func on_day_passed() -> void:
 	print("day passed")
 	var total_visitors: int = 0
+	var dinosaurs: Array[DinosaurInstance]
 	var dinosaur_count: Dictionary
 	var sad_count: Dictionary
 	for enclosure in game_data.enclosures.values():
 		for dinosaur: DinosaurInstance in enclosure.dinosaurs:
+			dinosaurs.append(dinosaur)
 			dinosaur_count[dinosaur.type] = dinosaur_count.get(dinosaur.type,0) + 1
 			if dinosaur.mood == DinosaurInstance.Mood.SAD:
 				sad_count[dinosaur.type] = sad_count.get(dinosaur.type, 0) + 1
+	_feed_dinosaurs(dinosaurs)
 	for dinosaur in dinosaur_count:
 		var dino_visitors := game_manager.game_resources.get_dinosaur(dinosaur).visitors
 		var dino_count = dinosaur_count[dinosaur]
@@ -202,11 +217,51 @@ func on_day_passed() -> void:
 		if sad_count.get(dinosaur,0) > 0:
 			dino_visitors /= 2
 		total_visitors += dino_visitors
-	var day_income := game_data.ticket_price * total_visitors
+	var ticket_limit: int = ticket_limits[min(dinosaur_count.size(), ticket_limits.size())]
+	var visitor_penalty := maxf(2 * (game_data.ticket_price as float / ticket_limit as float) - 1, 1.0)
+	var day_income := floori(game_data.ticket_price * (total_visitors / visitor_penalty))
 	game_data.money += day_income
 	game_data.save()
 	money_changed.emit(game_data.money)
 	get_tree().create_timer(day_time_in_sec).timeout.connect(on_day_passed)
+
+func _feed_dinosaurs(dinosaurs: Array[DinosaurInstance]) -> void:
+	var caregivers: Array[Staff] = _get_staff_of_type(Staff.Type.CAREGIVER)
+	var cared_enclosures := 0
+	for caregiver in caregivers:
+		cared_enclosures = caregiver.caregiver_enclosure_limit
+	for enclosure in game_data.enclosures.values():
+		cared_enclosures -= 1
+		for dinosaur: DinosaurInstance in enclosure.dinosaurs:
+			if cared_enclosures < 0:
+				dinosaur.feed(false)
+				break
+			var diet = game_resources.get_dinosaur(dinosaur.type).diet
+			match diet:
+				Dinosaur.Diet.HERBIVORE:
+					_feed_dinosaur(dinosaur, [Food.Type.HERBIVORE, Food.Type.MEGAMIX])
+				Dinosaur.Diet.CARNIVORE:
+					_feed_dinosaur(dinosaur, [Food.Type.CARNIVORE, Food.Type.MEGAMIX])
+				Dinosaur.Diet.OMNIVORE:
+					if game_data.food[Food.Type.CARNIVORE] > game_data.food[Food.Type.HERBIVORE]:
+						_feed_dinosaur(dinosaur, [Food.Type.CARNIVORE, Food.Type.HERBIVORE, Food.Type.MEGAMIX])
+					else:
+						_feed_dinosaur(dinosaur, [Food.Type.CARNIVORE, Food.Type.HERBIVORE, Food.Type.MEGAMIX])
+
+func _feed_dinosaur(dinosaur: DinosaurInstance, food_types: Array[Food.Type]):
+	for type in food_types:
+		if game_data.food.get(type,0) > 0:
+			game_data.food[type] -= 1
+			dinosaur.feed(true)
+			return
+	dinosaur.feed(false)
+
+func _get_staff_of_type(type: Staff.Type) -> Array[Staff]:
+	var filtered_staff: Array[Staff]
+	for staff in game_data.hired_staff:
+		if staff.type == type:
+			filtered_staff.append(staff)
+	return filtered_staff
 
 func on_month_passed() -> void:
 	for scientist in game_data.hired_scientists:

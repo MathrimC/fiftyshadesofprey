@@ -19,3 +19,17 @@ const egg_expiration_time := 15 * 60
 func get_egg_time_left() -> float:
 	return egg_creation_time + egg_expiration_time - Time.get_unix_time_from_system()
 
+func feed(has_food: bool) -> void:
+	if has_food && (mood == Mood.STARVING || mood == Mood.HUNGRY):
+		# TODO: check enclosure for sadness
+		mood = Mood.HAPPY
+	else:
+		match mood:
+			Mood.STARVING:
+				# TODO:
+				pass
+			Mood.HUNGRY:
+				mood = Mood.STARVING
+			_:
+				mood = Mood.HUNGRY
+
