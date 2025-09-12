@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://lxe0sefc17dv"]
+[gd_scene load_steps=11 format=3 uid="uid://lxe0sefc17dv"]
 
+[ext_resource type="Script" uid="uid://bjil1sl4t50jy" path="res://scenes/park/dinopark.gd" id="1_j7mi2"]
 [ext_resource type="Texture2D" uid="uid://dnvxohaum6ekc" path="res://img/park/park_front.png" id="1_lh1td"]
 [ext_resource type="Texture2D" uid="uid://dc48c53ytls7" path="res://img/park/park_floor.png" id="2_2tqmq"]
 [ext_resource type="Texture2D" uid="uid://chsy6mnur7xw7" path="res://img/park/parking_right.png" id="3_d5my2"]
@@ -10,7 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://daqutudsxhesn" path="res://scenes/map/park_lot.tscn" id="8_40isn"]
 [ext_resource type="Script" uid="uid://siovxfvtxmpd" path="res://scenes/park/park_camera.gd" id="8_fqr44"]
 
-[node name="Dinopark" type="Node"]
+[node name="Dinopark" type="Node" node_paths=PackedStringArray("camera")]
+script = ExtResource("1_j7mi2")
+camera = NodePath("ParkCamera")
 
 [node name="Park" type="Node2D" parent="."]
 

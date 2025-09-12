@@ -2,7 +2,7 @@ class_name DinosaurInstance
 extends Resource
 
 enum Stage { EGG, ALIVE }
-enum Mood { HAPPY, SAD, ANGRY }
+enum Mood { HAPPY, SAD, HUNGRY, STARVING }
 enum Genetics { GMO, NATURAL }
 
 const egg_expiration_time := 15 * 60

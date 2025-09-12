@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Dinocrys gamejam"
+config/name="Fifty Shades of Prey"
 run/main_scene="uid://bffn6n6gayotv"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"

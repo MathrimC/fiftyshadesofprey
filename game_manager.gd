@@ -12,7 +12,7 @@ const egg_expiration_time := 15 * 60
 
 signal scientist_action_started(scientist: Scientist.Type)
 signal scientist_action_ended(scientist: Scientist.Type)
-signal notification(notification: String)
+signal notification(notification: String, action: Callable, action_argument: Variant)
 signal money_changed(money: int)
 signal ticket_price_changed(price: int)
 signal scene_switched(scene: Resources.Scene, node: Node)
@@ -112,7 +112,6 @@ func move_dinosaur(dinosaur: DinosaurInstance, lot_number: int) -> bool:
 
 func sell_egg(dinosaur: DinosaurInstance) -> void:
 	remove_egg(dinosaur)
-	# TODO: add check if egg hasn't expired in the meantime
 	var value := game_resources.get_dinosaur(dinosaur.type).value
 	if dinosaur.genetics == DinosaurInstance.Genetics.NATURAL:
 		value *= 2
@@ -176,8 +175,8 @@ func create_enclosure(lot_number: int, biome: Biome.Type, fence: Fence.Type) -> 
 	game_data.enclosures[lot_number] = Enclosure.new(lot_number, biome, fence)
 	game_data.save()
 
-func trigger_notification(_notification: String) -> void:
-	notification.emit(_notification)
+func trigger_notification(_notification: String, _action: Callable, _action_argument: Variant = null) -> void:
+	notification.emit(_notification, _action, _action_argument)
 
 func change_ticket_price(price: int) -> void:
 	game_data.ticket_price = price
@@ -215,6 +214,12 @@ func on_month_passed() -> void:
 	game_data.save()
 	money_changed.emit(game_data.money)
 	get_tree().create_timer(month_time_in_sec).timeout.connect(on_month_passed)
+
+func go_to_enclosure(lot_number: int):
+	var park: Dinopark = load(Resources.scenes[Resources.Scene.DINOPARK]).instantiate()
+	park.set_camera_position_on_lot(lot_number)
+	get_tree().root.add_child(park)
+	register_scene_switch(Resources.Scene.DINOPARK, park)
 
 func switch_scene(scene: Resources.Scene) -> Node:
 	if active_scene != null:
@@ -258,10 +263,11 @@ func _complete_scientist_action(scientist_action: Dictionary, scientist: Scienti
 			game_data.egg_creation_counters[dino.type] = game_data.egg_creation_counters.get(dino.type, 0) + 1
 			game_data.eggs.append(dino)
 			egg_created.emit(dino)
-			trigger_notification("%s egg created!" % game_resources.get_dinosaur(scientist_action["dinosaur"]).name)
+			trigger_notification("Scientist created a %s egg. The egg is in your incubator" % game_resources.get_dinosaur(scientist_action["dinosaur"]).name, switch_scene, Resources.Scene.INCUBATOR)
 		ScientistAction.CREATE_FOOD:
 			var recipe: FoodRecipe = scientist_action["recipe"]
 			for type: Food.Type in recipe.outputs:
 				game_data.food[type] = game_data.food.get(type, 0) + recipe.outputs[type]
-				trigger_notification("%s food created!" % game_resources.get_food(type).name)
+				# TODO: callback for food notification
+				# trigger_notification("%s food created!" % game_resources.get_food(type).name)
 	game_data.save()

@@ -82,6 +82,7 @@ text = "Actions"
 [node name="ActionsMenu" type="PopupMenu" parent="."]
 size = Vector2i(119, 101)
 visible = true
+unfocusable = true
 theme = ExtResource("2_wf03y")
 theme_override_constants/v_separation = 10
 theme_override_constants/item_start_padding = 15

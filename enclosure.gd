@@ -16,6 +16,12 @@ func add_dinosaur(dinosaur: DinosaurInstance) -> bool:
 		return false
 	else:
 		dinosaurs.append(dinosaur)
+		# TODO: manage mood precedence: hungry or sad?
+		if game_manager.game_resources.get_dinosaur(dinosaur.type).biome != biome:
+			dinosaur.mood = DinosaurInstance.Mood.SAD
+			game_manager.notification.emit("%s is in the wrong enclosure and feeling unhappy" % dinosaur.name, game_manager.go_to_enclosure, lot_number)
+		else:
+			dinosaur.mood = DinosaurInstance.Mood.HAPPY
 		return true
 
 func is_full() -> bool:

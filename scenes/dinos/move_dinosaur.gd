@@ -11,4 +11,4 @@ func _ready() -> void:
 
 func on_lot_selected(lot_number: int) -> void:
 	if game_manager.move_dinosaur(dinosaur, lot_number):
-		game_manager.switch_scene(Resources.Scene.DINOPARK)
+		game_manager.go_to_enclosure(lot_number)

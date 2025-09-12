@@ -41,8 +41,9 @@ func on_sell_pressed(incubatoregg: Incubatoregg) -> void:
 	sell_panel.show()
 
 func on_sell_yay_pressed() -> void:
-	game_manager.sell_egg(selected_incubatoregg.dinosaur)
-	selected_incubatoregg.queue_free()
+	if selected_incubatoregg.dinosaur.get_egg_time_left() > 0:
+		game_manager.sell_egg(selected_incubatoregg.dinosaur)
+		selected_incubatoregg.queue_free()
 	sell_panel.hide()
 
 func on_sell_nay_pressed() -> void:

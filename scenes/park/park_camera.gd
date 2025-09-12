@@ -3,7 +3,9 @@ extends Camera2D
 const park_size := Vector2i(3456, 1296)
 
 func _ready() -> void:
-	self.position = park_size - get_viewport().size / 2
+	# self.position = park_size - get_viewport().size / 2
+	# self.position = park_size
+	pass
 
 func _input(event: InputEvent) -> void:
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) && event is InputEventMouseMotion:
