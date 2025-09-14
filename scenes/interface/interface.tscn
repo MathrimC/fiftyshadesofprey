@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://okba3tl3tq5q"]
+[gd_scene load_steps=40 format=3 uid="uid://okba3tl3tq5q"]
 
 [ext_resource type="Texture2D" uid="uid://d27ddxiy7es7s" path="res://img/general/button_park.png" id="1_5qo85"]
 [ext_resource type="Script" uid="uid://co888xlnm8n37" path="res://scenes/interface/left_menu.gd" id="1_6b6dw"]
@@ -35,6 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://c4psyvvgbyoak" path="res://img/general/inventory_icon.png" id="28_ccu2c"]
 [ext_resource type="Script" uid="uid://bmbyb2kxhtk7q" path="res://scenes/interface/ticket_panel.gd" id="30_s18y0"]
 [ext_resource type="Texture2D" uid="uid://bfiblj11ewx8k" path="res://img/buy/currency_white.png" id="31_b4581"]
+[ext_resource type="PackedScene" uid="uid://cas5ceoryi0jn" path="res://scenes/money/money.tscn" id="36_vg1jw"]
 
 [sub_resource type="Animation" id="Animation_vg1jw"]
 length = 0.001
@@ -92,6 +93,7 @@ scene_button_group = ExtResource("2_dxqbk")
 
 [node name="ButtonPark" type="TextureButton" parent="LeftMenu"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 toggle_mode = true
 button_group = ExtResource("2_dxqbk")
 texture_normal = ExtResource("1_5qo85")
@@ -102,6 +104,7 @@ metadata/_custom_type_script = "uid://c4o304e180bjd"
 
 [node name="ButtonBuy" type="TextureButton" parent="LeftMenu"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 toggle_mode = true
 button_group = ExtResource("2_dxqbk")
 texture_normal = ExtResource("3_t6v3e")
@@ -112,6 +115,7 @@ metadata/_custom_type_script = "uid://c4o304e180bjd"
 
 [node name="ButtonDino" type="TextureButton" parent="LeftMenu"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 toggle_mode = true
 button_group = ExtResource("2_dxqbk")
 texture_normal = ExtResource("5_0n63s")
@@ -123,6 +127,7 @@ metadata/_custom_type_script = "uid://c4o304e180bjd"
 [node name="ButtonStaff" type="TextureButton" parent="LeftMenu"]
 visible = false
 layout_mode = 2
+mouse_default_cursor_shape = 2
 toggle_mode = true
 button_group = ExtResource("2_dxqbk")
 texture_normal = ExtResource("7_qgmgy")
@@ -133,6 +138,7 @@ metadata/_custom_type_script = "uid://c4o304e180bjd"
 
 [node name="ButtonScience" type="TextureButton" parent="LeftMenu"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 toggle_mode = true
 button_group = ExtResource("2_dxqbk")
 texture_normal = ExtResource("9_cj54t")
@@ -143,6 +149,7 @@ metadata/_custom_type_script = "uid://c4o304e180bjd"
 
 [node name="ButtonMap" type="TextureButton" parent="LeftMenu"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 toggle_mode = true
 button_group = ExtResource("2_dxqbk")
 texture_normal = ExtResource("11_0damm")
@@ -154,6 +161,7 @@ metadata/_custom_type_script = "uid://c4o304e180bjd"
 [node name="ButtonMenu" type="TextureButton" parent="LeftMenu"]
 visible = false
 layout_mode = 2
+mouse_default_cursor_shape = 2
 toggle_mode = true
 button_group = ExtResource("2_dxqbk")
 texture_normal = ExtResource("13_ohtir")
@@ -161,7 +169,7 @@ texture_pressed = ExtResource("14_o8cu6")
 script = ExtResource("4_yqnn6")
 metadata/_custom_type_script = "uid://c4o304e180bjd"
 
-[node name="LowerBar" type="TextureRect" parent="." node_paths=PackedStringArray("notification_label", "notification_player", "ticket_label", "money_label", "ticket_panel")]
+[node name="LowerBar" type="TextureRect" parent="." node_paths=PackedStringArray("notification_label", "notification_player", "ticket_label", "money_label", "ticket_panel", "money_panel")]
 custom_minimum_size = Vector2(700, 0)
 layout_mode = 1
 anchors_preset = 2
@@ -177,6 +185,7 @@ notification_player = NodePath("MarginContainer/HBoxContainer/NotificationBar/No
 ticket_label = NodePath("MarginContainer/HBoxContainer/TicketBar/HBoxContainer/TicketLabel")
 money_label = NodePath("MarginContainer/HBoxContainer/MoneyBar/HBoxContainer/MoneyLabel")
 ticket_panel = NodePath("../TicketPanel")
+money_panel = NodePath("../Money")
 
 [node name="MarginContainer" type="MarginContainer" parent="LowerBar"]
 layout_mode = 1
@@ -297,18 +306,19 @@ texture = ExtResource("31_b4581")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="MoneyIcon" type="TextureRect" parent="LowerBar/MarginContainer/HBoxContainer"]
+[node name="MoneyIcon" type="TextureButton" parent="LowerBar/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
-texture = ExtResource("16_cq7gf")
-expand_mode = 1
+texture_normal = ExtResource("16_cq7gf")
+ignore_texture_size = true
 stretch_mode = 5
 
-[node name="MoneyBar" type="TextureRect" parent="LowerBar/MarginContainer/HBoxContainer"]
+[node name="MoneyBar" type="TextureButton" parent="LowerBar/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
-texture = ExtResource("17_n7n6o")
-expand_mode = 1
+texture_normal = ExtResource("17_n7n6o")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="LowerBar/MarginContainer/HBoxContainer/MoneyBar"]
 layout_mode = 1
@@ -322,6 +332,7 @@ alignment = 1
 [node name="MoneyLabel" type="RichTextLabel" parent="LowerBar/MarginContainer/HBoxContainer/MoneyBar/HBoxContainer"]
 texture_filter = 1
 layout_mode = 2
+mouse_filter = 1
 theme = ExtResource("26_iy6lx")
 theme_override_font_sizes/normal_font_size = 12
 text = "1000"
@@ -439,9 +450,15 @@ texture_pressed = ExtResource("24_rub5w")
 ignore_texture_size = true
 stretch_mode = 5
 
+[node name="Money" parent="." instance=ExtResource("36_vg1jw")]
+visible = false
+layout_mode = 1
+
 [connection signal="pressed" from="LowerBar/MarginContainer/HBoxContainer/NotificationBar/MarginContainer/ActiveNotificationBar" to="LowerBar" method="on_notification_pressed"]
 [connection signal="pressed" from="LowerBar/MarginContainer/HBoxContainer/TicketIcon" to="LowerBar" method="on_ticket_price_pressed"]
 [connection signal="pressed" from="LowerBar/MarginContainer/HBoxContainer/TicketBar" to="LowerBar" method="on_ticket_price_pressed"]
+[connection signal="pressed" from="LowerBar/MarginContainer/HBoxContainer/MoneyIcon" to="LowerBar" method="on_money_pressed"]
+[connection signal="pressed" from="LowerBar/MarginContainer/HBoxContainer/MoneyBar" to="LowerBar" method="on_money_pressed"]
 [connection signal="pressed" from="InventoryButton" to="LeftMenu" method="on_inventory_pressed"]
 [connection signal="visibility_changed" from="TicketPanel" to="TicketPanel" method="on_visibility_changed"]
 [connection signal="value_changed" from="TicketPanel/MarginContainer/VBoxContainer/HBoxContainer/TicketSlider" to="TicketPanel" method="on_value_changed"]

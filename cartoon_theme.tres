@@ -1,8 +1,14 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://d153qfgnveiau"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://d153qfgnveiau"]
 
 [ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://fonts/BD_Cartoon_Shout.ttf" id="1_3b2x8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3b2x8"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_top = 2
+border_color = Color(1, 1, 1, 1)
 
 [resource]
 default_font = ExtResource("1_3b2x8")
 default_font_size = 25
+TabContainer/styles/panel = SubResource("StyleBoxFlat_3b2x8")
 TooltipLabel/font_sizes/font_size = 14

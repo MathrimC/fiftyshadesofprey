@@ -6,6 +6,7 @@ extends TextureRect
 @export var ticket_label: RichTextLabel
 @export var money_label: RichTextLabel
 @export var ticket_panel: Container
+@export var money_panel: Money
 
 var notification_action: Callable = func (_parameter: Variant): pass
 var notification_action_argument: Variant
@@ -38,3 +39,6 @@ func on_money_changed(_money: int) -> void:
 
 func on_ticket_price_changed(_price: int) -> void:
 	ticket_label.text = "%s" % _price
+
+func on_money_pressed() -> void:
+	money_panel.show()

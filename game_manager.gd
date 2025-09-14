@@ -26,6 +26,7 @@ var game_running: bool
 var active_scene: Node
 
 func _enter_tree() -> void:
+	Input.set_custom_mouse_cursor(load("res://img/general/cursor_glow.png"), Input.CURSOR_POINTING_HAND)
 	game_running = false
 
 func start_game() -> void:
@@ -128,6 +129,7 @@ func sell_egg(dinosaur: DinosaurInstance) -> void:
 	if dinosaur.genetics == DinosaurInstance.Genetics.NATURAL:
 		value *= 2
 	game_data.money += value
+	game_data.money_transactions.append(MoneyTransaction.new(MoneyTransaction.Type.SELL_EGG, value, "%s egg sold" % game_resources.get_dinosaur(dinosaur.type).name, game_data.day))
 	money_changed.emit(game_data.money)
 
 func sell_dinosaur(dinosaur: DinosaurInstance) -> void:
@@ -137,6 +139,7 @@ func sell_dinosaur(dinosaur: DinosaurInstance) -> void:
 	if dinosaur.genetics == DinosaurInstance.Genetics.NATURAL:
 		value *= 2
 	game_data.money += value
+	game_data.money_transactions.append(MoneyTransaction.new(MoneyTransaction.Type.SELL_DINOSAUR, value, "%s sold" % game_resources.get_dinosaur(dinosaur.type).name, game_data.day))
 	money_changed.emit(game_data.money)
 
 
@@ -145,6 +148,7 @@ func buy_birds(bird_amounts: Dictionary[Bird.Type, int]) -> void:
 	for bird in bird_amounts:
 		price += game_resources.get_bird(bird).price * bird_amounts[bird]
 		game_data.birds[bird] = game_data.birds.get(bird,0) + bird_amounts[bird]
+		game_data.money_transactions.append(MoneyTransaction.new(MoneyTransaction.Type.BUY_BIRDS, price, "%s %s bought" % [bird_amounts[bird], game_resources.get_bird(bird).name], game_data.day))
 	game_data.money -= price
 	game_data.save()
 	money_changed.emit(game_data.money)
@@ -164,6 +168,7 @@ func buy_groceries(groceries_amounts: Dictionary[Grocery.Type, int]) -> void:
 	for grocery in groceries_amounts:
 		price += game_resources.get_grocery(grocery).price * groceries_amounts[grocery]
 		game_data.groceries[grocery] = game_data.groceries.get(grocery, 0) + groceries_amounts[grocery]
+		game_data.money_transactions.append(MoneyTransaction.new(MoneyTransaction.Type.BUY_GROCERIES, price, "%s %s bought" % [groceries_amounts[grocery], game_resources.get_grocery(grocery).name], game_data.day))
 	game_data.money -= price
 	money_changed.emit(game_data.money)
 	game_data.save()
@@ -182,7 +187,9 @@ func get_lot_content(lot_number: int) -> Enclosure:
 
 func create_enclosure(lot_number: int, biome: Biome.Type, fence: Fence.Type) -> void:
 	assert(!game_data.enclosures.has(lot_number), "Error: creating enclosure on occupied lot")
-	game_data.money -= game_resources.get_biome(biome).cost + game_resources.get_fence(fence).cost
+	var cost: int = game_resources.get_biome(biome).cost + game_resources.get_fence(fence).cost
+	game_data.money -= cost
+	game_data.money_transactions.append(MoneyTransaction.new(MoneyTransaction.Type.BUY_ENCLOSURE, cost, "%s biome with %s fence bought" % [Biome.Type.keys()[biome].capitalize(), Fence.Type.keys()[fence].to_lower()], game_data.day))
 	money_changed.emit(game_data.money)
 	game_data.enclosures[lot_number] = Enclosure.new(lot_number, biome, fence)
 	game_data.save()
@@ -197,6 +204,7 @@ func change_ticket_price(price: int) -> void:
 
 func on_day_passed() -> void:
 	print("day passed")
+	_feed_dinosaurs()
 	var total_visitors: int = 0
 	var dinosaurs: Array[DinosaurInstance]
 	var dinosaur_count: Dictionary
@@ -207,7 +215,6 @@ func on_day_passed() -> void:
 			dinosaur_count[dinosaur.type] = dinosaur_count.get(dinosaur.type,0) + 1
 			if dinosaur.mood == DinosaurInstance.Mood.SAD:
 				sad_count[dinosaur.type] = sad_count.get(dinosaur.type, 0) + 1
-	_feed_dinosaurs(dinosaurs)
 	for dinosaur in dinosaur_count:
 		var dino_visitors := game_manager.game_resources.get_dinosaur(dinosaur).visitors
 		var dino_count = dinosaur_count[dinosaur]
@@ -219,18 +226,26 @@ func on_day_passed() -> void:
 		total_visitors += dino_visitors
 	var ticket_limit: int = ticket_limits[min(dinosaur_count.size(), ticket_limits.size())]
 	var visitor_penalty := maxf(2 * (game_data.ticket_price as float / ticket_limit as float) - 1, 1.0)
-	var day_income := floori(game_data.ticket_price * (total_visitors / visitor_penalty))
-	game_data.money += day_income
+	var ticket_income := floori(game_data.ticket_price * (total_visitors / visitor_penalty))
+	game_data.money += ticket_income
+	game_data.money_transactions.append(MoneyTransaction.new(MoneyTransaction.Type.TICKET_SALES, ticket_income, "Ticket sales", game_data.day))
+	for scientist in game_data.hired_scientists:
+		var wage := game_resources.get_scientist(scientist).wage
+		game_data.money -= wage
+		game_data.money_transactions.append(MoneyTransaction.new(MoneyTransaction.Type.WAGE, wage, "%s wage" % game_resources.get_scientist(scientist).name, game_data.day))
+	game_data.day += 1
 	game_data.save()
 	money_changed.emit(game_data.money)
 	get_tree().create_timer(day_time_in_sec).timeout.connect(on_day_passed)
 
-func _feed_dinosaurs(dinosaurs: Array[DinosaurInstance]) -> void:
+func _feed_dinosaurs() -> void:
 	var caregivers: Array[Staff] = _get_staff_of_type(Staff.Type.CAREGIVER)
 	var cared_enclosures := 0
 	for caregiver in caregivers:
 		cared_enclosures = caregiver.caregiver_enclosure_limit
 	for enclosure in game_data.enclosures.values():
+		if enclosure.dinosaurs.is_empty():
+			break
 		cared_enclosures -= 1
 		for dinosaur: DinosaurInstance in enclosure.dinosaurs:
 			if cared_enclosures < 0:

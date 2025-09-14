@@ -7,8 +7,10 @@ const starting_ticket_price := 1
 const save_path = "user://savefile.tres"
 
 @export var version: int
+@export var day: int
 @export var money: int
 @export var ticket_price: int
+@export var money_transactions: Array[MoneyTransaction]
 @export var eggs: Array[DinosaurInstance]
 @export var enclosures: Dictionary[int, Enclosure]
 @export var groceries: Dictionary[Grocery.Type, int]
