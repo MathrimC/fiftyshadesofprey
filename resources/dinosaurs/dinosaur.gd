@@ -8,6 +8,7 @@ enum Diet { HERBIVORE, CARNIVORE, OMNIVORE }
 @export var name: String
 @export var diet: Diet
 @export var biome: Biome.Type
+@export var description: String
 @export var value: int
 @export var visitors: int
 @export var creation_bird: Bird.Type

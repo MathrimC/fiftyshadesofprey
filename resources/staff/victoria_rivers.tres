@@ -7,7 +7,7 @@
 script = ExtResource("1_wor84")
 name = "Victoria Rivers"
 type = 0
-wage = 1000
+wage = 200
 caregiver_enclosure_limit = 4
 texture = ExtResource("2_c8wfd")
 metadata/_custom_type_script = "uid://dbkong3go87my"

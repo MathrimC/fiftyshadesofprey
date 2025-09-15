@@ -46,6 +46,9 @@ func _init_dicts() -> void:
 func get_staff() -> Array[Staff]:
 	return staff
 
+func get_dinosaurs() -> Array[Dinosaur]:
+	return dinosaurs
+
 func get_grocery(type: Grocery.Type) -> Grocery:
 	return grocery_dict.get(type, null)
 

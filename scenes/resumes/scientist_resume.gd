@@ -42,7 +42,7 @@ func refresh() -> void:
 				food_amount.text = "%sx" % recipe.outputs[food]
 		if scientist_data.wage > 0:
 			cost.text = "%s" % scientist_data.wage
-			cost_type.text = "/month"
+			cost_type.text = "/day"
 		elif scientist_data.price > 0:
 			cost.text = "%s" % scientist_data.price
 			cost_type.text = "(1 time cost)"

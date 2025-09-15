@@ -10,6 +10,7 @@ type = 17
 name = "Dilophosaurus"
 diet = 1
 biome = 2
+description = ""
 value = 1600
 visitors = 200
 creation_bird = 7

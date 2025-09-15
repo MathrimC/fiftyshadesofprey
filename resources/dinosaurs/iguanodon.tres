@@ -10,6 +10,7 @@ type = 9
 name = "Iguanodon"
 diet = 0
 biome = 0
+description = ""
 value = 175
 visitors = 120
 creation_bird = 1

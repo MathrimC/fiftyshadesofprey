@@ -10,6 +10,7 @@ type = 14
 name = "Carnotaurus"
 diet = 1
 biome = 2
+description = ""
 value = 325
 visitors = 170
 creation_bird = 4

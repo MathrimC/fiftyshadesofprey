@@ -98,7 +98,7 @@ layout_mode = 2
 theme = ExtResource("5_s8u4o")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 16
-text = "/month"
+text = "/day"
 
 [node name="Hire" type="TextureButton" parent="HBoxContainer/Available"]
 layout_mode = 2

@@ -10,6 +10,7 @@ type = 11
 name = "Stegosaurus"
 diet = 0
 biome = 0
+description = ""
 value = 275
 visitors = 140
 creation_bird = 4

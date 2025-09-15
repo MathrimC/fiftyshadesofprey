@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://d153qfgnveiau"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://d153qfgnveiau"]
 
 [ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://fonts/BD_Cartoon_Shout.ttf" id="1_3b2x8"]
 
@@ -7,8 +7,31 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 border_width_top = 2
 border_color = Color(1, 1, 1, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dgrj0"]
+content_margin_left = 15.0
+content_margin_right = 15.0
+bg_color = Color(0.294118, 0.372549, 0.545098, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hf048"]
+content_margin_left = 15.0
+content_margin_right = 15.0
+bg_color = Color(0.294118, 0.372549, 0.545098, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hcnxv"]
+content_margin_left = 15.0
+content_margin_right = 15.0
+bg_color = Color(0.358481, 0.443893, 0.630439, 1)
+
 [resource]
 default_font = ExtResource("1_3b2x8")
 default_font_size = 25
+TabContainer/colors/font_unselected_color = Color(1, 1, 1, 1)
 TabContainer/styles/panel = SubResource("StyleBoxFlat_3b2x8")
+TabContainer/styles/tab_hovered = SubResource("StyleBoxFlat_dgrj0")
+TabContainer/styles/tab_selected = SubResource("StyleBoxFlat_hf048")
+TabContainer/styles/tab_unselected = SubResource("StyleBoxFlat_hcnxv")
 TooltipLabel/font_sizes/font_size = 14

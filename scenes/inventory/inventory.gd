@@ -1,5 +1,5 @@
 class_name Inventory
-extends TextureRect
+extends Control
 
 @export var grid: GridContainer
 
@@ -19,3 +19,4 @@ func _create_inventory_item(item: int, type: GameManager.InventoryType) -> void:
 
 func on_close_pressed() -> void:
 	self.queue_free()
+

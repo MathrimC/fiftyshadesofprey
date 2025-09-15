@@ -6,8 +6,8 @@ enum InventoryType { DINOSAURS, EGGS, BIRDS, FOOD, GROCERIES }
 enum DinosaurFeeling { HAPPY, SAD, SICK, HUNGRY }
 
 const game_resources: GameResources = preload("res://resources/game_resources.tres")
-const month_time_in_sec := 1200
-const day_time_in_sec := 40
+# const month_time_in_sec := 1200
+const day_length_in_sec := 40
 const egg_expiration_time := 15 * 60
 const ticket_limits := [0, 10, 30, 50, 75, 80, 90, 100, 125, 140, 150]
 
@@ -19,6 +19,7 @@ signal ticket_price_changed(price: int)
 signal scene_switched(scene: Resources.Scene, node: Node)
 signal egg_created(dinosaur: DinosaurInstance)
 signal egg_hatched(dinosaur: DinosaurInstance)
+signal day_passed()
 
 var game_data: GameData
 
@@ -28,21 +29,28 @@ var active_scene: Node
 func _enter_tree() -> void:
 	Input.set_custom_mouse_cursor(load("res://img/general/cursor_glow.png"), Input.CURSOR_POINTING_HAND)
 	game_running = false
+	day_passed.connect(on_day_passed)
 
 func start_game() -> void:
 	game_data = GameData.new()
-	# TODO: adapt day/month timers for save & load
-	get_tree().create_timer(month_time_in_sec).timeout.connect(on_month_passed)
-	get_tree().create_timer(day_time_in_sec).timeout.connect(on_day_passed)
+	game_data.current_day_end_time = roundi(Time.get_unix_time_from_system()) + day_length_in_sec
 	get_tree().change_scene_to_file(Resources.scenes[Resources.Scene.GAME])
 	game_running = true
 
 func continue_game() -> void:
 	game_data = GameData.load()
-	get_tree().create_timer(month_time_in_sec).timeout.connect(on_month_passed)
-	get_tree().create_timer(day_time_in_sec).timeout.connect(on_day_passed)
+	if game_data.version < 2:
+		game_data.current_day_end_time = roundi(Time.get_unix_time_from_system()) + day_length_in_sec
+		game_data.version = 2
+		game_data.save()
+	while game_data.current_day_end_time < Time.get_unix_time_from_system():
+		game_data.current_day_end_time += day_length_in_sec
+		on_day_passed()
 	get_tree().change_scene_to_file(Resources.scenes[Resources.Scene.GAME])
 	game_running = true
+
+func get_day_progress() -> float:
+	return 1  - ((game_data.current_day_end_time - Time.get_unix_time_from_system()) / day_length_in_sec)
 
 func hire_scientist(scientist: Scientist.Type) -> void:
 	game_data.hired_scientists.append(scientist)
@@ -233,10 +241,12 @@ func on_day_passed() -> void:
 		var wage := game_resources.get_scientist(scientist).wage
 		game_data.money -= wage
 		game_data.money_transactions.append(MoneyTransaction.new(MoneyTransaction.Type.WAGE, wage, "%s wage" % game_resources.get_scientist(scientist).name, game_data.day))
+	for staff in game_data.hired_staff:
+		game_data.money -= staff.wage
+		game_data.money_transactions.append(MoneyTransaction.new(MoneyTransaction.Type.WAGE, staff.wage, "%s wage" % staff.name, game_data.day))
 	game_data.day += 1
 	game_data.save()
 	money_changed.emit(game_data.money)
-	get_tree().create_timer(day_time_in_sec).timeout.connect(on_day_passed)
 
 func _feed_dinosaurs() -> void:
 	var caregivers: Array[Staff] = _get_staff_of_type(Staff.Type.CAREGIVER)
@@ -279,11 +289,13 @@ func _get_staff_of_type(type: Staff.Type) -> Array[Staff]:
 	return filtered_staff
 
 func on_month_passed() -> void:
-	for scientist in game_data.hired_scientists:
-		game_data.money -= game_resources.get_scientist(scientist).wage
-	game_data.save()
-	money_changed.emit(game_data.money)
-	get_tree().create_timer(month_time_in_sec).timeout.connect(on_month_passed)
+	# No longer used
+	pass
+	# for scientist in game_data.hired_scientists:
+	# 	game_data.money -= game_resources.get_scientist(scientist).wage
+	# game_data.save()
+	# money_changed.emit(game_data.money)
+	# get_tree().create_timer(month_time_in_sec).timeout.connect(on_month_passed)
 
 func go_to_enclosure(lot_number: int):
 	var park: Dinopark = load(Resources.scenes[Resources.Scene.DINOPARK]).instantiate()
@@ -319,6 +331,11 @@ func _process(_delta: float) -> void:
 			var scientist_action = game_data.scientist_actions[scientist]
 			if time > scientist_action["end_time"]:
 				_complete_scientist_action(scientist_action, scientist)
+		if time > game_data.current_day_end_time:
+			game_data.current_day_end_time += day_length_in_sec
+			day_passed.emit()
+			
+
 
 func _complete_scientist_action(scientist_action: Dictionary, scientist: Scientist.Type):
 	game_data.scientist_actions.erase(scientist)
