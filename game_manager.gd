@@ -7,7 +7,7 @@ enum DinosaurFeeling { HAPPY, SAD, SICK, HUNGRY }
 
 const game_resources: GameResources = preload("res://resources/game_resources.tres")
 # const month_time_in_sec := 1200
-const day_length_in_sec := 40
+const day_length_in_sec := 10 * 60
 const egg_expiration_time := 15 * 60
 const ticket_limits := [0, 10, 30, 50, 75, 80, 90, 100, 125, 140, 150]
 
@@ -20,6 +20,7 @@ signal scene_switched(scene: Resources.Scene, node: Node)
 signal egg_created(dinosaur: DinosaurInstance)
 signal egg_hatched(dinosaur: DinosaurInstance)
 signal day_passed()
+signal codex_requested(dinosaur: Dinosaur.Type)
 
 var game_data: GameData
 
@@ -29,7 +30,6 @@ var active_scene: Node
 func _enter_tree() -> void:
 	Input.set_custom_mouse_cursor(load("res://img/general/cursor_glow.png"), Input.CURSOR_POINTING_HAND)
 	game_running = false
-	day_passed.connect(on_day_passed)
 
 func start_game() -> void:
 	game_data = GameData.new()
@@ -45,7 +45,9 @@ func continue_game() -> void:
 		game_data.save()
 	while game_data.current_day_end_time < Time.get_unix_time_from_system():
 		game_data.current_day_end_time += day_length_in_sec
-		on_day_passed()
+		close_day()
+	game_data.save()
+	money_changed.emit(game_data.money)
 	get_tree().change_scene_to_file(Resources.scenes[Resources.Scene.GAME])
 	game_running = true
 
@@ -86,12 +88,15 @@ func get_hired_scientists() -> Array[Scientist.Type]:
 func get_scientist_action(scientist: Scientist.Type) -> Dictionary:
 	return game_data.scientist_actions.get(scientist, {})
 
-func is_unlocked(dinosaur: Dinosaur.Type) -> bool:
+func is_dinosaur_unlocked(dinosaur: Dinosaur.Type) -> bool:
 	var eggs := game_resources.get_dinosaur(dinosaur).eggs_to_unlock
 	for dino in eggs:
 		if game_data.egg_creation_counters.get(dino,0) < eggs[dino]:
 			return false
 	return true
+
+func is_dinosaur_known(dinosaur: Dinosaur.Type) -> bool:
+	return game_data.egg_creation_counters.get(dinosaur, 0) > 0
 
 func create_egg(dinosaur: Dinosaur.Type, scientist: Scientist.Type) -> void:
 	var dinosaur_data := game_resources.get_dinosaur(dinosaur)
@@ -210,7 +215,7 @@ func change_ticket_price(price: int) -> void:
 	ticket_price_changed.emit(game_data.ticket_price)
 	game_data.save()
 
-func on_day_passed() -> void:
+func close_day() -> void:
 	print("day passed")
 	_feed_dinosaurs()
 	var total_visitors: int = 0
@@ -245,8 +250,6 @@ func on_day_passed() -> void:
 		game_data.money -= staff.wage
 		game_data.money_transactions.append(MoneyTransaction.new(MoneyTransaction.Type.WAGE, staff.wage, "%s wage" % staff.name, game_data.day))
 	game_data.day += 1
-	game_data.save()
-	money_changed.emit(game_data.money)
 
 func _feed_dinosaurs() -> void:
 	var caregivers: Array[Staff] = _get_staff_of_type(Staff.Type.CAREGIVER)
@@ -333,6 +336,9 @@ func _process(_delta: float) -> void:
 				_complete_scientist_action(scientist_action, scientist)
 		if time > game_data.current_day_end_time:
 			game_data.current_day_end_time += day_length_in_sec
+			close_day()
+			game_data.save()
+			money_changed.emit()
 			day_passed.emit()
 			
 

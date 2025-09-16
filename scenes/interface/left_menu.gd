@@ -7,6 +7,7 @@ var backpack: Backpack
 func _ready():
 	scene_button_group.pressed.connect(on_pressed)
 	game_manager.scene_switched.connect(on_scene_switched)
+	game_manager.codex_requested.connect(on_codex_requested)
 	game_manager.switch_scene(Resources.Scene.DINOPARK)
 
 func on_scene_switched(scene_type: Resources.Scene, _node: Node):
@@ -23,3 +24,9 @@ func on_backpack_pressed() -> void:
 		owner.add_child(backpack)
 	else:
 		backpack.queue_free()
+
+func on_codex_requested(dinosaur: Dinosaur.Type) -> void:
+	if backpack == null:
+		backpack = preload(Resources.scenes[Resources.Scene.BACKPACK]).instantiate()
+		owner.add_child(backpack)
+	backpack.open_dino(dinosaur)

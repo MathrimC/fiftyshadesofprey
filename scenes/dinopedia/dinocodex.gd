@@ -26,6 +26,13 @@ func _on_next_pressed() -> void:
 	page += 1
 	_refresh()
 
+func go_to_dino(dino: Dinosaur.Type) -> void:
+	for i in game_manager.game_resources.dinosaurs.size():
+		if game_manager.game_resources.dinosaurs[i].type == dino:
+			page = i + 1
+			break
+	_refresh()
+
 func _refresh() -> void:
 	var dinosaur := dinosaurs[page - 1]
 	if game_manager.game_data.egg_creation_counters.get(dinosaur.type, 0) > 0:

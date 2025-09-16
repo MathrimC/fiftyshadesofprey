@@ -12,6 +12,13 @@ func _ready() -> void:
 	titlebar.move_panel.connect(on_move_panel)
 	game_manager.scene_switched.connect(on_scene_switched)
 
+func open_dino(dinosaur: Dinosaur.Type) -> void:
+	title.text = "Dino Codex"
+	dinocodex.go_to_dino(dinosaur)
+	inventory.hide()
+	dinocodex.show()
+	
+
 func on_move_panel(movement: Vector2):
 	self.position += movement
 

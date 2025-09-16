@@ -136,6 +136,7 @@ stretch_mode = 5
 [node name="UnlockCondition" type="Label" parent="HBoxContainer/Unavailable"]
 custom_minimum_size = Vector2(170, 0)
 layout_mode = 2
+theme = ExtResource("5_5x4nd")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_8ct5n")
 theme_override_font_sizes/font_size = 13
