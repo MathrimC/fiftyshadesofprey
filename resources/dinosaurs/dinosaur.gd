@@ -16,5 +16,6 @@ enum Diet { HERBIVORE, CARNIVORE, OMNIVORE }
 @export var creation_time: int
 @export var eggs_to_unlock: Dictionary[Type, int]
 
-@export var texture: Texture
-@export var egg_texture: Texture
+@export var texture: Texture2D
+@export var scale: float
+@export var egg_texture: Texture2D

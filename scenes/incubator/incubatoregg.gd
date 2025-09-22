@@ -1,8 +1,6 @@
 class_name Incubatoregg
 extends Control
 
-signal sell_pressed(incubatoregg: Incubatoregg)
-
 @export var egg: TextureRect
 @export var biome: TextureRect
 @export var food: TextureRect
@@ -50,7 +48,7 @@ func on_place_pressed() -> void:
 	game_manager.register_scene_switch(Resources.Scene.PLACE_EGG, place_egg)
 
 func on_sell_pressed() -> void:
-	sell_pressed.emit(self)
+	game_manager.request_dinosaur_sale(dinosaur)
 
 func on_trash_pressed() -> void:
 	game_manager.remove_egg(dinosaur)

@@ -1,12 +1,12 @@
 [gd_scene load_steps=16 format=3 uid="uid://bk02suntlq1ux"]
 
-[ext_resource type="Texture2D" uid="uid://g503whq3wpqb" path="res://img/general/inventory_window.png" id="1_psafj"]
 [ext_resource type="Script" uid="uid://b2okstkaviy0x" path="res://scenes/inventory/backpack.gd" id="1_tvok8"]
 [ext_resource type="Script" uid="uid://knbo84ou3r85" path="res://scenes/inventory/inventory.gd" id="2_5tt2m"]
 [ext_resource type="Script" uid="uid://d3xd0ctjlqc6x" path="res://scenes/inventory/title_bar.gd" id="2_nlotd"]
 [ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://fonts/BD_Cartoon_Shout.ttf" id="3_el5y6"]
 [ext_resource type="Texture2D" uid="uid://c4psyvvgbyoak" path="res://img/general/inventory_icon.png" id="3_v8e04"]
 [ext_resource type="Texture2D" uid="uid://duy2w8efj1qxv" path="res://img/dinos/Styracosaurus.png" id="4_kl7fi"]
+[ext_resource type="Texture2D" uid="uid://ccjrm77ud3agm" path="res://img/general/close_button.png" id="4_r0y5r"]
 [ext_resource type="Script" uid="uid://duh7oiq0mih8e" path="res://scenes/dinopedia/dinocodex.gd" id="6_j21gq"]
 [ext_resource type="Texture2D" uid="uid://dl7e6gvafqqcy" path="res://img/dinos/Diplodocus_egg.png" id="7_ll4hh"]
 [ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://cartoon_theme.tres" id="8_1pph4"]
@@ -67,6 +67,21 @@ text = "Inventory"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="CloseButton" type="TextureButton" parent="TitleBar"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -46.0
+offset_top = 9.0
+offset_right = -21.0
+offset_bottom = 34.0
+grow_horizontal = 0
+texture_normal = ExtResource("4_r0y5r")
+ignore_texture_size = true
+stretch_mode = 5
+
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 layout_mode = 2
 mouse_filter = 2
@@ -116,9 +131,12 @@ script = ExtResource("2_5tt2m")
 grid = NodePath("GridContainer")
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/PanelContainer/MarginContainer/Inventory"]
-layout_mode = 2
-offset_right = 595.0
-offset_bottom = 385.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 15
 columns = 5
@@ -282,31 +300,14 @@ offset_left = -40.0
 offset_bottom = 40.0
 grow_horizontal = 0
 
-[node name="Inventory" type="TextureRect" parent="."]
-visible = false
-layout_mode = 2
-texture = ExtResource("1_psafj")
-
-[node name="MarginContainer" type="MarginContainer" parent="Inventory"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 55
-theme_override_constants/margin_top = 50
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
 [node name="CloseButton" type="TextureButton" parent="."]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 ignore_texture_size = true
 
+[connection signal="pressed" from="TitleBar/CloseButton" to="." method="on_close_pressed"]
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/Inventory" to="." method="on_inventory_pressed"]
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/Dinocodex" to="." method="on_dinocodex_pressed"]
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/Dinocodex/VBoxContainer/Pages/Previous" to="MarginContainer/PanelContainer/MarginContainer/Dinocodex" method="_on_previous_pressed"]
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/Dinocodex/VBoxContainer/Pages/Control/Next" to="MarginContainer/PanelContainer/MarginContainer/Dinocodex" method="_on_next_pressed"]
-[connection signal="pressed" from="CloseButton" to="Inventory" method="on_close_pressed"]

@@ -53,6 +53,6 @@ func on_action_id_pressed(id: int) -> void:
 			get_tree().root.add_child(move_dinosaur)
 			game_manager.register_scene_switch(Resources.Scene.MOVE_DINOSAUR, move_dinosaur)
 		2:
-			sell_pressed.emit(self)
+			game_manager.request_dinosaur_sale(dinosaur)
 		3:
 			game_manager.codex_requested.emit(dinosaur.type)

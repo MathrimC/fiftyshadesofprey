@@ -20,10 +20,15 @@ func get_egg_time_left() -> float:
 	return egg_creation_time + egg_expiration_time - Time.get_unix_time_from_system()
 
 func feed(has_food: bool) -> void:
-	if has_food && (mood == Mood.STARVING || mood == Mood.HUNGRY):
-		# TODO: check enclosure for sadness
-		mood = Mood.HAPPY
-	else:
+	if has_food:
+		for enclosure: Enclosure in game_manager.game_data.enclosures.values():
+			if enclosure.dinosaurs.has(self):
+				if enclosure.biome == game_manager.game_resources.get_dinosaur(type).biome:
+					mood = Mood.HAPPY
+				else:
+					mood = Mood.SAD
+				break
+	elif !has_food:
 		match mood:
 			Mood.STARVING:
 				# TODO:
@@ -32,4 +37,3 @@ func feed(has_food: bool) -> void:
 				mood = Mood.STARVING
 			_:
 				mood = Mood.HUNGRY
-

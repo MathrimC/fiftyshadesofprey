@@ -10,6 +10,7 @@ type = 6
 name = "Parasaurolophus"
 diet = 0
 biome = 0
+description = ""
 value = 325
 visitors = 90
 creation_bird = 5
@@ -19,4 +20,5 @@ eggs_to_unlock = Dictionary[int, int]({
 5: 2
 })
 texture = ExtResource("4_xsdd7")
+scale = 0.3
 egg_texture = ExtResource("2_h4bvu")

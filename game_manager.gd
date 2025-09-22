@@ -21,6 +21,10 @@ signal egg_created(dinosaur: DinosaurInstance)
 signal egg_hatched(dinosaur: DinosaurInstance)
 signal day_passed()
 signal codex_requested(dinosaur: Dinosaur.Type)
+signal sell_requested(dinosaur: DinosaurInstance)
+signal egg_sold(dinosaur: DinosaurInstance)
+signal dinosaur_sold(dinosaur: DinosaurInstance)
+signal dinosaur_changed(dinosaur: DinosaurInstance)
 
 var game_data: GameData
 
@@ -120,6 +124,7 @@ func place_dinosaur(dinosaur: DinosaurInstance, lot_number: int) -> bool:
 	var enclosure: Enclosure = game_data.enclosures.get(lot_number, null)
 	if enclosure != null && enclosure.add_dinosaur(dinosaur):
 		game_data.eggs.erase(dinosaur)
+		dinosaur.stage = DinosaurInstance.Stage.ALIVE
 		game_data.save()
 		egg_hatched.emit(dinosaur)
 		return true
@@ -136,6 +141,9 @@ func move_dinosaur(dinosaur: DinosaurInstance, lot_number: int) -> bool:
 	else:
 		return false
 
+func request_dinosaur_sale(dinosaur: DinosaurInstance) -> void:
+	sell_requested.emit(dinosaur)
+
 func sell_egg(dinosaur: DinosaurInstance) -> void:
 	remove_egg(dinosaur)
 	var value := game_resources.get_dinosaur(dinosaur.type).value
@@ -143,7 +151,9 @@ func sell_egg(dinosaur: DinosaurInstance) -> void:
 		value *= 2
 	game_data.money += value
 	game_data.money_transactions.append(MoneyTransaction.new(MoneyTransaction.Type.SELL_EGG, value, "%s egg sold" % game_resources.get_dinosaur(dinosaur.type).name, game_data.day))
+	game_data.save()
 	money_changed.emit(game_data.money)
+	egg_sold.emit(dinosaur)
 
 func sell_dinosaur(dinosaur: DinosaurInstance) -> void:
 	var removed: bool = _remove_dinosaur(dinosaur)
@@ -153,7 +163,9 @@ func sell_dinosaur(dinosaur: DinosaurInstance) -> void:
 		value *= 2
 	game_data.money += value
 	game_data.money_transactions.append(MoneyTransaction.new(MoneyTransaction.Type.SELL_DINOSAUR, value, "%s sold" % game_resources.get_dinosaur(dinosaur.type).name, game_data.day))
+	game_data.save()
 	money_changed.emit(game_data.money)
+	dinosaur_sold.emit(dinosaur)
 
 
 func buy_birds(bird_amounts: Dictionary[Bird.Type, int]) -> void:
@@ -217,7 +229,6 @@ func change_ticket_price(price: int) -> void:
 
 func close_day() -> void:
 	print("day passed")
-	_feed_dinosaurs()
 	var total_visitors: int = 0
 	var dinosaurs: Array[DinosaurInstance]
 	var dinosaur_count: Dictionary
@@ -250,6 +261,7 @@ func close_day() -> void:
 		game_data.money -= staff.wage
 		game_data.money_transactions.append(MoneyTransaction.new(MoneyTransaction.Type.WAGE, staff.wage, "%s wage" % staff.name, game_data.day))
 	game_data.day += 1
+	_feed_dinosaurs()
 
 func _feed_dinosaurs() -> void:
 	var caregivers: Array[Staff] = _get_staff_of_type(Staff.Type.CAREGIVER)
@@ -257,32 +269,35 @@ func _feed_dinosaurs() -> void:
 	for caregiver in caregivers:
 		cared_enclosures = caregiver.caregiver_enclosure_limit
 	for enclosure in game_data.enclosures.values():
-		if enclosure.dinosaurs.is_empty():
-			break
-		cared_enclosures -= 1
-		for dinosaur: DinosaurInstance in enclosure.dinosaurs:
-			if cared_enclosures < 0:
-				dinosaur.feed(false)
-				break
-			var diet = game_resources.get_dinosaur(dinosaur.type).diet
-			match diet:
-				Dinosaur.Diet.HERBIVORE:
-					_feed_dinosaur(dinosaur, [Food.Type.HERBIVORE, Food.Type.MEGAMIX])
-				Dinosaur.Diet.CARNIVORE:
-					_feed_dinosaur(dinosaur, [Food.Type.CARNIVORE, Food.Type.MEGAMIX])
-				Dinosaur.Diet.OMNIVORE:
-					if game_data.food[Food.Type.CARNIVORE] > game_data.food[Food.Type.HERBIVORE]:
-						_feed_dinosaur(dinosaur, [Food.Type.CARNIVORE, Food.Type.HERBIVORE, Food.Type.MEGAMIX])
-					else:
-						_feed_dinosaur(dinosaur, [Food.Type.CARNIVORE, Food.Type.HERBIVORE, Food.Type.MEGAMIX])
+		if !enclosure.dinosaurs.is_empty():
+			cared_enclosures -= 1
+			for dinosaur: DinosaurInstance in enclosure.dinosaurs:
+				if cared_enclosures < 0:
+					dinosaur.feed(false)
+				else:
+					if !feed_dinosaur(dinosaur):
+						dinosaur.feed(false)
+						dinosaur_changed.emit(dinosaur)
 
-func _feed_dinosaur(dinosaur: DinosaurInstance, food_types: Array[Food.Type]):
+func feed_dinosaur(dinosaur: DinosaurInstance) -> bool:
+	var food_types: Array[Food.Type]
+	match game_resources.get_dinosaur(dinosaur.type).diet:
+		Dinosaur.Diet.HERBIVORE:
+			food_types.append_array([Food.Type.HERBIVORE, Food.Type.MEGAMIX])
+		Dinosaur.Diet.CARNIVORE:
+			food_types.append_array([Food.Type.CARNIVORE, Food.Type.MEGAMIX])
+		Dinosaur.Diet.OMNIVORE:
+			if game_data.food[Food.Type.CARNIVORE] > game_data.food[Food.Type.HERBIVORE]:
+				food_types.append_array([Food.Type.CARNIVORE, Food.Type.HERBIVORE, Food.Type.MEGAMIX])
+			else:
+				food_types.append_array([Food.Type.HERBIVORE, Food.Type.CARNIVORE, Food.Type.MEGAMIX])
 	for type in food_types:
 		if game_data.food.get(type,0) > 0:
 			game_data.food[type] -= 1
 			dinosaur.feed(true)
-			return
-	dinosaur.feed(false)
+			dinosaur_changed.emit(dinosaur)
+			return true
+	return false
 
 func _get_staff_of_type(type: Staff.Type) -> Array[Staff]:
 	var filtered_staff: Array[Staff]

@@ -1,16 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://dn2qskwce072c"]
+[gd_scene load_steps=6 format=3 uid="uid://dn2qskwce072c"]
 
 [ext_resource type="Texture2D" uid="uid://d2ceqoanmq073" path="res://img/dinos/incubator_background.png" id="1_52obv"]
 [ext_resource type="Script" uid="uid://dqnjbtmohu4" path="res://scenes/incubator/incubator.gd" id="1_u1mqc"]
 [ext_resource type="Texture2D" uid="uid://cbvvhohh1mpf6" path="res://img/dinos/dinosaur_text.png" id="2_wkwvt"]
 [ext_resource type="Texture2D" uid="uid://bbi0p2vu4j7eu" path="res://img/dinos/incubator text.png" id="3_scwkn"]
 [ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://cartoon_theme.tres" id="5_btbs1"]
-[ext_resource type="Texture2D" uid="uid://53oxgklwl0hn" path="res://img/general/button_nay.png" id="6_d8841"]
-[ext_resource type="Texture2D" uid="uid://bj5v06ipo3ouq" path="res://img/general/button_nay_active.png" id="7_ruaci"]
-[ext_resource type="Texture2D" uid="uid://dcqd14ec0hqy" path="res://img/general/button_yay.png" id="8_2le47"]
-[ext_resource type="Texture2D" uid="uid://b2oj0iuhxdvya" path="res://img/general/button_yay_active.png" id="9_86y0r"]
 
-[node name="Incubator" type="Control" node_paths=PackedStringArray("container", "empty_label", "sell_panel", "sell_label")]
+[node name="Incubator" type="Control" node_paths=PackedStringArray("container", "empty_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,8 +16,6 @@ grow_vertical = 2
 script = ExtResource("1_u1mqc")
 container = NodePath("GridContainer")
 empty_label = NodePath("EmptyLabel")
-sell_panel = NodePath("SellPanel")
-sell_label = NodePath("SellPanel/MarginContainer/VBoxContainer/Label")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
@@ -93,53 +87,4 @@ text = "No eggs in the incubator"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SellPanel" type="PanelContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -423.5
-offset_top = -68.0
-offset_right = 316.5
-offset_bottom = 68.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="SellPanel"]
-layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="VBoxContainer" type="VBoxContainer" parent="SellPanel/MarginContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="SellPanel/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(700, 0)
-layout_mode = 2
-theme = ExtResource("5_btbs1")
-text = "Do you want to sell the typranussaurus rex for for 1000?"
-horizontal_alignment = 1
-autowrap_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="SellPanel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-alignment = 1
-
-[node name="NayButton" type="TextureButton" parent="SellPanel/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("6_d8841")
-texture_pressed = ExtResource("7_ruaci")
-
-[node name="YayButton" type="TextureButton" parent="SellPanel/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("8_2le47")
-texture_pressed = ExtResource("9_86y0r")
-
 [connection signal="pressed" from="DinosaurButton" to="." method="_dinosaur_button_pressed"]
-[connection signal="pressed" from="SellPanel/MarginContainer/VBoxContainer/HBoxContainer/NayButton" to="." method="on_sell_nay_pressed"]
-[connection signal="pressed" from="SellPanel/MarginContainer/VBoxContainer/HBoxContainer/YayButton" to="." method="on_sell_yay_pressed"]

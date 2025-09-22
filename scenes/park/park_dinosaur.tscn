@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://0tui3e5ny12v"]
+
+[ext_resource type="Texture2D" uid="uid://bygqqq1joogiw" path="res://img/dinos/Diplodocus.png" id="1_ws2x6"]
+[ext_resource type="Script" uid="uid://b1f7n6sfs7nsb" path="res://scenes/park/park_dinosaur.gd" id="2_p8ol8"]
+[ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://cartoon_theme.tres" id="3_hkrxy"]
+
+[node name="ParkDinosaur" type="Sprite2D" node_paths=PackedStringArray("dino_menu", "dino_info")]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_ws2x6")
+script = ExtResource("2_p8ol8")
+dino_menu = NodePath("DinoMenu")
+dino_info = NodePath("")
+
+[node name="DinoMenu" type="PopupMenu" parent="."]
+auto_translate_mode = 1
+size = Vector2i(206, 116)
+theme = ExtResource("3_hkrxy")
+theme_override_font_sizes/font_size = 14
+item_count = 4
+item_0/text = "Feed"
+item_0/id = 0
+item_1/text = "Move"
+item_1/id = 1
+item_2/text = "Sell"
+item_2/id = 2
+item_3/text = "View codex"
+item_3/id = 3
+
+[connection signal="id_pressed" from="DinoMenu" to="." method="on_menu_id_pressed"]

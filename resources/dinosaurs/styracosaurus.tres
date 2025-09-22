@@ -18,5 +18,6 @@ creation_chance = 1.0
 creation_time = 60
 eggs_to_unlock = Dictionary[int, int]({})
 texture = ExtResource("1_0ldxv")
+scale = 0.15
 egg_texture = ExtResource("2_4f4eq")
 metadata/_custom_type_script = "uid://cfei13n14h6s1"

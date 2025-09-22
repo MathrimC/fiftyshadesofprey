@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://lxe0sefc17dv"]
+[gd_scene load_steps=14 format=3 uid="uid://lxe0sefc17dv"]
 
 [ext_resource type="Script" uid="uid://bjil1sl4t50jy" path="res://scenes/park/dinopark.gd" id="1_j7mi2"]
 [ext_resource type="Texture2D" uid="uid://dnvxohaum6ekc" path="res://img/park/park_front.png" id="1_lh1td"]
@@ -10,10 +10,17 @@
 [ext_resource type="Texture2D" uid="uid://cpn27sbbjnyyv" path="res://img/park/park empty business.png" id="7_wpmti"]
 [ext_resource type="PackedScene" uid="uid://daqutudsxhesn" path="res://scenes/map/park_lot.tscn" id="8_40isn"]
 [ext_resource type="Script" uid="uid://siovxfvtxmpd" path="res://scenes/park/park_camera.gd" id="8_fqr44"]
+[ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://cartoon_theme.tres" id="11_uswhy"]
+[ext_resource type="Script" uid="uid://bleunq206r05u" path="res://scenes/park/dino_info.gd" id="12_lgk2v"]
 
-[node name="Dinopark" type="Node" node_paths=PackedStringArray("camera")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uswhy"]
+bg_color = Color(0.294118, 0.372549, 0.545098, 1)
+corner_radius_top_left = 15
+
+[node name="Dinopark" type="Node" node_paths=PackedStringArray("camera", "dino_info")]
 script = ExtResource("1_j7mi2")
 camera = NodePath("ParkCamera")
+dino_info = NodePath("CanvasLayer/DinoInfo")
 
 [node name="Park" type="Node2D" parent="."]
 
@@ -22,7 +29,7 @@ position = Vector2(3099.5, 1066)
 texture = ExtResource("1_lh1td")
 
 [node name="ParkFloor" type="Sprite2D" parent="Park"]
-position = Vector2(1727.5, 648)
+position = Vector2(1780, 652)
 scale = Vector2(3, 3)
 texture = ExtResource("2_2tqmq")
 
@@ -172,3 +179,62 @@ limit_top = -500
 limit_right = 3450
 limit_bottom = 1500
 script = ExtResource("8_fqr44")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DinoInfo" type="PanelContainer" parent="CanvasLayer" node_paths=PackedStringArray("dino_name", "type", "diet", "mood")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -108.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+theme = ExtResource("11_uswhy")
+theme_override_styles/panel = SubResource("StyleBoxFlat_uswhy")
+script = ExtResource("12_lgk2v")
+dino_name = NodePath("MarginContainer/VBoxContainer/Name")
+type = NodePath("MarginContainer/VBoxContainer/Type")
+diet = NodePath("MarginContainer/VBoxContainer/Diet")
+mood = NodePath("MarginContainer/VBoxContainer/Mood")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/DinoInfo"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/DinoInfo/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Name" type="Label" parent="CanvasLayer/DinoInfo/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Diplo"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Type" type="Label" parent="CanvasLayer/DinoInfo/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Diplodocus"
+horizontal_alignment = 1
+
+[node name="Diet" type="Label" parent="CanvasLayer/DinoInfo/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Herbivore"
+horizontal_alignment = 1
+
+[node name="Mood" type="Label" parent="CanvasLayer/DinoInfo/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Happy"
+horizontal_alignment = 1

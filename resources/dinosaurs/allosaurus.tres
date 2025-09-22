@@ -20,4 +20,5 @@ eggs_to_unlock = Dictionary[int, int]({
 6: 2
 })
 texture = ExtResource("4_lkoak")
+scale = 0.3
 egg_texture = ExtResource("2_0oojb")

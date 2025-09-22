@@ -20,5 +20,6 @@ eggs_to_unlock = Dictionary[int, int]({
 9: 2
 })
 texture = ExtResource("5_dov6k")
+scale = 1.1
 egg_texture = ExtResource("2_pwsfg")
 metadata/_custom_type_script = "uid://cfei13n14h6s1"

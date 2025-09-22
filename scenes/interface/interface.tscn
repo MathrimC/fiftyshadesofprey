@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://okba3tl3tq5q"]
+[gd_scene load_steps=44 format=3 uid="uid://okba3tl3tq5q"]
 
 [ext_resource type="Texture2D" uid="uid://d27ddxiy7es7s" path="res://img/general/button_park.png" id="1_5qo85"]
 [ext_resource type="Script" uid="uid://co888xlnm8n37" path="res://scenes/interface/left_menu.gd" id="1_6b6dw"]
@@ -37,6 +37,7 @@
 [ext_resource type="Script" uid="uid://bmbyb2kxhtk7q" path="res://scenes/interface/ticket_panel.gd" id="30_s18y0"]
 [ext_resource type="Texture2D" uid="uid://bfiblj11ewx8k" path="res://img/buy/currency_white.png" id="31_b4581"]
 [ext_resource type="PackedScene" uid="uid://cas5ceoryi0jn" path="res://scenes/money/money.tscn" id="36_vg1jw"]
+[ext_resource type="Script" uid="uid://t288qe5ckyw2" path="res://scenes/interface/sell_panel.gd" id="38_pj6hq"]
 
 [sub_resource type="Animation" id="Animation_vg1jw"]
 length = 0.001
@@ -97,7 +98,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
 
 [node name="LeftMenu" type="VBoxContainer" parent="."]
 layout_mode = 0
@@ -529,6 +529,62 @@ theme_override_constants/margin_bottom = 20
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_pj6hq")
 
+[node name="SellPanel" type="PanelContainer" parent="." node_paths=PackedStringArray("sell_label")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -423.5
+offset_top = -68.0
+offset_right = 316.5
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("38_pj6hq")
+sell_label = NodePath("MarginContainer/VBoxContainer/Label")
+
+[node name="MarginContainer" type="MarginContainer" parent="SellPanel"]
+layout_mode = 2
+mouse_filter = 0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SellPanel/MarginContainer"]
+layout_mode = 2
+mouse_filter = 0
+
+[node name="Label" type="Label" parent="SellPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+mouse_filter = 0
+theme = ExtResource("26_iy6lx")
+text = "Do you want to sell the typranussaurus rex for for 1000?"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SellPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 0
+alignment = 1
+
+[node name="NayButton" type="TextureButton" parent="SellPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("25_u8chh")
+texture_pressed = ExtResource("26_u5mno")
+
+[node name="YayButton" type="TextureButton" parent="SellPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("23_l715o")
+texture_pressed = ExtResource("24_rub5w")
+
 [connection signal="pressed" from="LowerBar/MarginContainer/HBoxContainer/NotificationBar/MarginContainer/ActiveNotificationBar" to="LowerBar" method="on_notification_pressed"]
 [connection signal="pressed" from="LowerBar/MarginContainer/HBoxContainer/TicketIcon" to="LowerBar" method="on_ticket_price_pressed"]
 [connection signal="pressed" from="LowerBar/MarginContainer/HBoxContainer/TicketBar" to="LowerBar" method="on_ticket_price_pressed"]
@@ -541,3 +597,5 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_pj6hq")
 [connection signal="text_submitted" from="TicketPanel/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/TicketInput" to="TicketPanel" method="on_input_submitted"]
 [connection signal="pressed" from="TicketPanel/MarginContainer/VBoxContainer/Buttons/NayButton" to="TicketPanel" method="on_nay_pressed"]
 [connection signal="pressed" from="TicketPanel/MarginContainer/VBoxContainer/Buttons/YayButton" to="TicketPanel" method="on_yay_pressed"]
+[connection signal="pressed" from="SellPanel/MarginContainer/VBoxContainer/HBoxContainer/NayButton" to="SellPanel" method="on_nay_pressed"]
+[connection signal="pressed" from="SellPanel/MarginContainer/VBoxContainer/HBoxContainer/YayButton" to="SellPanel" method="on_yay_pressed"]

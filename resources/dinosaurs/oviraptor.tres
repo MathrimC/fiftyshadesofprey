@@ -10,6 +10,7 @@ type = 18
 name = "Oviraptor"
 diet = 1
 biome = 2
+description = ""
 value = 2200
 visitors = 210
 creation_bird = 9
@@ -19,5 +20,6 @@ eggs_to_unlock = Dictionary[int, int]({
 17: 2
 })
 texture = ExtResource("5_dg7os")
+scale = 0.05
 egg_texture = ExtResource("2_5f3xw")
 metadata/_custom_type_script = "uid://cfei13n14h6s1"

@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dcqd14ec0hqy" path="res://img/general/button_yay.png" id="8_k8lky"]
 [ext_resource type="Texture2D" uid="uid://b2oj0iuhxdvya" path="res://img/general/button_yay_active.png" id="9_uw182"]
 
-[node name="Dinosaurs" type="Control" node_paths=PackedStringArray("list_container", "lines_container", "empty_label", "name_panel", "name_input", "sell_panel", "sell_label")]
+[node name="Dinosaurs" type="Control" node_paths=PackedStringArray("list_container", "lines_container", "empty_label", "name_panel", "name_input")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,8 +23,6 @@ lines_container = NodePath("MarginContainer/ListContainer/ScrollContainer/LinesC
 empty_label = NodePath("MarginContainer/EmptyLabel")
 name_panel = NodePath("NamePanel")
 name_input = NodePath("NamePanel/MarginContainer/VBoxContainer/NameInput")
-sell_panel = NodePath("SellPanel")
-sell_label = NodePath("SellPanel/MarginContainer/VBoxContainer/Label")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
