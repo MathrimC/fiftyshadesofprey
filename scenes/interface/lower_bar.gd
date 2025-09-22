@@ -6,6 +6,9 @@ extends TextureRect
 @export var ticket_label: RichTextLabel
 @export var money_label: RichTextLabel
 @export var ticket_panel: Container
+@export var money_panel: Money
+@export var day_bar: TextureProgressBar
+@export var day_label: RichTextLabel
 
 var notification_action: Callable = func (_parameter: Variant): pass
 var notification_action_argument: Variant
@@ -16,6 +19,8 @@ func _ready():
 	game_manager.ticket_price_changed.connect(on_ticket_price_changed)
 	ticket_label.text = "%s" % game_manager.game_data.ticket_price
 	money_label.text = "%s" % game_manager.game_data.money
+	day_label.text = "Day %s" % game_manager.game_data.day
+	game_manager.day_passed.connect(on_day_passed)
 
 func on_ticket_price_pressed() -> void:
 	ticket_panel.show()
@@ -38,3 +43,14 @@ func on_money_changed(_money: int) -> void:
 
 func on_ticket_price_changed(_price: int) -> void:
 	ticket_label.text = "%s" % _price
+
+func on_money_pressed() -> void:
+	money_panel.show()
+
+func on_day_passed() -> void:
+	day_label.text = "Day %s" % game_manager.game_data.day
+
+func _process(_delta: float) -> void:
+	var progress := game_manager.get_day_progress() * 100
+	day_bar.value = progress
+

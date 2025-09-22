@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bjbsob3f56pqu"]
+[gd_scene load_steps=11 format=3 uid="uid://bjbsob3f56pqu"]
 
 [ext_resource type="Script" uid="uid://b5usjkdctjxo6" path="res://scenes/scientist_actions/dinosaur_creation_line.gd" id="1_wqnfq"]
 [ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://cartoon_theme.tres" id="2_acscv"]
@@ -9,17 +9,20 @@
 [ext_resource type="Texture2D" uid="uid://dpmb4cmhhclx4" path="res://img/science/science_create_yes.png" id="6_7eqe1"]
 [ext_resource type="Texture2D" uid="uid://efrr5xwclu3a" path="res://img/science/science_create_no.png" id="7_uurtm"]
 [ext_resource type="Texture2D" uid="uid://c0g0rn1epir8m" path="res://img/science/clock.png" id="8_xs80n"]
+[ext_resource type="Texture2D" uid="uid://bd7i7nbi23wxy" path="res://img/buy/unavailable.png" id="10_thncl"]
 
-[node name="DinosaurCreationLine" type="HBoxContainer" node_paths=PackedStringArray("egg", "bird_amount", "bird_texture", "button", "timer")]
+[node name="DinosaurCreationLine" type="HBoxContainer" node_paths=PackedStringArray("egg", "bird_amount", "bird_texture", "button", "timer", "available", "unavailable")]
 custom_minimum_size = Vector2(0, 80)
 size_flags_horizontal = 3
-theme_override_constants/separation = 10
+theme_override_constants/separation = 15
 script = ExtResource("1_wqnfq")
 egg = NodePath("Egg")
 bird_amount = NodePath("AnimalAmount/Amount")
 bird_texture = NodePath("AnimalAmount/Animal")
-button = NodePath("TextureButton")
-timer = NodePath("Timer")
+button = NodePath("Available/TextureButton")
+timer = NodePath("Available/Timer")
+available = NodePath("Available")
+unavailable = NodePath("Unavailable")
 
 [node name="Egg" type="TextureRect" parent="."]
 texture_filter = 2
@@ -46,7 +49,8 @@ size_flags_vertical = 4
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("4_7kw3u")
 text = "1 x"
-horizontal_alignment = 1
+fit_content = true
+autowrap_mode = 0
 vertical_alignment = 1
 
 [node name="Animal" type="TextureRect" parent="AnimalAmount"]
@@ -57,21 +61,26 @@ texture = ExtResource("5_gh73y")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="TextureButton" type="TextureButton" parent="."]
+[node name="Available" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_constants/separation = 10
+
+[node name="TextureButton" type="TextureButton" parent="Available"]
 layout_mode = 2
 size_flags_horizontal = 10
 texture_normal = ExtResource("6_7eqe1")
 texture_disabled = ExtResource("7_uurtm")
 stretch_mode = 3
 
-[node name="TimerIcon" type="TextureRect" parent="."]
+[node name="TimerIcon" type="TextureRect" parent="Available"]
 custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 texture = ExtResource("8_xs80n")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Timer" type="RichTextLabel" parent="."]
+[node name="Timer" type="RichTextLabel" parent="Available"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -83,4 +92,19 @@ scroll_active = false
 autowrap_mode = 0
 vertical_alignment = 1
 
-[connection signal="pressed" from="TextureButton" to="." method="_on_create_pressed"]
+[node name="Unavailable" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+theme = ExtResource("2_acscv")
+theme_override_constants/separation = 10
+
+[node name="TextureRect" type="TextureRect" parent="Unavailable"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_acscv")
+texture = ExtResource("10_thncl")
+expand_mode = 1
+stretch_mode = 5
+
+[connection signal="pressed" from="Available/TextureButton" to="." method="_on_create_pressed"]

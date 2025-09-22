@@ -37,7 +37,6 @@ func refresh() -> void:
 # 	rename_pressed.emit(self)
 
 func on_actions_pressed() -> void:
-	print("actions pressed")
 	if !actions_menu.visible:
 		actions_menu.position = actions_button.global_position + Vector2(0,actions_button.size.y)
 		actions_menu.show()
@@ -55,3 +54,5 @@ func on_action_id_pressed(id: int) -> void:
 			game_manager.register_scene_switch(Resources.Scene.MOVE_DINOSAUR, move_dinosaur)
 		2:
 			sell_pressed.emit(self)
+		3:
+			game_manager.codex_requested.emit(dinosaur.type)

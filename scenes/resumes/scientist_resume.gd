@@ -30,7 +30,7 @@ func refresh() -> void:
 			var dinosaur_data = game_manager.game_resources.get_dinosaur(dinosaur)
 			var egg: TextureRect = load(Resources.scenes[Resources.Scene.RESUME_EGG]).instantiate()
 			egg.texture = dinosaur_data.egg_texture
-			egg.tooltip_text = dinosaur_data.name
+			egg.tooltip_text = dinosaur_data.name if game_manager.is_dinosaur_known(dinosaur_data.type) else "???"
 			eggs_container.add_child(egg)
 		for recipe: FoodRecipe in scientist_data.recipes:
 			for food in recipe.outputs:
@@ -42,7 +42,7 @@ func refresh() -> void:
 				food_amount.text = "%sx" % recipe.outputs[food]
 		if scientist_data.wage > 0:
 			cost.text = "%s" % scientist_data.wage
-			cost_type.text = "/month"
+			cost_type.text = "/day"
 		elif scientist_data.price > 0:
 			cost.text = "%s" % scientist_data.price
 			cost_type.text = "(1 time cost)"

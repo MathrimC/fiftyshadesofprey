@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Staff" load_steps=3 format=3 uid="uid://dm0yfhuu05gf1"]
+
+[ext_resource type="Script" uid="uid://dbkong3go87my" path="res://resources/staff/staff.gd" id="1_wor84"]
+[ext_resource type="Texture2D" uid="uid://bwhlfq2h4fxhb" path="res://img/employees/Victoria_Rivers_icon.png" id="2_c8wfd"]
+
+[resource]
+script = ExtResource("1_wor84")
+name = "Victoria Rivers"
+type = 0
+wage = 200
+caregiver_enclosure_limit = 4
+texture = ExtResource("2_c8wfd")
+metadata/_custom_type_script = "uid://dbkong3go87my"

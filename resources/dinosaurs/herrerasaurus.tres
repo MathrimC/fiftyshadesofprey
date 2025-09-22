@@ -10,6 +10,7 @@ type = 13
 name = "Herrerasaurus"
 diet = 1
 biome = 2
+description = ""
 value = 1600
 visitors = 160
 creation_bird = 7

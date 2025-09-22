@@ -17,12 +17,11 @@ func _ready():
 	scientist_icon.texture = scientist_data.texture
 	scientist_name.text = "\"%s\"" % scientist_data.name
 	for dinosaur in scientist_data.dinosaurs:
-		if game_manager.is_unlocked(dinosaur):
-			var line: DinosaurCreationLine = load(Resources.scenes[Resources.Scene.DINOSAUR_CREATION_LINE]).instantiate()
-			line.dinosaur = dinosaur
-			line.scientist = scientist
-			dinosaurs_container.add_child(line)
-			dinosaur_lines.append(line)
+		var line: DinosaurCreationLine = load(Resources.scenes[Resources.Scene.DINOSAUR_CREATION_LINE]).instantiate()
+		line.dinosaur = dinosaur
+		line.scientist = scientist
+		dinosaurs_container.add_child(line)
+		dinosaur_lines.append(line)
 	for recipe in scientist_data.recipes:
 		var line: FoodCreationLine = load(Resources.scenes[Resources.Scene.FOOD_CREATION_LINE]).instantiate()
 		line.recipe = recipe

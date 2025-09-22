@@ -6,9 +6,10 @@ enum InventoryType { DINOSAURS, EGGS, BIRDS, FOOD, GROCERIES }
 enum DinosaurFeeling { HAPPY, SAD, SICK, HUNGRY }
 
 const game_resources: GameResources = preload("res://resources/game_resources.tres")
-const month_time_in_sec := 1200
-const day_time_in_sec := 40
+# const month_time_in_sec := 1200
+const day_length_in_sec := 10 * 60
 const egg_expiration_time := 15 * 60
+const ticket_limits := [0, 10, 30, 50, 75, 80, 90, 100, 125, 140, 150]
 
 signal scientist_action_started(scientist: Scientist.Type)
 signal scientist_action_ended(scientist: Scientist.Type)
@@ -18,6 +19,8 @@ signal ticket_price_changed(price: int)
 signal scene_switched(scene: Resources.Scene, node: Node)
 signal egg_created(dinosaur: DinosaurInstance)
 signal egg_hatched(dinosaur: DinosaurInstance)
+signal day_passed()
+signal codex_requested(dinosaur: Dinosaur.Type)
 
 var game_data: GameData
 
@@ -25,33 +28,53 @@ var game_running: bool
 var active_scene: Node
 
 func _enter_tree() -> void:
+	Input.set_custom_mouse_cursor(load("res://img/general/cursor_glow.png"), Input.CURSOR_POINTING_HAND)
 	game_running = false
 
 func start_game() -> void:
 	game_data = GameData.new()
-	# TODO: adapt day/month timers for save & load
-	get_tree().create_timer(month_time_in_sec).timeout.connect(on_month_passed)
-	get_tree().create_timer(day_time_in_sec).timeout.connect(on_day_passed)
+	game_data.current_day_end_time = roundi(Time.get_unix_time_from_system()) + day_length_in_sec
 	get_tree().change_scene_to_file(Resources.scenes[Resources.Scene.GAME])
 	game_running = true
 
 func continue_game() -> void:
 	game_data = GameData.load()
-	get_tree().create_timer(month_time_in_sec).timeout.connect(on_month_passed)
-	get_tree().create_timer(day_time_in_sec).timeout.connect(on_day_passed)
+	if game_data.version < 2:
+		game_data.current_day_end_time = roundi(Time.get_unix_time_from_system()) + day_length_in_sec
+		game_data.version = 2
+		game_data.save()
+	while game_data.current_day_end_time < Time.get_unix_time_from_system():
+		game_data.current_day_end_time += day_length_in_sec
+		close_day()
+	game_data.save()
+	money_changed.emit(game_data.money)
 	get_tree().change_scene_to_file(Resources.scenes[Resources.Scene.GAME])
 	game_running = true
 
+func get_day_progress() -> float:
+	return 1  - ((game_data.current_day_end_time - Time.get_unix_time_from_system()) / day_length_in_sec)
+
 func hire_scientist(scientist: Scientist.Type) -> void:
 	game_data.hired_scientists.append(scientist)
+	game_data.save()
+
+func hire_staff(staff: Staff) -> void:
+	game_data.hired_staff.append(staff)
 	game_data.save()
 
 func fire_scientist(scientist: Scientist.Type) -> void:
 	game_data.hired_scientists.erase(scientist)
 	game_data.save()
 
-func is_hired(scientist: Scientist.Type) -> bool:
+func fire_staff(staff: Staff) -> void:
+	game_data.hired_staff.erase(staff)
+	game_data.save()
+
+func is_scientist_hired(scientist: Scientist.Type) -> bool:
 	return game_data.hired_scientists.has(scientist)
+
+func is_staff_hired(staff: Staff) -> bool:
+	return game_data.hired_staff.has(staff)
 
 func is_available(scientist: Scientist.Type) -> bool:
 	var dinosaur_count := 0
@@ -65,12 +88,15 @@ func get_hired_scientists() -> Array[Scientist.Type]:
 func get_scientist_action(scientist: Scientist.Type) -> Dictionary:
 	return game_data.scientist_actions.get(scientist, {})
 
-func is_unlocked(dinosaur: Dinosaur.Type) -> bool:
+func is_dinosaur_unlocked(dinosaur: Dinosaur.Type) -> bool:
 	var eggs := game_resources.get_dinosaur(dinosaur).eggs_to_unlock
 	for dino in eggs:
 		if game_data.egg_creation_counters.get(dino,0) < eggs[dino]:
 			return false
 	return true
+
+func is_dinosaur_known(dinosaur: Dinosaur.Type) -> bool:
+	return game_data.egg_creation_counters.get(dinosaur, 0) > 0
 
 func create_egg(dinosaur: Dinosaur.Type, scientist: Scientist.Type) -> void:
 	var dinosaur_data := game_resources.get_dinosaur(dinosaur)
@@ -116,6 +142,7 @@ func sell_egg(dinosaur: DinosaurInstance) -> void:
 	if dinosaur.genetics == DinosaurInstance.Genetics.NATURAL:
 		value *= 2
 	game_data.money += value
+	game_data.money_transactions.append(MoneyTransaction.new(MoneyTransaction.Type.SELL_EGG, value, "%s egg sold" % game_resources.get_dinosaur(dinosaur.type).name, game_data.day))
 	money_changed.emit(game_data.money)
 
 func sell_dinosaur(dinosaur: DinosaurInstance) -> void:
@@ -125,6 +152,7 @@ func sell_dinosaur(dinosaur: DinosaurInstance) -> void:
 	if dinosaur.genetics == DinosaurInstance.Genetics.NATURAL:
 		value *= 2
 	game_data.money += value
+	game_data.money_transactions.append(MoneyTransaction.new(MoneyTransaction.Type.SELL_DINOSAUR, value, "%s sold" % game_resources.get_dinosaur(dinosaur.type).name, game_data.day))
 	money_changed.emit(game_data.money)
 
 
@@ -133,6 +161,7 @@ func buy_birds(bird_amounts: Dictionary[Bird.Type, int]) -> void:
 	for bird in bird_amounts:
 		price += game_resources.get_bird(bird).price * bird_amounts[bird]
 		game_data.birds[bird] = game_data.birds.get(bird,0) + bird_amounts[bird]
+		game_data.money_transactions.append(MoneyTransaction.new(MoneyTransaction.Type.BUY_BIRDS, price, "%s %s bought" % [bird_amounts[bird], game_resources.get_bird(bird).name], game_data.day))
 	game_data.money -= price
 	game_data.save()
 	money_changed.emit(game_data.money)
@@ -152,6 +181,7 @@ func buy_groceries(groceries_amounts: Dictionary[Grocery.Type, int]) -> void:
 	for grocery in groceries_amounts:
 		price += game_resources.get_grocery(grocery).price * groceries_amounts[grocery]
 		game_data.groceries[grocery] = game_data.groceries.get(grocery, 0) + groceries_amounts[grocery]
+		game_data.money_transactions.append(MoneyTransaction.new(MoneyTransaction.Type.BUY_GROCERIES, price, "%s %s bought" % [groceries_amounts[grocery], game_resources.get_grocery(grocery).name], game_data.day))
 	game_data.money -= price
 	money_changed.emit(game_data.money)
 	game_data.save()
@@ -170,7 +200,9 @@ func get_lot_content(lot_number: int) -> Enclosure:
 
 func create_enclosure(lot_number: int, biome: Biome.Type, fence: Fence.Type) -> void:
 	assert(!game_data.enclosures.has(lot_number), "Error: creating enclosure on occupied lot")
-	game_data.money -= game_resources.get_biome(biome).cost + game_resources.get_fence(fence).cost
+	var cost: int = game_resources.get_biome(biome).cost + game_resources.get_fence(fence).cost
+	game_data.money -= cost
+	game_data.money_transactions.append(MoneyTransaction.new(MoneyTransaction.Type.BUY_ENCLOSURE, cost, "%s biome with %s fence bought" % [Biome.Type.keys()[biome].capitalize(), Fence.Type.keys()[fence].to_lower()], game_data.day))
 	money_changed.emit(game_data.money)
 	game_data.enclosures[lot_number] = Enclosure.new(lot_number, biome, fence)
 	game_data.save()
@@ -183,13 +215,16 @@ func change_ticket_price(price: int) -> void:
 	ticket_price_changed.emit(game_data.ticket_price)
 	game_data.save()
 
-func on_day_passed() -> void:
+func close_day() -> void:
 	print("day passed")
+	_feed_dinosaurs()
 	var total_visitors: int = 0
+	var dinosaurs: Array[DinosaurInstance]
 	var dinosaur_count: Dictionary
 	var sad_count: Dictionary
 	for enclosure in game_data.enclosures.values():
 		for dinosaur: DinosaurInstance in enclosure.dinosaurs:
+			dinosaurs.append(dinosaur)
 			dinosaur_count[dinosaur.type] = dinosaur_count.get(dinosaur.type,0) + 1
 			if dinosaur.mood == DinosaurInstance.Mood.SAD:
 				sad_count[dinosaur.type] = sad_count.get(dinosaur.type, 0) + 1
@@ -202,18 +237,68 @@ func on_day_passed() -> void:
 		if sad_count.get(dinosaur,0) > 0:
 			dino_visitors /= 2
 		total_visitors += dino_visitors
-	var day_income := game_data.ticket_price * total_visitors
-	game_data.money += day_income
-	game_data.save()
-	money_changed.emit(game_data.money)
-	get_tree().create_timer(day_time_in_sec).timeout.connect(on_day_passed)
+	var ticket_limit: int = ticket_limits[min(dinosaur_count.size(), ticket_limits.size())]
+	var visitor_penalty := maxf(2 * (game_data.ticket_price as float / ticket_limit as float) - 1, 1.0)
+	var ticket_income := floori(game_data.ticket_price * (total_visitors / visitor_penalty))
+	game_data.money += ticket_income
+	game_data.money_transactions.append(MoneyTransaction.new(MoneyTransaction.Type.TICKET_SALES, ticket_income, "Ticket sales", game_data.day))
+	for scientist in game_data.hired_scientists:
+		var wage := game_resources.get_scientist(scientist).wage
+		game_data.money -= wage
+		game_data.money_transactions.append(MoneyTransaction.new(MoneyTransaction.Type.WAGE, wage, "%s wage" % game_resources.get_scientist(scientist).name, game_data.day))
+	for staff in game_data.hired_staff:
+		game_data.money -= staff.wage
+		game_data.money_transactions.append(MoneyTransaction.new(MoneyTransaction.Type.WAGE, staff.wage, "%s wage" % staff.name, game_data.day))
+	game_data.day += 1
+
+func _feed_dinosaurs() -> void:
+	var caregivers: Array[Staff] = _get_staff_of_type(Staff.Type.CAREGIVER)
+	var cared_enclosures := 0
+	for caregiver in caregivers:
+		cared_enclosures = caregiver.caregiver_enclosure_limit
+	for enclosure in game_data.enclosures.values():
+		if enclosure.dinosaurs.is_empty():
+			break
+		cared_enclosures -= 1
+		for dinosaur: DinosaurInstance in enclosure.dinosaurs:
+			if cared_enclosures < 0:
+				dinosaur.feed(false)
+				break
+			var diet = game_resources.get_dinosaur(dinosaur.type).diet
+			match diet:
+				Dinosaur.Diet.HERBIVORE:
+					_feed_dinosaur(dinosaur, [Food.Type.HERBIVORE, Food.Type.MEGAMIX])
+				Dinosaur.Diet.CARNIVORE:
+					_feed_dinosaur(dinosaur, [Food.Type.CARNIVORE, Food.Type.MEGAMIX])
+				Dinosaur.Diet.OMNIVORE:
+					if game_data.food[Food.Type.CARNIVORE] > game_data.food[Food.Type.HERBIVORE]:
+						_feed_dinosaur(dinosaur, [Food.Type.CARNIVORE, Food.Type.HERBIVORE, Food.Type.MEGAMIX])
+					else:
+						_feed_dinosaur(dinosaur, [Food.Type.CARNIVORE, Food.Type.HERBIVORE, Food.Type.MEGAMIX])
+
+func _feed_dinosaur(dinosaur: DinosaurInstance, food_types: Array[Food.Type]):
+	for type in food_types:
+		if game_data.food.get(type,0) > 0:
+			game_data.food[type] -= 1
+			dinosaur.feed(true)
+			return
+	dinosaur.feed(false)
+
+func _get_staff_of_type(type: Staff.Type) -> Array[Staff]:
+	var filtered_staff: Array[Staff]
+	for staff in game_data.hired_staff:
+		if staff.type == type:
+			filtered_staff.append(staff)
+	return filtered_staff
 
 func on_month_passed() -> void:
-	for scientist in game_data.hired_scientists:
-		game_data.money -= game_resources.get_scientist(scientist).wage
-	game_data.save()
-	money_changed.emit(game_data.money)
-	get_tree().create_timer(month_time_in_sec).timeout.connect(on_month_passed)
+	# No longer used
+	pass
+	# for scientist in game_data.hired_scientists:
+	# 	game_data.money -= game_resources.get_scientist(scientist).wage
+	# game_data.save()
+	# money_changed.emit(game_data.money)
+	# get_tree().create_timer(month_time_in_sec).timeout.connect(on_month_passed)
 
 func go_to_enclosure(lot_number: int):
 	var park: Dinopark = load(Resources.scenes[Resources.Scene.DINOPARK]).instantiate()
@@ -249,6 +334,14 @@ func _process(_delta: float) -> void:
 			var scientist_action = game_data.scientist_actions[scientist]
 			if time > scientist_action["end_time"]:
 				_complete_scientist_action(scientist_action, scientist)
+		if time > game_data.current_day_end_time:
+			game_data.current_day_end_time += day_length_in_sec
+			close_day()
+			game_data.save()
+			money_changed.emit()
+			day_passed.emit()
+			
+
 
 func _complete_scientist_action(scientist_action: Dictionary, scientist: Scientist.Type):
 	game_data.scientist_actions.erase(scientist)

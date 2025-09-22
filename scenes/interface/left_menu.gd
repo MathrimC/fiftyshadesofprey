@@ -2,11 +2,12 @@ extends VBoxContainer
 
 @export var scene_button_group: ButtonGroup
 
-var inventory: Inventory
+var backpack: Backpack
 
 func _ready():
 	scene_button_group.pressed.connect(on_pressed)
 	game_manager.scene_switched.connect(on_scene_switched)
+	game_manager.codex_requested.connect(on_codex_requested)
 	game_manager.switch_scene(Resources.Scene.DINOPARK)
 
 func on_scene_switched(scene_type: Resources.Scene, _node: Node):
@@ -17,9 +18,15 @@ func on_scene_switched(scene_type: Resources.Scene, _node: Node):
 func on_pressed(button: SceneButton):
 	game_manager.switch_scene(button.scene)
 
-func on_inventory_pressed() -> void:
-	if inventory == null:
-		inventory = preload(Resources.scenes[Resources.Scene.INVENTORY]).instantiate()
-		owner.add_child(inventory)
+func on_backpack_pressed() -> void:
+	if backpack == null:
+		backpack = preload(Resources.scenes[Resources.Scene.BACKPACK]).instantiate()
+		owner.add_child(backpack)
 	else:
-		inventory.queue_free()
+		backpack.queue_free()
+
+func on_codex_requested(dinosaur: Dinosaur.Type) -> void:
+	if backpack == null:
+		backpack = preload(Resources.scenes[Resources.Scene.BACKPACK]).instantiate()
+		owner.add_child(backpack)
+	backpack.open_dino(dinosaur)

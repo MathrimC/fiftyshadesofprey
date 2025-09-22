@@ -10,6 +10,7 @@ type = 19
 name = "Protoceratops"
 diet = 0
 biome = 2
+description = ""
 value = 1600
 visitors = 220
 creation_bird = 3

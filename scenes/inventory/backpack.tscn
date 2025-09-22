@@ -1,0 +1,312 @@
+[gd_scene load_steps=16 format=3 uid="uid://bk02suntlq1ux"]
+
+[ext_resource type="Texture2D" uid="uid://g503whq3wpqb" path="res://img/general/inventory_window.png" id="1_psafj"]
+[ext_resource type="Script" uid="uid://b2okstkaviy0x" path="res://scenes/inventory/backpack.gd" id="1_tvok8"]
+[ext_resource type="Script" uid="uid://knbo84ou3r85" path="res://scenes/inventory/inventory.gd" id="2_5tt2m"]
+[ext_resource type="Script" uid="uid://d3xd0ctjlqc6x" path="res://scenes/inventory/title_bar.gd" id="2_nlotd"]
+[ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://fonts/BD_Cartoon_Shout.ttf" id="3_el5y6"]
+[ext_resource type="Texture2D" uid="uid://c4psyvvgbyoak" path="res://img/general/inventory_icon.png" id="3_v8e04"]
+[ext_resource type="Texture2D" uid="uid://duy2w8efj1qxv" path="res://img/dinos/Styracosaurus.png" id="4_kl7fi"]
+[ext_resource type="Script" uid="uid://duh7oiq0mih8e" path="res://scenes/dinopedia/dinocodex.gd" id="6_j21gq"]
+[ext_resource type="Texture2D" uid="uid://dl7e6gvafqqcy" path="res://img/dinos/Diplodocus_egg.png" id="7_ll4hh"]
+[ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://cartoon_theme.tres" id="8_1pph4"]
+[ext_resource type="Texture2D" uid="uid://bygqqq1joogiw" path="res://img/dinos/Diplodocus.png" id="9_2a7vi"]
+[ext_resource type="Texture2D" uid="uid://cgu8kavpgw5xw" path="res://img/general/UI_Icon_TogglePrevious.png" id="10_2t2sw"]
+[ext_resource type="Texture2D" uid="uid://h3igucodo2ml" path="res://img/general/UI_Icon_ToggleNext.png" id="11_1q2qg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bxceu"]
+bg_color = Color(0.294118, 0.372549, 0.545098, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v8e04"]
+bg_color = Color(0.72549, 0.792157, 0.968627, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[node name="Backpack" type="PanelContainer" node_paths=PackedStringArray("titlebar", "title", "inventory", "dinocodex")]
+custom_minimum_size = Vector2(700, 450)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -226.0
+offset_right = 350.0
+offset_bottom = 224.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_bxceu")
+script = ExtResource("1_tvok8")
+titlebar = NodePath("TitleBar")
+title = NodePath("TitleBar/Title")
+inventory = NodePath("MarginContainer/PanelContainer/MarginContainer/Inventory")
+dinocodex = NodePath("MarginContainer/PanelContainer/MarginContainer/Dinocodex")
+
+[node name="TitleBar" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 0
+script = ExtResource("2_nlotd")
+
+[node name="Title" type="Label" parent="TitleBar"]
+layout_mode = 2
+offset_right = 700.0
+offset_bottom = 50.0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("3_el5y6")
+theme_override_font_sizes/font_size = 26
+text = "Inventory"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 620
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2"]
+layout_mode = 2
+
+[node name="Inventory" type="TextureButton" parent="MarginContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+texture_normal = ExtResource("3_v8e04")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Dinocodex" type="TextureButton" parent="MarginContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+texture_normal = ExtResource("4_kl7fi")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 90
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v8e04")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Inventory" type="Control" parent="MarginContainer/PanelContainer/MarginContainer" node_paths=PackedStringArray("grid")]
+layout_mode = 2
+script = ExtResource("2_5tt2m")
+grid = NodePath("GridContainer")
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/PanelContainer/MarginContainer/Inventory"]
+layout_mode = 2
+offset_right = 595.0
+offset_bottom = 385.0
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 15
+columns = 5
+
+[node name="Dinocodex" type="Control" parent="MarginContainer/PanelContainer/MarginContainer" node_paths=PackedStringArray("name_label", "image", "egg_image", "biome_label", "diet_label", "description_label", "previous_button", "page_label", "next_button")]
+layout_mode = 2
+script = ExtResource("6_j21gq")
+name_label = NodePath("VBoxContainer/Name")
+image = NodePath("VBoxContainer/HBoxContainer/Image")
+egg_image = NodePath("EggImage")
+biome_label = NodePath("VBoxContainer/HBoxContainer/VBoxContainer/Biome/Value")
+diet_label = NodePath("VBoxContainer/HBoxContainer/VBoxContainer/Diet/Value")
+description_label = NodePath("VBoxContainer/HBoxContainer2/Description")
+previous_button = NodePath("VBoxContainer/Pages/Previous")
+page_label = NodePath("VBoxContainer/Pages/Page")
+next_button = NodePath("VBoxContainer/Pages/Control/Next")
+
+[node name="EggImage" type="TextureRect" parent="MarginContainer/PanelContainer/MarginContainer/Dinocodex"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -70.0
+offset_bottom = 70.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture = ExtResource("7_ll4hh")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/Dinocodex"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("8_1pph4")
+
+[node name="Name" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/Dinocodex/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Diplodocus"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/Dinocodex/VBoxContainer"]
+layout_mode = 2
+
+[node name="Image" type="TextureRect" parent="MarginContainer/PanelContainer/MarginContainer/Dinocodex/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 200)
+layout_mode = 2
+texture = ExtResource("9_2a7vi")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/Dinocodex/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Biome" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/Dinocodex/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Key" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/Dinocodex/VBoxContainer/HBoxContainer/VBoxContainer/Biome"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Biome:"
+
+[node name="Value" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/Dinocodex/VBoxContainer/HBoxContainer/VBoxContainer/Biome"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Forest"
+
+[node name="Diet" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/Dinocodex/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Key" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/Dinocodex/VBoxContainer/HBoxContainer/VBoxContainer/Diet"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Diet:"
+
+[node name="Value" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/Dinocodex/VBoxContainer/HBoxContainer/VBoxContainer/Diet"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Herbivore"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/Dinocodex/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Description" type="RichTextLabel" parent="MarginContainer/PanelContainer/MarginContainer/Dinocodex/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 16
+text = "This is a big dinosaur."
+fit_content = true
+autowrap_mode = 2
+
+[node name="Pages" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/Dinocodex/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 2
+
+[node name="Previous" type="TextureButton" parent="MarginContainer/PanelContainer/MarginContainer/Dinocodex/VBoxContainer/Pages"]
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture_normal = ExtResource("10_2t2sw")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Page" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/Dinocodex/VBoxContainer/Pages"]
+texture_filter = 2
+custom_minimum_size = Vector2(55, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 10
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "1/20"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="MarginContainer/PanelContainer/MarginContainer/Dinocodex/VBoxContainer/Pages"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="Next" type="TextureButton" parent="MarginContainer/PanelContainer/MarginContainer/Dinocodex/VBoxContainer/Pages/Control"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture_normal = ExtResource("11_1q2qg")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="CloseButton" type="TextureButton" parent="MarginContainer/PanelContainer/MarginContainer/Dinocodex"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="Inventory" type="TextureRect" parent="."]
+visible = false
+layout_mode = 2
+texture = ExtResource("1_psafj")
+
+[node name="MarginContainer" type="MarginContainer" parent="Inventory"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 55
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="CloseButton" type="TextureButton" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+ignore_texture_size = true
+
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/Inventory" to="." method="on_inventory_pressed"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/Dinocodex" to="." method="on_dinocodex_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/Dinocodex/VBoxContainer/Pages/Previous" to="MarginContainer/PanelContainer/MarginContainer/Dinocodex" method="_on_previous_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/Dinocodex/VBoxContainer/Pages/Control/Next" to="MarginContainer/PanelContainer/MarginContainer/Dinocodex" method="_on_next_pressed"]
+[connection signal="pressed" from="CloseButton" to="Inventory" method="on_close_pressed"]

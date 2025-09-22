@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://cxs20p71mxikx"
+=======
+uid="uid://bd3d0apn4h2bd"
+>>>>>>> 522d3a45a18be6968229a4b2db169b7d96bec6b3
 path="res://.godot/imported/cursor_glow.png-ef9b393c38ff9691f47ac32a22c9cd12.ctex"
 metadata={
 "vram_texture": false

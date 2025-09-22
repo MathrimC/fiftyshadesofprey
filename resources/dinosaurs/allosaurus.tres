@@ -10,6 +10,7 @@ type = 7
 name = "Allosaurus"
 diet = 1
 biome = 0
+description = ""
 value = 1175
 visitors = 100
 creation_bird = 8

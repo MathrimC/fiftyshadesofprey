@@ -10,6 +10,7 @@ type = 1
 name = "Styracosaurus"
 diet = 0
 biome = 0
+description = ""
 value = 150
 visitors = 30
 creation_bird = 1

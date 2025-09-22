@@ -6,26 +6,47 @@ extends HBoxContainer
 @export var bird_texture: TextureRect
 @export var button: TextureButton
 @export var timer: RichTextLabel
+@export var available: Container
+@export var unavailable: Container
+@export var unavailable_image: TextureRect
 var dinosaur: Dinosaur.Type
 var scientist: Scientist.Type
 
 func _ready() -> void:
 	var dinosaur_data := game_manager.game_resources.get_dinosaur(dinosaur)
 	egg.texture = dinosaur_data.egg_texture
-	egg.tooltip_text = dinosaur_data.name
-	var bird: Bird = game_manager.game_resources.get_bird(dinosaur_data.creation_bird)
-	bird_amount.text = "1 x"
-	bird_texture.texture = bird.texture
-	bird_texture.tooltip_text = bird.name
-
-	var seconds: int = dinosaur_data.creation_time
-	var minutes := floori(seconds / 60.)
-	seconds = seconds % 60
-	timer.text = "%02d:%02d" % [minutes, seconds]
-	refresh_button()
+	if game_manager.is_dinosaur_unlocked(dinosaur):
+		if game_manager.is_dinosaur_known(dinosaur):
+			egg.tooltip_text = dinosaur_data.name
+		else:
+			egg.tooltip_text = "???"
+		var bird: Bird = game_manager.game_resources.get_bird(dinosaur_data.creation_bird)
+		bird_amount.text = "1 x"
+		bird_texture.texture = bird.texture
+		bird_texture.visible = true
+		bird_texture.tooltip_text = bird.name
+		var seconds: int = dinosaur_data.creation_time
+		var minutes := floori(seconds / 60.)
+		seconds = seconds % 60
+		timer.text = "%02d:%02d" % [minutes, seconds]
+		refresh_button()
+		available.show()
+		unavailable.hide()
+	else:
+		egg.tooltip_text = "???"
+		bird_amount.text = "1 x      ???   "
+		bird_texture.visible = false
+		var unlock_condition: String = "Needed to unlock:\n"
+		for type in dinosaur_data.eggs_to_unlock:
+			if game_manager.is_dinosaur_known(type):
+				unlock_condition += "%s %s egg\n" % [dinosaur_data.eggs_to_unlock[type], game_manager.game_resources.get_dinosaur(dinosaur).name]
+			else:
+				unlock_condition += "%s ??? egg\n" % dinosaur_data.eggs_to_unlock[type]
+		unavailable.tooltip_text = unlock_condition
+		available.hide()
+		unavailable.show()
 
 func refresh_button() -> void:
-	button.disabled = false
 	var bird := game_manager.game_resources.get_dinosaur(dinosaur).creation_bird
 	button.disabled = (game_manager.get_bird_amount(bird) < 1)
 

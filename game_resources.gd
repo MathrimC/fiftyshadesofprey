@@ -3,6 +3,7 @@ extends Resource
 
 
 @export var scientists: Array[Scientist]
+@export var staff: Array[Staff]
 @export var groceries: Array[Grocery]
 @export var birds: Array[Bird]
 @export var dinosaurs: Array[Dinosaur]
@@ -12,6 +13,7 @@ extends Resource
 
 var grocery_dict: Dictionary[Grocery.Type, Grocery]
 var scientist_dict: Dictionary[Scientist.Type, Scientist]
+var staff_dict: Dictionary[Staff.Type, Array]
 var bird_dict: Dictionary[Bird.Type, Bird]
 var dinosaur_dict: Dictionary[Dinosaur.Type, Dinosaur]
 var food_dict: Dictionary[Food.Type, Food]
@@ -24,6 +26,10 @@ func _init() -> void:
 func _init_dicts() -> void:
 	for scientist in scientists:
 		scientist_dict[scientist.type] = scientist
+	for staff_member: Staff in staff:
+		var type_array: Array = staff_dict.get(staff_member.type, [])
+		type_array.append(staff)
+		staff_dict[staff_member.type] = type_array
 	for grocery in groceries:
 		grocery_dict[grocery.type] = grocery
 	for bird in birds:
@@ -36,6 +42,12 @@ func _init_dicts() -> void:
 		biome_dict[biome.type] = biome
 	for fence in fences:
 		fence_dict[fence.type] = fence
+
+func get_staff() -> Array[Staff]:
+	return staff
+
+func get_dinosaurs() -> Array[Dinosaur]:
+	return dinosaurs
 
 func get_grocery(type: Grocery.Type) -> Grocery:
 	return grocery_dict.get(type, null)

@@ -1,0 +1,197 @@
+[gd_scene load_steps=9 format=3 uid="uid://dg2xpw727s553"]
+
+[ext_resource type="Texture2D" uid="uid://g503whq3wpqb" path="res://img/general/inventory_window.png" id="1_hrhly"]
+[ext_resource type="Script" uid="uid://duh7oiq0mih8e" path="res://scenes/dinopedia/dinocodex.gd" id="2_kt6hs"]
+[ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://fonts/BD_Cartoon_Shout.ttf" id="3_iclvc"]
+[ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://cartoon_theme.tres" id="4_36mex"]
+[ext_resource type="Texture2D" uid="uid://bygqqq1joogiw" path="res://img/dinos/Diplodocus.png" id="5_72emp"]
+[ext_resource type="Texture2D" uid="uid://cgu8kavpgw5xw" path="res://img/general/UI_Icon_TogglePrevious.png" id="6_72emp"]
+[ext_resource type="Texture2D" uid="uid://dl7e6gvafqqcy" path="res://img/dinos/Diplodocus_egg.png" id="6_hb76c"]
+[ext_resource type="Texture2D" uid="uid://h3igucodo2ml" path="res://img/general/UI_Icon_ToggleNext.png" id="7_hb76c"]
+
+[node name="Dinopedia" type="TextureRect" node_paths=PackedStringArray("name_label", "image", "egg_image", "biome_label", "diet_label", "description_label", "previous_button", "page_label", "next_button")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -336.5
+offset_top = -199.5
+offset_right = 336.5
+offset_bottom = 199.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_hrhly")
+script = ExtResource("2_kt6hs")
+name_label = NodePath("MarginContainer/VBoxContainer/Name")
+image = NodePath("MarginContainer/VBoxContainer/HBoxContainer/Image")
+egg_image = NodePath("MarginContainer/EggImage")
+biome_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Biome/Value")
+diet_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Diet/Value")
+description_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer2/Description")
+previous_button = NodePath("MarginContainer/VBoxContainer/Pages/Previous")
+page_label = NodePath("MarginContainer/VBoxContainer/Pages/Page")
+next_button = NodePath("MarginContainer/VBoxContainer/Pages/Control/Next")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -86.0
+offset_top = 6.5
+offset_right = 87.0
+offset_bottom = 36.5
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_iclvc")
+theme_override_font_sizes/font_size = 26
+text = "Dino Codex"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 55
+theme_override_constants/margin_right = 35
+theme_override_constants/margin_bottom = 20
+
+[node name="EggImage" type="TextureRect" parent="MarginContainer"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture = ExtResource("6_hb76c")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme = ExtResource("4_36mex")
+
+[node name="Name" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Diplodocus"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Image" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 200)
+layout_mode = 2
+texture = ExtResource("5_72emp")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Biome" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Key" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Biome"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Biome:"
+
+[node name="Value" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Biome"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Forest"
+
+[node name="Diet" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Key" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Diet"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Diet:"
+
+[node name="Value" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Diet"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Herbivore"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Description" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 16
+text = "This is a big dinosaur."
+fit_content = true
+autowrap_mode = 2
+
+[node name="Pages" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 2
+
+[node name="Previous" type="TextureButton" parent="MarginContainer/VBoxContainer/Pages"]
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture_normal = ExtResource("6_72emp")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Page" type="Label" parent="MarginContainer/VBoxContainer/Pages"]
+texture_filter = 2
+custom_minimum_size = Vector2(55, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 10
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "1/20"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/Pages"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="Next" type="TextureButton" parent="MarginContainer/VBoxContainer/Pages/Control"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture_normal = ExtResource("7_hb76c")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="CloseButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Pages/Previous" to="." method="_on_previous_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Pages/Control/Next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="CloseButton" to="." method="on_close_pressed"]

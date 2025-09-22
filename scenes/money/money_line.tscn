@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://cf1sca170n4hc"]
+
+[ext_resource type="Script" uid="uid://cjpnty2mqkjjb" path="res://scenes/money/money_line.gd" id="1_l0767"]
+[ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://cartoon_theme.tres" id="1_yiaw4"]
+
+[node name="MoneyLine" type="HBoxContainer" node_paths=PackedStringArray("label", "value")]
+script = ExtResource("1_l0767")
+label = NodePath("Label")
+value = NodePath("Value")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("1_yiaw4")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "Tickets"
+
+[node name="Value" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 10
+theme = ExtResource("1_yiaw4")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "100"

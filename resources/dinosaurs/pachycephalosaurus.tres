@@ -10,6 +10,7 @@ type = 16
 name = "Pachycephalosaurus"
 diet = 0
 biome = 0
+description = ""
 value = 250
 visitors = 190
 creation_bird = 2

@@ -12,7 +12,6 @@ func on_visibility_changed() -> void:
 func refresh() -> void:
 	ticket_slider.value = game_manager.game_data.ticket_price
 	ticket_input.text = "%s" % game_manager.game_data.ticket_price
-	print("refreshed")
 
 func on_input_submitted(input: String) -> void:
 	var value := input.to_int()
