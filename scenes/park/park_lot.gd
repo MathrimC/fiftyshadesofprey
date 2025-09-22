@@ -18,8 +18,12 @@ const fence_offsets: Dictionary = {
 @onready var dinosaur_2: ParkDinosaur = get_node("Enclosure/Dinosaur2")
 
 func _ready() -> void:
+	_set_lot_z_index()
 	refresh()
 	game_manager.dinosaur_sold.connect(on_dinosaur_sold)
+
+func _set_lot_z_index() -> void:
+	self.z_index = (floori(self.position.y / 200.)) * 5
 
 func on_dinosaur_sold(_dinosaur: DinosaurInstance) -> void:
 	refresh()

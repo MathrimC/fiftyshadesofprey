@@ -4,18 +4,16 @@
 [ext_resource type="Script" uid="uid://b1f7n6sfs7nsb" path="res://scenes/park/park_dinosaur.gd" id="2_p8ol8"]
 [ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://cartoon_theme.tres" id="3_hkrxy"]
 
-[node name="ParkDinosaur" type="Sprite2D" node_paths=PackedStringArray("dino_menu", "dino_info")]
+[node name="ParkDinosaur" type="Sprite2D" node_paths=PackedStringArray("dino_menu")]
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_ws2x6")
 script = ExtResource("2_p8ol8")
 dino_menu = NodePath("DinoMenu")
-dino_info = NodePath("")
 
 [node name="DinoMenu" type="PopupMenu" parent="."]
 auto_translate_mode = 1
-size = Vector2i(206, 116)
+size = Vector2i(123, 86)
 theme = ExtResource("3_hkrxy")
-theme_override_font_sizes/font_size = 14
 item_count = 4
 item_0/text = "Feed"
 item_0/id = 0

@@ -80,7 +80,7 @@ theme_override_font_sizes/font_size = 21
 text = "Actions"
 
 [node name="ActionsMenu" type="PopupMenu" parent="."]
-size = Vector2i(180, 132)
+size = Vector2i(180, 134)
 visible = true
 unfocusable = true
 theme = ExtResource("2_wf03y")

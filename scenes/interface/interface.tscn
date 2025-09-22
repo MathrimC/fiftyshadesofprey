@@ -543,6 +543,7 @@ offset_right = 316.5
 offset_bottom = 68.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("26_iy6lx")
 script = ExtResource("38_pj6hq")
 sell_label = NodePath("MarginContainer/VBoxContainer/Label")
 
@@ -552,7 +553,7 @@ mouse_filter = 0
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
+theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SellPanel/MarginContainer"]
 layout_mode = 2
@@ -563,6 +564,7 @@ custom_minimum_size = Vector2(700, 0)
 layout_mode = 2
 mouse_filter = 0
 theme = ExtResource("26_iy6lx")
+theme_override_font_sizes/font_size = 18
 text = "Do you want to sell the typranussaurus rex for for 1000?"
 horizontal_alignment = 1
 autowrap_mode = 2

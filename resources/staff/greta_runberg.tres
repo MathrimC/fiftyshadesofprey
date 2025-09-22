@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Staff" load_steps=3 format=3 uid="uid://2x7s8cermd68"]
+
+[ext_resource type="Script" uid="uid://dbkong3go87my" path="res://resources/staff/staff.gd" id="1_i6kop"]
+[ext_resource type="Texture2D" uid="uid://c0pn8o3efbchs" path="res://img/employees/Greta_runberg_icon.png" id="2_3t853"]
+
+[resource]
+script = ExtResource("1_i6kop")
+name = "Greta Runberg"
+type = 1
+wage = 400
+caregiver_enclosure_limit = 0
+texture = ExtResource("2_3t853")
+metadata/_custom_type_script = "uid://dbkong3go87my"

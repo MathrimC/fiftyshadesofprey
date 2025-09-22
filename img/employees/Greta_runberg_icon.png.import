@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxth77qsfrm73"
-path="res://.godot/imported/cursor_glow.png-ef9b393c38ff9691f47ac32a22c9cd12.ctex"
+uid="uid://c0pn8o3efbchs"
+path="res://.godot/imported/Greta_runberg_icon.png-48d53b554472dec8ba44963e891034d2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://img/general/cursor_glow.png"
-dest_files=["res://.godot/imported/cursor_glow.png-ef9b393c38ff9691f47ac32a22c9cd12.ctex"]
+source_file="res://img/employees/Greta_runberg_icon.png"
+dest_files=["res://.godot/imported/Greta_runberg_icon.png-48d53b554472dec8ba44963e891034d2.ctex"]
 
 [params]
 

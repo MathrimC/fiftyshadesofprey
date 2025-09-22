@@ -24,29 +24,26 @@ scale = Vector2(0.596, 0.596)
 
 [node name="BackFence" type="Sprite2D" parent="Enclosure"]
 z_index = 1
-y_sort_enabled = true
 texture = ExtResource("3_muwaj")
 
 [node name="FrontFence" type="Sprite2D" parent="Enclosure"]
-z_index = 1
-y_sort_enabled = true
+z_index = 3
 texture = ExtResource("4_tluyu")
 
 [node name="TopFence" type="Sprite2D" parent="Enclosure"]
-z_index = 2
-y_sort_enabled = true
+z_index = 4
 texture = ExtResource("5_sc20y")
 
 [node name="Biome" type="Sprite2D" parent="Enclosure"]
 texture = ExtResource("6_sih1o")
 
 [node name="Dinosaur1" parent="Enclosure" instance=ExtResource("7_muwaj")]
-z_index = 1
+z_index = 2
 y_sort_enabled = true
 position = Vector2(-78.8591, 30.2013)
 scale = Vector2(0.4, 0.4)
 
 [node name="Dinosaur2" parent="Enclosure" instance=ExtResource("7_muwaj")]
-z_index = 1
+z_index = 2
 y_sort_enabled = true
 position = Vector2(174.497, -110.738)

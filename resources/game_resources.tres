@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="GameResources" load_steps=62 format=3 uid="uid://bxn0x3445ocgx"]
+[gd_resource type="Resource" script_class="GameResources" load_steps=64 format=3 uid="uid://bxn0x3445ocgx"]
 
 [ext_resource type="Script" uid="uid://dvvyap5uyp6cp" path="res://resources/birds/bird.gd" id="1_au0j2"]
 [ext_resource type="Script" uid="uid://mi3bpxpynbsm" path="res://resources/biomes/biome.gd" id="1_if10h"]
@@ -61,11 +61,13 @@
 [ext_resource type="Script" uid="uid://dbkong3go87my" path="res://resources/staff/staff.gd" id="59_07g1a"]
 [ext_resource type="Resource" uid="uid://dm0yfhuu05gf1" path="res://resources/staff/victoria_rivers.tres" id="60_lq2et"]
 [ext_resource type="Resource" uid="uid://cfnsx41ju8xss" path="res://resources/staff/chris_green.tres" id="61_16782"]
+[ext_resource type="Resource" uid="uid://bc3uydm7h58tf" path="res://resources/staff/jaxx_cosmos.tres" id="62_16782"]
+[ext_resource type="Resource" uid="uid://2x7s8cermd68" path="res://resources/staff/greta_runberg.tres" id="63_q857d"]
 
 [resource]
 script = ExtResource("50_531sr")
 scientists = Array[ExtResource("43_duyrr")]([ExtResource("44_m4swt"), ExtResource("45_spl8i"), ExtResource("46_sa4y6"), ExtResource("47_xgtvf"), ExtResource("48_03l8l"), ExtResource("49_0s74f")])
-staff = Array[ExtResource("59_07g1a")]([ExtResource("60_lq2et"), ExtResource("61_16782")])
+staff = Array[ExtResource("59_07g1a")]([ExtResource("60_lq2et"), ExtResource("61_16782"), ExtResource("62_16782"), ExtResource("63_q857d")])
 groceries = Array[ExtResource("37_56hb4")]([ExtResource("38_ha2m7"), ExtResource("39_5ddic"), ExtResource("40_ic833"), ExtResource("41_ouvuo"), ExtResource("42_vfei8")])
 birds = Array[ExtResource("1_au0j2")]([ExtResource("2_0mi4h"), ExtResource("3_ik2tt"), ExtResource("4_oc54q"), ExtResource("5_862m5"), ExtResource("6_if10h"), ExtResource("7_4rymd"), ExtResource("8_1tumx"), ExtResource("9_0ky7i"), ExtResource("10_mvbch"), ExtResource("11_tukvs")])
 dinosaurs = Array[ExtResource("12_07g1a")]([ExtResource("18_aioy2"), ExtResource("29_ak16t"), ExtResource("27_tpg1d"), ExtResource("14_16782"), ExtResource("26_gpp2o"), ExtResource("32_gi6fa"), ExtResource("24_nx7ns"), ExtResource("13_lq2et"), ExtResource("30_xmgj7"), ExtResource("20_dvi0j"), ExtResource("15_q857d"), ExtResource("28_khepx"), ExtResource("31_77gef"), ExtResource("19_yjhmy"), ExtResource("16_ewf1f"), ExtResource("21_348om"), ExtResource("23_yyhe4"), ExtResource("17_bfa04"), ExtResource("22_6uoug"), ExtResource("25_ntebr")])

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxth77qsfrm73"
-path="res://.godot/imported/cursor_glow.png-ef9b393c38ff9691f47ac32a22c9cd12.ctex"
+uid="uid://cqkdmbl42oixb"
+path="res://.godot/imported/menu_button_4.png-261869a152eed25375454586977d8631.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://img/general/cursor_glow.png"
-dest_files=["res://.godot/imported/cursor_glow.png-ef9b393c38ff9691f47ac32a22c9cd12.ctex"]
+source_file="res://img/general/menu_button_4.png"
+dest_files=["res://.godot/imported/menu_button_4.png-261869a152eed25375454586977d8631.ctex"]
 
 [params]
 

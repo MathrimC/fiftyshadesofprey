@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxth77qsfrm73"
-path="res://.godot/imported/cursor_glow.png-ef9b393c38ff9691f47ac32a22c9cd12.ctex"
+uid="uid://o5ss6onduyfx"
+path="res://.godot/imported/jaxx_cosmos_icon.png-ba3fc8e4fc19b04be3915513f25ffe58.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://img/general/cursor_glow.png"
-dest_files=["res://.godot/imported/cursor_glow.png-ef9b393c38ff9691f47ac32a22c9cd12.ctex"]
+source_file="res://img/employees/jaxx_cosmos_icon.png"
+dest_files=["res://.godot/imported/jaxx_cosmos_icon.png-ba3fc8e4fc19b04be3915513f25ffe58.ctex"]
 
 [params]
 

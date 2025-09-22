@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Staff" load_steps=3 format=3 uid="uid://bc3uydm7h58tf"]
+
+[ext_resource type="Script" uid="uid://dbkong3go87my" path="res://resources/staff/staff.gd" id="1_hywq4"]
+[ext_resource type="Texture2D" uid="uid://o5ss6onduyfx" path="res://img/employees/jaxx_cosmos_icon.png" id="2_y7yg6"]
+
+[resource]
+script = ExtResource("1_hywq4")
+name = "Jaxx Cosmos"
+type = 0
+wage = 300
+caregiver_enclosure_limit = 6
+texture = ExtResource("2_y7yg6")
+metadata/_custom_type_script = "uid://dbkong3go87my"

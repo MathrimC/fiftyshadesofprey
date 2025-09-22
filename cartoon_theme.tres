@@ -1,6 +1,38 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://d153qfgnveiau"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://d153qfgnveiau"]
 
 [ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://fonts/BD_Cartoon_Shout.ttf" id="1_3b2x8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_idoq7"]
+bg_color = Color(0.294118, 0.372549, 0.545098, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_size = 4
+shadow_offset = Vector2(2, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7d4rx"]
+bg_color = Color(0.603922, 0.694118, 0.952941, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cmhdb"]
+content_margin_left = 3.0
+content_margin_top = 3.0
+content_margin_right = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0.294118, 0.372549, 0.545098, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3b2x8"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -29,6 +61,10 @@ bg_color = Color(0.358481, 0.443893, 0.630439, 1)
 [resource]
 default_font = ExtResource("1_3b2x8")
 default_font_size = 25
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_idoq7")
+PopupMenu/font_sizes/font_size = 14
+PopupMenu/styles/hover = SubResource("StyleBoxFlat_7d4rx")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_cmhdb")
 TabContainer/colors/font_unselected_color = Color(1, 1, 1, 1)
 TabContainer/styles/panel = SubResource("StyleBoxFlat_3b2x8")
 TabContainer/styles/tab_hovered = SubResource("StyleBoxFlat_dgrj0")

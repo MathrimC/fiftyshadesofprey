@@ -23,7 +23,7 @@ func _on_hire_pressed() -> void:
 
 func refresh() -> void:
 	var scientist_data: Scientist = game_manager.game_resources.get_scientist(scientist)
-	if game_manager.is_available(scientist):
+	if true || game_manager.is_available(scientist):
 		icon.texture = scientist_data.texture
 		scientist_name.text = "\"%s\"" % scientist_data.name
 		for dinosaur: Dinosaur.Type in scientist_data.dinosaurs:
