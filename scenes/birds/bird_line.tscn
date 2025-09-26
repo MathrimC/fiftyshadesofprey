@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://ktxil7s64enl" path="res://scenes/birds/bird_line.gd" id="1_mibq5"]
 [ext_resource type="Texture2D" uid="uid://ci22753ktr44h" path="res://img/birds/chicken.png" id="2_5xyyv"]
-[ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://fonts/BD_Cartoon_Shout.ttf" id="3_wlp27"]
+[ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://themes/BD_Cartoon_Shout.ttf" id="3_wlp27"]
 [ext_resource type="Texture2D" uid="uid://b8yu8cedflf2f" path="res://img/buy/pricetag1.png" id="4_436k3"]
 [ext_resource type="Texture2D" uid="uid://dvmbk2e7ifv68" path="res://img/buy/pricetag2.png" id="5_ion2h"]
 [ext_resource type="Texture2D" uid="uid://c6pi8i2uatfj" path="res://img/buy/birds_buy_minus.png" id="5_lyvqh"]
-[ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://cartoon_theme.tres" id="6_gpjs4"]
+[ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://themes/cartoon_theme.tres" id="6_gpjs4"]
 [ext_resource type="Texture2D" uid="uid://dk4cgvxg2vps3" path="res://img/buy/birds_buy_space.png" id="6_v5tok"]
 [ext_resource type="Texture2D" uid="uid://bj8inxpsinvvw" path="res://img/buy/birds_buy_plus.png" id="7_uf6ld"]
 [ext_resource type="Texture2D" uid="uid://b0dfdhu4adrh" path="res://img/buy/money.png" id="7_wca10"]

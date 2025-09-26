@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ddciyek2xknri"]
 
-[ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://cartoon_theme.tres" id="1_vex4s"]
+[ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://themes/cartoon_theme.tres" id="1_vex4s"]
 [ext_resource type="Texture2D" uid="uid://cng5fub4hcxf" path="res://img/science/food_carnivore.png" id="1_ycjah"]
 
 [node name="ResumeFood" type="TextureRect"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bygqqq1joogiw" path="res://img/dinos/Diplodocus.png" id="1_ws2x6"]
 [ext_resource type="Script" uid="uid://b1f7n6sfs7nsb" path="res://scenes/park/park_dinosaur.gd" id="2_p8ol8"]
-[ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://cartoon_theme.tres" id="3_hkrxy"]
+[ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://themes/cartoon_theme.tres" id="3_hkrxy"]
 
 [node name="ParkDinosaur" type="Sprite2D" node_paths=PackedStringArray("dino_menu")]
 scale = Vector2(0.2, 0.2)

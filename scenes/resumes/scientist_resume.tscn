@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" uid="uid://d18rr3a1w4wj3" path="res://scenes/resumes/scientist_resume.gd" id="1_a8w6n"]
 [ext_resource type="Texture2D" uid="uid://bq0j3jj3gvkqa" path="res://img/science/Bill_Aye_icon.png" id="2_rwdx0"]
-[ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://fonts/BD_Cartoon_Shout.ttf" id="3_8ct5n"]
+[ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://themes/BD_Cartoon_Shout.ttf" id="3_8ct5n"]
 [ext_resource type="Texture2D" uid="uid://b0dfdhu4adrh" path="res://img/buy/money.png" id="4_4lxof"]
-[ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://cartoon_theme.tres" id="5_5x4nd"]
+[ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://themes/cartoon_theme.tres" id="5_5x4nd"]
 [ext_resource type="Texture2D" uid="uid://danm6y360fnsg" path="res://img/buy/hire.png" id="6_xqf2w"]
 [ext_resource type="Texture2D" uid="uid://08snadb2d1fu" path="res://img/buy/hire_active.png" id="7_h8mgs"]
 [ext_resource type="Texture2D" uid="uid://bd7i7nbi23wxy" path="res://img/buy/unavailable.png" id="9_j0p5p"]
 
-[node name="ScientistResume" type="Control" node_paths=PackedStringArray("icon", "scientist_name", "eggs_container", "food_container", "food_amount", "cost", "cost_type", "available", "unavailable", "unlock_condition")]
+[node name="ScientistResume" type="Control" node_paths=PackedStringArray("icon", "scientist_name", "eggs_container", "food_container", "food_amount", "cost", "cost_type", "hire_button", "fire_button", "available", "unavailable", "unlock_condition")]
 custom_minimum_size = Vector2(400, 150)
 layout_mode = 3
 anchors_preset = 15
@@ -28,6 +28,8 @@ food_container = NodePath("HBoxContainer/Available/VBoxContainer/HBoxContainer/R
 food_amount = NodePath("HBoxContainer/Available/VBoxContainer/HBoxContainer/ResumeFood/FoodAmount")
 cost = NodePath("HBoxContainer/Available/VBoxContainer/HBoxContainer2/Cost")
 cost_type = NodePath("HBoxContainer/Available/VBoxContainer/HBoxContainer2/Costtype")
+hire_button = NodePath("HBoxContainer/Available/Hire")
+fire_button = NodePath("HBoxContainer/Available/Fire")
 available = NodePath("HBoxContainer/Available")
 unavailable = NodePath("HBoxContainer/Unavailable")
 unlock_condition = NodePath("HBoxContainer/Unavailable/UnlockCondition")
@@ -120,6 +122,13 @@ size_flags_horizontal = 4
 texture_normal = ExtResource("6_xqf2w")
 texture_pressed = ExtResource("7_h8mgs")
 
+[node name="Fire" type="Button" parent="HBoxContainer/Available"]
+custom_minimum_size = Vector2(90, 35)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("5_5x4nd")
+text = "Fire"
+
 [node name="Unavailable" type="VBoxContainer" parent="HBoxContainer"]
 visible = false
 layout_mode = 2
@@ -146,3 +155,4 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [connection signal="pressed" from="HBoxContainer/Available/Hire" to="." method="_on_hire_pressed"]
+[connection signal="pressed" from="HBoxContainer/Available/Fire" to="." method="_on_fire_pressed"]

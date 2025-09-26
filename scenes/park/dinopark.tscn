@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cpn27sbbjnyyv" path="res://img/park/park empty business.png" id="7_wpmti"]
 [ext_resource type="PackedScene" uid="uid://daqutudsxhesn" path="res://scenes/map/park_lot.tscn" id="8_40isn"]
 [ext_resource type="Script" uid="uid://siovxfvtxmpd" path="res://scenes/park/park_camera.gd" id="8_fqr44"]
-[ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://cartoon_theme.tres" id="11_uswhy"]
+[ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://themes/cartoon_theme.tres" id="11_uswhy"]
 [ext_resource type="Script" uid="uid://bleunq206r05u" path="res://scenes/park/dino_info.gd" id="12_lgk2v"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uswhy"]

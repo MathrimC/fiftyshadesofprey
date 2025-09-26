@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://y0k0ymgatko3" path="res://scenes/incubator/place_egg.gd" id="1_w8xib"]
 [ext_resource type="PackedScene" uid="uid://dyj6peppi2grb" path="res://scenes/map/map.tscn" id="2_t74ks"]
-[ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://cartoon_theme.tres" id="3_t74ks"]
+[ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://themes/cartoon_theme.tres" id="3_t74ks"]
 
 [node name="PlaceEgg" type="Node" node_paths=PackedStringArray("map", "dinosaur_naming")]
 script = ExtResource("1_w8xib")

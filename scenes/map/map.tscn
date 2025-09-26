@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bckkdrlctj2bu" path="res://scenes/map/map.gd" id="1_mgs8m"]
 [ext_resource type="Texture2D" uid="uid://c8osf216v5gnq" path="res://img/map/map_wall.png" id="2_enpy6"]
 [ext_resource type="Texture2D" uid="uid://dxblnfbodl0tx" path="res://img/map/map_entrance.png" id="3_jim6s"]
-[ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://fonts/BD_Cartoon_Shout.ttf" id="4_b56te"]
+[ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://themes/BD_Cartoon_Shout.ttf" id="4_b56te"]
 [ext_resource type="Texture2D" uid="uid://bswpkopyylvr" path="res://img/map/map_empty_business.png" id="4_mnuex"]
 [ext_resource type="PackedScene" uid="uid://dr1wdjjci81xd" path="res://scenes/map/map_lot.tscn" id="5_mrjnl"]
 [ext_resource type="Texture2D" uid="uid://c3g14i8d138i8" path="res://img/buy/forest_logo.png" id="5_x2kg6"]

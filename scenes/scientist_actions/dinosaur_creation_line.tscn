@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://bjbsob3f56pqu"]
 
 [ext_resource type="Script" uid="uid://b5usjkdctjxo6" path="res://scenes/scientist_actions/dinosaur_creation_line.gd" id="1_wqnfq"]
-[ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://cartoon_theme.tres" id="2_acscv"]
+[ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://themes/cartoon_theme.tres" id="2_acscv"]
 [ext_resource type="Texture2D" uid="uid://dl7e6gvafqqcy" path="res://img/dinos/Diplodocus_egg.png" id="2_xs80n"]
 [ext_resource type="Texture2D" uid="uid://b65jmpysknf0j" path="res://img/science/equal.png" id="3_speqs"]
-[ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://fonts/BD_Cartoon_Shout.ttf" id="4_7kw3u"]
+[ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://themes/BD_Cartoon_Shout.ttf" id="4_7kw3u"]
 [ext_resource type="Texture2D" uid="uid://dt6yodk74pxtl" path="res://img/buy/chicken_icon.png" id="5_gh73y"]
 [ext_resource type="Texture2D" uid="uid://dpmb4cmhhclx4" path="res://img/science/science_create_yes.png" id="6_7eqe1"]
 [ext_resource type="Texture2D" uid="uid://efrr5xwclu3a" path="res://img/science/science_create_no.png" id="7_uurtm"]

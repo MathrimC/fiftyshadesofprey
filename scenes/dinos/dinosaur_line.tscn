@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ber6rp3iecdhi" path="res://img/dinos/Stegosaurus.png" id="1_dbfrl"]
 [ext_resource type="Script" uid="uid://b8topi0x742ue" path="res://scenes/dinos/dinosaur_line.gd" id="1_wf03y"]
-[ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://cartoon_theme.tres" id="2_wf03y"]
+[ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://themes/cartoon_theme.tres" id="2_wf03y"]
 
 [node name="DinosaurLine" type="HBoxContainer"]
 custom_minimum_size = Vector2(0, 70)

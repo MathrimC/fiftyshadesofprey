@@ -1,6 +1,10 @@
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://d153qfgnveiau"]
+[gd_resource type="Theme" load_steps=12 format=3 uid="uid://d153qfgnveiau"]
 
-[ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://fonts/BD_Cartoon_Shout.ttf" id="1_3b2x8"]
+[ext_resource type="StyleBox" uid="uid://cqdcaw6upkj5p" path="res://themes/stylebox_button_pressed.tres" id="1_eyma0"]
+[ext_resource type="StyleBox" uid="uid://b367bdntxa6hk" path="res://themes/stylebox_button_normal.tres" id="2_6jt6y"]
+[ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://themes/BD_Cartoon_Shout.ttf" id="3_2l4bh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eyma0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_idoq7"]
 bg_color = Color(0.294118, 0.372549, 0.545098, 1)
@@ -59,8 +63,13 @@ content_margin_right = 15.0
 bg_color = Color(0.358481, 0.443893, 0.630439, 1)
 
 [resource]
-default_font = ExtResource("1_3b2x8")
+default_font = ExtResource("3_2l4bh")
 default_font_size = 25
+Button/font_sizes/font_size = 16
+Button/styles/focus = SubResource("StyleBoxEmpty_eyma0")
+Button/styles/hover = ExtResource("2_6jt6y")
+Button/styles/normal = ExtResource("2_6jt6y")
+Button/styles/pressed = ExtResource("1_eyma0")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_idoq7")
 PopupMenu/font_sizes/font_size = 14
 PopupMenu/styles/hover = SubResource("StyleBoxFlat_7d4rx")

@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cpjynp6cwrhox" path="res://scenes/groceries/groceries.gd" id="1_26vin"]
 [ext_resource type="Texture2D" uid="uid://b40ajblrfx8w8" path="res://img/buy/groceries_button_buy.png" id="14_50bwa"]
 [ext_resource type="Texture2D" uid="uid://ho3d6aqex3ey" path="res://img/buy/groceries_button_buy_active.png" id="15_xyxm6"]
-[ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://fonts/BD_Cartoon_Shout.ttf" id="18_hwkap"]
+[ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://themes/BD_Cartoon_Shout.ttf" id="18_hwkap"]
 
 [node name="Groceries" type="Control" node_paths=PackedStringArray("grid")]
 layout_mode = 3

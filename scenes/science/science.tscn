@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cet1n87q7jjfd" path="res://img/science/science_background.png" id="1_wxol6"]
 [ext_resource type="Script" uid="uid://bft82v0pktcbl" path="res://scenes/science/science_grid.gd" id="2_b0ijt"]
-[ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://cartoon_theme.tres" id="3_di48t"]
+[ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://themes/cartoon_theme.tres" id="3_di48t"]
 
 [node name="Science" type="Control"]
 layout_mode = 3

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cf1sca170n4hc"]
 
 [ext_resource type="Script" uid="uid://cjpnty2mqkjjb" path="res://scenes/money/money_line.gd" id="1_l0767"]
-[ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://cartoon_theme.tres" id="1_yiaw4"]
+[ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://themes/cartoon_theme.tres" id="1_yiaw4"]
 
 [node name="MoneyLine" type="HBoxContainer" node_paths=PackedStringArray("label", "value")]
 script = ExtResource("1_l0767")

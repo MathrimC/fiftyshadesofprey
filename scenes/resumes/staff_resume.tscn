@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://df3rprns0olra" path="res://scenes/resumes/staff_resume.gd" id="1_715hf"]
 [ext_resource type="Texture2D" uid="uid://bwhlfq2h4fxhb" path="res://img/employees/Victoria_Rivers_icon.png" id="2_lpu7h"]
-[ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://fonts/BD_Cartoon_Shout.ttf" id="3_gqwls"]
+[ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://themes/BD_Cartoon_Shout.ttf" id="3_gqwls"]
 [ext_resource type="Texture2D" uid="uid://b0dfdhu4adrh" path="res://img/buy/money.png" id="4_kh36u"]
-[ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://cartoon_theme.tres" id="5_s8u4o"]
+[ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://themes/cartoon_theme.tres" id="5_s8u4o"]
 [ext_resource type="Texture2D" uid="uid://danm6y360fnsg" path="res://img/buy/hire.png" id="6_bkxk3"]
 [ext_resource type="Texture2D" uid="uid://08snadb2d1fu" path="res://img/buy/hire_active.png" id="7_nkpcp"]
 [ext_resource type="Texture2D" uid="uid://bd7i7nbi23wxy" path="res://img/buy/unavailable.png" id="8_k7h05"]

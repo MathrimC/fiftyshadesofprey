@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dh8lquc5ud4ko" path="res://scenes/scientist_actions/scientist_actions.gd" id="1_vofvv"]
 [ext_resource type="Texture2D" uid="uid://cet1n87q7jjfd" path="res://img/science/science_background.png" id="2_olx1s"]
 [ext_resource type="Texture2D" uid="uid://bq0j3jj3gvkqa" path="res://img/science/Bill_Aye_icon.png" id="3_qx0ux"]
-[ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://fonts/BD_Cartoon_Shout.ttf" id="4_xwx5f"]
+[ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://themes/BD_Cartoon_Shout.ttf" id="4_xwx5f"]
 
 [node name="ScientistActions" type="Control" node_paths=PackedStringArray("scientist_icon", "scientist_name", "dinosaurs_container", "food_container")]
 layout_mode = 3

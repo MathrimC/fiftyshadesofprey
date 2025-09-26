@@ -29,8 +29,8 @@
 [ext_resource type="Texture2D" uid="uid://dcqd14ec0hqy" path="res://img/general/button_yay.png" id="23_l715o"]
 [ext_resource type="Texture2D" uid="uid://b2oj0iuhxdvya" path="res://img/general/button_yay_active.png" id="24_rub5w"]
 [ext_resource type="Texture2D" uid="uid://53oxgklwl0hn" path="res://img/general/button_nay.png" id="25_u8chh"]
-[ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://cartoon_theme.tres" id="26_iy6lx"]
-[ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://fonts/BD_Cartoon_Shout.ttf" id="26_ov4b6"]
+[ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://themes/cartoon_theme.tres" id="26_iy6lx"]
+[ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://themes/BD_Cartoon_Shout.ttf" id="26_ov4b6"]
 [ext_resource type="Texture2D" uid="uid://bj5v06ipo3ouq" path="res://img/general/button_nay_active.png" id="26_u5mno"]
 [ext_resource type="Texture2D" uid="uid://c4psyvvgbyoak" path="res://img/general/inventory_icon.png" id="28_ccu2c"]
 [ext_resource type="Texture2D" uid="uid://bui7bqcu10anf" path="res://img/general/UI_Icon_CalendarMonth.png" id="30_qjk2j"]
@@ -101,87 +101,107 @@ grow_vertical = 2
 
 [node name="LeftMenu" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_right = 85.0
+offset_right = 70.0
 offset_bottom = 595.0
 theme_override_constants/separation = 0
 script = ExtResource("1_6b6dw")
 scene_button_group = ExtResource("2_dxqbk")
 
 [node name="ButtonPark" type="TextureButton" parent="LeftMenu"]
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 toggle_mode = true
 button_group = ExtResource("2_dxqbk")
 texture_normal = ExtResource("1_5qo85")
 texture_pressed = ExtResource("2_wpc7x")
+ignore_texture_size = true
+stretch_mode = 5
 script = ExtResource("4_yqnn6")
 scene = 2
 metadata/_custom_type_script = "uid://c4o304e180bjd"
 
 [node name="ButtonBuy" type="TextureButton" parent="LeftMenu"]
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 toggle_mode = true
 button_group = ExtResource("2_dxqbk")
 texture_normal = ExtResource("3_t6v3e")
 texture_pressed = ExtResource("4_7ofq8")
+ignore_texture_size = true
+stretch_mode = 5
 script = ExtResource("4_yqnn6")
 scene = 3
 metadata/_custom_type_script = "uid://c4o304e180bjd"
 
 [node name="ButtonDino" type="TextureButton" parent="LeftMenu"]
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 toggle_mode = true
 button_group = ExtResource("2_dxqbk")
 texture_normal = ExtResource("5_0n63s")
 texture_pressed = ExtResource("6_i57cf")
+ignore_texture_size = true
+stretch_mode = 5
 script = ExtResource("4_yqnn6")
 scene = 4
 metadata/_custom_type_script = "uid://c4o304e180bjd"
 
 [node name="ButtonStaff" type="TextureButton" parent="LeftMenu"]
-visible = false
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 toggle_mode = true
 button_group = ExtResource("2_dxqbk")
 texture_normal = ExtResource("7_qgmgy")
 texture_pressed = ExtResource("8_rhutm")
+ignore_texture_size = true
+stretch_mode = 5
 script = ExtResource("4_yqnn6")
 scene = 5
 metadata/_custom_type_script = "uid://c4o304e180bjd"
 
 [node name="ButtonScience" type="TextureButton" parent="LeftMenu"]
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 toggle_mode = true
 button_group = ExtResource("2_dxqbk")
 texture_normal = ExtResource("9_cj54t")
 texture_pressed = ExtResource("10_lvvyl")
+ignore_texture_size = true
+stretch_mode = 5
 script = ExtResource("4_yqnn6")
 scene = 6
 metadata/_custom_type_script = "uid://c4o304e180bjd"
 
 [node name="ButtonMap" type="TextureButton" parent="LeftMenu"]
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 toggle_mode = true
 button_group = ExtResource("2_dxqbk")
 texture_normal = ExtResource("11_0damm")
 texture_pressed = ExtResource("12_kyfxs")
+ignore_texture_size = true
+stretch_mode = 5
 script = ExtResource("4_yqnn6")
 scene = 7
 metadata/_custom_type_script = "uid://c4o304e180bjd"
 
 [node name="ButtonMenu" type="TextureButton" parent="LeftMenu"]
 visible = false
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 toggle_mode = true
 button_group = ExtResource("2_dxqbk")
 texture_normal = ExtResource("13_ohtir")
 texture_pressed = ExtResource("14_o8cu6")
+ignore_texture_size = true
+stretch_mode = 5
 script = ExtResource("4_yqnn6")
 scene = 23
 metadata/_custom_type_script = "uid://c4o304e180bjd"

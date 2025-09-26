@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://g503whq3wpqb" path="res://img/general/inventory_window.png" id="1_0sdm7"]
 [ext_resource type="Script" uid="uid://bwbdrt71ddkck" path="res://scenes/money/money.gd" id="2_7aws7"]
-[ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://fonts/BD_Cartoon_Shout.ttf" id="3_1s2o0"]
-[ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://cartoon_theme.tres" id="4_y2sjv"]
+[ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://themes/BD_Cartoon_Shout.ttf" id="3_1s2o0"]
+[ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://themes/cartoon_theme.tres" id="4_y2sjv"]
 [ext_resource type="PackedScene" uid="uid://cm0die5iqy3i8" path="res://scenes/money/money_tab.tscn" id="5_gyhof"]
 
 [node name="Money" type="TextureRect"]

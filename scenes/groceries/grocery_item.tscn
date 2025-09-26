@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dkongttm52fae" path="res://scenes/groceries/grocery_item.gd" id="1_31jdg"]
 [ext_resource type="Texture2D" uid="uid://svlix4k317nf" path="res://img/buy/groceries_buy_green_slime.png" id="2_c4f08"]
 [ext_resource type="Texture2D" uid="uid://cxy1igitwc7vy" path="res://img/buy/groceries_price.png" id="3_bjyoy"]
-[ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://fonts/BD_Cartoon_Shout.ttf" id="4_i5dv7"]
+[ext_resource type="FontFile" uid="uid://vsi8lyvf8fc3" path="res://themes/BD_Cartoon_Shout.ttf" id="4_i5dv7"]
 [ext_resource type="Texture2D" uid="uid://vw8prpeh8itv" path="res://img/buy/groceries_plus.png" id="5_4r0rr"]
 [ext_resource type="Texture2D" uid="uid://byj7pm12fhrml" path="res://img/buy/groceries_amount.png" id="6_g0hav"]
 [ext_resource type="Texture2D" uid="uid://bu4menw78qkyd" path="res://img/buy/groceries_minus.png" id="7_rv0gx"]
