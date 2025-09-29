@@ -10,12 +10,12 @@
 [ext_resource type="Texture2D" uid="uid://bd7i7nbi23wxy" path="res://img/buy/unavailable.png" id="9_j0p5p"]
 
 [node name="ScientistResume" type="Control" node_paths=PackedStringArray("icon", "scientist_name", "eggs_container", "food_container", "food_amount", "cost", "cost_type", "hire_button", "fire_button", "available", "unavailable", "unlock_condition")]
-custom_minimum_size = Vector2(400, 150)
+custom_minimum_size = Vector2(430, 150)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = -498.0
+offset_right = -722.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3

@@ -89,6 +89,9 @@ func is_available(scientist: Scientist.Type) -> bool:
 func get_hired_scientists() -> Array[Scientist.Type]:
 	return game_data.hired_scientists
 
+func get_hired_staff() -> Array[Staff]:
+	return game_data.hired_staff
+
 func get_scientist_action(scientist: Scientist.Type) -> Dictionary:
 	return game_data.scientist_actions.get(scientist, {})
 

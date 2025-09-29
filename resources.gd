@@ -1,9 +1,7 @@
 class_name Resources
 extends Node
 
-enum Scene {MAIN_MENU, GAME, DINOPARK, BUY, DINOS, STAFF_OVERVIEW, SCIENCE, MAP, MENU, RESUMES_SCIENTISTS, RESUMES_CAREGIVERS, BIRDS, GROCERIES, BUILD_ENCLOSURE, GARDEN_CENTER, SCIENTIST_ACTIONS, INCUBATOR, PLACE_EGG, MOVE_DINOSAUR, DINOSAUR_CREATION_LINE, FOOD_CREATION_LINE, INGREDIENT, INCUBATOREGG, BACKPACK, DINOCODEX, INVENTORY, INVENTORY_ITEM, DINOSAUR_LINE, GROCERY_ITEM, SCIENTIST_RESUME, STAFF_RESUME, RESUME_EGG, RESUME_FOOD, SCIENTIST_BUTTON, BIRD_LINE, BIOME_BUTTON, FENCE_BUTTON, MONEY_TAB, MONEY_LINE}
-# enum Scientist { BILL_AYE, DAVE_ABORROW, LINE_GD_TYRONE, CASI_NEUTRON, AIBERT_1STONE, M4R13_CR13 }
-# enum Dinosaur { DIPLODOCUS, STYRACOSAURUS, ANKYLOSAURUS, PTERANODON, SPINOSAURUS, VELOCIRAPTOR, PARASAUROLOPHUS, ALLOSAURUS, TRICERATOPS, IGUANADON, BRACHIOSAURUS, STEGOSAURUS, TYRANNOSAURUS_REX, HERRERASAURUS, CARNOTAURUS, KENTROSAURUS, PACHYCEPHALOSAURUS, DILOPHOSAURUS, OVIRAPTOR, PROTOCERATOPS }
+enum Scene {MAIN_MENU, GAME, DINOPARK, BUY, DINOS, STAFF_OVERVIEW, SCIENCE, MAP, MENU, BIRDS, GROCERIES, BUILD_ENCLOSURE, GARDEN_CENTER, SCIENTIST_ACTIONS, INCUBATOR, PLACE_EGG, MOVE_DINOSAUR, DINOSAUR_CREATION_LINE, FOOD_CREATION_LINE, INGREDIENT, INCUBATOREGG, BACKPACK, DINOCODEX, INVENTORY, INVENTORY_ITEM, DINOSAUR_LINE, GROCERY_ITEM, SCIENTIST_RESUME, STAFF_RESUME, RESUME_EGG, RESUME_FOOD, SCIENTIST_BUTTON, BIRD_LINE, BIOME_BUTTON, FENCE_BUTTON, MONEY_TAB, MONEY_LINE}
 
 const scenes: Dictionary = {
 	Scene.MAIN_MENU: "res://scenes/main_menu/main_menu.tscn",
@@ -14,9 +12,6 @@ const scenes: Dictionary = {
 	Scene.STAFF_OVERVIEW: "res://scenes/staff_overview/staff_overview.tscn",
 	Scene.SCIENCE: "res://scenes/science/science.tscn",
 	Scene.MAP: "res://scenes/map/map.tscn",
-	# Scene.MENU: "res://menu.tscn",
-	Scene.RESUMES_SCIENTISTS: "res://scenes/resumes/resumes_scientists.tscn",
-	Scene.RESUMES_CAREGIVERS: "res://scenes/resumes/resumes_caregivers.tscn",
 	Scene.BIRDS: "res://scenes/birds/birds.tscn",
 	Scene.GROCERIES: "res://scenes/groceries/groceries.tscn",
 	Scene.BUILD_ENCLOSURE: "res://scenes/build_enclosure/build_enclosure.tscn",
@@ -30,7 +25,6 @@ const scenes: Dictionary = {
 	Scene.INGREDIENT: "res://scenes/scientist_actions/ingredient.tscn",
 	Scene.INCUBATOREGG: "res://scenes/incubator/incubatoregg.tscn",
 	Scene.BACKPACK: "res://scenes/inventory/backpack.tscn",
-	# Scene.INVENTORY: "res://scenes/inventory/inventory.tscn",
 	Scene.INVENTORY_ITEM: "res://scenes/inventory/inventory_item.tscn",
 	Scene.DINOSAUR_LINE: "res://scenes/dinos/dinosaur_line.tscn",
 	Scene.GROCERY_ITEM: "res://scenes/groceries/grocery_item.tscn",

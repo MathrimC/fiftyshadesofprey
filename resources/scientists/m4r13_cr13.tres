@@ -25,7 +25,6 @@ script = ExtResource("3_quto1")
 type = 4
 name = "M4R13 CR13"
 dinos_to_unlock = 15
-wage = 0
 price = 15000
 dinosaurs = Array[int]([12, 13, 14])
 recipes = Array[ExtResource("2_nx0v7")]([SubResource("Resource_sia7t")])

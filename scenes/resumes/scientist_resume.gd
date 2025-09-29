@@ -1,8 +1,6 @@
 class_name ScientistResume
 extends Control
 
-enum Context { RESUMES, STAFF }
-
 @export var icon: TextureRect
 @export var scientist_name: Label
 @export var eggs_container: HBoxContainer
@@ -17,7 +15,7 @@ enum Context { RESUMES, STAFF }
 @export var unlock_condition: Label
 
 var scientist: Scientist.Type
-var context: Context
+var context: StaffOverview.Context
 
 func _ready() -> void:
 	refresh()
@@ -32,8 +30,8 @@ func _on_fire_pressed() -> void:
 
 func refresh() -> void:
 	var scientist_data: Scientist = game_manager.game_resources.get_scientist(scientist)
-	if (context == Context.RESUMES && game_manager.is_available(scientist)) \
-			|| (context == Context.STAFF && game_manager.is_scientist_hired(scientist)):
+	if (context == StaffOverview.Context.RESUMES && game_manager.is_available(scientist)) \
+			|| (context == StaffOverview.Context.STAFF && game_manager.is_scientist_hired(scientist)):
 		icon.texture = scientist_data.texture
 		scientist_name.text = "\"%s\"" % scientist_data.name
 		for dinosaur: Dinosaur.Type in scientist_data.dinosaurs:
@@ -56,8 +54,8 @@ func refresh() -> void:
 		elif scientist_data.price > 0:
 			cost.text = "%s" % scientist_data.price
 			cost_type.text = "(1 time cost)"
-		hire_button.visible = (context == Context.RESUMES)
-		fire_button.visible = (context == Context.STAFF)
+		hire_button.visible = (context == StaffOverview.Context.RESUMES)
+		fire_button.visible = (context == StaffOverview.Context.STAFF)
 		unavailable.hide()
 		available.show()
 	else:

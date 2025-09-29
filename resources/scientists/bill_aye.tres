@@ -32,12 +32,8 @@ metadata/_custom_type_script = "uid://bi3lyrufugnud"
 
 [resource]
 script = ExtResource("5_is7x5")
-type = 0
 name = "Bill Aye"
-dinos_to_unlock = 0
 wage = 100
-price = 0
 dinosaurs = Array[int]([0, 1])
 recipes = Array[ExtResource("1_bv0um")]([SubResource("Resource_r6fva"), SubResource("Resource_5l3xe")])
-can_multitask = false
 texture = ExtResource("6_t60s3")

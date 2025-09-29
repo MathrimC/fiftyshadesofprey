@@ -87,7 +87,7 @@ position = Vector2(932, 480.5)
 script = ExtResource("2_3mdfh")
 active = ExtResource("14_3ineh")
 inactive = ExtResource("13_536of")
-scene = 9
+scene = 5
 sprite = NodePath("BuyMenuResumes")
 
 [node name="BuyMenuResumes" type="Sprite2D" parent="BackgroundBuy/resume"]

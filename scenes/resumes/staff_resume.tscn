@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://08snadb2d1fu" path="res://img/buy/hire_active.png" id="7_nkpcp"]
 [ext_resource type="Texture2D" uid="uid://bd7i7nbi23wxy" path="res://img/buy/unavailable.png" id="8_k7h05"]
 
-[node name="StaffResume" type="Control" node_paths=PackedStringArray("icon", "staff_name", "function", "wage", "available", "unavailable", "unlock_condition")]
+[node name="StaffResume" type="Control" node_paths=PackedStringArray("icon", "staff_name", "function", "wage", "hire_button", "fire_button", "available", "unavailable", "unlock_condition")]
 custom_minimum_size = Vector2(380, 150)
 layout_mode = 3
 anchors_preset = 15
@@ -26,6 +26,8 @@ icon = NodePath("HBoxContainer/Icon")
 staff_name = NodePath("HBoxContainer/Available/Name")
 function = NodePath("HBoxContainer/Available/VBoxContainer/Function")
 wage = NodePath("HBoxContainer/Available/VBoxContainer/HBoxContainer/Wage")
+hire_button = NodePath("HBoxContainer/Available/Hire")
+fire_button = NodePath("HBoxContainer/Available/Button")
 available = NodePath("HBoxContainer/Available")
 unavailable = NodePath("HBoxContainer/Unavailable")
 unlock_condition = NodePath("HBoxContainer/Unavailable/UnlockCondition")
@@ -106,6 +108,14 @@ size_flags_horizontal = 4
 texture_normal = ExtResource("6_bkxk3")
 texture_pressed = ExtResource("7_nkpcp")
 
+[node name="Button" type="Button" parent="HBoxContainer/Available"]
+custom_minimum_size = Vector2(90, 35)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("5_s8u4o")
+text = "Fire"
+
 [node name="Unavailable" type="VBoxContainer" parent="HBoxContainer"]
 visible = false
 layout_mode = 2
@@ -131,3 +141,4 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [connection signal="pressed" from="HBoxContainer/Available/Hire" to="." method="_on_hire_pressed"]
+[connection signal="pressed" from="HBoxContainer/Available/Button" to="." method="_on_fire_pressed"]

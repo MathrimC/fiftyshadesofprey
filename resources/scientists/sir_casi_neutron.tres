@@ -15,7 +15,6 @@ ingredients = Dictionary[int, int]({
 outputs = Dictionary[int, int]({
 2: 5
 })
-time = 0
 metadata/_custom_type_script = "uid://bi3lyrufugnud"
 
 [resource]
@@ -23,7 +22,6 @@ script = ExtResource("3_dvckk")
 type = 5
 name = "Sir Casi Neutron"
 dinos_to_unlock = 20
-wage = 0
 price = 50000
 dinosaurs = Array[int]([15, 16, 17, 18, 19])
 recipes = Array[ExtResource("2_wvnhb")]([SubResource("Resource_dswry")])
