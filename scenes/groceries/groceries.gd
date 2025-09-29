@@ -8,7 +8,7 @@ func _ready() -> void:
 	var groceries := game_manager.get_available_groceries()
 	for grocery_type in groceries:
 		var grocery_data := game_manager.game_resources.get_grocery(grocery_type)
-		var grocery_item: GroceryItem = preload(Resources.scenes[Resources.Scene.GROCERY_ITEM]).instantiate()
+		var grocery_item: GroceryItem = preload(SceneManager.scenes[SceneManager.Scene.GROCERY_ITEM]).instantiate()
 		_set_item.call_deferred(grocery_item, grocery_data)
 
 func _set_item(grocery_item: GroceryItem, grocery: Grocery) -> void:

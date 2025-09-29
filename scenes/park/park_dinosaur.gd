@@ -41,10 +41,10 @@ func on_menu_id_pressed(id: int) -> void:
 		0:
 			game_manager.feed_dinosaur(dinosaur)
 		1:
-			var move_dinosaur: MoveDinosaur = load(Resources.scenes[Resources.Scene.MOVE_DINOSAUR]).instantiate()
+			var move_dinosaur: MoveDinosaur = load(SceneManager.scenes[SceneManager.Scene.MOVE_DINOSAUR]).instantiate()
 			move_dinosaur.dinosaur = dinosaur
 			get_tree().root.add_child(move_dinosaur)
-			game_manager.register_scene_switch(Resources.Scene.MOVE_DINOSAUR, move_dinosaur)
+			scene_manager.register_scene_switch(SceneManager.Scene.MOVE_DINOSAUR, move_dinosaur)
 		2:
 			game_manager.request_dinosaur_sale(dinosaur)
 		3:

@@ -36,14 +36,14 @@ func refresh() -> void:
 		scientist_name.text = "\"%s\"" % scientist_data.name
 		for dinosaur: Dinosaur.Type in scientist_data.dinosaurs:
 			var dinosaur_data = game_manager.game_resources.get_dinosaur(dinosaur)
-			var egg: TextureRect = load(Resources.scenes[Resources.Scene.RESUME_EGG]).instantiate()
+			var egg: TextureRect = load(SceneManager.scenes[SceneManager.Scene.RESUME_EGG]).instantiate()
 			egg.texture = dinosaur_data.egg_texture
 			egg.tooltip_text = dinosaur_data.name if game_manager.is_dinosaur_known(dinosaur_data.type) else "???"
 			eggs_container.add_child(egg)
 		for recipe: FoodRecipe in scientist_data.recipes:
 			for food in recipe.outputs:
 				var food_info := game_manager.game_resources.get_food(food)
-				var food_icon: TextureRect = load(Resources.scenes[Resources.Scene.RESUME_FOOD]).instantiate()
+				var food_icon: TextureRect = load(SceneManager.scenes[SceneManager.Scene.RESUME_FOOD]).instantiate()
 				food_icon.texture = food_info.texture
 				food_icon.tooltip_text = food_info.name
 				food_container.add_child(food_icon)

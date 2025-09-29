@@ -15,20 +15,18 @@ func _ready() -> void:
 	_refresh()
 
 func _refresh() -> void:
-	print("refreshing for context %s" % context)
 	for child in container.get_children():
 		child.queue_free()
 	match page:
 		Page.SCIENTISTS:
 			for scientist: Scientist.Type in _get_scientists():
-				var profile: ScientistResume = load(Resources.scenes[Resources.Scene.SCIENTIST_RESUME]).instantiate()
+				var profile: ScientistResume = load(SceneManager.scenes[SceneManager.Scene.SCIENTIST_RESUME]).instantiate()
 				profile.scientist = scientist
 				profile.context = context
 				container.add_child(profile)
 		Page.STAFF:
 			for staff: Staff in _get_staff():
-				print("adding staff %s" % staff.name)
-				var profile: StaffResume = load(Resources.scenes[Resources.Scene.STAFF_RESUME]).instantiate()
+				var profile: StaffResume = load(SceneManager.scenes[SceneManager.Scene.STAFF_RESUME]).instantiate()
 				profile.staff = staff
 				profile.context = context
 				container.add_child(profile)

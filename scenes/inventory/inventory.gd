@@ -12,7 +12,7 @@ func _ready() -> void:
 		_create_inventory_item(grocery, GameManager.InventoryType.GROCERIES)
 
 func _create_inventory_item(item: int, type: GameManager.InventoryType) -> void:
-	var inventory_item: InventoryItem = load(Resources.scenes[Resources.Scene.INVENTORY_ITEM]).instantiate()
+	var inventory_item: InventoryItem = load(SceneManager.scenes[SceneManager.Scene.INVENTORY_ITEM]).instantiate()
 	inventory_item.type = type
 	inventory_item.item = item
 	grid.add_child(inventory_item)

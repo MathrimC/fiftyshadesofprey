@@ -24,18 +24,6 @@ func refresh() -> void:
 	type.text = dinosaur_data.name
 	mood.text = DinosaurInstance.Mood.keys()[dinosaur.mood].capitalize()
 
-# func on_move_pressed() -> void:
-# 	var move_dinosaur: MoveDinosaur = load(Resources.scenes[Resources.Scene.MOVE_DINOSAUR]).instantiate()
-# 	move_dinosaur.dinosaur = dinosaur
-# 	get_tree().root.add_child(move_dinosaur)
-# 	game_manager.register_scene_switch(Resources.Scene.MOVE_DINOSAUR, move_dinosaur)
-#
-# func on_sell_pressed() -> void:
-# 	sell_pressed.emit(self)
-#
-# func on_rename_pressed() -> void:
-# 	rename_pressed.emit(self)
-
 func on_actions_pressed() -> void:
 	if !actions_menu.visible:
 		actions_menu.position = actions_button.global_position + Vector2(0,actions_button.size.y)
@@ -48,10 +36,10 @@ func on_action_id_pressed(id: int) -> void:
 		0:
 			rename_pressed.emit(self)
 		1:
-			var move_dinosaur: MoveDinosaur = load(Resources.scenes[Resources.Scene.MOVE_DINOSAUR]).instantiate()
+			var move_dinosaur: MoveDinosaur = load(SceneManager.scenes[SceneManager.Scene.MOVE_DINOSAUR]).instantiate()
 			move_dinosaur.dinosaur = dinosaur
 			get_tree().root.add_child(move_dinosaur)
-			game_manager.register_scene_switch(Resources.Scene.MOVE_DINOSAUR, move_dinosaur)
+			scene_manager.register_scene_switch(SceneManager.Scene.MOVE_DINOSAUR, move_dinosaur)
 		2:
 			game_manager.request_dinosaur_sale(dinosaur)
 		3:

@@ -16,7 +16,6 @@ signal scientist_action_ended(scientist: Scientist.Type)
 signal notification(notification: String, action: Callable, action_argument: Variant)
 signal money_changed(money: int)
 signal ticket_price_changed(price: int)
-signal scene_switched(scene: Resources.Scene, node: Node)
 signal egg_created(dinosaur: DinosaurInstance)
 signal egg_hatched(dinosaur: DinosaurInstance)
 signal day_passed()
@@ -39,7 +38,7 @@ func start_game() -> void:
 	game_data = GameData.new()
 	game_data.offline_progression = false
 	game_data.current_day_end_time = roundi(Time.get_unix_time_from_system()) + day_length_in_sec
-	get_tree().change_scene_to_file(Resources.scenes[Resources.Scene.GAME])
+	get_tree().change_scene_to_file(SceneManager.scenes[SceneManager.Scene.GAME])
 	game_running = true
 
 func continue_game() -> void:
@@ -61,7 +60,7 @@ func continue_game() -> void:
 			close_day()
 		game_data.save()
 		money_changed.emit(game_data.money)
-	get_tree().change_scene_to_file(Resources.scenes[Resources.Scene.GAME])
+	get_tree().change_scene_to_file(SceneManager.scenes[SceneManager.Scene.GAME])
 	game_running = true
 
 func get_day_progress() -> float:
@@ -240,7 +239,6 @@ func change_ticket_price(price: int) -> void:
 	game_data.save()
 
 func close_day() -> void:
-	print("day passed")
 	var total_visitors: int = 0
 	var dinosaurs: Array[DinosaurInstance]
 	var dinosaur_count: Dictionary
@@ -328,24 +326,10 @@ func on_month_passed() -> void:
 	# get_tree().create_timer(month_time_in_sec).timeout.connect(on_month_passed)
 
 func go_to_enclosure(lot_number: int):
-	var park: Dinopark = load(Resources.scenes[Resources.Scene.DINOPARK]).instantiate()
+	var park: Dinopark = load(SceneManager.scenes[SceneManager.Scene.DINOPARK]).instantiate()
 	park.set_camera_position_on_lot(lot_number)
 	get_tree().root.add_child(park)
-	register_scene_switch(Resources.Scene.DINOPARK, park)
-
-func switch_scene(scene: Resources.Scene) -> Node:
-	if active_scene != null:
-		active_scene.queue_free()
-	active_scene = load(Resources.scenes[scene]).instantiate()
-	get_tree().root.add_child(active_scene)
-	scene_switched.emit(scene, active_scene)
-	return active_scene
-
-func register_scene_switch(scene_type: Resources.Scene, scene_instance: Node) -> void:
-	if active_scene != null:
-		active_scene.queue_free()
-	active_scene = scene_instance
-	scene_switched.emit(scene_type, scene_instance)
+	scene_manager.register_scene_switch(SceneManager.Scene.DINOPARK, park)
 
 func _remove_dinosaur(dinosaur: DinosaurInstance) -> bool:
 	for enclosure in game_data.enclosures.values():
@@ -383,7 +367,7 @@ func _complete_scientist_action(scientist_action: Dictionary, scientist: Scienti
 			game_data.egg_creation_counters[dino.type] = game_data.egg_creation_counters.get(dino.type, 0) + 1
 			game_data.eggs.append(dino)
 			egg_created.emit(dino)
-			trigger_notification("Scientist created a %s egg. The egg is in your incubator" % game_resources.get_dinosaur(scientist_action["dinosaur"]).name, switch_scene, Resources.Scene.INCUBATOR)
+			trigger_notification("Scientist created a %s egg. The egg is in your incubator" % game_resources.get_dinosaur(scientist_action["dinosaur"]).name, scene_manager.switch_scene, SceneManager.Scene.INCUBATOR)
 		ScientistAction.CREATE_FOOD:
 			var recipe: FoodRecipe = scientist_action["recipe"]
 			for type: Food.Type in recipe.outputs:

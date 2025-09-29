@@ -1,7 +1,11 @@
-class_name Resources
+class_name SceneManager
 extends Node
 
-enum Scene {MAIN_MENU, GAME, DINOPARK, BUY, DINOS, STAFF_OVERVIEW, SCIENCE, MAP, MENU, BIRDS, GROCERIES, BUILD_ENCLOSURE, SCIENTIST_ACTIONS, INCUBATOR, PLACE_EGG, MOVE_DINOSAUR, DINOSAUR_CREATION_LINE, FOOD_CREATION_LINE, INGREDIENT, INCUBATOREGG, BACKPACK, DINOCODEX, INVENTORY, INVENTORY_ITEM, DINOSAUR_LINE, GROCERY_ITEM, SCIENTIST_RESUME, STAFF_RESUME, RESUME_EGG, RESUME_FOOD, SCIENTIST_BUTTON, BIRD_LINE, BIOME_BUTTON, FENCE_BUTTON, MONEY_TAB, MONEY_LINE}
+enum Scene {MAIN_MENU, GAME, DINOPARK, BUY, DINOS, STAFF_OVERVIEW, SCIENCE, MAP, MENU, RESUMES, BIRDS, GROCERIES, BUILD_ENCLOSURE, SCIENTIST_ACTIONS, INCUBATOR, PLACE_EGG, MOVE_DINOSAUR, DINOSAUR_CREATION_LINE, FOOD_CREATION_LINE, INGREDIENT, INCUBATOREGG, BACKPACK, DINOCODEX, INVENTORY, INVENTORY_ITEM, DINOSAUR_LINE, GROCERY_ITEM, SCIENTIST_RESUME, STAFF_RESUME, RESUME_EGG, RESUME_FOOD, SCIENTIST_BUTTON, BIRD_LINE, BIOME_BUTTON, FENCE_BUTTON, MONEY_TAB, MONEY_LINE}
+
+signal scene_switched(scene: Scene, node: Node)
+
+var active_scene: Node
 
 const scenes: Dictionary = {
 	Scene.MAIN_MENU: "res://scenes/main_menu/main_menu.tscn",
@@ -12,6 +16,7 @@ const scenes: Dictionary = {
 	Scene.STAFF_OVERVIEW: "res://scenes/staff_overview/staff_overview.tscn",
 	Scene.SCIENCE: "res://scenes/science/science.tscn",
 	Scene.MAP: "res://scenes/map/map.tscn",
+	Scene.RESUMES: "res://scenes/staff_overview/staff_overview.tscn",
 	Scene.BIRDS: "res://scenes/birds/birds.tscn",
 	Scene.GROCERIES: "res://scenes/groceries/groceries.tscn",
 	Scene.BUILD_ENCLOSURE: "res://scenes/build_enclosure/build_enclosure.tscn",
@@ -40,3 +45,23 @@ const scenes: Dictionary = {
 	Scene.MONEY_LINE: "res://scenes/money/money_line.tscn",
 }
 
+func switch_scene(scene: Scene) -> Node:
+	if active_scene != null:
+		active_scene.queue_free()
+	active_scene = load(scenes[scene]).instantiate()
+	match scene:
+		Scene.RESUMES:
+			active_scene.context = StaffOverview.Context.RESUMES
+			active_scene.page = StaffOverview.Page.SCIENTISTS
+		Scene.STAFF_OVERVIEW:
+			active_scene.context = StaffOverview.Context.STAFF
+			active_scene.page = StaffOverview.Page.SCIENTISTS
+	get_tree().root.add_child(active_scene)
+	scene_switched.emit(scene, active_scene)
+	return active_scene
+
+func register_scene_switch(scene_type: Scene, scene_instance: Node) -> void:
+	if active_scene != null:
+		active_scene.queue_free()
+	active_scene = scene_instance
+	scene_switched.emit(scene_type, scene_instance)

@@ -22,7 +22,7 @@ func open_dino(dinosaur: Dinosaur.Type) -> void:
 func on_move_panel(movement: Vector2):
 	self.position += movement
 
-func on_scene_switched(_scene: Resources.Scene, _node: Node):
+func on_scene_switched(_scene: SceneManager.Scene, _node: Node):
 	self.queue_free()
 
 func on_inventory_pressed() -> void:

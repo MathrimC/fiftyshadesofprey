@@ -23,7 +23,7 @@ func refresh() -> void:
 	var list_empty := true
 	for enclosure in game_manager.game_data.enclosures.values():
 		for dinosaur in enclosure.dinosaurs:
-			var dinosaur_line: DinosaurLine = load(Resources.scenes[Resources.Scene.DINOSAUR_LINE]).instantiate()
+			var dinosaur_line: DinosaurLine = load(SceneManager.scenes[SceneManager.Scene.DINOSAUR_LINE]).instantiate()
 			dinosaur_line.dinosaur = dinosaur
 			dinosaur_line.rename_pressed.connect(on_rename_pressed)
 			lines_container.add_child(dinosaur_line)
@@ -39,12 +39,12 @@ func refresh() -> void:
 func on_egg_hatched(dinosaur: DinosaurInstance) -> void: 
 	empty_label.hide()
 	list_container.show()
-	var dinosaur_line: DinosaurLine = load(Resources.scenes[Resources.Scene.DINOSAUR_LINE]).instantiate()
+	var dinosaur_line: DinosaurLine = load(SceneManager.scenes[SceneManager.Scene.DINOSAUR_LINE]).instantiate()
 	dinosaur_line.dinosaur = dinosaur
 	lines_container.add_child(dinosaur_line)
 
 func _incubator_button_pressed() -> void:
-	game_manager.switch_scene(Resources.Scene.INCUBATOR)
+	scene_manager.switch_scene(SceneManager.Scene.INCUBATOR)
 
 func on_rename_pressed(dinosaur_line: DinosaurLine) -> void:
 	selected_line = dinosaur_line

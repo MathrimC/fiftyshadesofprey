@@ -7,15 +7,15 @@ func _ready() -> void:
 	empty_label.visible = hired_scientists.is_empty()
 
 	for scientist in hired_scientists:
-		var scientist_button: ScientistButton = load(Resources.scenes[Resources.Scene.SCIENTIST_BUTTON]).instantiate()
+		var scientist_button: ScientistButton = load(SceneManager.scenes[SceneManager.Scene.SCIENTIST_BUTTON]).instantiate()
 		scientist_button.scientist = scientist
 		add_child(scientist_button)
 
 	if hired_scientists.size() == 1:
-		var actions: ScientistActions = load(Resources.scenes[Resources.Scene.SCIENTIST_ACTIONS]).instantiate()
+		var actions: ScientistActions = load(SceneManager.scenes[SceneManager.Scene.SCIENTIST_ACTIONS]).instantiate()
 		actions.scientist = hired_scientists[0]
 		get_tree().root.add_child(actions)
-		game_manager.register_scene_switch(Resources.Scene.SCIENTIST_ACTIONS, actions)
+		scene_manager.register_scene_switch(SceneManager.Scene.SCIENTIST_ACTIONS, actions)
 	
 
 	

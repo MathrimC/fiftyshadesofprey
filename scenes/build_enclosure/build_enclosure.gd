@@ -23,12 +23,12 @@ func _ready() -> void:
 	enclosure_selection.hide()
 	map.lot_selected.connect(on_lot_selected)
 	for biome in Biome.Type.values():
-		var biome_button: BiomeButton = preload(Resources.scenes[Resources.Scene.BIOME_BUTTON]).instantiate()
+		var biome_button: BiomeButton = preload(SceneManager.scenes[SceneManager.Scene.BIOME_BUTTON]).instantiate()
 		biome_button.biome = biome
 		biome_button.biome_selected.connect(on_biome_selected)
 		biome_button_container.add_child(biome_button)
 	for fence in Fence.Type.values():
-		var fence_button: FenceButton = preload(Resources.scenes[Resources.Scene.FENCE_BUTTON]).instantiate()
+		var fence_button: FenceButton = preload(SceneManager.scenes[SceneManager.Scene.FENCE_BUTTON]).instantiate()
 		fence_button.fence = fence
 		fence_button.fence_selected.connect(on_fence_selected)
 		fence_button_container.add_child(fence_button)

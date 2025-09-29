@@ -7,7 +7,7 @@ extends Control
 
 func _ready() -> void:
 	for bird in Bird.Type.values():
-		var line: BirdLine = preload(Resources.scenes[Resources.Scene.BIRD_LINE]).instantiate()
+		var line: BirdLine = preload(SceneManager.scenes[SceneManager.Scene.BIRD_LINE]).instantiate()
 		line.bird = bird
 		line.birds = self
 		container.add_child(line)

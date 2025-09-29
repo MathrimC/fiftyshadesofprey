@@ -42,10 +42,10 @@ func _timer() -> void:
 	trash_button.show()
 
 func on_place_pressed() -> void:
-	var place_egg: PlaceEgg = load(Resources.scenes[Resources.Scene.PLACE_EGG]).instantiate()
+	var place_egg: PlaceEgg = load(SceneManager.scenes[SceneManager.Scene.PLACE_EGG]).instantiate()
 	place_egg.dinosaur = dinosaur
 	get_tree().root.add_child(place_egg)
-	game_manager.register_scene_switch(Resources.Scene.PLACE_EGG, place_egg)
+	scene_manager.register_scene_switch(SceneManager.Scene.PLACE_EGG, place_egg)
 
 func on_sell_pressed() -> void:
 	game_manager.request_dinosaur_sale(dinosaur)

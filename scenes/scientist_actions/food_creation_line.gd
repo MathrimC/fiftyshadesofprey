@@ -14,7 +14,7 @@ func _ready() -> void:
 	food_icon.texture = food.texture
 	food_icon.tooltip_text = food.name
 	for ingredient in recipe.ingredients:
-		var ingredient_ui = preload(Resources.scenes[Resources.Scene.INGREDIENT]).instantiate()
+		var ingredient_ui = preload(SceneManager.scenes[SceneManager.Scene.INGREDIENT]).instantiate()
 		ingredient_ui.amount.text = "%s x" % recipe.ingredients[ingredient]
 		var grocery := game_manager.game_resources.get_grocery(ingredient)
 		ingredient_ui.ingredient.texture = grocery.texture

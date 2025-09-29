@@ -1,4 +1,4 @@
 class_name SceneButton
 extends TextureButton
 
-@export var scene: Resources.Scene
+@export var scene: SceneManager.Scene

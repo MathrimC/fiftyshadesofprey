@@ -65,7 +65,7 @@ func _refresh() -> void:
 
 
 func _create_money_line(label: String, value: int, container: Container):
-	var money_line: MoneyLine = preload(Resources.scenes[Resources.Scene.MONEY_LINE]).instantiate()
+	var money_line: MoneyLine = preload(SceneManager.scenes[SceneManager.Scene.MONEY_LINE]).instantiate()
 	money_line.set_content(label, value)
 	container.add_child(money_line)
 	money_lines.append(money_line)
