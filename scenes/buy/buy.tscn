@@ -30,7 +30,7 @@ position = Vector2(932, 480.5)
 script = ExtResource("2_3mdfh")
 active = ExtResource("4_k7o2t")
 inactive = ExtResource("3_67ede")
-scene = 11
+scene = 9
 sprite = NodePath("BuyMenuBirdPlaza")
 
 [node name="BuyMenuBirdPlaza" type="Sprite2D" parent="BackgroundBuy/birdplaza"]
@@ -57,7 +57,7 @@ position = Vector2(932, 480.5)
 script = ExtResource("2_3mdfh")
 active = ExtResource("10_ij1g2")
 inactive = ExtResource("9_5vahe")
-scene = 12
+scene = 10
 sprite = NodePath("BuyMenuGroceries")
 
 [node name="BuyMenuGroceries" type="Sprite2D" parent="BackgroundBuy/groceries"]
@@ -73,7 +73,7 @@ position = Vector2(932, 480.5)
 script = ExtResource("2_3mdfh")
 active = ExtResource("8_6vogg")
 inactive = ExtResource("7_v0mjg")
-scene = 13
+scene = 11
 sprite = NodePath("BuyMenuGardenCenter")
 
 [node name="BuyMenuGardenCenter" type="Sprite2D" parent="BackgroundBuy/gardencenter"]

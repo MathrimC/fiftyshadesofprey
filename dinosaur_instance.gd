@@ -14,7 +14,7 @@ const egg_expiration_time := 15 * 60
 @export var genetics: Genetics
 
 @export var egg_creation_time: int
-@export var egg_hatch_time: int
+@export var egg_time_left: float
 
 func get_egg_time_left() -> float:
 	return egg_creation_time + egg_expiration_time - Time.get_unix_time_from_system()
@@ -37,3 +37,10 @@ func feed(has_food: bool) -> void:
 				mood = Mood.STARVING
 			_:
 				mood = Mood.HUNGRY
+
+func load_time(offline_progression: bool) -> void:
+	if !offline_progression:
+		egg_creation_time = floori(Time.get_unix_time_from_system() + egg_time_left - egg_expiration_time as float)
+
+func save_time() -> void:
+	egg_time_left = egg_creation_time + egg_expiration_time - Time.get_unix_time_from_system()

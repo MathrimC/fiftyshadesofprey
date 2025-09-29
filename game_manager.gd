@@ -7,7 +7,7 @@ enum DinosaurFeeling { HAPPY, SAD, SICK, HUNGRY }
 
 const game_resources: GameResources = preload("res://resources/game_resources.tres")
 # const month_time_in_sec := 1200
-const day_length_in_sec := 10 * 60
+const day_length_in_sec := 5 * 60
 const egg_expiration_time := 15 * 60
 const ticket_limits := [0, 10, 30, 50, 75, 80, 90, 100, 125, 140, 150]
 
@@ -37,6 +37,7 @@ func _enter_tree() -> void:
 
 func start_game() -> void:
 	game_data = GameData.new()
+	game_data.offline_progression = false
 	game_data.current_day_end_time = roundi(Time.get_unix_time_from_system()) + day_length_in_sec
 	get_tree().change_scene_to_file(Resources.scenes[Resources.Scene.GAME])
 	game_running = true
@@ -47,11 +48,19 @@ func continue_game() -> void:
 		game_data.current_day_end_time = roundi(Time.get_unix_time_from_system()) + day_length_in_sec
 		game_data.version = 2
 		game_data.save()
-	while game_data.current_day_end_time < Time.get_unix_time_from_system():
-		game_data.current_day_end_time += day_length_in_sec
-		close_day()
-	game_data.save()
-	money_changed.emit(game_data.money)
+	if game_data.version < 3:
+		game_data.offline_progression = false
+		game_data.current_day_time_left = day_length_in_sec
+		game_data.version = 3
+		game_data.save()
+	if !game_data.offline_progression:
+		game_data.current_day_end_time = roundi(Time.get_unix_time_from_system() + game_data.current_day_time_left)
+	else:
+		while game_data.current_day_end_time < Time.get_unix_time_from_system():
+			game_data.current_day_end_time += day_length_in_sec
+			close_day()
+		game_data.save()
+		money_changed.emit(game_data.money)
 	get_tree().change_scene_to_file(Resources.scenes[Resources.Scene.GAME])
 	game_running = true
 
@@ -352,15 +361,15 @@ func _process(_delta: float) -> void:
 			var scientist_action = game_data.scientist_actions[scientist]
 			if time > scientist_action["end_time"]:
 				_complete_scientist_action(scientist_action, scientist)
+		game_data.current_day_time_left = game_data.current_day_end_time - time
 		if time > game_data.current_day_end_time:
 			game_data.current_day_end_time += day_length_in_sec
+			game_data.current_day_time_left = day_length_in_sec
 			close_day()
 			game_data.save()
 			money_changed.emit()
 			day_passed.emit()
 			
-
-
 func _complete_scientist_action(scientist_action: Dictionary, scientist: Scientist.Type):
 	game_data.scientist_actions.erase(scientist)
 	scientist_action_ended.emit(scientist)
