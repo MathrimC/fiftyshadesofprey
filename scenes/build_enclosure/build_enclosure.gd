@@ -11,6 +11,9 @@ extends Node
 @export var biome_button_container: Container
 @export var fence_button_container: Container
 
+@export var biome_button_group: ButtonGroup
+@export var fence_button_group: ButtonGroup
+
 var selected_lot: int
 var biome_selected: bool
 var selected_biome: Biome.Type
@@ -25,11 +28,13 @@ func _ready() -> void:
 	for biome in Biome.Type.values():
 		var biome_button: BiomeButton = preload(SceneManager.scenes[SceneManager.Scene.BIOME_BUTTON]).instantiate()
 		biome_button.biome = biome
+		biome_button.button_group = biome_button_group
 		biome_button.biome_selected.connect(on_biome_selected)
 		biome_button_container.add_child(biome_button)
 	for fence in Fence.Type.values():
 		var fence_button: FenceButton = preload(SceneManager.scenes[SceneManager.Scene.FENCE_BUTTON]).instantiate()
 		fence_button.fence = fence
+		fence_button.button_group = fence_button_group
 		fence_button.fence_selected.connect(on_fence_selected)
 		fence_button_container.add_child(fence_button)
 

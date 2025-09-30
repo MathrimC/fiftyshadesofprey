@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cx7o6aml26ibb"]
+[gd_scene load_steps=12 format=3 uid="uid://cx7o6aml26ibb"]
 
 [ext_resource type="Script" uid="uid://b1v7ctbi02wlr" path="res://scenes/build_enclosure/build_enclosure.gd" id="1_shnu1"]
 [ext_resource type="PackedScene" uid="uid://dyj6peppi2grb" path="res://scenes/map/map.tscn" id="2_4e05c"]
+[ext_resource type="ButtonGroup" uid="uid://bj1047wdibu3h" path="res://scenes/build_enclosure/biome_button_group.tres" id="2_py161"]
 [ext_resource type="Theme" uid="uid://d153qfgnveiau" path="res://themes/cartoon_theme.tres" id="3_4e05c"]
+[ext_resource type="ButtonGroup" uid="uid://jkelc7bt1fmq" path="res://scenes/build_enclosure/fence_button_group.tres" id="3_4nbvu"]
 [ext_resource type="Texture2D" uid="uid://c8osf216v5gnq" path="res://img/map/map_wall.png" id="11_y7f4r"]
 [ext_resource type="Texture2D" uid="uid://b0dfdhu4adrh" path="res://img/buy/money.png" id="12_cdqj6"]
 [ext_resource type="Texture2D" uid="uid://dcqd14ec0hqy" path="res://img/general/button_yay.png" id="13_sgcpo"]
@@ -19,6 +21,8 @@ yay_button = NodePath("EnclosureSelection/PanelContainer/MarginContainer/VBoxCon
 disabled_color = Color(0.305882, 0.313726, 0.368627, 1)
 biome_button_container = NodePath("EnclosureSelection/PanelContainer/MarginContainer/VBoxContainer/BiomeSelection/HBoxContainer")
 fence_button_container = NodePath("EnclosureSelection/PanelContainer/MarginContainer/VBoxContainer/FenceSelection/HBoxContainer")
+biome_button_group = ExtResource("2_py161")
+fence_button_group = ExtResource("3_4nbvu")
 
 [node name="Map" parent="." instance=ExtResource("2_4e05c")]
 mode = 1
@@ -30,6 +34,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_4e05c")
 
 [node name="PanelContainer" type="PanelContainer" parent="EnclosureSelection"]
 modulate = Color(0.945098, 1, 1, 1)
