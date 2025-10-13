@@ -15,7 +15,7 @@ func _ready() -> void:
 	game_manager.dinosaur_changed.connect(on_dinosaur_changed)
 
 func on_dinosaur_changed(_dinosaur: DinosaurInstance) -> void:
-	if dinosaur_stack.back() == _dinosaur:
+	if !dinosaur_stack.is_empty() && dinosaur_stack.back() == _dinosaur:
 		refresh()
 
 func refresh() -> void:

@@ -88,6 +88,12 @@ func is_scientist_hired(scientist: Scientist.Type) -> bool:
 func is_staff_hired(staff: Staff) -> bool:
 	return game_data.hired_staff.has(staff)
 
+func is_runner_hired() -> bool:
+	for staff in game_data.hired_staff:
+		if staff.type == Staff.Type.RUNNER:
+			return true
+	return false
+
 func is_available(scientist: Scientist.Type) -> bool:
 	var dinosaur_count := 0
 	for enclosure in game_data.enclosures.values():
@@ -125,11 +131,40 @@ func remove_egg(dinosaur: DinosaurInstance) -> void:
 	game_data.eggs.erase(dinosaur)
 
 func create_food(recipe: FoodRecipe, scientist: Scientist.Type) -> void:
+	if !is_recipe_creatable(recipe):
+		return
 	for ingredient in recipe.ingredients:
-		game_data.groceries[ingredient] -= recipe.ingredients[ingredient]
+		var needed: int = recipe.ingredients[ingredient]
+		var from_inventory: int = min(needed, game_data.groceries.get(ingredient, 0))
+		if from_inventory > 0:
+			game_data.groceries[ingredient] -= from_inventory
+		if needed - from_inventory > 0 && is_runner_hired():
+			print("buying %s of ingredient %s" % [needed - from_inventory, ingredient])
+			buy_groceries({ingredient: needed - from_inventory})
+			game_data.groceries[ingredient] -= (needed - from_inventory)
 	game_data.scientist_actions[scientist] = { "action": ScientistAction.CREATE_FOOD, "recipe": recipe, "end_time": Time.get_unix_time_from_system() + recipe.time }
 	game_data.save()
 	scientist_action_started.emit(scientist)
+
+func is_recipe_creatable(recipe: FoodRecipe) -> bool:
+	var shopping_list := _get_shopping_list(recipe)
+	if shopping_list.is_empty():
+		return true
+	if !is_runner_hired():
+		return false
+	var price: int = 0
+	for grocery in shopping_list:
+		price += game_resources.get_grocery(grocery).price * shopping_list[grocery]
+	return game_data.money >= price
+
+func _get_shopping_list(recipe: FoodRecipe) -> Dictionary[Grocery.Type, int]:
+	var shopping_list: Dictionary[Grocery.Type, int]
+	for ingredient in recipe.ingredients:
+		var needed: int = recipe.ingredients[ingredient]
+		var to_buy: int = max(0, needed - game_data.groceries.get(ingredient, 0))
+		if to_buy > 0:
+			shopping_list[ingredient] = to_buy
+	return shopping_list
 
 func place_dinosaur(dinosaur: DinosaurInstance, lot_number: int) -> bool:
 	var enclosure: Enclosure = game_data.enclosures.get(lot_number, null)
@@ -351,7 +386,7 @@ func _process(_delta: float) -> void:
 			game_data.current_day_time_left = day_length_in_sec
 			close_day()
 			game_data.save()
-			money_changed.emit()
+			money_changed.emit(game_data.money)
 			day_passed.emit()
 			
 func _complete_scientist_action(scientist_action: Dictionary, scientist: Scientist.Type):

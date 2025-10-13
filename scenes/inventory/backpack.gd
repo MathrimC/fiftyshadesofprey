@@ -10,7 +10,7 @@ func _ready() -> void:
 	inventory.show()
 	dinocodex.hide()
 	titlebar.move_panel.connect(on_move_panel)
-	game_manager.scene_switched.connect(on_scene_switched)
+	scene_manager.scene_switched.connect(on_scene_switched)
 
 func open_dino(dinosaur: Dinosaur.Type) -> void:
 	title.text = "Dino Codex"

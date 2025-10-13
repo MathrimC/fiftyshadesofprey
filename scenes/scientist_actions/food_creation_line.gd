@@ -20,19 +20,18 @@ func _ready() -> void:
 		ingredient_ui.ingredient.texture = grocery.texture
 		ingredient_ui.ingredient.tooltip_text = grocery.name
 		ingredients_container.add_child(ingredient_ui)
-		if game_manager.get_groceries_amount(ingredient) < recipe.ingredients[ingredient]:
-			button.disabled = true
 	var seconds: int = recipe.time
 	var minutes := floori(seconds / 60.)
 	seconds = seconds % 60
 	timer.text = "%02d:%02d" % [minutes, seconds]
 	refresh_button()
+	game_manager.money_changed.connect(on_money_changed)
+
+func on_money_changed(_money: int) -> void:
+	refresh_button()
 
 func refresh_button() -> void:
-	button.disabled = false
-	for ingredient in recipe.ingredients:
-		if game_manager.get_groceries_amount(ingredient) < recipe.ingredients[ingredient]:
-			button.disabled = true
+	button.disabled = !game_manager.is_recipe_creatable(recipe)
 
 func track_action_time(action_info) -> void:
 	var end_time: int = action_info["end_time"]
